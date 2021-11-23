@@ -1,0 +1,428 @@
+{
+  "newspapers": [
+    {
+      "id": 0,
+      "name": "Eenadu",
+      "image": "assets/images/Eenadu.jpg",
+      "language": "Telugu",
+      "price": "195",
+      "featured": true,
+      "description": "Eenadu is the largest circulated Telugu-language daily newspaper of India sold mostly in the states of Andhra Pradesh and Telangana. According to the Indian Readership Survey (IRS) Q2 2019, Eenadu ranks eighth among the most circulated Indian-language dailies with a total readership (TR) of 1,614,105. It was founded by Ramoji Rao in 1974."
+    },
+    {
+      "id": 1,
+      "name": "Andhra Jyothi",
+      "image": "assets/images/andhra_jyothi.jpg",
+      "language": "Telugu",
+      "price": "190",
+      "featured": true,
+      "description": "Andhra Jyothi is the third largest circulated Telugu language daily newspaper of India sold mostly in the states of Andhra Pradesh and Telangana.It was founded by K. L. N. Prasad, an Industrialist on 1 July 1960. It is also one of the oldest running Telugu language daily newspapers.It was taken over by Vemuri Radha Krishna, also known as R. K. in 2002 who also works as the Managing Director."
+    },
+    {
+      "id": 2,
+      "name": "Andhra Bhoomi",
+      "image": "assets/images/andhra_bhoomi.jpg",
+      "language": "Telugu",
+      "price": "185",
+      "featured": false,
+      "description": "Andhra Bhoomi (transl. The land of Andhra) is a Telugu-language daily newspaper India covering the whole of Andhra Pradesh and Telangana with editions from Hyderabad, Vijayawada, Visakhapatnam, Rajahmundry, Anantapur, Karimnagar, Nellore, etc. The newspaper is one of the oldest running Telugu language daily newspapers. The newspaper is owned by Deccan Chronicle Holdings Limited (DCHL)."
+    },
+    {
+      "id": 3,
+      "name": "Andhra Prabha",
+      "image": "assets/images/andhra_prabha.jpg",
+      "language": "Telugu",
+      "price": "187",
+      "featured": false,
+      "description": "Andhra Prabha - Journalism first is a Telugu language daily newspaper of India sold mostly in the states of Andhra Pradesh and Telangana. The newspaper is one of the oldest running Telugu language daily newspapers of India. The newspaper and website (www.prabhanews.com) were owned by the New Indian Express Group of Companies but the newspaper was sold to entrepreneurs from Kakinada, Andhra Pradesh."
+    },
+    {
+      "id": 4,
+      "name": "Business Standard",
+      "image": "assets/images/business_standard.jpg",
+      "language": "English",
+      "price": "210",
+      "featured": false,
+      "description": "Business Standard is an Indian English-language daily edition newspaper published by Business Standard Private Limited, also available in Hindi. Founded in 1975, the newspaper does extensive coverage on the Indian economy, infrastructure, international business and trade, stock and currency markets, corporate governance, apart from a range of other financial news, opinions and insights."
+    },
+    {
+      "id": 5,
+      "name": "Deccan Chronicle",
+      "image": "assets/images/deccan_chronicle.jpg",
+      "language": "English",
+      "price": "225",
+      "featured": true,
+      "description": "Deccan Chronicle is an Indian English-language daily newspaper founded by Rajagopal Mudaliar in the 1930s & currently owned by Samagrah Commercial Pvt Limited. It is famous for providing false information and posting anti-India content to provoke people and cause communal disharmony. It is published in Hyderabad, Telangana, by Deccan Chronicle Holdings Limited (DCHL). The newspaper's name derives from the originating place, the Deccan regions of India. Deccan Chronicle has eight editions in Andhra Pradesh and Telangana. They also publish from Chennai and Bengaluru."
+    },
+    {
+      "id": 6,
+      "name": "Deccan Herald",
+      "image": "assets/images/deccan_herald.jpg",
+      "language": "English",
+      "price": "200",
+      "featured": false,
+      "description": "Deccan Herald (DH) is an Indian English language daily newspaper published from the Indian state of Karnataka by The Printers Mysore Private Limited, a privately held company owned by the Nettakallappa family. It has seven editions printed from Bengaluru, Hubballi, Davanagere, Hosapete, Mysuru, Mangaluru, and Kalaburagi."
+    },
+    {
+      "id": 7,
+      "name": "The Economic Times",
+      "image": "assets/images/economic_times.jpg",
+      "language": "English",
+      "price": "199",
+      "featured": false,
+      "description": "The Economic Times is an Indian English-language business-focused daily newspaper. It is owned by The Times Group. The Economic Times began publication in 1961. As of 2012, it is the world's second-most widely read English-language business newspaper, after The Wall Street Journal, with a readership of over 800,000. It is published simultaneously from 14 cities: Mumbai, Bangalore, Delhi, Chennai, Kolkata, Lucknow, Hyderabad, Jaipur, Ahmedabad, Nagpur, Chandigarh, Pune, Indore, and Bhopal."
+    },
+    {
+      "id": 8,
+      "name": "Hindustan Times",
+      "image": "assets/images/hindustan_times.jpg",
+      "language": "English",
+      "price": "217",
+      "featured": false,
+      "description": "Hindustan Times is an Indian English-language daily newspaper introduced and founded in 1924 by Sunder Singh Lyallpuri, founder-father of the Akali movement and the Shiromani Akali Dal in the Punjab Province. It played integral roles in the Indian independence movement as a nationalist daily. The newspaper is owned by Shobhana Bhartia. It is the flagship publication of HT Media, an entity controlled by the KK Birla family."
+    },
+    {
+      "id": 9,
+      "name": "The Indian Express",
+      "image": "assets/images/indian_express.jpg",
+      "language": "English",
+      "price": "224",
+      "featured": false,
+      "description": "The Indian Express is an English-language Indian daily newspaper. It is published in Mumbai by the Indian Express Group. In 1999, eight years after the group's founder Ramnath Goenka's death in 1991, the group was split between the family members. The southern editions took the name The New Indian Express, while the northern editions, based in Mumbai, retained the original Indian Express name with 'The' prefixed to the title."
+    },
+    {
+      "id": 10,
+      "name": "Namasthe Telangana",
+      "image": "assets/images/namasthe_telangana.jpg",
+      "language": "Telugu",
+      "price": "179",
+      "featured": false,
+      "description": "Namasthe Telangana Indian Telugu-language daily newspaper published from Hyderabad, Telangana. It was launched on 6 June 2011. The paper aims to mainly focus on politics and developments of Telangana State. The newspaper is published by Telangana Publications Pvt. Limited, owned by K. Chandrashekar Rao, the current chief minister of Telangana. With more than 300,000 copies sold per day, it is the third-largest Telugu-language daily after Eenadu and Sakshi."
+    },
+    {
+      "id": 11,
+      "name": "Nava Telangana",
+      "image": "assets/images/nava_telangana.jpg",
+      "language": "Telugu",
+      "price": "172",
+      "featured": false,
+      "description": "Nava Telangana is a Telugu language newspaper in the Indian State of Telangana. It is published in Karimnagar, Khammam, Hyderabad, Ranga Reddy, Warangal and Mahabubnagar. The paper is also available online. It is the only Telugu newspaper not owned by a business. Prior to the formation of Nava Telangana, the organization published the news daily Prajasakti in Telugu in Andhra Pradesh. Nava Telangana Telugu is published daily."
+    },
+    {
+      "id": 12,
+      "name": "Prajasakti",
+      "image": "assets/images/praja_sakthi.jpg",
+      "language": "Telugu",
+      "price": "182",
+      "featured": false,
+      "description": "Prajasakti, also spelled as Prajashakti, is a Telugu newspaper that is published in Andhra Pradesh, India by the Communist Party of India (Marxist) [CPI (M)]. It started as a daily newspaper in 1981 with Vijayawada as the centre. Currently it is being published with nine centres (or editions) at Hyderabad, Vijayawada, Visakhapatnam, Tirupati, Khammam, Kurnool, Ananthapur, Rajahmundry, Srikakulam, Karimnagar and Ongole. It has a wide network of over 100 primary news-gathering centers across the state."
+    },
+    {
+      "id": 13,
+      "name": "Sakshi",
+      "image": "assets/images/sakshi.jpg",
+      "language": "Telugu",
+      "price": "189",
+      "featured": false,
+      "description": "Sakshi is the second largest circulated Telugu language daily newspaper of India sold mostly in the states of Andhra Pradesh and Telangana. According to the Indian Readership Survey (IRS) Q2 2019, Sakshi ranks sixteenth among the most circulated Indian-language dailies with a total readership (TR) of 1,064,661. The newspaper is owned by Y. S. Bharathi, wife of the Chief minister of Andhra Pradesh, Y. S. Jaganmohan Reddy."
+    },
+    {
+      "id": 14,
+      "name": "Suryaa",
+      "image": "assets/images/suryaa.jpg",
+      "language": "Telugu",
+      "price": "178",
+      "featured": false,
+      "description": "Suryaa is a Telugu-language newspaper headquartered in Hyderabad. This newspaper is promoted by Nukarapu Surya Prakash Rao. It is published from seventeen cities in India."
+    },
+    {
+      "id": 15,
+      "name": "The Hindu",
+      "image": "assets/images/the_hindu.jpg",
+      "language": "English",
+      "price": "229",
+      "featured": true,
+      "description": "The Hindu is an English-language daily newspaper owned by The Hindu Group, headquartered in Chennai, Tamil Nadu, India. It began as a weekly in 1878 and became a daily in 1889. It is one of the Indian newspapers of record and the second most circulated English-language newspaper in India, after The Times of India. As of March 2018, The Hindu is published from 21 locations across 11 states of India."
+    },
+    {
+      "id": 16,
+      "name": "The Pioneer",
+      "image": "assets/images/the_pioneer.jpg",
+      "language": "English",
+      "price": "192",
+      "featured": false,
+      "description": "The Pioneer is an English language daily newspaper in India. It is published from multiple locations in India, including Delhi. It is the second oldest English language newspaper in India still in circulation after The Times of India. In 2010, The Pioneer launched its Hindi version in Lucknow."
+    },
+    {
+      "id": 17,
+      "name": "The Tribune",
+      "image": "assets/images/the_tribune.jpg",
+      "language": "English",
+      "price": "186",
+      "featured": false,
+      "description": "The Tribune is an Indian English-language daily newspaper published from Amritsar, Jalandhar, Ludhiana, Bathinda, Chandigarh and New Delhi. It was founded on 2 February 1881, in Lahore, Punjab (now in Pakistan), by Sardar Dyal Singh Majithia, a philanthropist, and is run by a trust comprising five persons as trustees. It is a major Indian newspaper with a worldwide circulation. In India, it is among the leading English daily for Punjab, Haryana, Himachal Pradesh, and the Union Territory of Chandigarh."
+    },
+    {
+      "id": 18,
+      "name": "The Times of India",
+      "image": "assets/images/times_of_India.jpg",
+      "language": "English",
+      "price": "209",
+      "featured": false,
+      "description": "The Times of India (also known by its abbreviation 'TOI') is an Indian English-language daily newspaper and digital news media owned and managed by The Times Group. It is the third-largest newspaper in India by circulation and largest selling English-language daily in the world. It is the oldest English-language newspaper in India, and the second-oldest Indian newspaper still in circulation, with its first edition published in 1838. It is nicknamed as 'The Old Lady of Bori Bunder', and is an Indian 'newspaper of record'."
+    },
+    {
+      "id": 19,
+      "name": "Vaartha",
+      "image": "assets/images/vaartha.jpg",
+      "language": "Telugu",
+      "price": "178",
+      "featured": false,
+      "description": "Vaartha was launched in 1996 with A.B.K Prasad as its first editor. It claimed to be the first Telugu daily in Telangana and Andhra Pradesh to use Information Technology, allowing it to publish news that broke at as late as 4 a.m. Vaartha was initially popular, competing with Eenadu and Udayam. It now has a smaller circulation than Eenadu, Sakshi or Andhra Jyothy. Vaartha is produced by A.G.A Publications, which is owned by Gireesh Kumar Sanghi's Hyderabad-based Sanghi Group."
+    }
+  ],
+  "magazines": [
+    {
+      "id": 0,
+      "name": "Business world",
+      "image": "assets/images/im1.jpg",
+      "language": "English",
+      "price": "367",
+      "featured": true,
+      "description": "BW Businessworld is an Indian business magazine. The magazine was published by ABP Group, whose most prominent publications are The Telegraph, Anandabazar Patrika, Sananda, Anandamela and others. ",
+      "category": "business"
+    },
+    {
+      "id": 1,
+      "name": "capital market",
+      "image": "assets/images/im2.jpg",
+      "language": "English",
+      "price": "216",
+      "featured": false,
+      "description": "A capital market is a financial market in which long-term debt (over a year) or equity-backed securities are bought and sold,[1] in contrast to a money market where short-term debt is bought and sold. Capital markets channel the wealth of savers to those who can put it to long-term productive use, such as companies or governments making long-term investments.",
+      "category": "business"
+    },
+    {
+      "id": 2,
+      "name": "forbes",
+      "image": "assets/images/im3.jpg",
+      "language": "English",
+      "price": "167",
+      "featured": false,
+      "description": "forbes india is indian edition of forbes. it features articles on finance, industry, investing, and marketing topics. Forbes also reports on related subjects such as technology, communications, science, politics, and law.",
+      "category": "business"
+    },
+    {
+      "id": 3,
+      "name": "fortune",
+      "image": "assets/images/im4.jpg",
+      "language": "English",
+      "price": "325",
+      "featured": false,
+      "description": "fortune is an American multinational business magazine headquartered in New York City. It is published by Fortune Media Group Holdings, owned by Thai businessman Chatchaval Jiaravanon. ",
+      "category": "business"
+    },
+    {
+      "id": 4,
+      "name": "outlook",
+      "image": "assets/images/im5.jpg",
+      "language": "English",
+      "price": "154",
+      "featured": false,
+      "description": "Outlook was first issued in October 1995 with Vinod Mehta as the editor in chief. It is owned by the Rajan Raheja Group. The publisher is Outlook Publishing (India) Pvt. Ltd. It features contents from politics, sports, cinema, and stories of broad interests. ",
+      "category": "business"
+    },
+    {
+      "id": 5,
+      "name": "cricket today",
+      "image": "assets/images/im6.jpg",
+      "language": "English",
+      "price": "40",
+      "featured": true,
+      "description": "One of the best sports magazines in India, Cricket today as the name suggests is a cricket-centric magazine published monthly. This English language magazine is an ode to the cricket game since it keeps cricket lovers updated about every single cricket match played whether in India or across the world. Besides, it also covers the latest updates in the cricket industry and about players.",
+      "category": "sports"
+    },
+    {
+      "id": 6,
+      "name": "sportstar",
+      "image": "assets/images/im7.jpg",
+      "language": "English",
+      "price": "490",
+      "featured": false,
+      "description": "sports star was started in 1978; it covers all types of international sports like Olympics, FIFA, UEFA Euro, Cricket, and World Cup. Apart from international sports, the publication also covers different Indian sports like Cricket, football, Formula One Grand Pix, Tennis, etc.",
+      "category": "sports"
+    },
+    {
+      "id": 7,
+      "name": "A guide for tennis lovers",
+      "image": "assets/images/im8.jpg",
+      "language": "English",
+      "price": "250",
+      "featured": false,
+      "description": "A USA-based sports magazine, Tennis is devoted to the sport of tennis. The first issue of this sports magazine was published in August 1954 and soon it became worldwide popular with its latest news and information about Tennis games. Presently, this magazine publishes 8 issues per year.",
+      "category": "sports"
+    },
+    {
+      "id": 8,
+      "name": "The Golf Digest India",
+      "image": "assets/images/im9.jpg",
+      "language": "English",
+      "price": "160",
+      "featured": false,
+      "description": "The Golf Digest India is a golf-centric magazine; it was launched in the year 1950 in the United State. This monthly magazine has now become one of the most read sports magazines in India. What makes this publication unique; it covers everything about golf from national golf tournaments to international golf tournaments, the latest news on gold, and more.",
+      "category": "sports"
+    },
+    {
+      "id": 9,
+      "name": "sports business",
+      "image": "assets/images/im10.jpg",
+      "language": "English",
+      "price": "250",
+      "featured": false,
+      "description": "This is a unique sports business magazine, being a business-to-business publication; SportsBusiness covers all the dimensions of how sports business is viewed in our country.",
+      "category": "sports"
+    },
+    {
+      "id": 10,
+      "name": "wired magazine",
+      "image": "assets/images/im11.jpg",
+      "language": "English",
+      "price": "900",
+      "featured": true,
+      "description": "WIRED is where tomorrow is realized. You'll get the latest in tech news, science, business, gear, security, and geek culture.",
+      "category": "tech"
+    },
+    {
+      "id": 11,
+      "name": "Computerworld",
+      "image": "assets/images/im12.jpg",
+      "language": "English",
+      "price": "880",
+      "featured": false,
+      "description": "Computerworld covers a range of technology topics, with a focus on these core areas of IT: Windows, Mobile, Apple/enterprise, Office and productivity suites, collaboration, web browsers and blockchain, as well as relevant information about companies such as Microsoft, Apple and Google",
+      "category": "tech"
+    },
+    {
+      "id": 12,
+      "name": "MIT technology review",
+      "image": "assets/images/im13.jpg",
+      "language": "English",
+      "price": "760",
+      "featured": false,
+      "description": "The mission of MIT Technology Review is to bring about better-informed and more conscious decisions about technology through authoritative, influential, and trustworthy journalism.",
+      "category": "tech"
+    },
+    {
+      "id": 13,
+      "name": "digit",
+      "image": "assets/images/im14.jpg",
+      "language": "English",
+      "price": "490",
+      "featured": false,
+      "description": "India's most popular destination for personal technology news, views & reviews. Get sound technology advice on buying products. Read in-depth reviews, features and watch videos on latest mobile phones, laptops, tablets",
+      "category": "tech"
+    },
+    {
+      "id": 14,
+      "name": "tech breifs",
+      "image": "assets/images/im15.jpg",
+      "language": "English",
+      "price": "910",
+      "featured": false,
+      "description": "Tech Briefs features cutting-edge technologies developed by innovators within NASA, the military, federal laboratories, universities, and commercial companies. Tech Briefs reports new technologies from NASA and other leading R&D sources worldwide.",
+      "category": "tech"
+    },
+    {
+      "id": 15,
+      "name": "Filmfare",
+      "image": "assets/images/im16.jpg",
+      "language": "English",
+      "price": "130",
+      "featured": true,
+      "description": "The English magazine is dedicated to Hindi Cinema, popularly known as Bollywood. The magazine was launched in the year 1952 and is published by Worldwide India. It is one of the famous entertainment magazines in India. Filmfare magazine covers movies, music, and celebrities. The Filmfare group also organizes renowned film awards called The Annual Filmfare Awards every year.",
+      "category": "entertainment"
+    },
+    {
+      "id": 16,
+      "name": "Star dust",
+      "image": "assets/images/im17.jpg",
+      "language": "English",
+      "price": "75",
+      "featured": false,
+      "description": "This is the monthly magazine which is published in both English and Hindi language. Stardust Magazine is published by Magna Publishing Co. Ltd. The same magazine sponsors annual awards known as Stardust Awards for Bollywood movies.",
+      "category": "entertainment"
+    },
+    {
+      "id": 17,
+      "name": "Vogue",
+      "image": "assets/images/im18.jpg",
+      "language": "English",
+      "price": "150",
+      "featured": false,
+      "description": "Vogue Magazine is one of the leading and top 10 entertainment magazine in the country. The magazine is all about Entertainment, fashion, beauty, lifestyle, celebrities, hot tops related to celebrities’ culture and living, gossips, shows, and whatnot. Vogue India was the first kind of magazine that is completely foreign-owned.",
+      "category": "entertainment"
+    },
+    {
+      "id": 18,
+      "name": "Champak",
+      "image": "assets/images/im19.jpg",
+      "language": "English",
+      "price": "220",
+      "featured": false,
+      "description": "Champak is a popular fortnightly magazine for children published by the Delhi Press Group since 1969 in India.[1] Champak competes with Amar Chitra Katha's Tinkle and Geodesic's Chandamama brands of magazines",
+      "category": "entertainment"
+    },
+    {
+      "id": 19,
+      "name": "Entertainment Weekly",
+      "image": "assets/images/im20.jpg",
+      "language": "English",
+      "price": "300",
+      "featured": false,
+      "description": "Entertainment Weekly Magazine is amongst the most-read entertainment magazines in the market. It keeps readers updated about all the hottest and trending topics. In addition to the latest news and gossips, it covers Bollywood news, the latest movies, music, etc.",
+      "category": "entertainment"
+    }
+  ],
+  "feedback": [
+    {
+      "firstname": "Nandhini",
+      "lastname": "Pasupuleti",
+      "telnum": "9849479806",
+      "email": "pvnandhini2002@gmail.com",
+      "agree": true,
+      "contactType": "Email",
+      "message": "Testing the application",
+      "id": 1
+    },
+    {
+      "firstname": "Sara",
+      "lastname": "Pusala",
+      "telnum": "12345678",
+      "email": "sara234@gmail.com",
+      "agree": true,
+      "contactType": "Tel.",
+      "message": "Sending Feedback!",
+      "id": 2
+    },
+    {
+      "firstname": "Manu",
+      "lastname": "chilakala",
+      "telnum": "45678923",
+      "email": "latha@gmail.com",
+      "agree": true,
+      "contactType": "Email",
+      "message": "It's a Test.",
+      "id": 3
+    },
+    {
+      "firstname": "Pranathi",
+      "lastname": "Nagisetty",
+      "telnum": "8639879023",
+      "email": "pranathi234@gmail.com",
+      "agree": true,
+      "contactType": "Email",
+      "message": "This is my Feedback.",
+      "id": 4
+    }
+  ]
+}
