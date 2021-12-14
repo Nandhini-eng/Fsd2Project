@@ -9,6 +9,7 @@ import NewspapersMain from './NewspapersComponent';
 import NewspaperDetail from './NewspaperDetail';
 import MagazinesMain from './MagazinesComponent';
 import MagazineDetail from './MagazineDetail';
+import * as signin from './Login';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchNewspapers, fetchMagazines, postFeedback } from '../redux/ActionCreators';
@@ -65,22 +66,27 @@ class Main extends Component{
               />
         );
         }
+        
+        
 
         return(
             <div>
-              <Header />  
+               <Header /> 
               <Switch location={this.props.location}>
+                 
                 <Route path='/home' component={HomePage} />
+                <Route exact path ="/login" component={signin.Login}/>
                 <Route exact path='/newspapers' component={() => <NewspapersMain newspapers={this.props.newspapers} />} />
-                <Route path='/newspapers/:paperId' component={NewspaperWithId} />
+                <Route path='/newspapers/:paperId' component={NewspaperWithId}  />
                 <Route exact path='/magazines' component={() => <MagazinesMain magazines={this.props.magazines} />} />
                 <Route path='/magazines/:magId' component={MagazineWithId} />
                 <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} /> 
                 <Route path='/myaccount' component={() => <Account />} />
                 <Route path='/aboutus' component={() => <About />} />
-                <Redirect to="/home" />
+                <Redirect to="/home" />               
               </Switch>
               <Footer />
+              
             </div>
         );
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron, Button } from 'reactstrap';
+import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem,  Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component{
@@ -60,11 +60,16 @@ class Header extends Component{
                         <span className="fa fa-address-card fa-lg"></span> Contact Us
                       </NavLink>
                     </NavItem>
+                    <NavItem>
+                      <NavLink  className="nav-link" to='/login'>
+                        <span className="fa fa-key fa-lg"></span> Login
+                      </NavLink>
+                    </NavItem>
                    </Nav>
                 </Collapse>
               </div>
             </Navbar>
-            <Jumbotron>
+            <div class="rounded px-3 px-sm-4 py-3 py-sm-5">
              <div className="container">
                  <div className="row row-header">
                      <div className="col-12 col-sm-6">
@@ -73,7 +78,7 @@ class Header extends Component{
                      </div>
                  </div>
              </div>
-            </Jumbotron>   
+            </div>
           </React.Fragment>
         );
     }
