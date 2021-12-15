@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem, CardHeader } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem, CardHeader, Label, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
@@ -25,9 +25,8 @@ const MagazinesMain = (props) => {
                 <RenderItem item={item} />
                 <br />
               </div>
-            );
+             );
         });
-
 
         if (props.magazines.isLoading) {
           return(
@@ -63,7 +62,7 @@ const MagazinesMain = (props) => {
                   </div>                
               </div>
               <div className="row">
-                {items}
+                 {items} 
               </div>
             </div>
           );

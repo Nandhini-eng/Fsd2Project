@@ -26,7 +26,8 @@ const mapDispatchToProps = (dispatch) => ({
     fetchNewspapers: () => {dispatch(fetchNewspapers())},
     fetchMagazines: () => {dispatch(fetchMagazines())},
     resetFeedbackForm: () => {dispatch(actions.reset('feedback'))},
-    postFeedback: (firstname, lastname, telnum, email, agree, contactType, message) => dispatch(postFeedback(firstname, lastname, telnum, email, agree, contactType, message)) 
+    postFeedback: (firstname, lastname, telnum, email, agree, contactType, message) => dispatch(postFeedback(firstname, lastname, telnum, email, agree, contactType, message)), 
+    
 });
 
 class Main extends Component{

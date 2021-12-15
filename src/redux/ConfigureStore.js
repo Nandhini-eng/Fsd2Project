@@ -1,4 +1,4 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import { Newspapers } from './newspapers';
 import { Magazines } from './magazines';
 import thunk from 'redux-thunk';
@@ -6,6 +6,7 @@ import logger from 'redux-logger';
 import { createForms } from 'react-redux-form';
 import { InitialFeedback } from './forms';
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const ConfigureStore = () => {
     
     const store = createStore(
@@ -16,7 +17,8 @@ export const ConfigureStore = () => {
                 feedback: InitialFeedback
             })
         }),
-        applyMiddleware(thunk, logger)
+        composeEnhancers(applyMiddleware(thunk, logger))
+
     );
 
     return store;

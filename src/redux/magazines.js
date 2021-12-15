@@ -3,7 +3,7 @@ import * as ActionTypes from './ActionTypes';
 export const Magazines = (state = {
     isLoading: true,
     errMess: null,
-    magazines:[]
+    magazines:[],
     }, action) => {
 
     switch (action.type) {
@@ -14,7 +14,7 @@ export const Magazines = (state = {
             return {...state, isLoading: true, errMess: null, magazines: []}
         
         case ActionTypes.MAGAZINES_FAILED:
-            return {...state, isLoading: false, errMess: action.payload, magazines: []}    
+            return {...state, isLoading: false, errMess: action.payload, magazines: []} 
         
         default:
           return state;
