@@ -108,6 +108,54 @@ export const filterNewspapersByLanguage = (newspapers, lang) => (dispatch) => {
   })
 }
 
+export const sortNewspapers = (products,sort)=>(dispatch)=>{
+  if (sort === "lowestprice") {
+    products.sort((a, b) =>
+         a.price > b.price ? 1: -1)}
+  else if(sort === "highestprice"){
+    products.sort((a,b)=>
+    a.price < b.price ? 1 : -1
+    );
+  } 
+  else if(sort === "prname"){
+    products.sort((a,b)=>
+    a.name.toLowerCase()>b.name.toLowerCase() ? 1 : -1)
+  }
+  else {
+    products.sort((a, b) => (a.id > b.id ? 1 : -1));
+  }
+  return dispatch({
+    type:ActionTypes.SORT_NEWSPAPERS,
+    payload:{
+      sort: sort,
+      items : products
+    }
+  })
+}
+export const sortMagazines = (products,sort)=>(dispatch)=>{
+  if (sort === "lowestprice") {
+    products.sort((a, b) =>
+         a.price > b.price ? 1: -1)}
+  else if(sort === "highestprice"){
+    products.sort((a,b)=>
+    a.price < b.price ? 1 : -1
+    );
+  } 
+  else if(sort === "prname"){
+    products.sort((a,b)=>
+    a.name.toLowerCase()>b.name.toLowerCase() ? 1 : -1)
+  }
+  else {
+    products.sort((a, b) => (a.id > b.id ? 1 : -1));
+  }
+  return dispatch({
+    type:ActionTypes.SORT_MAGAZINES,
+    payload:{
+      sort: sort,
+      items : products
+    }
+  })
+}
 
 export const postFeedback = (firstname, lastname, telnum, email, agree, contactType, message) => (dispatch) => {
    
