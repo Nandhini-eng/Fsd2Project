@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createForms } from 'react-redux-form';
 import { InitialFeedback } from './forms';
+import LoginReducer from './LoginReducer'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const ConfigureStore = () => {
@@ -13,6 +14,7 @@ export const ConfigureStore = () => {
         combineReducers({
             newspapers: Newspapers,
             magazines: Magazines,
+            login: LoginReducer,
             ...createForms({
                 feedback: InitialFeedback
             })

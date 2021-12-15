@@ -1,11 +1,23 @@
 import React from 'react';
+import {useHistory} from "react-router-dom";
 import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Loading } from './LoadingComponent';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
+import {user}  from './Login'
 
 function RenderItem({item}) {
+    const history=useHistory();
     if (item != null){
+        const IsLogin=()=>{ 
+            if(user){
+                console.log('yes')
+            }
+            else{
+                console.log('no')
+                history.push("/login");    
+            }
+        }
         return( 
             <React.Fragment>
                 <div className="col-12 col-md-5 m-1">
@@ -20,7 +32,7 @@ function RenderItem({item}) {
                 <div className="col-12 col-md-5 m-1">
                     <h3>Description</h3><br />
                     <h5>{item.description}</h5><br /><br />
-                    <button><h4>Subscribe</h4></button>
+                    <button onClick={IsLogin}><h4>Subscribe</h4></button>
                 </div>
             </React.Fragment>
         );

@@ -9,9 +9,10 @@ import NewspapersMain from './NewspapersComponent';
 import NewspaperDetail from './NewspaperDetail';
 import MagazinesMain from './MagazinesComponent';
 import MagazineDetail from './MagazineDetail';
+import * as signin from './Login';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchNewspapers, fetchMagazines, postFeedback } from '../redux/ActionCreators';
+import { fetchNewspapers, fetchMagazines, filterMagazinesByCategory, filterMagazinesByLanguage, filterNewspapersByLanguage, postFeedback } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 
 const mapStateToProps = (state) => (
@@ -27,7 +28,9 @@ const mapDispatchToProps = (dispatch) => ({
     fetchMagazines: () => {dispatch(fetchMagazines())},
     resetFeedbackForm: () => {dispatch(actions.reset('feedback'))},
     postFeedback: (firstname, lastname, telnum, email, agree, contactType, message) => dispatch(postFeedback(firstname, lastname, telnum, email, agree, contactType, message)), 
-    
+    filterMagsByCategory: (magazines,category) => dispatch(filterMagazinesByCategory(magazines,category)),
+    filterMagsByLanguage: (magazines,language) => dispatch(filterMagazinesByLanguage(magazines,language)),
+    filterNewspapersByLanguage: (newspapers,language) => dispatch(filterNewspapersByLanguage(newspapers,language))
 });
 
 class Main extends Component{
@@ -45,6 +48,7 @@ class Main extends Component{
                 newspapers={this.props.newspapers.newspapers.filter((newspaper) => newspaper.featured)}
                 newspapersLoading={this.props.newspapers.isLoading}
                 newspapersErrMess={this.props.newspapers.errMess}
+                magazines={this.props.magazines.magazines.filter((magazine) => magazine.featured)}
               />
             );
         }
@@ -66,20 +70,22 @@ class Main extends Component{
               />
         );
         }
+        
 
         return(
             <div>
-              <Header />  
+              <Header /> 
               <Switch location={this.props.location}>
                 <Route path='/home' component={HomePage} />
-                <Route exact path='/newspapers' component={() => <NewspapersMain newspapers={this.props.newspapers} />} />
-                <Route path='/newspapers/:paperId' component={NewspaperWithId} />
-                <Route exact path='/magazines' component={() => <MagazinesMain magazines={this.props.magazines} />} />
+                <Route exact path ="/login" component={signin.Login}/>
+                <Route exact path='/newspapers' component={() => <NewspapersMain newspapers={this.props.newspapers} filterByLanguage={this.props.filterNewspapersByLanguage} />} />
+                <Route path='/newspapers/:paperId' component={NewspaperWithId}  />
+                <Route exact path='/magazines' component={() => <MagazinesMain magazines={this.props.magazines} filterByCategory={this.props.filterMagsByCategory} filterByLanguage={this.props.filterMagsByLanguage} />} />
                 <Route path='/magazines/:magId' component={MagazineWithId} />
                 <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} /> 
                 <Route path='/myaccount' component={() => <Account />} />
                 <Route path='/aboutus' component={() => <About />} />
-                <Redirect to="/home" />
+                <Redirect to="/home" />               
               </Switch>
               <Footer />
             </div>

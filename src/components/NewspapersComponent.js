@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem, CardHeader } from 'reactstrap';
+import { Card, CardImg,  CardHeader, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
@@ -19,7 +19,7 @@ function RenderItem({item}){
 
 const NewspapersMain = (props) => {
 
-        const items = props.newspapers.newspapers.map((item) => {
+        const items = props.newspapers.filteredItems.map((item) => {
             return (
               <div key={item.id} className="col-12 col-md-3">
                 <RenderItem item={item} />
@@ -62,6 +62,16 @@ const NewspapersMain = (props) => {
                       <hr />
                   </div>                
               </div>
+              <div className="col-12 col-md-2">
+                <h5>Filter By Language:</h5>
+                <select className="form-control" value={props.newspapers.language}
+                    onChange={(e) => props.filterByLanguage(props.newspapers.newspapers, e.target.value)}>
+                    <option value="">ALL</option>
+                    <option value="English">English</option>
+                    <option value="Telugu">Telugu</option>
+                </select>
+              </div>
+              <br/>
               <div className="row">
                 {items}
               </div>

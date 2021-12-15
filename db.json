@@ -381,6 +381,106 @@
       "featured": false,
       "description": "Entertainment Weekly Magazine is amongst the most-read entertainment magazines in the market. It keeps readers updated about all the hottest and trending topics. In addition to the latest news and gossips, it covers Bollywood news, the latest movies, music, etc.",
       "category": "entertainment"
+    },
+    {
+      "id": 20,
+      "name": "BalaBharatham",
+      "image": "assets/images/im21.jpg",
+      "language": "Telugu",
+      "price": "500",
+      "featured": false,
+      "description": "BalaBharatham is one of the most popular Entertainment Magazine in Telugu. It's a monthly magazine which contains various kinds of information ranging from moral stories to successful people's stories. We can learn lots of new things from this magazine. So Besides an entertainment Magazine, BalaBharatham is also a knowledge provider. Everyone likes this magazine, from kids to adults. What else are you looking for?! Hit Subscribe and get the magazine!!",
+      "category": "entertainment"
+    },
+    {
+      "id": 21,
+      "name": "Paramanandhayya Shisyulu",
+      "image": "assets/images/im22.jpg",
+      "language": "Telugu",
+      "price": "450",
+      "featured": false,
+      "description": "Paramanandhayya Shisyulu is the most entertaining magazine in Telugu. It's a monthly magazine. It contains various funny stories and funny conversations between Paramanandhayya and his shisyas. They create fun with their crazy doubts and Paramanandhayya getting irritated with his shisyas behaviour is more funnier. Everyone will laugh by reading these stories. What else are you looking for?! Hit Subscribe and get the magazine and laugh happily!!",
+      "category": "entertainment"
+    },
+    {
+      "id": 22,
+      "name": "Champak",
+      "image": "assets/images/im23.jpg",
+      "language": "Telugu",
+      "price": "200",
+      "featured": false,
+      "description": "Champak is a popular entertainment magazine in telugu especially for kids. It is a popular fortnightly magazine for children published by the Delhi Press Group since 1969 in India. It's a monthly magazine. Kids can enjoy reading the funny stories present in the magazine. Several beautiful stories can be found in this magazine. Hit Subscribe to get the magazine and make the kids laugh and learn happily!!",
+      "category": "entertainment"
+    },
+    {
+      "id": 23,
+      "name": "Swathi",
+      "image": "assets/images/im24.jpg",
+      "language": "Telugu",
+      "price": "327",
+      "featured": false,
+      "description": "Swathi magazine is one of the popular oldest magazine in Telugu. It is mostly liked by adults. It's a monthly magazine. Various kinds of things and several stories can be found in this magazine. Everyone likes to read this magazine because of it's naturality. Hit subscribe to get the magazine.",
+      "category": "entertainment"
+    },
+    {
+      "id": 24,
+      "name": "Chandhamama",
+      "image": "assets/images/im25.jfif",
+      "language": "Telugu",
+      "price": "563",
+      "featured": false,
+      "description": "Chandhamama is an evergreen entertaining magazine in Telugu. It's a monthly magazine. Kids grow up listening to these stories. Parents make their children to listen and read these stories because they like their children to hear such beautiful stories and learn from them. So why late?! Hit subscribe and get this beautiful magazine.",
+      "category": "entertainment"
+    },
+    {
+      "id": 25,
+      "name": "Current Affairs",
+      "image": "assets/images/im26.jpg",
+      "language": "Telugu",
+      "price": "443",
+      "featured": false,
+      "description": "It's important to know about the current happenings and latest information in various fields like science and Technology, Politics etc. One can gain knowledge of various domains by reading a magazine like this. It will help us to stay updated on various kinds of information like latest who is who. Hit subscribe to get this monthly magazine and improve your knowledge of current affairs!!",
+      "category": "tech"
+    },
+    {
+      "id": 26,
+      "name": "Manavidhya Current Affairs",
+      "image": "assets/images/im27.jpg",
+      "language": "Telugu",
+      "price": "235",
+      "featured": false,
+      "description": "Manavidhya Current Affairs is a monthly magazine with lots of information about current happenings across the world. This magazine helps the students preparing for various competetive exams. One can gain knowledge of various domains by reading a magazine like this. It will help us to stay updated on various kinds of information like latest who is who. Hit subscribe to get this monthly magazine and improve your knowledge of current affairs!!",
+      "category": "tech"
+    },
+    {
+      "id": 27,
+      "name": "New India Samaachaar",
+      "image": "assets/images/im28.png",
+      "language": "Telugu",
+      "price": "349",
+      "featured": false,
+      "description": "India has been moving forward by achieving various milestones in the field of sports. Everyone likes to know about their favourite sport and how our country's sports team is performing against other countries in major leagues. New India Samaachaar Magazine gives latest information about sports. It mainly focuses on the popular sports competetion across the world named Tokyo Olympics. It gives latest updates about Tokyo Olympics. Sports enthusiasts will definitely love this magazine. If you are one, Hit subscribe and get the magazine!!",
+      "category": "sports"
+    },
+    {
+      "id": 28,
+      "name": "Kreedaa Prathiba",
+      "image": "assets/images/im29.jfif",
+      "language": "Telugu",
+      "price": "550",
+      "featured": false,
+      "description": "Kreedaa Prathiba is a monthly sports Magazine. This magazine introduces young talents across the country in various sports. This magazine also provides latest information about various sports. It helps the common people to bring out their hidden sports talents and provides a kind of encouragement for them. Hit subscribe and get the magazine to know about young indian talents in various sports.",
+      "category": "sports"
+    },
+    {
+      "id": 29,
+      "name": "Krushi Jaagaran",
+      "image": "assets/images/im30.jpg",
+      "language": "Telugu",
+      "price": "213",
+      "featured": false,
+      "description": "This Magazine is about a person who succeeded in cultivating Dragon Fruit. This Monthly Magazine comes under business category since it tells how a common man succeeded in cultivating dragon fruit and how it helped other farmers in cultivating their crops. Hit subscribe and get the Magazine to know more about him and his inspiring success story.",
+      "category": "business"
     }
   ],
   "feedback": [
@@ -423,6 +523,6 @@
       "contactType": "Email",
       "message": "This is my Feedback.",
       "id": 4
-    }
+    }  
   ]
 }

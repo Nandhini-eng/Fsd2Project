@@ -78,6 +78,37 @@ export const addMagazines = (magazines) => ({
 });
 
 
+export const filterMagazinesByCategory = (magazines, category) => (dispatch) => {
+  return dispatch({
+      type: ActionTypes.FILTER_MAGAGINES_BY_CATEGORY,
+      payload : {
+        category: category,
+        items: category === '' ? magazines : magazines.filter((mag) => mag.category === category)
+      }
+  })
+}
+
+export const filterMagazinesByLanguage = (magazines, lang) => (dispatch) => {
+  return dispatch({
+      type: ActionTypes.FILTER_MAGAGINES_BY_LANG,
+      payload : {
+        lang: lang,
+        items: lang === '' ? magazines : magazines.filter((mag) => mag.language === lang)
+      }
+  })
+}
+
+export const filterNewspapersByLanguage = (newspapers, lang) => (dispatch) => {
+  return dispatch({
+      type: ActionTypes.FILTER_NEWSPAPERS_BY_LANG,
+      payload : {
+        lang: lang,
+        items: lang === '' ? newspapers : newspapers.filter((newspaper) => newspaper.language === lang)
+      }
+  })
+}
+
+
 export const postFeedback = (firstname, lastname, telnum, email, agree, contactType, message) => (dispatch) => {
    
     const newFeedback = {
