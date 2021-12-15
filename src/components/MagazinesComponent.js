@@ -50,7 +50,8 @@ const MagazinesMain = (props) => {
         }
         else{
           return (
-            <div className="container">
+            <div>
+              <div style={{paddingLeft:"70px",paddingRight:"15px"}}>
               <div className="row">
                   <Breadcrumb>
                       <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
@@ -61,8 +62,12 @@ const MagazinesMain = (props) => {
                       <hr />
                   </div>                
               </div>
-              <div className="col-12 col-md-2">
-                <h5>Filter By Language:</h5>
+                <br />
+              <div className="row">
+                <div style={{width:"17%",float:"left",paddingRight:"10px"}}>
+                
+                <div style={{padding:"10px"}}>
+                <label>Filter By Language:</label>
                 <select className="form-control" value={props.magazines.language}
                     onChange={(e) => props.filterByLanguage(props.magazines.magazines, e.target.value)}>
                     <option value="">ALL</option>
@@ -70,8 +75,8 @@ const MagazinesMain = (props) => {
                     <option value="Telugu">Telugu</option>
                 </select>
               </div>
-              <div className="col-12 col-md-2">
-                <h5>Filter By Category:</h5>
+              <div style={{padding:"10px"}}>
+                <label>Filter By Category:</label>
                 <select className="form-control" value={props.magazines.category}
                     onChange={(e) => props.filterByCategory(props.magazines.magazines, e.target.value)}>
                     <option value="">ALL</option>
@@ -81,9 +86,24 @@ const MagazinesMain = (props) => {
                     <option value="entertainment">Entertainment</option>
                 </select>
               </div>
-              <br />
-              <div className="row">
-                 {items} 
+              <div style={{padding:"10px"}}>
+                <label>
+                Sort by
+                  <select className="form-control" 
+                  value={props.magazines.sort} 
+                  onChange={(e)=> props.sort_magazines(props.magazines.filteredItems,e.target.value)}>
+                    <option value="">ALL</option>
+                    <option value="lowestprice">Low to high price</option>
+                    <option value="highestprice">High to low price</option>
+                    <option value="prname">Name</option>
+                  </select>
+                </label>
+                </div>
+                </div>
+                <div className="row" style={{width:"80%",float:"right"}}>    
+                  {items}
+                </div>
+              </div>
               </div>
             </div>
           );

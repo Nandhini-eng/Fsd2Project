@@ -12,7 +12,8 @@ import MagazineDetail from './MagazineDetail';
 import * as signin from './Login';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchNewspapers, fetchMagazines, filterMagazinesByCategory, filterMagazinesByLanguage, filterNewspapersByLanguage, postFeedback } from '../redux/ActionCreators';
+import { fetchNewspapers, fetchMagazines, filterMagazinesByCategory, 
+  filterMagazinesByLanguage, filterNewspapersByLanguage, sortNewspapers,sortMagazines, postFeedback } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 
 const mapStateToProps = (state) => (
@@ -30,7 +31,9 @@ const mapDispatchToProps = (dispatch) => ({
     postFeedback: (firstname, lastname, telnum, email, agree, contactType, message) => dispatch(postFeedback(firstname, lastname, telnum, email, agree, contactType, message)), 
     filterMagsByCategory: (magazines,category) => dispatch(filterMagazinesByCategory(magazines,category)),
     filterMagsByLanguage: (magazines,language) => dispatch(filterMagazinesByLanguage(magazines,language)),
-    filterNewspapersByLanguage: (newspapers,language) => dispatch(filterNewspapersByLanguage(newspapers,language))
+    filterNewspapersByLanguage: (newspapers,language) => dispatch(filterNewspapersByLanguage(newspapers,language)),
+    sortNewspapers: (newspapers,sort)=>dispatch(sortNewspapers(newspapers,sort)),
+    sortMagazines: (magazines,sort)=>dispatch(sortMagazines(magazines,sort))
 });
 
 class Main extends Component{
@@ -78,9 +81,9 @@ class Main extends Component{
               <Switch location={this.props.location}>
                 <Route path='/home' component={HomePage} />
                 <Route exact path ="/login" component={signin.Login}/>
-                <Route exact path='/newspapers' component={() => <NewspapersMain newspapers={this.props.newspapers} filterByLanguage={this.props.filterNewspapersByLanguage} />} />
+                <Route exact path='/newspapers' component={() => <NewspapersMain newspapers={this.props.newspapers} filterByLanguage={this.props.filterNewspapersByLanguage} sort_newspapers={this.props.sortNewspapers} />} />
                 <Route path='/newspapers/:paperId' component={NewspaperWithId}  />
-                <Route exact path='/magazines' component={() => <MagazinesMain magazines={this.props.magazines} filterByCategory={this.props.filterMagsByCategory} filterByLanguage={this.props.filterMagsByLanguage} />} />
+                <Route exact path='/magazines' component={() => <MagazinesMain magazines={this.props.magazines} filterByCategory={this.props.filterMagsByCategory} filterByLanguage={this.props.filterMagsByLanguage} sort_magazines={this.props.sortMagazines} />} />
                 <Route path='/magazines/:magId' component={MagazineWithId} />
                 <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} /> 
                 <Route path='/myaccount' component={() => <Account />} />
