@@ -26,7 +26,7 @@ class Header extends Component{
               <div className="container">
                 <NavbarToggler onClick={this.toggleNav} />
                 <NavbarBrand className="mr-auto" href="/">
-                  <img src='assets/images/logo.png' height="30" width="41" alt='Newspapers and Magazines' />
+                  <img src='assets/images/logo.png' height="50" width="50" alt='Newspapers and Magazines' />
                 </NavbarBrand>
                 <Collapse isOpen={this.state.isNavOpen} navbar>
                   <Nav navbar>
@@ -70,11 +70,11 @@ class Header extends Component{
               </div>
             </Navbar>
 
-            <div class="rounded px-3 px-sm-4 py-3 py-sm-5">
+            <div className="bg">
              <div className="container">
                  <div className="row row-header">
-                     <div className="col-12 col-sm-6">
-                         <h1>Newspapers and Magazines</h1>
+                     <div className="col-12 col-sm-6" style={{color:"black"}}>
+                         <h1 style={{color:"white"}}>Newspapers and Magazines</h1>
                          <p>We provide various Newspapers and Magazines in this application. Users can subscribe and purchase their favourite newspapers and magazines and enjoy the joy of reading! </p>
                      </div>
                  </div>

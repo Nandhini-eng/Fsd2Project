@@ -1,8 +1,10 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Card, CardImg, CardHeader, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import ReactPaginate from "react-paginate";
+import "./paginate.css";
 
 function RenderItem({item}){
     return(
@@ -21,12 +23,32 @@ const MagazinesMain = (props) => {
 
         const items = props.magazines.filteredItems.map((item) => {
             return (
-              <div key={item.id} className="col-12 col-md-3">
+              <div key={item.id} className="col-12">
                 <RenderItem item={item} />
                 <br />
               </div>
              );
         });
+        const [magazines, setMagazines] = useState(items);
+        const [pageNumber, setPageNumber] = useState(0);
+
+        const magazinesPerPage = 4;
+        const pagesVisited = pageNumber * magazinesPerPage;
+        const pageCount = Math.ceil(magazines.length / magazinesPerPage);
+
+        const changePage = ({ selected }) => {
+          setPageNumber(selected);
+          };
+
+        const displayMagazines = magazines
+        .slice(pagesVisited, pagesVisited + magazinesPerPage)
+        .map((magazine) => {
+        return (
+           <div style={{width:300}}>
+             {magazine}
+           </div>
+           );
+          });
 
         if (props.magazines.isLoading) {
           return(
@@ -88,7 +110,7 @@ const MagazinesMain = (props) => {
               </div>
               <div style={{padding:"10px"}}>
                 <label>
-                Sort by
+                Sort by</label>
                   <select className="form-control" 
                   value={props.magazines.sort} 
                   onChange={(e)=> props.sort_magazines(props.magazines.filteredItems,e.target.value)}>
@@ -97,11 +119,22 @@ const MagazinesMain = (props) => {
                     <option value="highestprice">High to low price</option>
                     <option value="prname">Name</option>
                   </select>
-                </label>
+                
                 </div>
                 </div>
                 <div className="row" style={{width:"80%",float:"right"}}>    
-                  {items}
+                {displayMagazines}
+                  <ReactPaginate
+                  previousLabel={"Previous"}
+                  nextLabel={"Next"}
+                  pageCount={pageCount}
+                  onPageChange={changePage}
+                  containerClassName={"paginationBttns"}
+                  previousLinkClassName={"previousBttn"}
+                  nextLinkClassName={"nextBttn"}
+                  disabledClassName={"paginationDisabled"}
+                  activeClassName={"paginationActive"}
+                  />
                 </div>
               </div>
               </div>
