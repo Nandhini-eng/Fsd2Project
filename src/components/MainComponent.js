@@ -6,6 +6,7 @@ import Account from './AccountComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import NewspapersMain from './NewspapersComponent';
+import Cart from './Cart';
 import NewspaperDetail from './NewspaperDetail';
 import MagazinesMain from './MagazinesComponent';
 import MagazineDetail from './MagazineDetail';
@@ -13,13 +14,18 @@ import * as signin from './Login';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchNewspapers, fetchMagazines, filterMagazinesByCategory, 
-  filterMagazinesByLanguage, filterNewspapersByLanguage, sortNewspapers,sortMagazines, postFeedback } from '../redux/ActionCreators';
+  filterMagazinesByLanguage, filterNewspapersByLanguage, sortNewspapers,sortMagazines, postFeedback, getproducts,addToCart,removefromCart,adjustQty} from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
+
+
+
+
 
 const mapStateToProps = (state) => (
   {
     newspapers: state.newspapers,
-    magazines: state.magazines,  
+    magazines: state.magazines,
+    cartitem:state.cartReducer,  
   }
 );
 
@@ -33,7 +39,12 @@ const mapDispatchToProps = (dispatch) => ({
     filterMagsByLanguage: (magazines,language) => dispatch(filterMagazinesByLanguage(magazines,language)),
     filterNewspapersByLanguage: (newspapers,language) => dispatch(filterNewspapersByLanguage(newspapers,language)),
     sortNewspapers: (newspapers,sort)=>dispatch(sortNewspapers(newspapers,sort)),
-    sortMagazines: (magazines,sort)=>dispatch(sortMagazines(magazines,sort))
+    sortMagazines: (magazines,sort)=>dispatch(sortMagazines(magazines,sort)),
+    getproducts: (newspapers,magazines)=>{dispatch(getproducts(newspapers,magazines))},
+    addtocart: (id)=>{dispatch(addToCart(id))},
+    // removefromCart:(id)=>{dispatch(removefromCart(id))},
+    // adjustQty:(id)=>{dispatch(adjustQty(id))}
+
 });
 
 class Main extends Component{
@@ -44,6 +55,7 @@ class Main extends Component{
     }
 
     render() {
+      
 
         const HomePage = () => {
             return(
@@ -61,6 +73,8 @@ class Main extends Component{
             <NewspaperDetail paperSelected={this.props.newspapers.newspapers.filter((paper) => paper.id === parseInt(match.params.paperId,10))[0]} 
               isLoading={this.props.newspapers.isLoading}
               errMess={this.props.newspapers.errMess}
+              addtocart={this.props.addtocart}
+              
               />
         );
         }
@@ -70,6 +84,7 @@ class Main extends Component{
             <MagazineDetail magSelected={this.props.magazines.magazines.filter((magazine) => magazine.id === parseInt(match.params.magId,10))[0]} 
               isLoading={this.props.magazines.isLoading}
               errMess={this.props.magazines.errMess}
+              addtocart={this.props.addtocart}
               />
         );
         }
@@ -82,12 +97,14 @@ class Main extends Component{
                 <Route path='/home' component={HomePage} />
                 <Route exact path ="/login" component={signin.Login}/>
                 <Route exact path='/newspapers' component={() => <NewspapersMain newspapers={this.props.newspapers} filterByLanguage={this.props.filterNewspapersByLanguage} sort_newspapers={this.props.sortNewspapers} />} />
-                <Route path='/newspapers/:paperId' component={NewspaperWithId}  />
+                <Route path='/newspapers/:paperId' component={NewspaperWithId}   />
                 <Route exact path='/magazines' component={() => <MagazinesMain magazines={this.props.magazines} filterByCategory={this.props.filterMagsByCategory} filterByLanguage={this.props.filterMagsByLanguage} sort_magazines={this.props.sortMagazines} />} />
                 <Route path='/magazines/:magId' component={MagazineWithId} />
                 <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} /> 
                 <Route path='/myaccount' component={() => <Account />} />
                 <Route path='/aboutus' component={() => <About />} />
+                <Route path='/cart' component={() => <Cart getproducts={this.props.getproducts} newspapers={this.props.newspapers} magazines={this.props.magazines} cart={this.props.cartitem.cart}  />} />
+                
                 <Redirect to="/home" />               
               </Switch>
               <Footer />

@@ -1,6 +1,7 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import { Newspapers } from './newspapers';
 import { Magazines } from './magazines';
+import {cartReducer} from './cartReducer';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createForms } from 'react-redux-form';
@@ -17,7 +18,8 @@ export const ConfigureStore = () => {
             login: LoginReducer,
             ...createForms({
                 feedback: InitialFeedback
-            })
+            }),
+            cartReducer:cartReducer,
         }),
         composeEnhancers(applyMiddleware(thunk, logger))
 

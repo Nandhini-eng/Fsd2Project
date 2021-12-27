@@ -4,9 +4,14 @@ import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbIte
 import { Loading } from './LoadingComponent';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
-import {user}  from './Login'
+import {user}  from './Login';
 
-function RenderItem({item}) {
+
+
+function RenderItem({props}) {
+    const item=props.paperSelected;
+    const addtocart=props.addtocart;
+
     const history=useHistory();
     if (item != null){
         const IsLogin=()=>{ 
@@ -32,7 +37,7 @@ function RenderItem({item}) {
                 <div className="col-12 col-md-5 m-1">
                     <h3>Description</h3><br />
                     <h5>{item.description}</h5><br /><br />
-                    <button onClick={IsLogin}><h4>Subscribe</h4></button>
+                    <button onClick={()=>addtocart(item.id)} ><h4>Subscribe</h4></button>
                 </div>
             </React.Fragment>
         );
@@ -65,6 +70,8 @@ const NewspaperDetail = (props) => {
         );
     }
     else if (props.paperSelected != null){
+        
+        
         return(
             <div className="container">
                 <div className="row">
@@ -78,11 +85,18 @@ const NewspaperDetail = (props) => {
                     </div>                
                 </div> 
                 <div className="row">
-                    <RenderItem item={props.paperSelected} />             
+                    
+                    
+                    <RenderItem props={props}/>
+                               
                 </div>
             </div>
         );
     }    
 }
+
+
+
+
 
 export default NewspaperDetail;

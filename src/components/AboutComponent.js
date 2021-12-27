@@ -29,8 +29,8 @@ Users can subscribe to multiple newspapers and magazines at a time by adding the
                 <div className="col-12 col-md-5">
                     <Card>
                         <CardHeader className="bg-primary text-white">Project Management Team</CardHeader>
-                        <CardBody>
-                            <dl className="row p-1">
+                        <CardBody >
+                            <dl className="row p-1" >
                                 <dt className="col-6">R.Bhagya Sree</dt>
                                 <dt className="col-6">P.V. Nandhini</dt>
                                 <dt className="col-6">B.G. Jaya Samhitha</dt>
