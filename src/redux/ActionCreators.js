@@ -3,7 +3,8 @@ import { baseUrl } from '../shared/baseUrl';
 
 
 export const fetchNewspapers = () => (dispatch) => {
-
+     
+    
     dispatch(NewspapersLoading(true));
 
     return fetch(baseUrl + 'newspapers')
@@ -38,6 +39,9 @@ export const addNewspapers = (newspapers) => ({
     type: ActionTypes.ADD_NEWSPAPERS,
     payload: newspapers
 });
+
+
+
 
 
 export const fetchMagazines = () => (dispatch) => {
@@ -76,6 +80,8 @@ export const addMagazines = (magazines) => ({
     type: ActionTypes.ADD_MAGAZINES,
     payload: magazines
 });
+
+
 
 
 export const filterMagazinesByCategory = (magazines, category) => (dispatch) => {
@@ -193,4 +199,50 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
     .then(response => response.json())
     .then(feedback => alert('Thank you for your feedback!\n'+ JSON.stringify(feedback)))
     .catch(error =>  { console.log('Post Feedback', error.message); alert('Your Feedback could not be posted\nError: '+error.message); });
+  };
+
+  export const addToCart=(itemId)=>{
+    return{
+      type:ActionTypes.ADD_TO_CART,
+      payload:{
+        id:itemId
+      }
+    }
+  };
+
+  export const removefromCart=(itemId)=>{
+    return{
+      type:ActionTypes.REMOVE_FROM_CART,
+      payload:{
+        id:itemId
+      }
+    }
+  };
+
+  export const adjustQty=(itemId,value)=>{
+    return{
+      type:ActionTypes.ADJUST_QTY,
+      payload:{
+        id:itemId,
+        qty:value
+      }
+    }
+  };
+
+  export const loadCurrentItem=(item)=>{
+    return{
+      type:ActionTypes.LOAD_CURRENT_ITEM,
+      payload:item
+    }
+
+  };
+
+  export const getproducts=(news,mags)=>{
+    
+    return{
+      type:ActionTypes.GET_PRODUCTS,
+
+      payload:news.newspapers.concat(mags.magazines),
+    }
+
   };
