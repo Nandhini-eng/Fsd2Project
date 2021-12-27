@@ -1,11 +1,10 @@
-
 import { useState } from "react";
 import axios from "axios";
 import {ConfigureStore} from "./../redux/ConfigureStore";
 import {useHistory} from "react-router-dom";
 import './login.css'
 const store = ConfigureStore();
-let user,error,res
+let user,error,res,user_real
 error="Invalid Username or Password"
 function Login(){
     const[username1,setUsername]=useState("");
@@ -13,20 +12,20 @@ function Login(){
     const history=useHistory();
     const LoginUser=()=>{
         user=username1
-        
+
         axios.post("/login",{username: username1,password: password1}).then((res)=>{
             console.log(username1)
             store.dispatch({type: "loginSuccess"});
             res=true
-            console.log(res)
-            let path = '/home'
+            user_real=user
+            console.log(user_real)
             error=" "
             history.goBack();
             console.log(history)
         }).catch((err)=>{
             store.dispatch({type: "loginFail"});
             res=false
-            console.log(res)
+            console.log(user_real)
             
             
         })
@@ -67,4 +66,4 @@ function Login(){
     )
 }
 
-export  {Login,user,res};
+export  {Login,user_real,res};

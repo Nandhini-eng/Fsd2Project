@@ -4,13 +4,13 @@ import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbIte
 import { Loading } from './LoadingComponent';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
-import {user}  from './Login'
+import {user_real}  from './Login'
 
 function RenderItem({item}) {
     const history=useHistory();
     if (item != null){
         const IsLogin=()=>{ 
-            if(user){
+            if(user_real){
                 console.log('yes')
             }
             else{

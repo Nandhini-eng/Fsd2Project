@@ -8,7 +8,7 @@ app.use(
         extended: true,
     })
 );
-let users = ["vineeta:test123","bhanu:123","bhagya:test123","pankaj:test123","rakesh:test123"];
+let users = ["vineeta:test123","bhanu:123","nandhini:1234","bhagya:test123","pankaj:test123","rakesh:test123"];
 app.post("/login", function (request, response) {
   let user1 = request.body.username;
   let passwd = request.body.password;

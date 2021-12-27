@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem,  Button } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
+
+
 
 class Header extends Component{
     constructor(props){
@@ -18,16 +20,25 @@ class Header extends Component{
           isNavOpen: !this.state.isNavOpen
         });
     }
-
+    back(e)
+    {
+      e.target.style.color = 'white'
+    }
+    back1(e)
+    {
+      e.target.style.color = 'rgba(255,255,255,.55)'
+    }
     render() {
         return(
           <React.Fragment>
             <Navbar dark expand="md">
               <div className="container">
                 <NavbarToggler onClick={this.toggleNav} />
-                <NavbarBrand className="mr-auto" href="/">
+                <Link to='/home'>
+                <NavbarBrand className="mr-auto" >
                   <img src='assets/images/logo.png' height="50" width="50" alt='Newspapers and Magazines' />
                 </NavbarBrand>
+                </Link>
                 <Collapse isOpen={this.state.isNavOpen} navbar>
                   <Nav navbar>
                     <NavItem>
@@ -60,11 +71,15 @@ class Header extends Component{
                         <span className="fa fa-address-card fa-lg"></span> Contact Us
                       </NavLink>
                     </NavItem>
-                    <NavItem>
-                      <NavLink  className="nav-link" to='/login'>
-                        <span className="fa fa-key fa-lg"></span> Login
-                      </NavLink>
-                    </NavItem>
+                   </Nav>
+                   <Nav className='ms-auto' navbar>
+                      <NavItem>
+                        <Link to='/login'>
+                          <Button  style={{color:'rgba(255,255,255,.55)'}}  onMouseOver={this.back} onMouseOut={this.back1}>
+                            <span className="fa fa-sign-in fa-lg"></span> Login
+                          </Button>
+                        </Link>
+                      </NavItem>
                    </Nav>
                 </Collapse>
               </div>
@@ -73,7 +88,7 @@ class Header extends Component{
             <div className="bg">
              <div className="container">
                  <div className="row row-header">
-                     <div className="col-12 col-sm-6" style={{color:"black"}}>
+                     <div className="col-12 col-sm-6" >
                          <h1 style={{color:"white"}}>Newspapers and Magazines</h1>
                          <p>We provide various Newspapers and Magazines in this application. Users can subscribe and purchase their favourite newspapers and magazines and enjoy the joy of reading! </p>
                      </div>
