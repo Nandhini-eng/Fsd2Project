@@ -44,7 +44,7 @@ const NewspapersMain = (props) => {
         .slice(pagesVisited, pagesVisited + papersPerPage)
         .map((paper) => {
         return (
-           <div style={{width:300}}>
+           <div style={{width:260}}>
              {paper}
            </div>
            );
@@ -126,9 +126,6 @@ const NewspapersMain = (props) => {
                   disabledClassName={"paginationDisabled"}
                   activeClassName={"paginationActive"}
                   />
-
-      
-                
                 </div>
               </div>
               </div>
