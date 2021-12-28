@@ -246,3 +246,13 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
     }
 
   };
+
+  export const saveShippingAddress = (data) => (dispatch) => {
+    dispatch({ type: ActionTypes.SAVE_SHIPPING_ADDRESS, payload: data });
+    localStorage.setItem('shippingAddress', JSON.stringify(data));
+  };
+
+  export const savePaymentDetails = (data) => (dispatch) => {
+    dispatch({ type: ActionTypes.SAVE_PAYMENT_DETAILS, payload: data });
+    localStorage.setItem('paymentDetails', JSON.stringify(data));
+  };

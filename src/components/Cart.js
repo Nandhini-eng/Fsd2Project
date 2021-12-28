@@ -1,12 +1,14 @@
 
 import React, { useState ,useEffect} from 'react';
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import styles from "./Cart.module.css";
 import CartItem from "./Cartitem.js";
 
 export default function Cart(props) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
+  
   useEffect(() => {
     let items = 0;
     let price = 0;
@@ -38,7 +40,7 @@ export default function Cart(props) {
                <span>Rs {totalPrice}</span>
                </div>
                <button className={styles.summary__checkoutBtn}>
-                 Proceed To Checkout
+                 <Link to="/address">Proceed To Checkout</Link>
               </button>
             </div>
            </div>

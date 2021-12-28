@@ -14,9 +14,11 @@ import * as signin from './Login';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchNewspapers, fetchMagazines, filterMagazinesByCategory, 
-  filterMagazinesByLanguage, filterNewspapersByLanguage, sortNewspapers,sortMagazines, postFeedback, getproducts,addToCart,removefromCart,adjustQty} from '../redux/ActionCreators';
+  filterMagazinesByLanguage, filterNewspapersByLanguage, sortNewspapers,sortMagazines, postFeedback, getproducts,addToCart,removefromCart,adjustQty,saveShippingAddress,savePaymentDetails} from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
-
+import ShippingAddress from './ShippingAddress';
+import PaymentDetails from './PaymentDetails';
+import OrdersComponent from './OrdersComponent';
 
 
 
@@ -104,8 +106,12 @@ class Main extends Component{
                 <Route path='/myaccount' component={() => <Account />} />
                 <Route path='/aboutus' component={() => <About />} />
                 <Route path='/cart' component={() => <Cart getproducts={this.props.getproducts} newspapers={this.props.newspapers} magazines={this.props.magazines} cart={this.props.cartitem.cart}  />} />
-                
-                <Redirect to="/home" />               
+                <Route path='/address' component={ShippingAddress}/>
+                <Route path='/payment' component={PaymentDetails}/>
+                <Route path='/orders' component={OrdersComponent}/>
+                <Redirect to="/home" />
+
+
               </Switch>
               <Footer />
             </div>

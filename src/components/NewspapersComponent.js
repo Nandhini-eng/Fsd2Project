@@ -12,14 +12,7 @@ function RenderItem({item}){
          <Link to={`/newspapers/${item.id}`}>
             <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
             <CardHeader><h3>{item.name}</h3></CardHeader>
-         </Link>
-         <div className="cartb">
-        <Button>+</Button>
-
-        <Button>Add To Cart</Button>
-
-        <Button>-</Button>
-      </div>    
+         </Link>    
       </Card>
       
     );
@@ -51,7 +44,7 @@ const NewspapersMain = (props) => {
         .slice(pagesVisited, pagesVisited + papersPerPage)
         .map((paper) => {
         return (
-           <div style={{width:300}}>
+           <div style={{width:250}}>
              {paper}
            </div>
            );

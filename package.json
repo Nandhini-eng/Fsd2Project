@@ -21,9 +21,8 @@
     "reactstrap": "^9.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
-    
+    "styled-components": "^5.3.3",
     "web-vitals": "^1.0.1"
-    
   },
   "scripts": {
     "start": "react-scripts start",
@@ -48,7 +47,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  
   }
-  
 }

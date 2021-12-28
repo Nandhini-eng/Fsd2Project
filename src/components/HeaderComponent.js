@@ -16,7 +16,6 @@ class Header extends Component{
           
             isNavOpen: false,
             cartCount:0,
-            // cartCount:this.props.cart.forEach((item)=>{count+=item.qty}),
             
         };
 
@@ -33,13 +32,6 @@ class Header extends Component{
     
 
     render() {
-      // let count=0
-      // let x=this.props.cart.map(item=>count+=item.qty)
-      // console.log(x[1])
-       
-      // console.log(Cartval(this.props.cart))
-        
-  
     
         return(
           <React.Fragment>
@@ -93,6 +85,12 @@ class Header extends Component{
                     </NavLink>
                     </NavItem>
                     <NavItem><Cartval/></NavItem>
+                    <NavItem>
+                      <NavLink className="nav-link" to='/orders'>
+                    <span className="fa fa-key fa-lg"></span> My Orders 
+                  
+                    </NavLink>
+                    </NavItem>
                     
                    </Nav>
                 </Collapse>

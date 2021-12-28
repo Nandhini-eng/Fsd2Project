@@ -9,7 +9,9 @@ export const cartReducer=(state={cart:[],items:[],currentItem:null},action)=>{
             const inCart=state.cart.find((item)=>item.id===action.payload.id ? true :false)
             return{
                 ...state,
-                cart:inCart?state.cart.map((item)=>item.id===action.payload.id? {...item,qty:item.qty+1}:item):[...state.cart,{...item,qty:1}],
+                cart:inCart?
+                state.cart.map((item)=>item.id===action.payload.id? {...item,qty:item.qty+1}:item):
+                [...state.cart,{...item,qty:1}],
             };
            
 
@@ -22,13 +24,24 @@ export const cartReducer=(state={cart:[],items:[],currentItem:null},action)=>{
         case ActionTypes.ADJUST_QTY:
             return{
                 ...state,
-                cart:state.cart.map((item)=>item.id===action.payload.id?{...item,qty:action.payload.qty}:item)
+                cart:state.cart.map((item)=>item.id===action.payload.id?{...item,qty: +action.payload.qty}:item)
             };
         case ActionTypes.LOAD_CURRENT_ITEM:
             return{
                 ...state,
                 currentItem:action.payload,
             };
+
+        case ActionTypes.SAVE_SHIPPING_ADDRESS:
+            return{
+                ...state,
+                shippingAddress:action.payload
+            }
+        case ActionTypes.SAVE_PAYMENT_DETAILS:
+            return{
+                ...state,
+                paymentDetails:action.payload
+                }    
         default:
             return state;              
 
