@@ -3,7 +3,8 @@ import { baseUrl } from '../shared/baseUrl';
 
 
 export const fetchNewspapers = () => (dispatch) => {
-
+     
+    
     dispatch(NewspapersLoading(true));
 
     return fetch(baseUrl + 'newspapers')
@@ -38,6 +39,9 @@ export const addNewspapers = (newspapers) => ({
     type: ActionTypes.ADD_NEWSPAPERS,
     payload: newspapers
 });
+
+
+
 
 
 export const fetchMagazines = () => (dispatch) => {
@@ -76,6 +80,7 @@ export const addMagazines = (magazines) => ({
     type: ActionTypes.ADD_MAGAZINES,
     payload: magazines
 });
+
 
 
 export const filterMagazinesByCategory = (magazines, category) => (dispatch) => {
@@ -132,6 +137,7 @@ export const sortNewspapers = (products,sort)=>(dispatch)=>{
     }
   })
 }
+
 export const sortMagazines = (products,sort)=>(dispatch)=>{
   if (sort === "lowestprice") {
     products.sort((a, b) =>
@@ -156,6 +162,7 @@ export const sortMagazines = (products,sort)=>(dispatch)=>{
     }
   })
 }
+
 
 export const postFeedback = (firstname, lastname, telnum, email, agree, contactType, message) => (dispatch) => {
    
@@ -194,6 +201,7 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
     .then(feedback => alert('Thank you for your feedback!\n'+ JSON.stringify(feedback)))
     .catch(error =>  { console.log('Post Feedback', error.message); alert('Your Feedback could not be posted\nError: '+error.message); });
 };
+
 
 
 export const addReview = (review) => ({
@@ -267,72 +275,45 @@ export const addReviews = (reviews) => ({
 });
 
 
-export const addMagazineReview = (review) => ({
-  type: ActionTypes.ADD_MAGAZINE_REVIEW,
-  payload: review
-});
 
-export const postMagazineReview = (itemId, rating, author, review) => (dispatch) => {
-
-  const newReview = {
-      itemId: itemId,
-      rating: rating,
-      author: author,
-      review: review
-  };
-  newReview.date = new Date().toISOString();
-  
-  return fetch(baseUrl + 'magazine_reviews', {
-      method: "POST",
-      body: JSON.stringify(newReview),
-      headers: {
-        "Content-Type": "application/json"
-      },
-      credentials: "same-origin"
-  })
-  .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        var error = new Error('Error ' + response.status + ': ' + response.statusText);
-        error.response = response;
-        throw error;
-      }
-    },
-    error => {
-          throw error;
-    })
-  .then(response => response.json())
-  .then(response => dispatch(addMagazineReview(response)))
-  .catch(error =>  { console.log('post reviews', error.message); alert('Your review could not be posted\nError: '+error.message); });
+export const addToCart=(itemId)=>{
+  return{
+    type:ActionTypes.ADD_TO_CART,
+    payload:{
+        id:itemId
+    }
+  }
 };
 
-export const fetchMagazineReviews = () => (dispatch) => {    
-  return fetch(baseUrl + 'magazine_reviews')
-  .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        var error = new Error('Error ' + response.status + ': ' + response.statusText);
-        error.response = response;
-        throw error;
-      }
-    },
-    error => {
-          var errmess = new Error(error.message);
-          throw errmess;
-    })
-  .then(response => response.json())
-  .then(reviews => dispatch(addMagazineReviews(reviews)))
-  .catch(error => dispatch(magazine_reviewsFailed(error.message)));
+export const removefromCart=(itemId)=>{
+  return{
+    type:ActionTypes.REMOVE_FROM_CART,
+    payload:{
+        id:itemId
+    }
+  }
 };
 
-export const magazine_reviewsFailed = (errmess) => ({
-  type: ActionTypes.MAGAZINE_REVIEWS_FAILED,
-  payload: errmess
-});
+export const adjustQty=(itemId,value)=>{
+  return{
+    type:ActionTypes.ADJUST_QTY,
+    payload:{
+        id:itemId,
+        qty:value
+    }
+  }
+};
 
-export const addMagazineReviews = (reviews) => ({
-  type: ActionTypes.ADD_MAGAZINE_REVIEWS,
-  payload: reviews
-});
+export const loadCurrentItem=(item)=>{
+  return{
+    type:ActionTypes.LOAD_CURRENT_ITEM,
+    payload:item
+  }
+};
+
+export const getproducts=(news,mags)=>{
+    return{
+      type:ActionTypes.GET_PRODUCTS,
+      payload:news.newspapers.concat(mags.magazines)
+    }
+};

@@ -1,16 +1,13 @@
 import React,{ Component } from 'react';
 import {useHistory} from "react-router-dom";
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem,
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Breadcrumb, BreadcrumbItem,
     Button, Modal, ModalHeader, ModalBody, Label, FormGroup } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
-import {user}  from './Login'
-
-const required = (val) => val && val.length;
-const maxLength = (len) => (val) => !(val) || (val.length <= len);
-const minLength = (len) => (val) => val && (val.length >= len);
+import {user_real}  from './Login'
+//import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 class ReviewForm extends Component {
 
@@ -23,26 +20,33 @@ class ReviewForm extends Component {
 
         this.toggleModal = this.toggleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
     toggleModal(){
-        this.setState({
-          isModalOpen: !this.state.isModalOpen
-        });
+        if (user_real){
+            console.log('validated user');
+            this.setState({
+                isModalOpen: !this.state.isModalOpen
+            });
+        }
+        else{
+            console.log('invalid user');
+            this.props.history.push('/login');
+        }
     }
 
     handleSubmit(values) {
         this.toggleModal();
-        this.props.postReview(this.props.itemId, values.rating, values.author, values.review);
+        this.props.postReview(this.props.itemId, parseInt(values.rating), user_real, values.review);
     }
 
     render() {
         return(
             <React.Fragment>
                 <div className="col-12 col-md-7 m-1">
+
                 <Button outline onClick={this.toggleModal}>
-                    <span className="fa fa-pencil fa-lg"></span> Submit Review
+                    <h3><span className="fa fa-pencil fa-lg"></span>Submit Review</h3>
                 </Button></div>
 
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
@@ -52,34 +56,13 @@ class ReviewForm extends Component {
                       <FormGroup>
                          <Label htmlFor="rating">Rating</Label>
                          <Control.select model=".rating" name="rating" 
-                               className="form-control" >
+                               className="form-control">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
                                 <option>4</option>
                                 <option>5</option>
                           </Control.select>
-                      </FormGroup>
-                      <FormGroup>
-                          <Label htmlFor="yourname">Author</Label>
-                          <Control.text model=".author" 
-                                 id="author" name="author" 
-                                 placeholder="Your Name"
-                                 className="form-control"
-                                 validators={{
-                                    required, minLength: minLength(3), maxLength: maxLength(15)
-                                 }}
-                            />
-                           <Errors
-                                className="text-danger"
-                                model=".author"
-                                show="touched"
-                                messages={{
-                                    required: 'Required',
-                                    minLength: 'Must be greater than 2 characters',
-                                    maxLength: 'Must be 15 characters or less'
-                                }}
-                            />    
                       </FormGroup>
                       <FormGroup>
                           <Label htmlFor="review">Review</Label>   
@@ -93,59 +76,67 @@ class ReviewForm extends Component {
                     </ModalBody>
                 </Modal>
 
-                {/* <div className="col-12 col-md-5 m-1">
-                <RenderReviews reviews={this.props.reviews}
-                            // postReview={this.props.postReview}
-                            // itemId={this.props.itemId} 
-                 /> </div> */}
-
             </React.Fragment>
         );
     }
     
 }
 
-function RenderReviews({reviews, postReview, itemId}) {
-    if (reviews.length){
-        return(
+function RenderReviews({reviews,errMess}) {
+    if (errMess === null){
+       if (reviews.length){
+          return(
             <div className="col-12 col-md-10 m-1">
                <ul className="list-unstyled">
-                 <h3>REVIEWS</h3>
+                  <h3>REVIEWS</h3>
                   {/* <Stagger in> */}
                     {reviews.map((review) => (
-                        // <Fade in> 
-                            <li key={review.id}>
-                                <h6>{review.review}</h6>
-                                <h6>--{review.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(review.date)))}</h6>
-                            </li>
-                        //</Fade>
+                      // <Fade in> 
+                          <li key={review.id}>
+                            <h6>{review.review}</h6>
+                            <h6>--Rating: {review.rating}</h6>
+                            <h6>--Author: {review.author}</h6>
+                            <h6>--Posted on: {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(review.date)))}</h6>
+                            <br />
+                          </li>
+                      //</Fade>
                     ))} 
                   {/* </Stagger> */}
-                </ul>
-                <br />
-                <br />
-                <ReviewForm itemId={itemId} postReview={postReview} /> 
+               </ul>
             </div>
-        );
+          );
+       }
+        else{
+          return(
+              <div className="col-12 col-md-10 m-1">
+                  <h3>REVIEWS</h3>
+                  <h5>No Reviews are given for this Magazine.</h5>
+              </div>
+           ); 
+        }
     }
     else{
-        return(
-            <div className="col-12 col-md-10 m-1">
-                <h3>REVIEWS</h3>
-                <h5>No Reviews are given for this Magazine.</h5>
-                <br />
-                <br />
-                <ReviewForm itemId={itemId} postReview={postReview} /> 
-            </div>
-        ); 
+      return(
+          <div className="col-12 col-md-10 m-1">
+              <h5>{errMess}</h5>
+          </div>
+       ); 
     }
 }
 
-function RenderItem({item}) {
+
+function RenderItem({item, addtocart, reviews, postReview }) {
+
+    var sum = 0,avg = 0;
+    if (reviews.length){
+        sum = reviews.map(review=>review.rating).reduce((r1,r2)=>r1+r2,0);
+        avg = sum/reviews.length;
+    }
+
     const history=useHistory();
     if (item != null){
         const IsLogin=()=>{ 
-            if(user){
+            if(user_real){
                 console.log('yes')
             }
             else{
@@ -156,18 +147,33 @@ function RenderItem({item}) {
         return( 
             <React.Fragment>
                 <div className="col-12 col-md-5 m-1">
-                    <Card>
-                        <CardImg width="100%" height="600px" src={baseUrl + item.image} alt={item.name} />
-                        <CardBody>
-                            <CardTitle><h3>{item.name}/{item.category}</h3></CardTitle>
-                            <CardText><h4>Price: Rs.{item.price}</h4></CardText>
-                        </CardBody>
-                    </Card>   
+                    {/* <FadeTransform
+                        in
+                        transformProps={{
+                            exitTransform: 'scale(0.5) translateY(-50%)'
+                        }}> */}
+                        <Card>
+                            <CardImg width="100%" height="600px" src={baseUrl + item.image} alt={item.name} />
+                            <CardBody>
+                                <CardTitle><h2>{item.name}</h2></CardTitle>
+                                <CardSubtitle><h3>{item.category}</h3></CardSubtitle>
+                                <CardText><h4>Price: Rs.{item.price}</h4></CardText>
+                            </CardBody>
+                        </Card>   
+                    {/* </FadeTransform>   */}
                 </div>
                 <div className="col-12 col-md-5 m-1">
                     <h3>Description</h3><br />
                     <h5>{item.description}</h5><br /><br />
-                    <button onClick={IsLogin}><h4>Subscribe</h4></button> 
+                    <Button onClick={()=>addtocart(item.id)}><h3>Subscribe</h3></Button>
+                    <br />
+                    <br />
+                    <br />
+                    <h5>Total No. of reviews posted till now: {reviews.length}</h5>
+                    <h5>Average Rating: {avg} / 5</h5>
+                    <br />
+                    <ReviewForm itemId={item.id} postReview={postReview} history={history}/> 
+
                 </div>
             </React.Fragment>
         );
@@ -178,6 +184,7 @@ function RenderItem({item}) {
        ); 
     }
 }
+
 
 const MagazineDetail = (props) => {
 
@@ -213,13 +220,10 @@ const MagazineDetail = (props) => {
                     </div>                
                 </div> 
                 <div className="row">
-                    <RenderItem item={props.magSelected} />             
+                    <RenderItem item={props.magSelected} addtocart={props.addtocart} reviews={props.reviews} postReview={props.postReview}/>
                 </div>
                 <div className="row">
-                    <RenderReviews reviews={props.mag_reviews}
-                                postReview={props.postMagazineReview}
-                                itemId={props.magSelected.id} 
-                    />  
+                    <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess}/>  
                 </div>
             </div>
         );

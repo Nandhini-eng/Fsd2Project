@@ -4,6 +4,7 @@ export const Reviews = (state = {
         errMess: null, 
         reviews:[]
     }, action) => {
+
     switch (action.type) {
         case ActionTypes.ADD_REVIEWS:
             return {...state, errMess: null, reviews: action.payload};
@@ -14,9 +15,8 @@ export const Reviews = (state = {
         case ActionTypes.ADD_REVIEW:
             var review = action.payload;
             return {...state, reviews: state.reviews.concat(review)};
-            //return {...state, errMess: null, reviews: action.payload};
 
         default:
           return state;
-      }
+    }
 };

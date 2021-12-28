@@ -5,7 +5,7 @@ import {ConfigureStore} from "./../redux/ConfigureStore";
 import {useHistory} from "react-router-dom";
 import './login.css'
 const store = ConfigureStore();
-let user,error,res
+let user,error,res,user_real
 error="Invalid Username or Password"
 function Login(){
     const[username1,setUsername]=useState("");
@@ -18,6 +18,7 @@ function Login(){
             console.log(username1)
             store.dispatch({type: "loginSuccess"});
             res=true
+            user_real=user
             console.log(res)
             let path = '/home'
             error=" "
@@ -67,4 +68,4 @@ function Login(){
     )
 }
 
-export  {Login,user,res};
+export  {Login,user_real,res};

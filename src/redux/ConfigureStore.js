@@ -1,13 +1,13 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import { Newspapers } from './newspapers';
 import { Magazines } from './magazines';
+import {cartReducer} from './cartReducer';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createForms } from 'react-redux-form';
 import { InitialFeedback } from './forms';
 import LoginReducer from './LoginReducer'
 import { Reviews } from './reviews';
-import { Magazine_Reviews } from './magazine_reviews';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const ConfigureStore = () => {
@@ -18,10 +18,10 @@ export const ConfigureStore = () => {
             magazines: Magazines,
             login: LoginReducer,
             reviews: Reviews,
-            magazine_reviews: Magazine_Reviews,
             ...createForms({
                 feedback: InitialFeedback
-            })
+            }),
+            cartReducer:cartReducer,
         }),
         composeEnhancers(applyMiddleware(thunk, logger))
 

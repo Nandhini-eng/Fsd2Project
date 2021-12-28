@@ -51,7 +51,7 @@
       "image": "assets/images/deccan_chronicle.jpg",
       "language": "English",
       "price": "225",
-      "featured": true,
+      "featured": false,
       "description": "Deccan Chronicle is an Indian English-language daily newspaper founded by Rajagopal Mudaliar in the 1930s & currently owned by Samagrah Commercial Pvt Limited. It is famous for providing false information and posting anti-India content to provoke people and cause communal disharmony. It is published in Hyderabad, Telangana, by Deccan Chronicle Holdings Limited (DCHL). The newspaper's name derives from the originating place, the Deccan regions of India. Deccan Chronicle has eight editions in Andhra Pradesh and Telangana. They also publish from Chennai and Bengaluru."
     },
     {
@@ -150,7 +150,7 @@
       "image": "assets/images/the_pioneer.jpg",
       "language": "English",
       "price": "192",
-      "featured": false,
+      "featured": true,
       "description": "The Pioneer is an English language daily newspaper in India. It is published from multiple locations in India, including Delhi. It is the second oldest English language newspaper in India still in circulation after The Times of India. In 2010, The Pioneer launched its Hindi version in Lucknow."
     },
     {
@@ -183,7 +183,7 @@
   ],
   "magazines": [
     {
-      "id": 0,
+      "id": 20,
       "name": "Business world",
       "image": "assets/images/im1.jpg",
       "language": "English",
@@ -193,7 +193,7 @@
       "category": "business"
     },
     {
-      "id": 1,
+      "id": 21,
       "name": "capital market",
       "image": "assets/images/im2.jpg",
       "language": "English",
@@ -203,7 +203,7 @@
       "category": "business"
     },
     {
-      "id": 2,
+      "id": 22,
       "name": "forbes",
       "image": "assets/images/im3.jpg",
       "language": "English",
@@ -213,7 +213,7 @@
       "category": "business"
     },
     {
-      "id": 3,
+      "id": 23,
       "name": "fortune",
       "image": "assets/images/im4.jpg",
       "language": "English",
@@ -223,7 +223,7 @@
       "category": "business"
     },
     {
-      "id": 4,
+      "id": 24,
       "name": "outlook",
       "image": "assets/images/im5.jpg",
       "language": "English",
@@ -233,7 +233,7 @@
       "category": "business"
     },
     {
-      "id": 5,
+      "id": 25,
       "name": "cricket today",
       "image": "assets/images/im6.jpg",
       "language": "English",
@@ -243,7 +243,7 @@
       "category": "sports"
     },
     {
-      "id": 6,
+      "id": 26,
       "name": "sportstar",
       "image": "assets/images/im7.jpg",
       "language": "English",
@@ -253,7 +253,7 @@
       "category": "sports"
     },
     {
-      "id": 7,
+      "id": 27,
       "name": "A guide for tennis lovers",
       "image": "assets/images/im8.jpg",
       "language": "English",
@@ -263,7 +263,7 @@
       "category": "sports"
     },
     {
-      "id": 8,
+      "id": 28,
       "name": "The Golf Digest India",
       "image": "assets/images/im9.jpg",
       "language": "English",
@@ -273,7 +273,7 @@
       "category": "sports"
     },
     {
-      "id": 9,
+      "id": 29,
       "name": "sports business",
       "image": "assets/images/im10.jpg",
       "language": "English",
@@ -283,7 +283,7 @@
       "category": "sports"
     },
     {
-      "id": 10,
+      "id": 30,
       "name": "wired magazine",
       "image": "assets/images/im11.jpg",
       "language": "English",
@@ -293,7 +293,7 @@
       "category": "tech"
     },
     {
-      "id": 11,
+      "id": 31,
       "name": "Computerworld",
       "image": "assets/images/im12.jpg",
       "language": "English",
@@ -303,7 +303,7 @@
       "category": "tech"
     },
     {
-      "id": 12,
+      "id": 32,
       "name": "MIT technology review",
       "image": "assets/images/im13.jpg",
       "language": "English",
@@ -313,7 +313,7 @@
       "category": "tech"
     },
     {
-      "id": 13,
+      "id": 33,
       "name": "digit",
       "image": "assets/images/im14.jpg",
       "language": "English",
@@ -323,7 +323,7 @@
       "category": "tech"
     },
     {
-      "id": 14,
+      "id": 34,
       "name": "tech breifs",
       "image": "assets/images/im15.jpg",
       "language": "English",
@@ -333,7 +333,7 @@
       "category": "tech"
     },
     {
-      "id": 15,
+      "id": 35,
       "name": "Filmfare",
       "image": "assets/images/im16.jpg",
       "language": "English",
@@ -343,7 +343,7 @@
       "category": "entertainment"
     },
     {
-      "id": 16,
+      "id": 36,
       "name": "Star dust",
       "image": "assets/images/im17.jpg",
       "language": "English",
@@ -353,7 +353,7 @@
       "category": "entertainment"
     },
     {
-      "id": 17,
+      "id": 37,
       "name": "Vogue",
       "image": "assets/images/im18.jpg",
       "language": "English",
@@ -363,7 +363,7 @@
       "category": "entertainment"
     },
     {
-      "id": 18,
+      "id": 38,
       "name": "Champak",
       "image": "assets/images/im19.jpg",
       "language": "English",
@@ -373,7 +373,7 @@
       "category": "entertainment"
     },
     {
-      "id": 19,
+      "id": 39,
       "name": "Entertainment Weekly",
       "image": "assets/images/im20.jpg",
       "language": "English",
@@ -383,7 +383,7 @@
       "category": "entertainment"
     },
     {
-      "id": 20,
+      "id": 40,
       "name": "BalaBharatham",
       "image": "assets/images/im21.jpg",
       "language": "Telugu",
@@ -393,7 +393,7 @@
       "category": "entertainment"
     },
     {
-      "id": 21,
+      "id": 41,
       "name": "Paramanandhayya Shisyulu",
       "image": "assets/images/im22.jpg",
       "language": "Telugu",
@@ -403,7 +403,7 @@
       "category": "entertainment"
     },
     {
-      "id": 22,
+      "id": 42,
       "name": "Champak",
       "image": "assets/images/im23.jpg",
       "language": "Telugu",
@@ -413,7 +413,7 @@
       "category": "entertainment"
     },
     {
-      "id": 23,
+      "id": 43,
       "name": "Swathi",
       "image": "assets/images/im24.jpg",
       "language": "Telugu",
@@ -423,7 +423,7 @@
       "category": "entertainment"
     },
     {
-      "id": 24,
+      "id": 44,
       "name": "Chandhamama",
       "image": "assets/images/im25.jfif",
       "language": "Telugu",
@@ -433,7 +433,7 @@
       "category": "entertainment"
     },
     {
-      "id": 25,
+      "id": 45,
       "name": "Current Affairs",
       "image": "assets/images/im26.jpg",
       "language": "Telugu",
@@ -443,7 +443,7 @@
       "category": "tech"
     },
     {
-      "id": 26,
+      "id": 46,
       "name": "Manavidhya Current Affairs",
       "image": "assets/images/im27.jpg",
       "language": "Telugu",
@@ -453,7 +453,7 @@
       "category": "tech"
     },
     {
-      "id": 27,
+      "id": 47,
       "name": "New India Samaachaar",
       "image": "assets/images/im28.png",
       "language": "Telugu",
@@ -463,7 +463,7 @@
       "category": "sports"
     },
     {
-      "id": 28,
+      "id": 48,
       "name": "Kreedaa Prathiba",
       "image": "assets/images/im29.jfif",
       "language": "Telugu",
@@ -473,7 +473,7 @@
       "category": "sports"
     },
     {
-      "id": 29,
+      "id": 49,
       "name": "Krushi Jaagaran",
       "image": "assets/images/im30.jpg",
       "language": "Telugu",
@@ -533,12 +533,22 @@
       "contactType": "Tel.",
       "message": "",
       "id": 5
+    },
+    {
+      "firstname": "samhitha",
+      "lastname": "bhumireddy",
+      "telnum": "9390571905",
+      "email": "samhithareddy905@gmail.com",
+      "agree": true,
+      "contactType": "Email",
+      "message": "good",
+      "id": 5
     }
   ],
   "reviews": [
     {
       "itemId": 4,
-      "rating": "4",
+      "rating": 4,
       "author": "Saritha",
       "review": "Nice newspaper with lots of new information",
       "date": "2021-12-26T06:56:08.270Z",
@@ -546,7 +556,7 @@
     },
     {
       "itemId": 5,
-      "rating": "4",
+      "rating": 4,
       "author": "Nandhini",
       "review": "Standard of language in this newspaper is too good. ",
       "date": "2021-12-26T06:59:21.255Z",
@@ -554,7 +564,7 @@
     },
     {
       "itemId": 6,
-      "rating": "3",
+      "rating": 3,
       "author": "Sara Pusala",
       "review": "Good newspaper to buy",
       "date": "2021-12-26T06:59:52.462Z",
@@ -562,7 +572,7 @@
     },
     {
       "itemId": 7,
-      "rating": "4",
+      "rating": 4,
       "author": "Nandhini",
       "review": "Good newspaper that concentrates on economics",
       "date": "2021-12-26T07:01:52.108Z",
@@ -570,7 +580,7 @@
     },
     {
       "itemId": 8,
-      "rating": "4",
+      "rating": 4,
       "author": "Sara Pusala",
       "review": "Contains several kinds of information",
       "date": "2021-12-26T07:02:42.612Z",
@@ -578,7 +588,7 @@
     },
     {
       "itemId": 9,
-      "rating": "4",
+      "rating": 4,
       "author": "Saritha",
       "review": "It's an excellent newspaper.",
       "date": "2021-12-26T07:03:25.345Z",
@@ -586,7 +596,7 @@
     },
     {
       "itemId": 15,
-      "rating": "4",
+      "rating": 4,
       "author": "Bhanu",
       "review": "Good newspaper in english",
       "date": "2021-12-26T07:04:18.848Z",
@@ -594,7 +604,7 @@
     },
     {
       "itemId": 16,
-      "rating": "3",
+      "rating": 3,
       "author": "Bhagya",
       "review": "Nice newspaper containing lots of new information",
       "date": "2021-12-26T07:04:59.201Z",
@@ -602,7 +612,7 @@
     },
     {
       "itemId": 17,
-      "rating": "2",
+      "rating": 2,
       "author": "Bhanu",
       "review": "Not satisfied with the quality of the newspaper",
       "date": "2021-12-26T07:06:03.499Z",
@@ -610,7 +620,7 @@
     },
     {
       "itemId": 18,
-      "rating": "5",
+      "rating": 5,
       "author": "Nandhini",
       "review": "It's an amazing english newspaper. Must subscribe!!",
       "date": "2021-12-26T07:07:39.346Z",
@@ -618,7 +628,7 @@
     },
     {
       "itemId": 0,
-      "rating": "4",
+      "rating": 4,
       "author": "Bhagya",
       "review": "Wonderful telugu newspaper with important information.",
       "date": "2021-12-26T07:08:55.499Z",
@@ -626,7 +636,7 @@
     },
     {
       "itemId": 1,
-      "rating": "4",
+      "rating": 4,
       "author": "Sara Pusala",
       "review": "Good Newspaper to get.",
       "date": "2021-12-26T07:09:34.197Z",
@@ -634,7 +644,7 @@
     },
     {
       "itemId": 2,
-      "rating": "3",
+      "rating": 3,
       "author": "Bhanu",
       "review": "Nice newspaper in telugu",
       "date": "2021-12-26T07:10:04.190Z",
@@ -642,7 +652,7 @@
     },
     {
       "itemId": 3,
-      "rating": "3",
+      "rating": 3,
       "author": "Saritha",
       "review": "Good one for telugu readers.",
       "date": "2021-12-26T07:10:35.526Z",
@@ -650,7 +660,7 @@
     },
     {
       "itemId": 10,
-      "rating": "4",
+      "rating": 4,
       "author": "Nandhini",
       "review": "Good telugu newspaper about telangana.",
       "date": "2021-12-26T07:11:33.470Z",
@@ -658,7 +668,7 @@
     },
     {
       "itemId": 11,
-      "rating": "4",
+      "rating": 4,
       "author": "Bhanu",
       "review": "Contains lots of new information about telangana",
       "date": "2021-12-26T07:12:13.652Z",
@@ -666,7 +676,7 @@
     },
     {
       "itemId": 12,
-      "rating": "4",
+      "rating": 4,
       "author": "Bhagya",
       "review": "Good one to subscribe ",
       "date": "2021-12-26T07:12:47.161Z",
@@ -674,53 +684,107 @@
     },
     {
       "itemId": 13,
-      "rating": "4",
+      "rating": 4,
       "author": "Nandhini",
       "review": "An amazing newspaper in telugu. ",
       "date": "2021-12-26T07:13:21.654Z",
       "id": 18
     },
     {
-      "itemId": 14,
-      "rating": "3",
-      "author": "Bhagya",
-      "review": "Liked this newspaper",
-      "date": "2021-12-26T07:14:04.326Z",
-      "id": 19
-    },
-    {
       "itemId": 0,
-      "rating": "4",
+      "rating": 4,
       "author": "Bhanu",
       "review": "Best newspaper in telugu.Must subscribe!!",
       "date": "2021-12-26T08:59:49.135Z",
+      "id": 19
+    },
+    {
+      "itemId": 40,
+      "rating": 5,
+      "author": "Nandhini",
+      "review": "Superb magazine in telugu that entertains everyone. Must subscribe!!",
+      "date": "2021-12-27T07:31:18.973Z",
+      "id": 20
+    },
+    {
+      "itemId": 41,
+      "rating": 4,
+      "author": "Nandhini",
+      "review": "Loved this magazine for it's funny stories",
+      "date": "2021-12-27T07:32:03.561Z",
       "id": 21
-    }
-  ],
-  "magazine_reviews": [
-    {
-      "itemId": 20,
-      "rating": "5",
-      "author": "Nandhini",
-      "review": "Superb magazine in telugu that entertatins everyone. Must subscribe!!",
-      "date": "2021-12-26T15:46:12.078Z",
-      "id": 1
     },
     {
-      "itemId": 21,
-      "rating": "4",
-      "author": "Nandhini",
-      "review": "Loved this magazine for it's funny stories ",
-      "date": "2021-12-26T18:06:19.673Z",
-      "id": 2
-    },
-    {
-      "itemId": 24,
-      "rating": "4",
+      "itemId": 44,
+      "rating": 4,
       "author": "Saritha",
       "review": "kids love this magazine and the stories in this magazine.",
-      "date": "2021-12-26T18:22:30.959Z",
-      "id": 3
+      "date": "2021-12-27T07:32:42.771Z",
+      "id": 22
+    },
+    {
+      "itemId": 29,
+      "rating": 4,
+      "author": "Sara",
+      "review": "Loved this magazine!!",
+      "date": "2021-12-27T08:44:14.254Z",
+      "id": 23
+    },
+    {
+      "itemId": 47,
+      "rating": 4,
+      "author": "Bhanu",
+      "review": "Wonderful sports magazine with interesting info. must subscribe!!",
+      "date": "2021-12-27T08:58:56.837Z",
+      "id": 24
+    },
+    {
+      "itemId": 20,
+      "rating": 4,
+      "author": "Bhagya",
+      "review": "Excellent business magazine with useful business ideas.",
+      "date": "2021-12-27T14:48:56.839Z",
+      "id": 25
+    },
+    {
+      "itemId": 41,
+      "rating": 5,
+      "author": "Bhanu",
+      "review": "Amazing entertainment magazine. Must subsribe to enjoy reading the funny stories of this magazine",
+      "date": "2021-12-27T18:02:31.731Z",
+      "id": 26
+    },
+    {
+      "itemId": 22,
+      "rating": 4,
+      "author": "Bhanu",
+      "review": "It's an amazing business magazine. Really helpful. Must subscribe!!",
+      "date": "2021-12-28T07:23:02.242Z",
+      "id": 27
+    },
+    {
+      "itemId": 19,
+      "rating": 4,
+      "author": "Nandhini",
+      "review": "Nice telugu newspaper with useful information to learn.",
+      "date": "2021-12-28T07:24:34.966Z",
+      "id": 28
+    },
+    {
+      "itemId": 23,
+      "rating": 5,
+      "author": "bhanu",
+      "review": "superb magazine about the success story of mukesh ambani. ",
+      "date": "2021-12-28T13:47:08.493Z",
+      "id": 29
+    },
+    {
+      "itemId": 0,
+      "rating": 4,
+      "author": "nandhini",
+      "review": "Loved this newspaper for the useful information it contains.",
+      "date": "2021-12-28T14:04:08.715Z",
+      "id": 30
     }
   ]
 }

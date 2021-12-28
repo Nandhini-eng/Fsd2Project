@@ -6,12 +6,8 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
-import {user}  from './Login'
-
-const required = (val) => val && val.length;
-const maxLength = (len) => (val) => !(val) || (val.length <= len);
-const minLength = (len) => (val) => val && (val.length >= len);
-
+import {user_real}  from './Login';
+//import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 class ReviewForm extends Component {
 
@@ -28,22 +24,29 @@ class ReviewForm extends Component {
     }
 
     toggleModal(){
-        this.setState({
-          isModalOpen: !this.state.isModalOpen
-        });
+        if (user_real){
+            console.log('validated user');
+            this.setState({
+                isModalOpen: !this.state.isModalOpen
+            });
+        }
+        else{
+            console.log('invalid user');
+            this.props.history.push('/login');
+        }
     }
 
     handleSubmit(values) {
         this.toggleModal();
-        this.props.postReview(this.props.itemId, values.rating, values.author, values.review);
+        this.props.postReview(this.props.itemId, parseInt(values.rating), user_real, values.review);
     }
 
     render() {
         return(
             <React.Fragment>
-                <div className="col-12 col-md-7 m-1">
+               <div className="col-12 col-md-7 m-1">
                 <Button outline onClick={this.toggleModal}>
-                    <span className="fa fa-pencil fa-lg"></span> Submit Review
+                    <h3><span className="fa fa-pencil fa-lg"></span> Submit Review</h3>
                 </Button></div>
 
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
@@ -62,27 +65,6 @@ class ReviewForm extends Component {
                           </Control.select>
                       </FormGroup>
                       <FormGroup>
-                          <Label htmlFor="yourname">Author</Label>
-                          <Control.text model=".author" 
-                                 id="author" name="author" 
-                                 placeholder="Your Name"
-                                 className="form-control"
-                                 validators={{
-                                    required, minLength: minLength(3), maxLength: maxLength(15)
-                                 }}
-                            />
-                           <Errors
-                                className="text-danger"
-                                model=".author"
-                                show="touched"
-                                messages={{
-                                    required: 'Required',
-                                    minLength: 'Must be greater than 2 characters',
-                                    maxLength: 'Must be 15 characters or less'
-                                }}
-                            />    
-                      </FormGroup>
-                      <FormGroup>
                           <Label htmlFor="review">Review</Label>   
                           <Control.textarea model=".review" 
                                  id="review" name="review"
@@ -94,59 +76,66 @@ class ReviewForm extends Component {
                     </ModalBody>
                 </Modal>
 
-                {/* <div className="col-12 col-md-5 m-1">
-                <RenderReviews reviews={this.props.reviews}
-                            // postReview={this.props.postReview}
-                            // itemId={this.props.itemId} 
-                 /> </div> */}
-
             </React.Fragment>
         );
-    }
-    
+    }   
 }
 
-function RenderReviews({reviews, postReview, itemId}) {
-    if (reviews.length){
-        return(
-            <div className="col-12 col-md-5 m-1">
-               <ul className="list-unstyled">
-                 <h3>Reviews</h3>
-                  {/* <Stagger in> */}
+function RenderReviews({reviews,errMess}) {
+    if (errMess === null){
+       if (reviews.length){
+          return(
+            <div className="col-12 col-md-10 m-1">
+              <ul className="list-unstyled">
+                <h3>REVIEWS</h3>
+                {/* <Stagger in> */}
                     {reviews.map((review) => (
                         // <Fade in> 
                             <li key={review.id}>
-                                <h6>{review.review}</h6>
-                                <p>--{review.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(review.date)))}</p>
+                                <h5>{review.review}</h5>
+                                <h6>--Rating: {review.rating}</h6>
+                                <h6>--Author: {review.author}</h6>
+                                <h6>--Posted on: {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(review.date)))}</h6>
+                                <br />
                             </li>
                         //</Fade>
                     ))} 
-                  {/* </Stagger> */}
-                </ul>
-                <br />
-                <br />
-                <ReviewForm itemId={itemId} postReview={postReview} /> 
+                {/* </Stagger> */}
+              </ul>
             </div>
-        );
-    }
-    else{
-        return(
-            <div className="col-12 col-md-5 m-1">
+          );
+       }
+       else{
+          return(
+            <div className="col-12 col-md-10 m-1">
                 <h3>REVIEWS</h3>
                 <h5>No Reviews are given for this Newspaper.</h5>
-                <br />
-                <br />
-                <ReviewForm itemId={itemId} postReview={postReview} /> 
             </div>
-        ); 
+          ); 
+       }
+    }
+    else{
+      return(
+          <div className="col-12 col-md-10 m-1">
+            <h5>{errMess}</h5>
+          </div>
+      ); 
     }
 }
 
-function RenderItem({item}) {
+
+function RenderItem({item, addtocart, reviews, postReview}) {
+
+    var sum = 0,avg = 0;
+    if (reviews.length){
+        sum = reviews.map(review=>review.rating).reduce((r1,r2)=>r1+r2,0);
+        avg = sum/reviews.length;
+    }
+
     const history=useHistory();
     if (item != null){
         const IsLogin=()=>{ 
-            if(user){
+            if(user_real){
                 console.log('yes')
             }
             else{
@@ -158,19 +147,32 @@ function RenderItem({item}) {
             <React.Fragment>
             
                 <div className="col-12 col-md-5 m-1">
-                    <Card>
-                        <CardImg width="100%" height="600 px" src={baseUrl + item.image} alt={item.name} />
-                        <CardBody>
-                            <CardTitle><h2>{item.name}</h2></CardTitle>
-                            <CardText><h4>Price: Rs.{item.price}</h4></CardText>
-                        </CardBody>
-                    </Card>   
-                {/* </div>
+                    {/* <FadeTransform
+                        in
+                        transformProps={{
+                            exitTransform: 'scale(0.5) translateY(-50%)'
+                        }}> */}
+                        <Card>
+                            <CardImg width="100%" height="600 px" src={baseUrl + item.image} alt={item.name} />
+                            <CardBody>
+                                <CardTitle><h2>{item.name}</h2></CardTitle>
+                                <CardText><h4>Price: Rs.{item.price}</h4></CardText>
+                            </CardBody>
+                        </Card> 
+                    {/* </FadeTransform>   */}
+                </div>
     
-                <div className="col-12 col-md-5 m-1"> */}
+                <div className="col-12 col-md-5 m-1">
                     <h3>Description</h3><br />
                     <h5>{item.description}</h5><br /><br />
-                    <button onClick={IsLogin}><h4>Subscribe</h4></button>
+                    <Button onClick={()=>addtocart(item.id)}><h3>Subscribe</h3></Button>
+                    <br />
+                    <br />
+                    <br />
+                    <h5>Total No. of reviews posted till now: {reviews.length}</h5>
+                    <h5>Average Rating: {avg} / 5</h5>
+                    <br />
+                    <ReviewForm itemId={item.id} postReview={postReview} history={history}/>
                 </div>
             
             </React.Fragment>
@@ -182,6 +184,7 @@ function RenderItem({item}) {
        ); 
     }
 }
+
 
 const NewspaperDetail = (props) => {
 
@@ -217,15 +220,10 @@ const NewspaperDetail = (props) => {
                     </div>                
                 </div> 
                 <div className="row">
-                    <RenderItem item={props.paperSelected} />             
-                {/* </div>
-                <div className="row"> */}
-                    <RenderReviews reviews={props.reviews}
-                                postReview={props.postReview}
-                                itemId={props.paperSelected.id} 
-                    />  
-                  
-                    {/*<ReviewForm itemId={props.paperSelected.id} postReview={props.postReview} /> */}
+                    <RenderItem addtocart={props.addtocart} item={props.paperSelected} reviews={props.reviews} postReview={props.postReview}/>
+                </div>
+                <div className="row">
+                    <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess}/>         
                 </div>
             </div>
         );
