@@ -14,10 +14,11 @@ function RenderItem({props}) {
         const IsLogin=()=>{ 
             if(user_real){
                 console.log('yes')
+                addtocart(item.id)
             }
             else{
                 console.log('no')
-                history.push("/login");    
+                history.push("/signup");    
             }
         }
         return( 
@@ -34,7 +35,7 @@ function RenderItem({props}) {
                 <div className="col-12 col-md-5 m-1">
                     <h3>Description</h3><br />
                     <h5>{item.description}</h5><br /><br />
-                    <button onClick={()=>addtocart(item.id)}><h4>Subscribe</h4></button> 
+                    <button onClick={IsLogin}><h4>Subscribe</h4></button> 
                 </div>
             </React.Fragment>
         );

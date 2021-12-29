@@ -3,9 +3,8 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem,  Button } f
 import { NavLink,Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import Cartval from './Cartval';
-
-
-
+import {user_real} from './Login'
+let isLoggedin
 class Header extends Component{
   
     constructor(props){
@@ -44,7 +43,30 @@ class Header extends Component{
        
       // console.log(Cartval(this.props.cart))
         
-  
+        console.log(user_real)
+        if(user_real){
+          console.log('Loggedin')
+        }
+        else{
+          console.log('Not logged in')
+        }
+        if(user_real){
+          isLoggedin=
+          <Link to='/myaccount'>
+                          <Button  style={{color:'rgba(255,255,255,.55)'}}  onMouseOver={this.back} onMouseOut={this.back1}>
+                            <span className="fa fa-sign-in fa-lg"></span> Logout
+                          </Button>
+          </Link>
+        }
+        else{
+          isLoggedin=
+          <Link to='/signup'>
+                          <Button  style={{color:'rgba(255,255,255,.55)'}}  onMouseOver={this.back} onMouseOut={this.back1}>
+                            <span className="fa fa-sign-in fa-lg"></span> Signup
+                          </Button>
+                        </Link>
+        }
+      
     
         return(
           <React.Fragment>
@@ -88,15 +110,6 @@ class Header extends Component{
                         <span className="fa fa-address-card fa-lg"></span> Contact Us
                       </NavLink>
                     </NavItem>
-                   </Nav>
-                   <Nav className='ms-auto' navbar>
-                      <NavItem>
-                        <Link to='/login'>
-                          <Button  style={{color:'rgba(255,255,255,.55)'}}  onMouseOver={this.back} onMouseOut={this.back1}>
-                            <span className="fa fa-sign-in fa-lg"></span> Login
-                          </Button>
-                        </Link>
-                      </NavItem>
                     <NavItem>
                       <NavLink className="nav-link" to='/cart'>
                     <span className="fa fa-key fa-lg"></span> cart 
@@ -104,6 +117,12 @@ class Header extends Component{
                     </NavLink>
                     </NavItem>
                     <NavItem><Cartval/></NavItem>
+                   </Nav>
+                   <Nav className='ms-auto' navbar>
+                    
+                      <NavItem>
+                        {isLoggedin}
+                      </NavItem>
                     
                    </Nav>
                 </Collapse>

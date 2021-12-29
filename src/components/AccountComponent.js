@@ -6,10 +6,9 @@ function Account() {
     console.log(user_real)
     //Logout function
     const Logout=()=>{
-        //clearing local storage for logout
-        localStorage.clear();
-        //Redirecting to login page after logout
-        window.location.href='/login'
+        
+        //Redirecting to page after logout
+        window.location.href='/'
         
     }
     return(

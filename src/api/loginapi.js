@@ -8,7 +8,8 @@ app.use(
         extended: true,
     })
 );
-let users = ["vineeta:test123","bhanu:123","nandhini:1234","bhagya:test123","pankaj:test123","rakesh:test123"];
+//users=['bhanu:123']
+
 app.post("/login", function (request, response) {
   let user1 = request.body.username;
   let passwd = request.body.password;
@@ -22,7 +23,11 @@ app.post("/login", function (request, response) {
 // stop further execution in this callback
       return;
   }
-  const val = users.includes(user1+':'+ passwd);
+
+ /*for(i=0;i<users.length;i++){
+    const val = users[i].user4.includes(user1+':'+ passwd);
+    
+   
   if(val){
       response.status(200).json("user authenticated");
       return;
@@ -30,6 +35,14 @@ app.post("/login", function (request, response) {
       response.status(400).json("user does not exist");
       return;
   }
-  
+} */
+var val=users.includes(user1+':'+passwd)
+if(val){
+    response.status(200).json("user authenticated");
+    return;
+} else {
+    response.status(400).json("user does not exist");
+    return;
+}
 });
 app.listen(4000);
