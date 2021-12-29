@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { Card, CardImg,  CardHeader, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Card, CardImg,  CardHeader, Breadcrumb, BreadcrumbItem ,Button} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
@@ -12,7 +12,14 @@ function RenderItem({item}){
          <Link to={`/newspapers/${item.id}`}>
             <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
             <CardHeader><h3>{item.name}</h3></CardHeader>
-         </Link>    
+         </Link>
+         <div className="cartb">
+        <Button>+</Button>
+
+        <Button>Add To Cart</Button>
+
+        <Button>-</Button>
+      </div>    
       </Card>
       
     );
@@ -128,7 +135,7 @@ const NewspapersMain = (props) => {
                   />
 
       
-                
+              
                 </div>
               </div>
               </div>

@@ -1,18 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem,  Button } from 'reactstrap';
 import { NavLink,Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+import Cartval from './Cartval';
 
 
 
 class Header extends Component{
+  
     constructor(props){
+  
         super(props);
 
         this.state = {
-            isNavOpen: false
+          
+            isNavOpen: false,
+            cartCount:0,
+            // cartCount:this.props.cart.forEach((item)=>{count+=item.qty}),
+            
         };
 
         this.toggleNav = this.toggleNav.bind(this);
+      
     }
 
     toggleNav(){
@@ -29,6 +38,14 @@ class Header extends Component{
       e.target.style.color = 'rgba(255,255,255,.55)'
     }
     render() {
+      // let count=0
+      // let x=this.props.cart.map(item=>count+=item.qty)
+      // console.log(x[1])
+       
+      // console.log(Cartval(this.props.cart))
+        
+  
+    
         return(
           <React.Fragment>
             <Navbar dark expand="md">
@@ -80,6 +97,14 @@ class Header extends Component{
                           </Button>
                         </Link>
                       </NavItem>
+                    <NavItem>
+                      <NavLink className="nav-link" to='/cart'>
+                    <span className="fa fa-key fa-lg"></span> cart 
+                  
+                    </NavLink>
+                    </NavItem>
+                    <NavItem><Cartval/></NavItem>
+                    
                    </Nav>
                 </Collapse>
               </div>
@@ -100,4 +125,11 @@ class Header extends Component{
     }
 }
 
-export default Header;
+
+const mapStateToProps=state=>{
+  return{
+    cart:state.cartReducer.cart
+  }
+}
+
+export default connect(mapStateToProps)(Header);
