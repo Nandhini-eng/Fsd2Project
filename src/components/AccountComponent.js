@@ -1,18 +1,21 @@
 import React from 'react';
-import {useHistory} from "react-router-dom";
 import { user_real } from './Login';
-
-
+console.log(user_real)
+//My account function
 function Account() {
-    const history=useHistory();
     console.log(user_real)
-    /*const Logout=()=>{
-        history.push("/login");
-    }*/
+    //Logout function
+    const Logout=()=>{
+        
+        //Redirecting to page after logout
+        window.location.href='/'
+        
+    }
     return(
         <div className="container">
             <div className="row">
                 <h1> Hello {user_real}</h1>
+                <h2 style={{paddingLeft:'20px'}}><button style={{fontFamily:'cursive',width: "10%",fontSize:'15px'}} onClick={Logout}>Logout</button></h2>
                 <br/>
                 
             </div>    
@@ -21,4 +24,3 @@ function Account() {
 }
 
 export default Account;
-//<button onClick={Logout} style={{fontFamily:'cursive',width: "10%"}}>Log out</button>

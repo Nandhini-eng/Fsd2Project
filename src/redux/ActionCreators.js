@@ -40,10 +40,6 @@ export const addNewspapers = (newspapers) => ({
     payload: newspapers
 });
 
-
-
-
-
 export const fetchMagazines = () => (dispatch) => {
 
     dispatch(MagazinesLoading(true));
@@ -269,6 +265,105 @@ export const reviewsFailed = (errmess) => ({
   payload: errmess
 });
 
+  /*export const postsignup = (username, password) => (dispatch) => {
+   
+    const newuser = {
+       user4:username+":"+password
+     };
+  
+    
+    return fetch(baseUrl + 'regusers', {
+        method: "POST",
+        body: JSON.stringify(newuser),
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "same-origin"
+    })
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            throw error;
+      })
+    .then(response => response.json())
+    .then(feedback => alert('Thank you for your feedback!\n'))
+    .catch(error =>  { console.log('Post Feedback'); alert('Your Feedback could not be posted\nError: '); });
+  };*/
+  export const adduser= (user4) => ({
+    type: ActionTypes.ADD_USER,
+    payload: user4
+  });
+  
+  export const postsignup = (username, password) => (dispatch) => {
+  
+    const newuser = {
+      user4:username+":"+password
+    };
+ 
+    
+    return fetch(baseUrl + 'regusers', {
+      method: "POST",
+      body: JSON.stringify(newuser),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+  })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            throw error;
+      })
+      .then(response => response.json())
+      .then(response => dispatch(adduser(response)))
+      .catch(error =>  { console.log('Post Feedback'); alert('Your Feedback could not be posted\nError: '); });
+  };
+  
+  export const fetchUsers = () => (dispatch) => {    
+    return fetch(baseUrl + 'regusers')
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            var errmess = new Error(error.message);
+            throw errmess;
+      })
+    .then(response => response.json())
+    .then(regusers => dispatch(addUsers(regusers)))
+    .catch(error => { console.log('Post Feedback'); alert('Your Feedback could not be posted\nError: '); });
+  };
+
+  export const addUsers = (regusers) => ({
+    type: ActionTypes.ADD_USERS,
+    payload: regusers
+  });
+
+
+
+
+
+
+  
 export const addReviews = (reviews) => ({
   type: ActionTypes.ADD_REVIEWS,
   payload: reviews
