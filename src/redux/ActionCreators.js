@@ -77,6 +77,8 @@ export const addMagazines = (magazines) => ({
     payload: magazines
 });
 
+
+
 export const filterMagazinesByCategory = (magazines, category) => (dispatch) => {
   return dispatch({
       type: ActionTypes.FILTER_MAGAGINES_BY_CATEGORY,
@@ -131,6 +133,7 @@ export const sortNewspapers = (products,sort)=>(dispatch)=>{
     }
   })
 }
+
 export const sortMagazines = (products,sort)=>(dispatch)=>{
   if (sort === "lowestprice") {
     products.sort((a, b) =>
@@ -155,6 +158,7 @@ export const sortMagazines = (products,sort)=>(dispatch)=>{
     }
   })
 }
+
 
 export const postFeedback = (firstname, lastname, telnum, email, agree, contactType, message) => (dispatch) => {
    
@@ -192,7 +196,74 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
     .then(response => response.json())
     .then(feedback => alert('Thank you for your feedback!\n'+ JSON.stringify(feedback)))
     .catch(error =>  { console.log('Post Feedback', error.message); alert('Your Feedback could not be posted\nError: '+error.message); });
+};
+
+
+
+export const addReview = (review) => ({
+  type: ActionTypes.ADD_REVIEW,
+  payload: review
+});
+
+export const postReview = (itemId, rating, author, review) => (dispatch) => {
+
+  const newReview = {
+      itemId: itemId,
+      rating: rating,
+      author: author,
+      review: review
   };
+  newReview.date = new Date().toISOString();
+  
+  return fetch(baseUrl + 'reviews', {
+      method: "POST",
+      body: JSON.stringify(newReview),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+  })
+  .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+    error => {
+          throw error;
+    })
+  .then(response => response.json())
+  .then(response => dispatch(addReview(response)))
+  .catch(error =>  { console.log('post reviews', error.message); alert('Your review could not be posted\nError: '+error.message); });
+};
+
+export const fetchReviews = () => (dispatch) => {    
+  return fetch(baseUrl + 'reviews')
+  .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+    error => {
+          var errmess = new Error(error.message);
+          throw errmess;
+    })
+  .then(response => response.json())
+  .then(reviews => dispatch(addReviews(reviews)))
+  .catch(error => dispatch(reviewsFailed(error.message)));
+};
+
+export const reviewsFailed = (errmess) => ({
+  type: ActionTypes.REVIEWS_FAILED,
+  payload: errmess
+});
 
   /*export const postsignup = (username, password) => (dispatch) => {
    
@@ -292,48 +363,52 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
 
 
 
-  export const addToCart=(itemId)=>{
-    return{
-      type:ActionTypes.ADD_TO_CART,
-      payload:{
-        id:itemId
-      }
-    }
-  };
+  
+export const addReviews = (reviews) => ({
+  type: ActionTypes.ADD_REVIEWS,
+  payload: reviews
+});
 
-  export const removefromCart=(itemId)=>{
-    return{
-      type:ActionTypes.REMOVE_FROM_CART,
-      payload:{
-        id:itemId
-      }
-    }
-  };
 
-  export const adjustQty=(itemId,value)=>{
-    return{
-      type:ActionTypes.ADJUST_QTY,
-      payload:{
+
+export const addToCart=(itemId)=>{
+  return{
+    type:ActionTypes.ADD_TO_CART,
+    payload:{
+        id:itemId
+    }
+  }
+};
+
+export const removefromCart=(itemId)=>{
+  return{
+    type:ActionTypes.REMOVE_FROM_CART,
+    payload:{
+        id:itemId
+    }
+  }
+};
+
+export const adjustQty=(itemId,value)=>{
+  return{
+    type:ActionTypes.ADJUST_QTY,
+    payload:{
         id:itemId,
         qty:value
-      }
     }
-  };
+  }
+};
 
-  export const loadCurrentItem=(item)=>{
-    return{
-      type:ActionTypes.LOAD_CURRENT_ITEM,
-      payload:item
-    }
+export const loadCurrentItem=(item)=>{
+  return{
+    type:ActionTypes.LOAD_CURRENT_ITEM,
+    payload:item
+  }
+};
 
-  };
-
-  export const getproducts=(news,mags)=>{
-    
+export const getproducts=(news,mags)=>{
     return{
       type:ActionTypes.GET_PRODUCTS,
-
-      payload:news.newspapers.concat(mags.magazines),
+      payload:news.newspapers.concat(mags.magazines)
     }
-
-  };
+};

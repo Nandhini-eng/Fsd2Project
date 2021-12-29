@@ -51,7 +51,7 @@
       "image": "assets/images/deccan_chronicle.jpg",
       "language": "English",
       "price": "225",
-      "featured": true,
+      "featured": false,
       "description": "Deccan Chronicle is an Indian English-language daily newspaper founded by Rajagopal Mudaliar in the 1930s & currently owned by Samagrah Commercial Pvt Limited. It is famous for providing false information and posting anti-India content to provoke people and cause communal disharmony. It is published in Hyderabad, Telangana, by Deccan Chronicle Holdings Limited (DCHL). The newspaper's name derives from the originating place, the Deccan regions of India. Deccan Chronicle has eight editions in Andhra Pradesh and Telangana. They also publish from Chennai and Bengaluru."
     },
     {
@@ -150,7 +150,7 @@
       "image": "assets/images/the_pioneer.jpg",
       "language": "English",
       "price": "192",
-      "featured": false,
+      "featured": true,
       "description": "The Pioneer is an English language daily newspaper in India. It is published from multiple locations in India, including Delhi. It is the second oldest English language newspaper in India still in circulation after The Times of India. In 2010, The Pioneer launched its Hindi version in Lucknow."
     },
     {
@@ -525,6 +525,16 @@
       "id": 4
     },
     {
+      "firstname": "Manu",
+      "lastname": "chilakala",
+      "telnum": "12345678",
+      "email": "latha@gmail.com",
+      "agree": true,
+      "contactType": "Tel.",
+      "message": "",
+      "id": 5
+    },
+    {
       "firstname": "samhitha",
       "lastname": "bhumireddy",
       "telnum": "9390571905",
@@ -539,7 +549,252 @@
     {
       "user4": "bhanu:123",
       "id": 1
+    },
+    {
+      "user4": "aswitha:1234",
+      "id": 2
     }
-    
+  ],
+  "reviews": [
+    {
+      "itemId": 4,
+      "rating": 4,
+      "author": "Saritha",
+      "review": "Nice newspaper with lots of new information",
+      "date": "2021-12-26T06:56:08.270Z",
+      "id": 1
+    },
+    {
+      "itemId": 5,
+      "rating": 4,
+      "author": "Nandhini",
+      "review": "Standard of language in this newspaper is too good. ",
+      "date": "2021-12-26T06:59:21.255Z",
+      "id": 2
+    },
+    {
+      "itemId": 6,
+      "rating": 3,
+      "author": "Sara Pusala",
+      "review": "Good newspaper to buy",
+      "date": "2021-12-26T06:59:52.462Z",
+      "id": 3
+    },
+    {
+      "itemId": 7,
+      "rating": 4,
+      "author": "Nandhini",
+      "review": "Good newspaper that concentrates on economics",
+      "date": "2021-12-26T07:01:52.108Z",
+      "id": 4
+    },
+    {
+      "itemId": 8,
+      "rating": 4,
+      "author": "Sara Pusala",
+      "review": "Contains several kinds of information",
+      "date": "2021-12-26T07:02:42.612Z",
+      "id": 5
+    },
+    {
+      "itemId": 9,
+      "rating": 4,
+      "author": "Saritha",
+      "review": "It's an excellent newspaper.",
+      "date": "2021-12-26T07:03:25.345Z",
+      "id": 6
+    },
+    {
+      "itemId": 15,
+      "rating": 4,
+      "author": "Bhanu",
+      "review": "Good newspaper in english",
+      "date": "2021-12-26T07:04:18.848Z",
+      "id": 7
+    },
+    {
+      "itemId": 16,
+      "rating": 3,
+      "author": "Bhagya",
+      "review": "Nice newspaper containing lots of new information",
+      "date": "2021-12-26T07:04:59.201Z",
+      "id": 8
+    },
+    {
+      "itemId": 17,
+      "rating": 2,
+      "author": "Bhanu",
+      "review": "Not satisfied with the quality of the newspaper",
+      "date": "2021-12-26T07:06:03.499Z",
+      "id": 9
+    },
+    {
+      "itemId": 18,
+      "rating": 5,
+      "author": "Nandhini",
+      "review": "It's an amazing english newspaper. Must subscribe!!",
+      "date": "2021-12-26T07:07:39.346Z",
+      "id": 10
+    },
+    {
+      "itemId": 0,
+      "rating": 4,
+      "author": "Bhagya",
+      "review": "Wonderful telugu newspaper with important information.",
+      "date": "2021-12-26T07:08:55.499Z",
+      "id": 11
+    },
+    {
+      "itemId": 1,
+      "rating": 4,
+      "author": "Sara Pusala",
+      "review": "Good Newspaper to get.",
+      "date": "2021-12-26T07:09:34.197Z",
+      "id": 12
+    },
+    {
+      "itemId": 2,
+      "rating": 3,
+      "author": "Bhanu",
+      "review": "Nice newspaper in telugu",
+      "date": "2021-12-26T07:10:04.190Z",
+      "id": 13
+    },
+    {
+      "itemId": 3,
+      "rating": 3,
+      "author": "Saritha",
+      "review": "Good one for telugu readers.",
+      "date": "2021-12-26T07:10:35.526Z",
+      "id": 14
+    },
+    {
+      "itemId": 10,
+      "rating": 4,
+      "author": "Nandhini",
+      "review": "Good telugu newspaper about telangana.",
+      "date": "2021-12-26T07:11:33.470Z",
+      "id": 15
+    },
+    {
+      "itemId": 11,
+      "rating": 4,
+      "author": "Bhanu",
+      "review": "Contains lots of new information about telangana",
+      "date": "2021-12-26T07:12:13.652Z",
+      "id": 16
+    },
+    {
+      "itemId": 12,
+      "rating": 4,
+      "author": "Bhagya",
+      "review": "Good one to subscribe ",
+      "date": "2021-12-26T07:12:47.161Z",
+      "id": 17
+    },
+    {
+      "itemId": 13,
+      "rating": 4,
+      "author": "Nandhini",
+      "review": "An amazing newspaper in telugu. ",
+      "date": "2021-12-26T07:13:21.654Z",
+      "id": 18
+    },
+    {
+      "itemId": 0,
+      "rating": 4,
+      "author": "Bhanu",
+      "review": "Best newspaper in telugu.Must subscribe!!",
+      "date": "2021-12-26T08:59:49.135Z",
+      "id": 19
+    },
+    {
+      "itemId": 40,
+      "rating": 5,
+      "author": "Nandhini",
+      "review": "Superb magazine in telugu that entertains everyone. Must subscribe!!",
+      "date": "2021-12-27T07:31:18.973Z",
+      "id": 20
+    },
+    {
+      "itemId": 41,
+      "rating": 4,
+      "author": "Nandhini",
+      "review": "Loved this magazine for it's funny stories",
+      "date": "2021-12-27T07:32:03.561Z",
+      "id": 21
+    },
+    {
+      "itemId": 44,
+      "rating": 4,
+      "author": "Saritha",
+      "review": "kids love this magazine and the stories in this magazine.",
+      "date": "2021-12-27T07:32:42.771Z",
+      "id": 22
+    },
+    {
+      "itemId": 29,
+      "rating": 4,
+      "author": "Sara",
+      "review": "Loved this magazine!!",
+      "date": "2021-12-27T08:44:14.254Z",
+      "id": 23
+    },
+    {
+      "itemId": 47,
+      "rating": 4,
+      "author": "Bhanu",
+      "review": "Wonderful sports magazine with interesting info. must subscribe!!",
+      "date": "2021-12-27T08:58:56.837Z",
+      "id": 24
+    },
+    {
+      "itemId": 20,
+      "rating": 4,
+      "author": "Bhagya",
+      "review": "Excellent business magazine with useful business ideas.",
+      "date": "2021-12-27T14:48:56.839Z",
+      "id": 25
+    },
+    {
+      "itemId": 41,
+      "rating": 5,
+      "author": "Bhanu",
+      "review": "Amazing entertainment magazine. Must subsribe to enjoy reading the funny stories of this magazine",
+      "date": "2021-12-27T18:02:31.731Z",
+      "id": 26
+    },
+    {
+      "itemId": 22,
+      "rating": 4,
+      "author": "Bhanu",
+      "review": "It's an amazing business magazine. Really helpful. Must subscribe!!",
+      "date": "2021-12-28T07:23:02.242Z",
+      "id": 27
+    },
+    {
+      "itemId": 19,
+      "rating": 4,
+      "author": "Nandhini",
+      "review": "Nice telugu newspaper with useful information to learn.",
+      "date": "2021-12-28T07:24:34.966Z",
+      "id": 28
+    },
+    {
+      "itemId": 23,
+      "rating": 5,
+      "author": "bhanu",
+      "review": "superb magazine about the success story of mukesh ambani. ",
+      "date": "2021-12-28T13:47:08.493Z",
+      "id": 29
+    },
+    {
+      "itemId": 0,
+      "rating": 4,
+      "author": "nandhini",
+      "review": "Loved this newspaper for the useful information it contains.",
+      "date": "2021-12-28T14:04:08.715Z",
+      "id": 30
+    }
   ]
 }

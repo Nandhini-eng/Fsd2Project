@@ -4,6 +4,7 @@ export const cartReducer=(state={cart:[],items:[],currentItem:null},action)=>{
     switch(action.type){
         case ActionTypes.GET_PRODUCTS:
             return{...state,items:action.payload};
+            
         case ActionTypes.ADD_TO_CART:
             const item=state.items.find((item)=>item.id===action.payload.id)
             const inCart=state.cart.find((item)=>item.id===action.payload.id ? true :false)
@@ -22,7 +23,7 @@ export const cartReducer=(state={cart:[],items:[],currentItem:null},action)=>{
         case ActionTypes.ADJUST_QTY:
             return{
                 ...state,
-                cart:state.cart.map((item)=>item.id===action.payload.id?{...item,qty:action.payload.qty}:item)
+                cart:state.cart.map((item)=>item.id===action.payload.id?{...item,qty:+action.payload.qty}:item)
             };
         case ActionTypes.LOAD_CURRENT_ITEM:
             return{

@@ -8,6 +8,8 @@ import { createForms } from 'react-redux-form';
 import { InitialFeedback } from './forms';
 import LoginReducer from './LoginReducer'
 import {signfeed} from './register'
+import { Reviews } from './reviews';
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const ConfigureStore = () => {
     
@@ -17,6 +19,7 @@ export const ConfigureStore = () => {
             magazines: Magazines,
             login: LoginReducer,
             regusers:signfeed,
+            reviews: Reviews,
             ...createForms({
                 feedback: InitialFeedback
                 

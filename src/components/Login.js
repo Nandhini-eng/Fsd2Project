@@ -86,18 +86,3 @@ class Login extends Component{
 }
 
 export  {Login,user_real};
-/*
-        fetch("http://localhost:3001/regusers?q=" + this.state.username + ":" + this.state.password).then((data)=>{
-            data.json().then((resp)=>{
-                console.warn("resp",data)
-                console.log(this.state.length)
-                if(resp.length>0){
-                    //this.props.history.push('home')
-                    this.props.history.goBack();
-                }
-                else{
-                    alert('please check')
-                }
-            })
-        })
-    */

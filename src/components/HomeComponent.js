@@ -2,13 +2,19 @@ import React from 'react';
 import { Card, CardImg, CardHeader, CardText, CardBody,CardTitle, CardSubtitle} from 'reactstrap';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform } from 'react-animation-components';
 
 function RenderCard({item}) {
     return(
-        <Card>
-            <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
-            <CardHeader><h3>{item.name}</h3></CardHeader>
-        </Card>
+        <FadeTransform in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
+            <Card>
+                <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
+                <CardHeader><h3>{item.name}</h3></CardHeader>
+            </Card>
+        </FadeTransform>
     );
 }
 

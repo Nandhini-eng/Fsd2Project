@@ -14,12 +14,12 @@ import MagazineDetail from './MagazineDetail';
 import Signup from './Signup';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import { fetchNewspapers, fetchMagazines, filterMagazinesByCategory, 
-  filterMagazinesByLanguage, filterNewspapersByLanguage, sortNewspapers,sortMagazines, postFeedback,postsignup,fetchUsers, getproducts,addToCart,removefromCart,adjustQty} from '../redux/ActionCreators';
+  filterMagazinesByLanguage, 
+    filterNewspapersByLanguage, sortNewspapers,sortMagazines, postFeedback,postsignup,fetchUsers,fetchReviews, postReview, 
+    getproducts,addToCart,removefromCart,adjustQty } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
-
-
-
 
 
 const mapStateToProps = (state) => (
@@ -27,7 +27,9 @@ const mapStateToProps = (state) => (
     newspapers: state.newspapers,
     magazines: state.magazines,
     cartitem:state.cartReducer, 
-    regusers:state.regusers
+    regusers:state.regusers,
+    reviews: state.reviews
+    
   }
 );
 
@@ -44,6 +46,8 @@ const mapDispatchToProps = (dispatch) => ({
     filterNewspapersByLanguage: (newspapers,language) => dispatch(filterNewspapersByLanguage(newspapers,language)),
     sortNewspapers: (newspapers,sort)=>dispatch(sortNewspapers(newspapers,sort)),
     sortMagazines: (magazines,sort)=>dispatch(sortMagazines(magazines,sort)),
+    fetchReviews: () => {dispatch(fetchReviews())}, 
+    postReview: (itemId, rating, author, review) => dispatch(postReview(itemId, rating, author, review)),
     getproducts: (newspapers,magazines)=>{dispatch(getproducts(newspapers,magazines))},
     addtocart: (id)=>{dispatch(addToCart(id))},
     // removefromCart:(id)=>{dispatch(removefromCart(id))},
@@ -56,7 +60,8 @@ class Main extends Component{
     componentDidMount() {
       this.props.fetchNewspapers();
       this.props.fetchMagazines();
-      this.props.fetchUsers()
+      this.props.fetchUsers();
+      this.props.fetchReviews();
     }
 
     render() {
@@ -79,8 +84,10 @@ class Main extends Component{
             <NewspaperDetail paperSelected={this.props.newspapers.newspapers.filter((paper) => paper.id === parseInt(match.params.paperId,10))[0]} 
               isLoading={this.props.newspapers.isLoading}
               errMess={this.props.newspapers.errMess}
+              reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.paperId,10))} 
+              reviewsErrMess={this.props.reviews.errMess}
+              postReview={this.props.postReview}
               addtocart={this.props.addtocart}
-              
               />
         );
         }
@@ -90,6 +97,9 @@ class Main extends Component{
             <MagazineDetail magSelected={this.props.magazines.magazines.filter((magazine) => magazine.id === parseInt(match.params.magId,10))[0]} 
               isLoading={this.props.magazines.isLoading}
               errMess={this.props.magazines.errMess}
+              reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.magId,10))} 
+              reviewsErrMess={this.props.reviews.errMess}
+              postReview={this.props.postReview}
               addtocart={this.props.addtocart}
               />
         );
