@@ -6,6 +6,7 @@ import Account from './AccountComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import NewspapersMain from './NewspapersComponent';
+import Searchc from './Searchc';
 import Cart from './Cart';
 import NewspaperDetail from './NewspaperDetail';
 import MagazinesMain from './MagazinesComponent';
@@ -74,6 +75,9 @@ class Main extends Component{
               isLoading={this.props.newspapers.isLoading}
               errMess={this.props.newspapers.errMess}
               addtocart={this.props.addtocart}
+              getproducts={this.props.getproducts} 
+              newspapers={this.props.newspapers} 
+              magazines={this.props.magazines}
               
               />
         );
@@ -85,6 +89,9 @@ class Main extends Component{
               isLoading={this.props.magazines.isLoading}
               errMess={this.props.magazines.errMess}
               addtocart={this.props.addtocart}
+              getproducts={this.props.getproducts} 
+              newspapers={this.props.newspapers} 
+              magazines={this.props.magazines}
               />
         );
         }
@@ -104,7 +111,7 @@ class Main extends Component{
                 <Route path='/myaccount' component={() => <Account />} />
                 <Route path='/aboutus' component={() => <About />} />
                 <Route path='/cart' component={() => <Cart getproducts={this.props.getproducts} newspapers={this.props.newspapers} magazines={this.props.magazines} cart={this.props.cartitem.cart}  />} />
-                
+                <Route path='/searchc' component={() => <Searchc />} />
                 <Redirect to="/home" />               
               </Switch>
               <Footer />

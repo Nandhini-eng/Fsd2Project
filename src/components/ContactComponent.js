@@ -26,26 +26,27 @@ class Contact extends Component {
     render() {
 
         return(
-            <div className="container">
+            <div style={{color:"white",backgroundImage:`url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")`}}>
+            <div className="container" style={{color:"white",backgroundImage:`url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")`}}>
                 <div className="row">
                     <Breadcrumb>
                         <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                         <BreadcrumbItem active>Contact Us</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
-                        <h3>Contact Us</h3>
+                        <h3 style={{color:"white"}}>Contact Us</h3>
                         <hr />
                     </div>                
                 </div>
                 <div className="row row-content">
                     <div className="col-12">
-                    <h3>Location Information</h3>
+                    <h3 style={{color:"white"}}>Location Information</h3>
                     </div>
                     <Row>
                     <Col md={5}>
                     {/* <div className="col-12 col-sm-4 offset-sm-1"> */}
-                            <h5>Our Address</h5>
-                            <address>
+                            <h5 style={{color:"white"}}>Our Address</h5>
+                            <address style={{color:"white"}}>
                             Srini Avenue<br />
                             Kompally, Hyderabad<br />
                             INDIA<br />
@@ -64,22 +65,22 @@ class Contact extends Component {
                             <a role="button" className="btn btn-info"><i className="fa fa-skype"></i> Skype</a>
                             <a role="button" className="btn btn-success" href="mailto:newspapersandmagazines@news.net"><i className="fa fa-envelope-o"></i> Email</a>
                         </div>
-                    {/* </div> */}
+                    
                     </Col>
                     <Col md={6}>
 
                     
                     
                     {/* <div className="col-12 col-sm-6 offset-sm-1" style={{float:'right'}}> */}
-                        <img src="https://cdn.pixabay.com/photo/2017/12/02/14/38/contact-us-2993000__480.jpg" alt="contact us" style={{width:"70%",height:"100%",paddingLeft:"80px"}}></img>
-                    
+                        {/* <img src="https://cdn.pixabay.com/photo/2017/12/02/14/38/contact-us-2993000__480.jpg" alt="contact us" style={{width:"70%",height:"100%",paddingLeft:"80px"}}></img>
+                     */}
                     {/* </div> */}
                     </Col>
                     </Row>
                     
                 </div>
 
-                <div className="row row-content" style={{backgroundColor:"lightgray"}}>
+                <div className="row row-content" style={{backgroundColor:"lightgray",color:"black"}}>
                    <div className="col-12">
                       <h3>Send us your Feedback</h3>
                    </div>
@@ -220,6 +221,7 @@ class Contact extends Component {
                     </div>
                </div>
                <br></br>
+            </div>
             </div>
         );
     }

@@ -6,12 +6,19 @@ import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
 import {user}  from './Login';
 
-
+import Zoom from 'react-reveal/Zoom';
 
 function RenderItem({props}) {
     const item=props.paperSelected;
     const addtocart=props.addtocart;
+    const x=()=>{
+    
 
+        addtocart(item.id)
+    
+
+
+    }
     const history=useHistory();
     if (item != null){
         const IsLogin=()=>{ 
@@ -37,7 +44,11 @@ function RenderItem({props}) {
                 <div className="col-12 col-md-5 m-1">
                     <h3>Description</h3><br />
                     <h5>{item.description}</h5><br /><br />
-                    <button onClick={()=>addtocart(item.id)} ><h4>Subscribe</h4></button>
+                    <Zoom>
+
+
+                    <button onClick={x} ><h4>Subscribe</h4></button>
+                    </Zoom>
                 </div>
             </React.Fragment>
         );

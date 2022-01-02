@@ -2,10 +2,13 @@ import React, { Component} from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem,  Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import {connect} from 'react-redux';
-import Cartval from './Cartval';
+import Cartval from './Cartval.js';
+import {getproducts} from '../redux/ActionCreators';
 
+import LightSpeed from 'react-reveal/LightSpeed';
+import Jump from 'react-reveal/Jump';
 
-
+import Searchc from './Searchc.js';
 class Header extends Component{
   
     constructor(props){
@@ -15,8 +18,8 @@ class Header extends Component{
         this.state = {
           
             isNavOpen: false,
-            cartCount:0,
-            // cartCount:this.props.cart.forEach((item)=>{count+=item.qty}),
+            
+      
             
         };
 
@@ -32,32 +35,32 @@ class Header extends Component{
 
     
 
-    render() {
-      // let count=0
-      // let x=this.props.cart.map(item=>count+=item.qty)
-      // console.log(x[1])
-       
-      // console.log(Cartval(this.props.cart))
-        
+    render(props) {
+      console.log(<Cartval/>)
+      
   
     
         return(
           <React.Fragment>
-            <Navbar dark expand="md">
-              <div className="container">
+            <Navbar dark expand="md" style={{ backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")` }}>
+              <div className="container" style={{color:"white"}} >
                 <NavbarToggler onClick={this.toggleNav} />
-                <NavbarBrand className="mr-auto" href="/">
+                {/* <NavbarBrand className="mr-auto" href="/">
                   <img src='assets/images/logo.png' height="50" width="50" alt='Newspapers and Magazines' />
-                </NavbarBrand>
+                </NavbarBrand> */}
                 <Collapse isOpen={this.state.isNavOpen} navbar>
                   <Nav navbar>
-                    <NavItem>
+                    {/* <NavItem className="mr-auto" href="/">
+                    <img src='assets/images/logo.png' height="30" width="30" alt='Newspapers and Magazines' />
+
+                      </NavItem> */}
+                      <NavItem>
                       <NavLink className="nav-link"  to='/home'>
-                        <span className="fa fa-home fa-lg"></span> Home
+                        <span className="fa fa-home fa-lg" ></span> Home
                       </NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink className="nav-link"  to='/newspapers'>
+                      <NavLink className="nav-link"  to='/newspapers' >
                         <span className="fa fa-newspaper-o fa-lg"></span> Newspapers
                       </NavLink>
                     </NavItem>
@@ -91,21 +94,34 @@ class Header extends Component{
                     <span className="fa fa-key fa-lg"></span> cart 
                   
                     </NavLink>
-                    </NavItem>
-                    <NavItem><Cartval/></NavItem>
                     
-                   </Nav>
+                    </NavItem>
+                    
+
+                    <NavItem ><Cartval/></NavItem>
+                  
+                      <NavItem>
+                        <NavLink className="nav-link" to='/searchc'>
+                         search c
+                      </NavLink>
+                      </NavItem>  
+                      </Nav>
+                
                 </Collapse>
               </div>
             </Navbar>
-
-            <div className="bg">
-             <div className="container">
+           
+             {/* green:#AFD275 */}
+             {/* style={{backgroundColor:"#a2e8d0"}} greenish blue*/}
+            <div className="bg" style={{backgroundColor:"#e7717d"}} >
+             <div className="container" >
                  <div className="row row-header">
-                     <div className="col-12 col-sm-6" style={{color:"black"}}>
-                         <h1 style={{color:"white"}}>Newspapers and Magazines</h1>
-                         <p>We provide various Newspapers and Magazines in this application. Users can subscribe and purchase their favourite newspapers and magazines and enjoy the joy of reading! </p>
+                   <LightSpeed>
+                     <div className="col-12 col-sm-6" >
+                         <h1 style={{color:"black"}}>Newspapers and Magazines</h1>
+                         <p style={{color:"black"}}>We provide various Newspapers and Magazines in this application. Users can subscribe and purchase their favourite newspapers and magazines and enjoy the joy of reading! </p>
                      </div>
+                     </LightSpeed>
                  </div>
              </div>
             </div>
@@ -114,11 +130,17 @@ class Header extends Component{
     }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    newspapers: state.newspapers,
+    magazines: state.magazines
+  };
+};
 
-const mapStateToProps=state=>{
+const mapDispatchToProps=(dispatch)=>{
   return{
-    cart:state.cartReducer.cart
+    getproducts: (newspapers,magazines)=>{dispatch(getproducts(newspapers,magazines))},
   }
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps,mapDispatchToProps)(Header);

@@ -7,6 +7,9 @@ import CartItem from "./Cartitem.js";
 export default function Cart(props) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
+  
+
+ 
   useEffect(() => {
     let items = 0;
     let price = 0;
@@ -18,13 +21,29 @@ export default function Cart(props) {
     setTotalPrice(price);
   }, [props.cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
 
+  
+  
+  // function c(){
+  //   props.getproducts(props.newspapers,props.magazines)
 
+
+  // };
+  // c()
+  const x=()=>{
+    
+    props.getproducts(props.newspapers,props.magazines)
+
+
+};
+
+  
 
 
     return (
-        <div >
+     
+       <div>
               <button onClick={()=>props.getproducts(props.newspapers,props.magazines)}>click</button>  
-
+              
               <div className={styles.cart}>
                 <div className={styles.cart__items}>
                  {props.cart.map((item) => (
@@ -43,6 +62,7 @@ export default function Cart(props) {
             </div>
            </div>
           </div>
+        
     )
 }
 

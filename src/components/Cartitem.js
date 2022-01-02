@@ -42,7 +42,7 @@ function CartItem({ item, adjustQty, removefromCart }){
               className={styles.actions__deleteItemBtn}
             >
               
-              -
+              X
             </button>
           </div>
         </div>
