@@ -12,7 +12,7 @@ function RenderItem({item}){
          <Link to={`/newspapers/${item.id}`}>
             <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
             <CardHeader><h3>{item.name}</h3></CardHeader>
-         </Link>    
+         </Link>   
       </Card>
       
     );
@@ -126,13 +126,10 @@ const NewspapersMain = (props) => {
                   disabledClassName={"paginationDisabled"}
                   activeClassName={"paginationActive"}
                   />
-
-      
-              
                 </div>
               </div>
-              </div>
             </div>
+          </div>
           );
         }  
 }

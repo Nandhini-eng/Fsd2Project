@@ -1,18 +1,18 @@
 import React from 'react';
 import {useHistory} from "react-router-dom";
-import { user } from './Login';
+import { user_real } from './Login';
 
 
 function Account() {
     const history=useHistory();
-    console.log(user)
+    console.log(user_real)
     /*const Logout=()=>{
         history.push("/login");
     }*/
     return(
         <div className="container">
             <div className="row">
-                <h1> Hello {user}</h1>
+                <h1> Hello {user_real}</h1>
                 <br/>
                 
             </div>    

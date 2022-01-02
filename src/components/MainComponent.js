@@ -13,21 +13,21 @@ import MagazineDetail from './MagazineDetail';
 import * as signin from './Login';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchNewspapers, fetchMagazines, filterMagazinesByCategory, 
-  filterMagazinesByLanguage, filterNewspapersByLanguage, sortNewspapers,sortMagazines, postFeedback, getproducts,addToCart,removefromCart,adjustQty,saveShippingAddress,savePaymentDetails} from '../redux/ActionCreators';
+import { fetchNewspapers, fetchMagazines, filterMagazinesByCategory, filterMagazinesByLanguage, 
+    filterNewspapersByLanguage, sortNewspapers,sortMagazines, postFeedback, fetchReviews, postReview, 
+    getproducts,addToCart,removefromCart,adjustQty,fetchOrders,postOrder,fetchItems } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 import ShippingAddress from './ShippingAddress';
-import PaymentDetails from './PaymentDetails';
 import OrdersComponent from './OrdersComponent';
-
-
-
+import {user_real} from "./Login";
 
 const mapStateToProps = (state) => (
   {
     newspapers: state.newspapers,
-    magazines: state.magazines,
-    cartitem:state.cartReducer,  
+    magazines: state.magazines,  
+    reviews: state.reviews,
+    cartitem: state.cartReducer,  
+    orders: state.orders
   }
 );
 
@@ -42,18 +42,27 @@ const mapDispatchToProps = (dispatch) => ({
     filterNewspapersByLanguage: (newspapers,language) => dispatch(filterNewspapersByLanguage(newspapers,language)),
     sortNewspapers: (newspapers,sort)=>dispatch(sortNewspapers(newspapers,sort)),
     sortMagazines: (magazines,sort)=>dispatch(sortMagazines(magazines,sort)),
+    fetchReviews: () => {dispatch(fetchReviews())}, 
+    postReview: (itemId, rating, author, review) => dispatch(postReview(itemId, rating, author, review)),
     getproducts: (newspapers,magazines)=>{dispatch(getproducts(newspapers,magazines))},
     addtocart: (id)=>{dispatch(addToCart(id))},
+    resetCheckoutForm:()=>{dispatch(actions.reset('order'))},
+    fetchOrders:()=>{dispatch(fetchOrders())},
+    postOrder:(fullName,address,city, postalCode, country,NameOnCard,CreditCardNum,ExpMon,ExpYear,Cvv,cart,user,price,items)=>dispatch(postOrder(fullName,address,city, postalCode, country,NameOnCard,CreditCardNum,ExpMon,ExpYear,Cvv,cart,user,price,items)),
     // removefromCart:(id)=>{dispatch(removefromCart(id))},
     // adjustQty:(id)=>{dispatch(adjustQty(id))}
-
+    fetchItems:()=>{dispatch(fetchItems())},
 });
 
 class Main extends Component{
    
     componentDidMount() {
+      this.props.fetchItems();
       this.props.fetchNewspapers();
       this.props.fetchMagazines();
+      this.props.fetchReviews();
+      this.props.fetchOrders();
+      
     }
 
     render() {
@@ -75,8 +84,11 @@ class Main extends Component{
             <NewspaperDetail paperSelected={this.props.newspapers.newspapers.filter((paper) => paper.id === parseInt(match.params.paperId,10))[0]} 
               isLoading={this.props.newspapers.isLoading}
               errMess={this.props.newspapers.errMess}
+              reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.paperId,10))} 
+              reviewsErrMess={this.props.reviews.errMess}
+              postReview={this.props.postReview}
               addtocart={this.props.addtocart}
-              
+              checkorders={this.props.orders.orders}
               />
         );
         }
@@ -86,7 +98,11 @@ class Main extends Component{
             <MagazineDetail magSelected={this.props.magazines.magazines.filter((magazine) => magazine.id === parseInt(match.params.magId,10))[0]} 
               isLoading={this.props.magazines.isLoading}
               errMess={this.props.magazines.errMess}
+              reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.magId,10))} 
+              reviewsErrMess={this.props.reviews.errMess}
+              postReview={this.props.postReview}
               addtocart={this.props.addtocart}
+              checkorders={this.props.orders.orders}
               />
         );
         }
@@ -106,9 +122,8 @@ class Main extends Component{
                 <Route path='/myaccount' component={() => <Account />} />
                 <Route path='/aboutus' component={() => <About />} />
                 <Route path='/cart' component={() => <Cart getproducts={this.props.getproducts} newspapers={this.props.newspapers} magazines={this.props.magazines} cart={this.props.cartitem.cart}  />} />
-                <Route path='/address' component={ShippingAddress}/>
-                <Route path='/payment' component={PaymentDetails}/>
-                <Route path='/orders' component={OrdersComponent}/>
+                <Route path='/address' component={()=><ShippingAddress resetCheckoutForm={this.props.resetCheckoutForm} postOrder={this.props.postOrder} cart={this.props.cartitem.cart}/>}/>
+                <Route path='/orders' component={()=><OrdersComponent orders={this.props.orders.orders.filter((order)=>order.user === user_real)} ordersErrMess={this.props.orders.errMess}/>}/>
                 <Redirect to="/home" />
 
 

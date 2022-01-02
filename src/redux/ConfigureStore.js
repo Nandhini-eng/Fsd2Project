@@ -5,23 +5,15 @@ import {cartReducer} from './cartReducer';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createForms } from 'react-redux-form';
-import { InitialFeedback } from './forms';
+import { InitialFeedback,InitialOrder } from './forms';
 import LoginReducer from './LoginReducer'
+import { Reviews } from './reviews';
+import {Orders} from "./orders";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const cartFromLocalStorage = localStorage.getItem("cart")?JSON.parse(localStorage.getItem("cart")):[]
-const INITIAL_STATE={
-    cart:{
-        cart: cartFromLocalStorage,
-        shippingAddress: localStorage.getItem('shippingAddress')
-      ? JSON.parse(localStorage.getItem('shippingAddress'))
-      : {},
-        paymentDetails: localStorage.getItem('paymentDetails')
-        ? JSON.parse(localStorage.getItem('paymentDetails'))
-        :{}
-    }
-}
+
+
 export const ConfigureStore = () => {
 
     
@@ -30,15 +22,18 @@ export const ConfigureStore = () => {
             newspapers: Newspapers,
             magazines: Magazines,
             login: LoginReducer,
+            reviews: Reviews,
+            orders:Orders,
             ...createForms({
-                feedback: InitialFeedback
+                feedback: InitialFeedback,
+                order:InitialOrder
+
             }),
             cartReducer:cartReducer,
         }),
-        INITIAL_STATE,
         composeEnhancers(applyMiddleware(thunk, logger))
 
     );
-
+   
     return store;
 }

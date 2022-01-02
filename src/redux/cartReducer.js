@@ -1,12 +1,14 @@
 import * as ActionTypes from './ActionTypes';
 
-export const cartReducer=(state={cart:[],items:[],currentItem:null},action)=>{
+export const cartReducer=(state={cart:[],items:null,currentItem:null},action)=>{
     switch(action.type){
         case ActionTypes.GET_PRODUCTS:
             return{...state,items:action.payload};
+            
         case ActionTypes.ADD_TO_CART:
             const item=state.items.find((item)=>item.id===action.payload.id)
             const inCart=state.cart.find((item)=>item.id===action.payload.id ? true :false)
+            // localStorage.setItem('cart',JSON.stringify(state.cart))
             return{
                 ...state,
                 cart:inCart?
@@ -31,17 +33,11 @@ export const cartReducer=(state={cart:[],items:[],currentItem:null},action)=>{
                 ...state,
                 currentItem:action.payload,
             };
-
-        case ActionTypes.SAVE_SHIPPING_ADDRESS:
+        case ActionTypes.CART_EMPTY:
             return{
                 ...state,
-                shippingAddress:action.payload
-            }
-        case ActionTypes.SAVE_PAYMENT_DETAILS:
-            return{
-                ...state,
-                paymentDetails:action.payload
-                }    
+                cart:[]
+            }    
         default:
             return state;              
 
