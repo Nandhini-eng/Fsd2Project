@@ -145,10 +145,12 @@ function RenderItem({item, addtocart, reviews, postReview,orders}) {
         const IsLogin=()=>{ 
             if(user_real){
                 console.log('yes')
+                addtocart(item.id)
             }
             else{
                 console.log('no')
-                history.push("/login");    
+                history.push("/signup");   
+                
             }
         }
         return( 
@@ -173,7 +175,7 @@ function RenderItem({item, addtocart, reviews, postReview,orders}) {
                 <div className="col-12 col-md-5 m-1">
                     <h3>Description</h3><br />
                     <h5>{item.description}</h5><br /><br />
-                    <Button onClick={()=>addtocart(item.id)}><h3>Subscribe</h3></Button>
+                    <button onClick={IsLogin}><h4>Subscribe</h4></button>
                     <br />
                     <br />
                     <br />

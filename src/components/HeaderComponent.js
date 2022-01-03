@@ -1,11 +1,10 @@
 import React, { Component} from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem,  Button } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import Cartval from './Cartval';
-
-
-
+import {user_real} from './Login'
+let isLoggedin
 class Header extends Component{
   
     constructor(props){
@@ -28,19 +27,56 @@ class Header extends Component{
           isNavOpen: !this.state.isNavOpen
         });
     }
-
-    
-
+    back(e)
+    {
+      e.target.style.color = 'white'
+    }
+    back1(e)
+    {
+      e.target.style.color = 'rgba(255,255,255,.55)'
+    }
     render() {
+      // let count=0
+      // let x=this.props.cart.map(item=>count+=item.qty)
+      // console.log(x[1])
+       
+      // console.log(Cartval(this.props.cart))
+        
+        console.log(user_real)
+        if(user_real){
+          console.log('Loggedin')
+        }
+        else{
+          console.log('Not logged in')
+        }
+        if(user_real){
+          isLoggedin=
+          <Link to='/myaccount'>
+                          <Button  style={{color:'rgba(255,255,255,.55)'}}  onMouseOver={this.back} onMouseOut={this.back1}>
+                            <span className="fa fa-sign-in fa-lg"></span> Logout
+                          </Button>
+          </Link>
+        }
+        else{
+          isLoggedin=
+          <Link to='/signup'>
+                          <Button  style={{color:'rgba(255,255,255,.55)'}}  onMouseOver={this.back} onMouseOut={this.back1}>
+                            <span className="fa fa-sign-in fa-lg"></span> Signup
+                          </Button>
+                        </Link>
+        }
+      
     
         return(
           <React.Fragment>
             <Navbar dark expand="md">
               <div className="container">
                 <NavbarToggler onClick={this.toggleNav} />
-                <NavbarBrand className="mr-auto" href="/">
+                <Link to='/home'>
+                <NavbarBrand className="mr-auto" >
                   <img src='assets/images/logo.png' height="50" width="50" alt='Newspapers and Magazines' />
                 </NavbarBrand>
+                </Link>
                 <Collapse isOpen={this.state.isNavOpen} navbar>
                   <Nav navbar>
                     <NavItem>
@@ -74,23 +110,24 @@ class Header extends Component{
                       </NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink  className="nav-link" to='/login'>
-                        <span className="fa fa-key fa-lg"></span> Login
-                      </NavLink>
-                    </NavItem>
-                    <NavItem>
                       <NavLink className="nav-link" to='/cart'>
-                    <span className="fa fa-key fa-lg"></span> cart 
+                    <span className="fa fa-shopping-cart fa-lg"></span> Cart 
                   
                     </NavLink>
                     </NavItem>
                     <NavItem><Cartval/></NavItem>
                     <NavItem>
                       <NavLink className="nav-link" to='/orders'>
-                    <span className="fa fa-key fa-lg"></span> My Orders 
+                    <span className="fa fa-shopping-bag fa-lg"></span> My Orders 
                   
                     </NavLink>
                     </NavItem>
+                   </Nav>
+                   <Nav className='ms-auto' navbar>
+                    
+                      <NavItem>
+                        {isLoggedin}
+                      </NavItem>
                     
                    </Nav>
                 </Collapse>
@@ -100,7 +137,7 @@ class Header extends Component{
             <div className="bg">
              <div className="container">
                  <div className="row row-header">
-                     <div className="col-12 col-sm-6" style={{color:"black"}}>
+                     <div className="col-12 col-sm-6" >
                          <h1 style={{color:"white"}}>Newspapers and Magazines</h1>
                          <p>We provide various Newspapers and Magazines in this application. Users can subscribe and purchase their favourite newspapers and magazines and enjoy the joy of reading! </p>
                      </div>

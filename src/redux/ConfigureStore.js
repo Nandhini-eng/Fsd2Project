@@ -7,6 +7,7 @@ import logger from 'redux-logger';
 import { createForms } from 'react-redux-form';
 import { InitialFeedback,InitialOrder } from './forms';
 import LoginReducer from './LoginReducer'
+import {signfeed} from './register'
 import { Reviews } from './reviews';
 import {Orders} from "./orders";
 
@@ -22,6 +23,7 @@ export const ConfigureStore = () => {
             newspapers: Newspapers,
             magazines: Magazines,
             login: LoginReducer,
+            regusers:signfeed,
             reviews: Reviews,
             orders:Orders,
             ...createForms({

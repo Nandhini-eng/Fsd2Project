@@ -22,8 +22,8 @@ function Cart(props) {
 
     price = totalPrice
     items = totalItems
-  
-      if({totalItems} === 1){
+    console.log(totalItems)
+      if(totalItems === 1){
         return(
         <div >
               <div className={styles.cart}>
@@ -39,17 +39,15 @@ function Cart(props) {
                <span>Rs {totalPrice}</span>
                </div>
                <button className={styles.summary__checkoutBtn}>
-                 <Link to="/address">Proceed To Checkout</Link>
+                 <Link to="/checkout">Proceed To Checkout</Link>
               </button>
             </div>
            </div>
           </div>
     )}
-    else{
+    else if(totalItems === 0){
       return(
         <div >
-              <button onClick={()=>props.getproducts(props.newspapers,props.magazines)}>click</button>  
-
               <div className={styles.cart}>
                 <div className={styles.cart__items}>
                  {props.cart.map((item) => (
@@ -63,7 +61,30 @@ function Cart(props) {
                <span>Rs {totalPrice}</span>
                </div>
                <button className={styles.summary__checkoutBtn}>
-                 <Link to="/address">Proceed To Checkout</Link>
+                 Proceed To Checkout
+              </button>
+            </div>
+           </div>
+          </div>
+      )
+    }
+    else{
+      return(
+        <div >
+              <div className={styles.cart}>
+                <div className={styles.cart__items}>
+                 {props.cart.map((item) => (
+                   <CartItem key={item.id} item={item} />
+                    ))}
+               </div>
+              <div className={styles.cart__summary}>
+              <h4 className={styles.summary__title}>Cart Summary</h4>
+                <div className={styles.summary__price}>
+               <span>TOTAL: ({totalItems} items)</span>
+               <span>Rs {totalPrice}</span>
+               </div>
+               <button className={styles.summary__checkoutBtn}>
+                 <Link to="/checkout">Proceed To Checkout</Link>
               </button>
             </div>
            </div>
