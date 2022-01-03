@@ -15,7 +15,6 @@ class Header extends Component{
           
             isNavOpen: false,
             cartCount:0,
-            // cartCount:this.props.cart.forEach((item)=>{count+=item.qty}),
             
         };
 
@@ -112,11 +111,17 @@ class Header extends Component{
                     </NavItem>
                     <NavItem>
                       <NavLink className="nav-link" to='/cart'>
-                    <span className="fa fa-key fa-lg"></span> cart 
+                    <span className="fa fa-shopping-cart fa-lg"></span> Cart 
                   
                     </NavLink>
                     </NavItem>
                     <NavItem><Cartval/></NavItem>
+                    <NavItem>
+                      <NavLink className="nav-link" to='/orders'>
+                    <span className="fa fa-shopping-bag fa-lg"></span> My Orders 
+                  
+                    </NavLink>
+                    </NavItem>
                    </Nav>
                    <Nav className='ms-auto' navbar>
                     

@@ -194,7 +194,7 @@
     },
     {
       "id": 21,
-      "name": "capital market",
+      "name": "Capital market",
       "image": "assets/images/im2.jpg",
       "language": "English",
       "price": "216",
@@ -204,7 +204,7 @@
     },
     {
       "id": 22,
-      "name": "forbes",
+      "name": "Forbes",
       "image": "assets/images/im3.jpg",
       "language": "English",
       "price": "167",
@@ -214,7 +214,7 @@
     },
     {
       "id": 23,
-      "name": "fortune",
+      "name": "Fortune",
       "image": "assets/images/im4.jpg",
       "language": "English",
       "price": "325",
@@ -224,7 +224,7 @@
     },
     {
       "id": 24,
-      "name": "outlook",
+      "name": "Outlook",
       "image": "assets/images/im5.jpg",
       "language": "English",
       "price": "154",
@@ -234,7 +234,7 @@
     },
     {
       "id": 25,
-      "name": "cricket today",
+      "name": "Cricket today",
       "image": "assets/images/im6.jpg",
       "language": "English",
       "price": "40",
@@ -244,7 +244,7 @@
     },
     {
       "id": 26,
-      "name": "sportstar",
+      "name": "Sportstar",
       "image": "assets/images/im7.jpg",
       "language": "English",
       "price": "490",
@@ -274,7 +274,7 @@
     },
     {
       "id": 29,
-      "name": "sports business",
+      "name": "Sports business",
       "image": "assets/images/im10.jpg",
       "language": "English",
       "price": "250",
@@ -284,7 +284,7 @@
     },
     {
       "id": 30,
-      "name": "wired magazine",
+      "name": "Wired magazine",
       "image": "assets/images/im11.jpg",
       "language": "English",
       "price": "900",
@@ -314,7 +314,7 @@
     },
     {
       "id": 33,
-      "name": "digit",
+      "name": "Digit",
       "image": "assets/images/im14.jpg",
       "language": "English",
       "price": "490",
@@ -324,7 +324,7 @@
     },
     {
       "id": 34,
-      "name": "tech breifs",
+      "name": "Tech breifs",
       "image": "assets/images/im15.jpg",
       "language": "English",
       "price": "910",
@@ -553,6 +553,10 @@
     {
       "user4": "aswitha:1234",
       "id": 2
+    },
+    {
+      "user4": "Bhagya:test123",
+      "id": 3
     }
   ],
   "reviews": [
@@ -795,6 +799,56 @@
       "review": "Loved this newspaper for the useful information it contains.",
       "date": "2021-12-28T14:04:08.715Z",
       "id": 30
+    },
+    {
+      "itemId": 0,
+      "rating": 4,
+      "author": "bhagya",
+      "review": "Very useful.",
+      "date": "2021-12-30T05:07:58.923Z",
+      "id": 31
+    }
+  ],
+  "orders": [
+    {
+      "fullName": "R. Bhagya Sree",
+      "address": "2/979-1, Jayanagar colony, Yellanur road",
+      "city": "Tadipatri",
+      "postalCode": "515411",
+      "country": "India",
+      "NameOnCard": "Bhagya sree",
+      "CreditCardNum": "1111-2222-3333-4444",
+      "ExpMon": "09",
+      "ExpYear": "2023",
+      "Cvv": "100",
+      "cart": [
+        {
+          "id": 5,
+          "name": "Deccan Chronicle",
+          "image": "assets/images/deccan_chronicle.jpg",
+          "language": "English",
+          "price": "225",
+          "featured": false,
+          "description": "Deccan Chronicle is an Indian English-language daily newspaper founded by Rajagopal Mudaliar in the 1930s & currently owned by Samagrah Commercial Pvt Limited. It is famous for providing false information and posting anti-India content to provoke people and cause communal disharmony. It is published in Hyderabad, Telangana, by Deccan Chronicle Holdings Limited (DCHL). The newspaper's name derives from the originating place, the Deccan regions of India. Deccan Chronicle has eight editions in Andhra Pradesh and Telangana. They also publish from Chennai and Bengaluru.",
+          "qty": 2
+        },
+        {
+          "id": 22,
+          "name": "forbes",
+          "image": "assets/images/im3.jpg",
+          "language": "English",
+          "price": "167",
+          "featured": false,
+          "description": "forbes india is indian edition of forbes. it features articles on finance, industry, investing, and marketing topics. Forbes also reports on related subjects such as technology, communications, science, politics, and law.",
+          "category": "business",
+          "qty": 2
+        }
+      ],
+      "user": "Bhagya",
+      "price": 784,
+      "items": 4,
+      "date": "2022-01-02T15:34:18.101Z",
+      "id": 1
     }
   ]
 }

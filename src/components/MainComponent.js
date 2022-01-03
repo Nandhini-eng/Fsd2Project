@@ -18,18 +18,20 @@ import { connect } from 'react-redux';
 import { fetchNewspapers, fetchMagazines, filterMagazinesByCategory, 
   filterMagazinesByLanguage, 
     filterNewspapersByLanguage, sortNewspapers,sortMagazines, postFeedback,postsignup,fetchUsers,fetchReviews, postReview, 
-    getproducts,addToCart,removefromCart,adjustQty } from '../redux/ActionCreators';
+    getproducts,addToCart,removefromCart,adjustQty,fetchOrders,postOrder,fetchItems} from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
-
+import Checkout from './Checkout';
+import OrdersComponent from './OrdersComponent';
+import {user_real} from "./Login";
 
 const mapStateToProps = (state) => (
   {
     newspapers: state.newspapers,
-    magazines: state.magazines,
-    cartitem:state.cartReducer, 
-    regusers:state.regusers,
-    reviews: state.reviews
-    
+    magazines: state.magazines,  
+    reviews: state.reviews,
+    cartitem: state.cartReducer,  
+    orders: state.orders,
+    regusers:state.regusers, 
   }
 );
 
@@ -50,18 +52,24 @@ const mapDispatchToProps = (dispatch) => ({
     postReview: (itemId, rating, author, review) => dispatch(postReview(itemId, rating, author, review)),
     getproducts: (newspapers,magazines)=>{dispatch(getproducts(newspapers,magazines))},
     addtocart: (id)=>{dispatch(addToCart(id))},
+    resetCheckoutForm:()=>{dispatch(actions.reset('order'))},
+    fetchOrders:()=>{dispatch(fetchOrders())},
+    postOrder:(fullName,address,city, postalCode, country,NameOnCard,CreditCardNum,ExpMon,ExpYear,Cvv,cart,user,price,items)=>dispatch(postOrder(fullName,address,city, postalCode, country,NameOnCard,CreditCardNum,ExpMon,ExpYear,Cvv,cart,user,price,items)),
     // removefromCart:(id)=>{dispatch(removefromCart(id))},
     // adjustQty:(id)=>{dispatch(adjustQty(id))}
-
+    fetchItems:()=>{dispatch(fetchItems())},
 });
 
 class Main extends Component{
    
     componentDidMount() {
+      this.props.fetchItems();
       this.props.fetchNewspapers();
       this.props.fetchMagazines();
       this.props.fetchUsers();
       this.props.fetchReviews();
+      this.props.fetchOrders();
+      
     }
 
     render() {
@@ -88,6 +96,7 @@ class Main extends Component{
               reviewsErrMess={this.props.reviews.errMess}
               postReview={this.props.postReview}
               addtocart={this.props.addtocart}
+              checkorders={this.props.orders.orders}
               />
         );
         }
@@ -101,6 +110,7 @@ class Main extends Component{
               reviewsErrMess={this.props.reviews.errMess}
               postReview={this.props.postReview}
               addtocart={this.props.addtocart}
+              checkorders={this.props.orders.orders}
               />
         );
         }
@@ -120,7 +130,11 @@ class Main extends Component{
                 <Route path='/myaccount' component={() => <Account />} />
                 <Route path='/aboutus' component={() => <About />} />
                 <Route path='/cart' component={() => <Cart getproducts={this.props.getproducts} newspapers={this.props.newspapers} magazines={this.props.magazines} cart={this.props.cartitem.cart}  />} />
-                <Redirect to="/home" />    
+                <Route path='/checkout' component={()=><Checkout resetCheckoutForm={this.props.resetCheckoutForm} postOrder={this.props.postOrder} cart={this.props.cartitem.cart}/>}/>
+                <Route path='/orders' component={()=><OrdersComponent orders={this.props.orders.orders.filter((order)=>order.user === user_real)} ordersErrMess={this.props.orders.errMess}/>}/>
+                <Redirect to="/home" />
+
+
               </Switch>
               <Footer />
             </div>

@@ -44,7 +44,7 @@ const MagazinesMain = (props) => {
         .slice(pagesVisited, pagesVisited + magazinesPerPage)
         .map((magazine) => {
         return (
-           <div style={{width:260}}>
+           <div style={{width:250}}>
              {magazine}
            </div>
            );

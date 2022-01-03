@@ -23,7 +23,7 @@ function CartItem({ item, adjustQty, removefromCart }){
           <div className={styles.cartItem__details}>
             <p className={styles.details__title}>{item.title}</p>
           
-            <p className={styles.details__price}>$ {item.price}</p>
+            <p className={styles.details__price}>Rs {item.price}</p>
           </div>
           <div className={styles.cartItem__actions}>
             <div className={styles.cartItem__qty}>
@@ -41,8 +41,7 @@ function CartItem({ item, adjustQty, removefromCart }){
               onClick={() => removefromCart(item.id)}
               className={styles.actions__deleteItemBtn}
             >
-              
-              -
+              <img src="https://cdn4.iconfinder.com/data/icons/chat-icons-2/100/9-512.png" alt="deleteicon"></img>
             </button>
           </div>
         </div>

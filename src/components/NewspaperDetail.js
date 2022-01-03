@@ -20,15 +20,23 @@ class ReviewForm extends Component {
 
         this.toggleModal = this.toggleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
     toggleModal(){
         if (user_real){
             console.log('validated user');
-            this.setState({
-                isModalOpen: !this.state.isModalOpen
-            });
+            let cartItems = []
+            cartItems = this.props.orders.map((order)=>order.cart.map((item)=>(item.id)))
+            let flag = cartItems.some((value)=>value.some((id)=> (id === this.props.itemId)))
+            if (flag){
+                this.setState({
+                    isModalOpen: !this.state.isModalOpen
+                })
+            }
+            else{
+                alert("You cannot submit review as you have not subscibed this item!!")
+            };
+            
         }
         else{
             console.log('invalid user');
@@ -124,7 +132,7 @@ function RenderReviews({reviews,errMess}) {
 }
 
 
-function RenderItem({item, addtocart, reviews, postReview}) {
+function RenderItem({item, addtocart, reviews, postReview,orders}) {
 
     var sum = 0,avg = 0;
     if (reviews.length){
@@ -174,7 +182,7 @@ function RenderItem({item, addtocart, reviews, postReview}) {
                     <h5>Total No. of reviews posted till now: {reviews.length}</h5>
                     <h5>Average Rating: {avg} / 5</h5>
                     <br />
-                    <ReviewForm itemId={item.id} postReview={postReview} history={history}/>
+                    <ReviewForm itemId={item.id} postReview={postReview} history={history} orders={orders}/>
                 </div>
             
             </React.Fragment>
@@ -222,7 +230,7 @@ const NewspaperDetail = (props) => {
                     </div>                
                 </div> 
                 <div className="row">
-                    <RenderItem addtocart={props.addtocart} item={props.paperSelected} reviews={props.reviews} postReview={props.postReview}/>
+                    <RenderItem addtocart={props.addtocart} item={props.paperSelected} reviews={props.reviews} postReview={props.postReview} orders={props.checkorders}/>
                 </div>
                 <div className="row">
                     <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess}/>         
