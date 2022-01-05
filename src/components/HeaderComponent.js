@@ -18,6 +18,7 @@ class Header extends Component{
         this.state = {
           
             isNavOpen: false,
+            SearchField:"e "
             
       
             
@@ -36,7 +37,8 @@ class Header extends Component{
     
 
     render(props) {
-      console.log(<Cartval/>)
+      
+      console.log(this.props.newspapers.newspapers)
       
   
     
@@ -102,9 +104,19 @@ class Header extends Component{
                   
                       <NavItem>
                         <NavLink className="nav-link" to='/searchc'>
-                         search c
+                        {/* <input 
+                        className="pa3 bb br3 grow b--none bg-lightest-blue ma3"
+                        type = "search" 
+                        placeholder = "Search People" 
+                        onChange = {( e )=> {
+                          this.setState({
+                            SearchField:e.target.value
+                          })}}/>
+                          <Searchc  items={this.props.newspapers.newspapers} SearchField={this.state.SearchField} /> */}
+                          Click here to Search
+                      
                       </NavLink>
-                      </NavItem>  
+                      </NavItem>   
                       </Nav>
                 
                 </Collapse>
@@ -133,7 +145,8 @@ class Header extends Component{
 const mapStateToProps = (state) => {
   return {
     newspapers: state.newspapers,
-    magazines: state.magazines
+    magazines: state.magazines,
+    items:state.cartReducer.items,
   };
 };
 

@@ -11,11 +11,16 @@ import { baseUrl } from '../shared/baseUrl';
  
 
 
-function Searchc( {items} ) {
+function Searchc( {items}) {
+  const [searchField,setSearchField]=useState("")
 
-  const [searchField, setSearchField] = useState("");
-  console.log(items)
+  
+
+  console.log(items);
+  console.log(searchField);
+  
   const filteredItems = items.filter(
+    
     (item) => {
       return (
         item
@@ -25,7 +30,7 @@ function Searchc( {items} ) {
       );
     }
   );
-  console.log(filteredItems)
+  
 
   const handleChange =( e )=> {
     setSearchField(e.target.value);
@@ -38,13 +43,13 @@ function RenderItem({item}){
   return(
     <div className="zoom">
     <Card>
-      
+    <Link to={`/searchc/${item.id}`}>
 
           <CardImg width="400px" height="400px" src={baseUrl + item.image} alt={item.name} />
           <CardHeader><h3>{item.name}</h3></CardHeader>
       
       
-          
+          </Link>
     </Card>
     </div>
     
@@ -54,18 +59,20 @@ function RenderItem({item}){
 
 
   const display=filteredItems.map((item) => {
-    console.log(item)
+    if(searchField!=""){
+    
 return (
-  <div style={{width:300}}>
+  <div  style={{width:300}}>
     <RenderItem item={item}/>
   </div>
   );
+}
  });  
 
 
 
   return (
-    <section className="garamond">
+    <section className='garamound'>
     
       <div className="pa2">
         <input 
@@ -75,7 +82,12 @@ return (
           onChange = {handleChange}
         />
       </div>
+      <div className='row' style={{paddingLeft:"180px"}}>
+      <div className="row" style={{width:"80%",float:"right"}}>
       {display}
+      </div>
+      </div>
+      
     </section>
   );
 }
@@ -91,3 +103,5 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps)(Searchc);
+
+// export default Searchc;

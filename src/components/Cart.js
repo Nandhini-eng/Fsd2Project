@@ -41,7 +41,7 @@ export default function Cart(props) {
 
     return (
      
-       <div>
+       <div >
               <button onClick={()=>props.getproducts(props.newspapers,props.magazines)}>click</button>  
               
               <div className={styles.cart}>

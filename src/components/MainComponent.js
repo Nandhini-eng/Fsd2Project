@@ -10,6 +10,7 @@ import Searchc from './Searchc';
 import Cart from './Cart';
 import NewspaperDetail from './NewspaperDetail';
 import MagazinesMain from './MagazinesComponent';
+import ItemDetail from './ItemDetail';
 import MagazineDetail from './MagazineDetail';
 import * as signin from './Login';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
@@ -95,11 +96,29 @@ class Main extends Component{
               />
         );
         }
+
+
+
+        const ItemWithId = ({match}) => {
+          return(
+            <ItemDetail itemSelected={this.props.cartitem.items.filter((item) => item.id === parseInt(match.params.itemId,10))[0]} 
+              isLoading={this.props.magazines.isLoading}
+              errMess={this.props.magazines.errMess}
+              addtocart={this.props.addtocart}
+              getproducts={this.props.getproducts} 
+              newspapers={this.props.newspapers} 
+              magazines={this.props.magazines}
+              />
+        );
+        }
+
         
 
         return(
             <div>
               <Header /> 
+              
+              
               <Switch location={this.props.location}>
                 <Route path='/home' component={HomePage} />
                 <Route exact path ="/login" component={signin.Login}/>
@@ -107,12 +126,16 @@ class Main extends Component{
                 <Route path='/newspapers/:paperId' component={NewspaperWithId}   />
                 <Route exact path='/magazines' component={() => <MagazinesMain magazines={this.props.magazines} filterByCategory={this.props.filterMagsByCategory} filterByLanguage={this.props.filterMagsByLanguage} sort_magazines={this.props.sortMagazines} />} />
                 <Route path='/magazines/:magId' component={MagazineWithId} />
+                
                 <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} /> 
                 <Route path='/myaccount' component={() => <Account />} />
                 <Route path='/aboutus' component={() => <About />} />
                 <Route path='/cart' component={() => <Cart getproducts={this.props.getproducts} newspapers={this.props.newspapers} magazines={this.props.magazines} cart={this.props.cartitem.cart}  />} />
-                <Route path='/searchc' component={() => <Searchc />} />
-                <Redirect to="/home" />               
+                <Route exact path='/searchc' component={() => <Searchc />} />
+                <Route path='/searchc/:itemId' component={ItemWithId} />  
+               
+                <Redirect to="/home" />
+                             
               </Switch>
               <Footer />
             </div>

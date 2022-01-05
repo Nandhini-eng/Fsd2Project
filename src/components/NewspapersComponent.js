@@ -21,9 +21,7 @@ function RenderItem({item}){
             <CardHeader><h3>{item.name}</h3></CardHeader>
             </Pulse>
          </Link>
-         <div className="cartb">
         
-      </div>    
       </Card>
       </div>
       
@@ -128,7 +126,7 @@ const NewspapersMain = (props) => {
                 </div>
                 
                 <div className="row" style={{width:"80%",float:"right"}} >
-                <Fade out>    
+                <Fade right>    
                   {displayPapers}
                   <ReactPaginate
                   previousLabel={"Previous"}
