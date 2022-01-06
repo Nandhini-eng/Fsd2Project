@@ -1,4 +1,5 @@
 
+
 import React, { useState ,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import styles from "./Cart.module.css";
@@ -48,7 +49,8 @@ function Cart(props) {
     console.log(totalItems)
       if(totalItems === 1){
         return(
-        <div >
+          <div className='ca'>
+          <div>
               <div className={styles.cart}>
                 <div className={styles.cart__items}>
                  {props.cart.map((item) => (
@@ -67,9 +69,11 @@ function Cart(props) {
             </div>
            </div>
           </div>
+          </div>
     )}
     else if(totalItems === 0){
       return(
+        <div className='ca'>
         <div >
               <div className={styles.cart}>
                 <div className={styles.cart__items}>
@@ -89,13 +93,14 @@ function Cart(props) {
             </div>
            </div>
           </div>
+          </div>
         
     )
       
     }
     else{
       return(
-        <div >
+        <div className='ca'>
               <div className={styles.cart}>
                 <div className={styles.cart__items}>
                  {props.cart.map((item) => (

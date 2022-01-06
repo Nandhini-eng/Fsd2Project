@@ -83,7 +83,8 @@ const MagazinesMain = (props) => {
         }
         else{
           return (
-            <div style={{backgroundImage:`url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")`,backgroundSize:"auto"}}>
+          
+            <div className="mag">
               <div style={{paddingLeft:"70px",paddingRight:"15px"}}>
               <div className="row">
                   <Breadcrumb>
@@ -154,6 +155,7 @@ const MagazinesMain = (props) => {
               </div>
               </div>
             </div>
+            
           );
         }  
 }

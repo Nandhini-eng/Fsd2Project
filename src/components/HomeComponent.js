@@ -67,7 +67,7 @@ function Home(props){
     }
     else{
         return(
-            <div style={{backgroundImage:`url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")`}}>
+            <div className="hm">
             <div className="container" >
                 <div className="row row-content">
                     {newspapers}

@@ -52,7 +52,8 @@ class Login extends Component{
     render(){
     
         return(
-            <div style={{paddingLeft:"400px", paddingTop:"50px",paddingBottom:'80px',background: '#f2f2f2'}}>
+            <div className='log'>
+            <div style={{paddingLeft:"400px", paddingTop:"50px",paddingBottom:'80px'}}>
                 <div className='form-1' style={{backgroundColor: 'white'}}>
                     <div>
                         <h1>Welcome back</h1>
@@ -79,7 +80,7 @@ class Login extends Component{
                     </div>
                 </div>
             </div>
-
+            </div>
             
         )
     }

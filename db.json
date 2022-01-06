@@ -561,6 +561,10 @@
     {
       "user4": "samhitha:Samhi_905",
       "id": 4
+    },
+    {
+      "user4": "samhitha:Samhi_905",
+      "id": 5
     }
   ],
   "reviews": [
@@ -882,6 +886,46 @@
       "items": 1,
       "date": "2022-01-06T05:19:20.260Z",
       "id": 2
+    },
+    {
+      "fullName": "samhita",
+      "address": "SBI colony 6th line",
+      "city": "Kadapa",
+      "postalCode": "516390",
+      "country": "India",
+      "NameOnCard": "sam",
+      "CreditCardNum": "1234567890123456",
+      "ExpMon": "11",
+      "ExpYear": "2023",
+      "Cvv": "123",
+      "cart": [
+        {
+          "id": 0,
+          "name": "Eenadu",
+          "image": "assets/images/Eenadu.jpg",
+          "language": "Telugu",
+          "price": "195",
+          "featured": true,
+          "description": "Eenadu is the largest circulated Telugu-language daily newspaper of India sold mostly in the states of Andhra Pradesh and Telangana. According to the Indian Readership Survey (IRS) Q2 2019, Eenadu ranks eighth among the most circulated Indian-language dailies with a total readership (TR) of 1,614,105. It was founded by Ramoji Rao in 1974.",
+          "qty": 1
+        },
+        {
+          "id": 21,
+          "name": "Capital market",
+          "image": "assets/images/im2.jpg",
+          "language": "English",
+          "price": "216",
+          "featured": false,
+          "description": "A capital market is a financial market in which long-term debt (over a year) or equity-backed securities are bought and sold,[1] in contrast to a money market where short-term debt is bought and sold. Capital markets channel the wealth of savers to those who can put it to long-term productive use, such as companies or governments making long-term investments.",
+          "category": "business",
+          "qty": 1
+        }
+      ],
+      "user": "samhitha",
+      "price": 411,
+      "items": 2,
+      "date": "2022-01-06T13:32:50.516Z",
+      "id": 3
     }
   ]
 }

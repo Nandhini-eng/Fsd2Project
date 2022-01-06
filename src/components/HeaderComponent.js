@@ -78,7 +78,7 @@ class Header extends Component{
     
         return(
           <React.Fragment>
-            <Navbar dark expand="md" style={{ backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")` }}>
+            <Navbar dark expand="md" style={{ backgroundImage: `url("https://c4.wallpaperflare.com/wallpaper/636/636/890/line-strip-grey-background-wallpaper-preview.jpg")` }}>
               <div className="container" style={{color:"white"}} >
                 <NavbarToggler onClick={this.toggleNav} />
                 {/* <NavbarBrand className="mr-auto" href="/">
@@ -86,10 +86,10 @@ class Header extends Component{
                 </NavbarBrand> */}
                 <Collapse isOpen={this.state.isNavOpen} navbar>
                   <Nav navbar>
-                    {/* <NavItem className="mr-auto" href="/">
+                    <NavItem className="mr-auto" href="/">
                     <img src='assets/images/logo.png' height="30" width="30" alt='Newspapers and Magazines' />
 
-                      </NavItem> */}
+                      </NavItem>
                       <NavItem>
                       <NavLink className="nav-link"  to='/home'>
                         <span className="fa fa-home fa-lg" ></span> Home
@@ -165,7 +165,8 @@ class Header extends Component{
            
              {/* green:#AFD275 */}
              {/* style={{backgroundColor:"#a2e8d0"}} greenish blue*/}
-            <div className="bg" style={{backgroundColor:"#e7717d"}} >
+            {/* <div className="bg" style={{backgroundColor:"#e7717d"}} > */}
+            <div className="hdr">
              <div className="container" >
                  <div className="row row-header">
                    <LightSpeed>
