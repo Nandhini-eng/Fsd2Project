@@ -220,6 +220,7 @@ const MagazineDetail = (props) => {
     }
     else if (props.magSelected != null){
         return(
+            <div className='magde'>
             <div className="container">
                 <div className="row">
                     <Breadcrumb>
@@ -237,6 +238,7 @@ const MagazineDetail = (props) => {
                 <div className="row">
                     <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess}/>  
                 </div>
+            </div>
             </div>
         );
     }    

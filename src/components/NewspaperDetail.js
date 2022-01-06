@@ -238,6 +238,7 @@ const NewspaperDetail = (props) => {
     }
     else if (props.paperSelected != null){
         return(
+            <div className='npde'>
             <div className="container">
                 <div className="row">
                     <Breadcrumb>
@@ -255,6 +256,7 @@ const NewspaperDetail = (props) => {
                 <div className="row">
                     <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess}/>         
                 </div>
+            </div>
             </div>
         );
     }    

@@ -5,6 +5,7 @@ function OrdersComponent(props){
     if (errMess === null){
        if (orders.length){
           return(
+            <div className="mo">
             <div style={{paddingLeft:"13%", paddingBottom:"20px"}}>
                 <h3>ORDERS</h3>
                 <table>
@@ -48,21 +49,26 @@ function OrdersComponent(props){
                 </table> 
               
             </div>
+            </div>
           );
        }
        else{
           return(
+            <div className="mo">
             <div className="col-12 col-md-10 m-1">
                 <h3>ORDERS</h3>
                 <h5>No Orders placed.</h5>
+            </div>
             </div>
           ); 
        }
     }
     else{
       return(
+        <div className="mo">
           <div className="col-12 col-md-10 m-1">
             <h5>{errMess}</h5>
+          </div>
           </div>
       ); 
     }
