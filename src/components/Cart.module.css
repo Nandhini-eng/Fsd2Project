@@ -1,5 +1,6 @@
 .cart {
-    margin: 2rem auto;
+    margin-left: 2rem auto; 
+    margin-right: 2rem auto;
     width: 1100px;
     display: flex;
     justify-content: space-between;
@@ -7,7 +8,7 @@
   
   .cart__items {
     flex: 0.7;
-    margin-right: 1rem;
+    margin: 1rem;
   }
   
   .cart__summary {
@@ -19,6 +20,8 @@
     padding: 1rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 10px;
+    margin:1rem;
+    background-color: whitesmoke;
   }
   
   .summary__title {
@@ -60,4 +63,7 @@
   
   .summary__checkoutBtn:hover {
     opacity: 0.75;
+  }
+  .cartcss1{
+    background-image: url("https://wallpaperaccess.com/full/2667044.jpg");
   }

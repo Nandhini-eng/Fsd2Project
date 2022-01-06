@@ -25,7 +25,7 @@ function Cart(props) {
     console.log(totalItems)
       if(totalItems === 1){
         return(
-        <div >
+        <div style={{backgroundImage: `url("https://wallpaperaccess.com/full/2667044.jpg")`}}>
               <div className={styles.cart}>
                 <div className={styles.cart__items}>
                  {props.cart.map((item) => (
@@ -47,7 +47,7 @@ function Cart(props) {
     )}
     else if(totalItems === 0){
       return(
-        <div >
+        <div style={{backgroundImage: `url("https://wallpaperaccess.com/full/2667044.jpg")`}}>
               <div className={styles.cart}>
                 <div className={styles.cart__items}>
                  {props.cart.map((item) => (
@@ -70,7 +70,7 @@ function Cart(props) {
     }
     else{
       return(
-        <div >
+        <div style={{backgroundImage: `url("https://wallpaperaccess.com/full/1812887.jpg")`}}>
               <div className={styles.cart}>
                 <div className={styles.cart__items}>
                  {props.cart.map((item) => (

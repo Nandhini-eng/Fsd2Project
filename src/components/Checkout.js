@@ -27,7 +27,7 @@ class Checkout extends Component {
     return (
 
     
-      <div className="row row-content" style={{backgroundColor:"lightgray",paddingLeft:"8%"}}>
+      <div className="row row-content" style={{backgroundImage:`url("https://w0.peakpx.com/wallpaper/909/359/HD-wallpaper-black-lines-material-design-creative-geometric-shapes-lollipop-lines-black-material-design-strips-geometry-black-backgrounds.jpg")`,paddingLeft:"8%"}}>
       <br />
        <div className="col-12 col-md-11" style={{backgroundColor:"#e3efc8"}}>
            <Form model="order" onSubmit={(values) => this.handleSubmit(values)}>
@@ -35,7 +35,7 @@ class Checkout extends Component {
                    <h3>Shipping Address</h3>
                <Row className="form-group">
                    <Label htmlFor="fullName" md={2} style={{fontWeight:"bold"}}>Full Name</Label>
-                   <Col md={10} style={{  border: "1px solid #ccc",borderRadius:"4px"}}>
+                   <Col md={10} style={{ borderRadius:"4px"}}>
                        <Control.text model=".fullName" id="fullName" name="fullName"
                            placeholder="Enter full name"
                            className="form-control"
@@ -57,7 +57,7 @@ class Checkout extends Component {
                <br />
                <Row className="form-group">
                    <Label htmlFor="address" md={2} style={{fontWeight:"bold"}}>Address</Label>
-                   <Col md={10} style={{  border: "1px solid #ccc",borderRadius:"4px"}}>
+                   <Col md={10} style={{ borderRadius:"4px"}}>
                        <Control.text model=".address" id="address" name="address"
                            placeholder="Enter address"
                            className="form-control"
@@ -79,7 +79,7 @@ class Checkout extends Component {
                <br />
                <Row className="form-group">
                <Label htmlFor="city" md={2} style={{fontWeight:"bold"}}>City</Label>
-                   <Col md={10} style={{  border: "1px solid #ccc",borderRadius:"4px"}}>
+                   <Col md={10} style={{ borderRadius:"4px"}}>
                        <Control.text model=".city" id="city" name="city"
                            placeholder="Enter city"
                            className="form-control" 
@@ -101,7 +101,7 @@ class Checkout extends Component {
                <br />
                <Row className="form-group">
                    <Label htmlFor="postalCode" md={2} style={{fontWeight:"bold"}}>Postal Code</Label>
-                   <Col md={10} style={{  border: "1px solid #ccc",borderRadius:"4px"}}>
+                   <Col md={10} style={{ borderRadius:"4px"}}>
                        <Control.text model=".postalCode" id="postalCode" name="postalCode"
                            placeholder="Enter postalCode"
                            className="form-control"
@@ -124,7 +124,7 @@ class Checkout extends Component {
                <br/>
                <Row className="form-group">
                    <Label htmlFor="country" md={2} style={{fontWeight:"bold"}}>Country</Label>
-                   <Col md={10} style={{  border: "1px solid #ccc",borderRadius:"4px"}}>
+                   <Col md={10} style={{ borderRadius:"4px"}}>
                        <Control.text model=".country" id="country" name="country"
                            placeholder="Enter country"
                            className="form-control"
@@ -151,7 +151,7 @@ class Checkout extends Component {
                    <h3>Payment Details</h3>
                <Row className="form-group">
                    <Label htmlFor="NameOnCard" md={2} style={{fontWeight:"bold"}}>Name On Card</Label>
-                   <Col md={10} style={{  border: "1px solid #ccc",borderRadius:"4px"}}>
+                   <Col md={10} style={{borderRadius:"4px"}}>
                        <Control.text model=".NameOnCard" id="NameOnCard" name="NameOnCard"
                            placeholder="Enter Name On Card"
                            className="form-control"
@@ -174,7 +174,7 @@ class Checkout extends Component {
                <br/>
                <Row className="form-group">
                    <Label htmlFor="CreditCardNum" md={2} style={{fontWeight:"bold"}}>Credit Card Number</Label>
-                   <Col md={10} style={{  border: "1px solid #ccc",borderRadius:"4px"}}>
+                   <Col md={10} style={{ borderRadius:"4px"}}>
                        <Control.text model=".CreditCardNum" id="CreditCardNum" name="CreditCardNum"
                            placeholder="Enter Credit Card Number"
                            className="form-control"
@@ -197,7 +197,7 @@ class Checkout extends Component {
                <br/>
                <Row className="form-group">
                    <Label htmlFor="ExpMon" md={2} style={{fontWeight:"bold"}}>Expiry Month</Label>
-                   <Col md={10} style={{  border: "1px solid #ccc",borderRadius:"4px"}}>
+                   <Col md={10} style={{ borderRadius:"4px"}}>
                        <Control.text model=".ExpMon" id="ExpMon" name="ExpMon"
                            placeholder="Enter Expiry Month"
                            className="form-control"
@@ -221,7 +221,7 @@ class Checkout extends Component {
                <br/>
                <Row className="form-group">
                    <Label htmlFor="ExpYear" md={2} style={{fontWeight:"bold"}}>Expiry Year</Label>
-                   <Col md={10} style={{  border: "1px solid #ccc",borderRadius:"4px"}}>
+                   <Col md={10} style={{  borderRadius:"4px"}}>
                        <Control.text model=".ExpYear" id="ExpYear" name="ExpYear"
                            placeholder="Enter Expiry Year"
                            className="form-control"
@@ -244,7 +244,7 @@ class Checkout extends Component {
                <br/>
                <Row className="form-group">
                    <Label htmlFor="Cvv" md={2} style={{fontWeight:"bold"}}>CVV</Label>
-                   <Col md={10} style={{  border: "1px solid #ccc",borderRadius:"4px"}}>
+                   <Col md={10} style={{ borderRadius:"4px"}}>
                        <Control.text model=".Cvv" id="Cvv" name="Cvv"
                            placeholder="Enter CVV"
                            className="form-control"
@@ -279,6 +279,7 @@ class Checkout extends Component {
         </div>
         
 
+  
   </div>
   );
 }

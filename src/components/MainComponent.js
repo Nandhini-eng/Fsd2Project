@@ -23,7 +23,7 @@ import { actions } from 'react-redux-form';
 import Checkout from './Checkout';
 import OrdersComponent from './OrdersComponent';
 import {user_real} from "./Login";
-
+import Newsdetails from "./Newsdetails";
 const mapStateToProps = (state) => (
   {
     newspapers: state.newspapers,
@@ -89,7 +89,7 @@ class Main extends Component{
 
         const NewspaperWithId = ({match}) => {
           return(
-            <NewspaperDetail paperSelected={this.props.newspapers.newspapers.filter((paper) => paper.id === parseInt(match.params.paperId,10))[0]} 
+            <Newsdetails paperSelected={this.props.newspapers.newspapers.filter((paper) => paper.id === parseInt(match.params.paperId,10))[0]} 
               isLoading={this.props.newspapers.isLoading}
               errMess={this.props.newspapers.errMess}
               reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.paperId,10))} 

@@ -7,6 +7,7 @@ import { Loading } from './LoadingComponent';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
 import {user_real}  from './Login';
+import ReactStars from 'react-stars';
 //import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 class ReviewForm extends Component {
@@ -101,7 +102,7 @@ function RenderReviews({reviews,errMess}) {
                         // <Fade in> 
                             <li key={review.id}>
                                 <h5>{review.review}</h5>
-                                <h6>--Rating: {review.rating}</h6>
+                                <ReactStars count={5} size={24}  value={review.rating} color2={'#ffd700'} edit={false}/>
                                 <h6>--Author: {review.author}</h6>
                                 <h6>--Posted on: {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(review.date)))}</h6>
                                 <br />
@@ -180,7 +181,7 @@ function RenderItem({item, addtocart, reviews, postReview,orders}) {
                     <br />
                     <br />
                     <h5>Total No. of reviews posted till now: {reviews.length}</h5>
-                    <h5>Average Rating: {avg} / 5</h5>
+                    <h5>Average Rating: <ReactStars count={5} size={24}  value={avg} color2={'#ffd700'} edit={false}/>{avg} / 5</h5>
                     <br />
                     <ReviewForm itemId={item.id} postReview={postReview} history={history} orders={orders}/>
                 </div>
