@@ -4,7 +4,7 @@ import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbIte
 import { Loading } from './LoadingComponent';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
-import {user}  from './Login';
+
 
 import Zoom from 'react-reveal/Zoom';
 
@@ -20,17 +20,7 @@ function RenderItem({props}) {
 
 
     }
-    const history=useHistory();
-    if (item != null){
-        const IsLogin=()=>{ 
-            if(user){
-                console.log('yes')
-            }
-            else{
-                console.log('no')
-                history.push("/login");    
-            }
-        }
+    
         return( 
             <React.Fragment>
                 <div className="col-12 col-md-5 m-1">
@@ -53,13 +43,9 @@ function RenderItem({props}) {
                 </div>
             </React.Fragment>
         );
+
     }
-    else{
-       return(
-           <div></div>
-       ); 
-    }
-}
+
 
 const ItemDetail = (props) => {
 

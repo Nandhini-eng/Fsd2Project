@@ -99,8 +99,8 @@ const NewspapersMain = (props) => {
               </div>
               <br/>
               <div className="row">
-                <div style={{width:"17%",float:"left",paddingRight:"10px"}}>
-                <div style={{padding:"10px"}}>
+                <div style={{width:"17%",float:"left",paddingRight:"0px"}}>
+                <div style={{padding:"20px"}}>
                 <label style={{color:"#e39b98"}}>Filter By Language:</label>
                 <select className="form-control" value={props.newspapers.language}
                     onChange={(e) => props.filterByLanguage(props.newspapers.newspapers, e.target.value)}>
@@ -146,8 +146,8 @@ const NewspapersMain = (props) => {
                 </div>
 
               </div>
-              </div>
             </div>
+          </div>
           );
         }  
 }

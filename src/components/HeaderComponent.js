@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem,  Button } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import Cartval from './Cartval.js';
 import {getproducts} from '../redux/ActionCreators';
@@ -9,6 +9,8 @@ import LightSpeed from 'react-reveal/LightSpeed';
 import Jump from 'react-reveal/Jump';
 
 import Searchc from './Searchc.js';
+import {user_real} from './Login'
+let isLoggedin
 class Header extends Component{
   
     constructor(props){
@@ -20,6 +22,7 @@ class Header extends Component{
             isNavOpen: false,
             SearchField:"e "
             
+      
       
             
         };
@@ -33,14 +36,45 @@ class Header extends Component{
           isNavOpen: !this.state.isNavOpen
         });
     }
-
-    
-
-    render(props) {
+    back(e)
+    {
+      e.target.style.color = 'white'
+    }
+    back1(e)
+    {
+      e.target.style.color = 'rgba(255,255,255,.55)'
+    }
+    render() {
+      // let count=0
+      // let x=this.props.cart.map(item=>count+=item.qty)
+      // console.log(x[1])
+       
+      // console.log(Cartval(this.props.cart))
+        
+        console.log(user_real)
+        if(user_real){
+          console.log('Loggedin')
+        }
+        else{
+          console.log('Not logged in')
+        }
+        if(user_real){
+          isLoggedin=
+          <Link to='/myaccount'>
+                          <Button  style={{color:'rgba(255,255,255,.55)'}}  onMouseOver={this.back} onMouseOut={this.back1}>
+                            <span className="fa fa-sign-in fa-lg"></span> Logout
+                          </Button>
+          </Link>
+        }
+        else{
+          isLoggedin=
+          <Link to='/signup'>
+                          <Button  style={{color:'rgba(255,255,255,.55)'}}  onMouseOver={this.back} onMouseOut={this.back1}>
+                            <span className="fa fa-sign-in fa-lg"></span> Signup
+                          </Button>
+                        </Link>
+        }
       
-      console.log(this.props.newspapers.newspapers)
-      
-  
     
         return(
           <React.Fragment>
@@ -86,37 +120,43 @@ class Header extends Component{
                         <span className="fa fa-address-card fa-lg"></span> Contact Us
                       </NavLink>
                     </NavItem>
+                   
+                    
                     <NavItem>
-                      <NavLink  className="nav-link" to='/login'>
-                        <span className="fa fa-key fa-lg"></span> Login
-                      </NavLink>
+                      <NavLink className="nav-link" to='/orders'>
+                    <span className="fa fa-shopping-bag fa-lg"></span> My Orders 
+                  
+                    </NavLink>
                     </NavItem>
+
                     <NavItem>
+                        <NavLink className="nav-link" to='/searchc'>
+                        
+                          Click here to Search
+                      
+                      </NavLink>
+                      </NavItem>
+                      <NavItem>
                       <NavLink className="nav-link" to='/cart'>
-                    <span className="fa fa-key fa-lg"></span> cart 
+                    <span className="fa fa-shopping-cart fa-lg"></span> Cart 
                   
                     </NavLink>
                     
                     </NavItem>
+                    <NavItem><Cartval/></NavItem>
+                      
+
+                   </Nav>
+                   <Nav className='ms-auto' navbar>
+                    
+                      <NavItem>
+                        {isLoggedin}
+                      </NavItem>
                     
 
-                    <NavItem ><Cartval/></NavItem>
+                
                   
-                      <NavItem>
-                        <NavLink className="nav-link" to='/searchc'>
-                        {/* <input 
-                        className="pa3 bb br3 grow b--none bg-lightest-blue ma3"
-                        type = "search" 
-                        placeholder = "Search People" 
-                        onChange = {( e )=> {
-                          this.setState({
-                            SearchField:e.target.value
-                          })}}/>
-                          <Searchc  items={this.props.newspapers.newspapers} SearchField={this.state.SearchField} /> */}
-                          Click here to Search
-                      
-                      </NavLink>
-                      </NavItem>   
+                         
                       </Nav>
                 
                 </Collapse>

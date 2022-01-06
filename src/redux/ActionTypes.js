@@ -9,9 +9,21 @@ export const FILTER_MAGAGINES_BY_LANG = 'FILTER_MAGAGINES_BY_LANG';
 export const FILTER_NEWSPAPERS_BY_LANG = 'FILTER_NEWSPAPERS_BY_LANG';
 export const SORT_NEWSPAPERS = 'SORT_NEWSPAPERS';
 export const SORT_MAGAZINES = 'SORT_MAGAZINES';
+//added new
+export const ADD_USERS = 'ADD_USERS';
+export const ADD_USER = 'ADD_USER';
+
+export const ADD_REVIEW = 'ADD_REVIEW';
+export const REVIEWS_FAILED = 'REVIEWS_FAILED';
+export const ADD_REVIEWS = 'ADD_REVIEWS';
 
 export const ADD_TO_CART='ADD_TO_CART';
 export const REMOVE_FROM_CART='REMOVE_FROM_CART';
 export const ADJUST_QTY='ADJUST_QTY';
 export const LOAD_CURRENT_ITEM='LOAD_CURRENT_ITEM';
 export const GET_PRODUCTS='GET_PRODUCTS';
+export const CART_EMPTY = 'CART_EMPTY';
+
+export const ORDER_PLACED='ORDER_PLACED';
+export const ORDER_FAILED='ORDER_FAILED';
+export const ORDERS_PLACED='ORDERS_PLACED';

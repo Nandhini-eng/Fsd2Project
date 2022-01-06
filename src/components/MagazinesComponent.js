@@ -17,7 +17,7 @@ function RenderItem({item}){
       <Card>
          <Link to={`/magazines/${item.id}`}>
             <Pulse>
-            <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} style={{ overflow: "hidden" }}
+            <CardImg width="100%" height="400px"  src={baseUrl + item.image} alt={item.name} style={{ overflow: "hidden" }}
       onMouseOver={(e) => (e.currentTarget.style = { transform: "scale(1.25)", overflow: "hidden" })}
       onMouseOut={(e) => (e.currentTarget.style = { transform: "scale(1)", overflow: "hidden" })} />
             <CardHeader><h3>{item.name}</h3></CardHeader>
