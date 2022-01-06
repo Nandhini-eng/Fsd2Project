@@ -38,6 +38,30 @@ address{
   background-color: #512DA8;
 }
 
+h1{
+  font-size:xx-large ;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  font-stretch: semi-expanded;
+}
+
+h3{
+  font-size: 25px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #e05809
+}
+
+h5{
+  font-size: 20px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  color: #023d47
+}
+
+p{
+  font-size: 17px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight:700;
+}
 
 .page-enter {
   opacity: 0.01;

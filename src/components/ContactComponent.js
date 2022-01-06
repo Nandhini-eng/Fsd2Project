@@ -80,10 +80,12 @@ class Contact extends Component {
                 </div>
 
                 <div className="row row-content" style={{backgroundColor:"lightgray"}}>
+                    
                    <div className="col-12">
                       <h3>Send us your Feedback</h3>
                    </div>
                    <br />
+
                     <div className="col-12 col-md-9">
                         <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className="form-group">

@@ -84,7 +84,8 @@ export const filterMagazinesByCategory = (magazines, category) => (dispatch) => 
       type: ActionTypes.FILTER_MAGAGINES_BY_CATEGORY,
       payload : {
         category: category,
-        items: category === '' ? magazines : magazines.filter((mag) => mag.category === category)
+        items: category === '' ? magazines : magazines.filter((mag) => mag.category === category),
+        magazines: magazines
       }
   })
 }
@@ -94,7 +95,8 @@ export const filterMagazinesByLanguage = (magazines, lang) => (dispatch) => {
       type: ActionTypes.FILTER_MAGAGINES_BY_LANG,
       payload : {
         lang: lang,
-        items: lang === '' ? magazines : magazines.filter((mag) => mag.language === lang)
+        items: lang === '' ? magazines : magazines.filter((mag) => mag.language === lang),
+        magazines: magazines
       }
   })
 }
@@ -265,6 +267,13 @@ export const reviewsFailed = (errmess) => ({
   payload: errmess
 });
 
+export const addReviews = (reviews) => ({
+  type: ActionTypes.ADD_REVIEWS,
+  payload: reviews
+});
+
+
+
   /*export const postsignup = (username, password) => (dispatch) => {
    
     const newuser = {
@@ -330,7 +339,7 @@ export const reviewsFailed = (errmess) => ({
       })
       .then(response => response.json())
       .then(response => dispatch(adduser(response)))
-      .catch(error =>  { console.log('Post Feedback'); alert('Your Feedback could not be posted\nError: '); });
+      .catch(error =>  { console.log('Post SignUp'); alert('Your details could not be posted\nError: '); });
   };
   
   export const fetchUsers = () => (dispatch) => {    
@@ -357,17 +366,6 @@ export const reviewsFailed = (errmess) => ({
     type: ActionTypes.ADD_USERS,
     payload: regusers
   });
-
-
-
-
-
-
-  
-export const addReviews = (reviews) => ({
-  type: ActionTypes.ADD_REVIEWS,
-  payload: reviews
-});
 
 
 
@@ -412,3 +410,27 @@ export const getproducts=(news,mags)=>{
       payload:news.newspapers.concat(mags.magazines)
     }
 };
+
+
+export const getTopNewspapers = (newspapers, reviews) => (dispatch) => {
+  var array = [];
+  reviews.map(rev => newspapers.map(np => rev.itemId === np.id ? array.push({...np}) : null) )
+  return dispatch({
+      type: ActionTypes.TOP_RATED_NEWSPAPERS,
+      payload : {
+        items: array
+      }
+  })
+}
+
+export const getTopMagazines = (magazines, reviews) => (dispatch) => {
+  var array = [];
+  reviews.map(rev => magazines.map(mag => rev.itemId === mag.id ? array.push({...mag}) : null) )
+  return dispatch({
+      type: ActionTypes.TOP_RATED_MAGAZINES,
+      payload : {
+        items: array,
+        magazines: magazines
+      }
+  })
+}

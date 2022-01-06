@@ -32,7 +32,7 @@ class ReviewForm extends Component {
         }
         else{
             console.log('invalid user');
-            this.props.history.push('/login');
+            this.props.history.push('/signup');
         }
     }
 
@@ -46,7 +46,7 @@ class ReviewForm extends Component {
             <React.Fragment>
                <div className="col-12 col-md-7 m-1">
                 <Button outline onClick={this.toggleModal}>
-                    <h3><span className="fa fa-pencil fa-lg"></span> Submit Review</h3>
+                    <h4><span className="fa fa-pencil fa-lg"></span> Submit Review</h4>
                 </Button></div>
 
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
@@ -213,6 +213,7 @@ const NewspaperDetail = (props) => {
             <div className="container">
                 <div className="row">
                     <Breadcrumb>
+                        <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                         <BreadcrumbItem><Link to="/newspapers">Newspapers</Link></BreadcrumbItem>
                         <BreadcrumbItem active>{props.paperSelected.name}</BreadcrumbItem>
                     </Breadcrumb>

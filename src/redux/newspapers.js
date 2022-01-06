@@ -12,7 +12,7 @@ export const Newspapers = (state = {
 
     switch (action.type) {
         case ActionTypes.ADD_NEWSPAPERS:
-            return {...state, isLoading: false, errMess: null, newspapers: action.payload, filteredItems: action.payload,sortedNewspapers:action.payload};
+            return {...state, isLoading: false, errMess: null, newspapers: action.payload, filteredItems: action.payload, sortedNewspapers:action.payload};
         
         case ActionTypes.NEWSPAPERS_LOADING:
             return {...state, isLoading: true, errMess: null, newspapers: []}
@@ -22,8 +22,12 @@ export const Newspapers = (state = {
             
         case ActionTypes.FILTER_NEWSPAPERS_BY_LANG:
             return {...state, filteredItems: action.payload.items, language: action.payload.lang}
+
         case ActionTypes.SORT_NEWSPAPERS:
-            return {...state, sortedNewspapers: action.payload.items, sort: action.payload.sort}          
+            return {...state, sortedNewspapers: action.payload.items, sort: action.payload.sort} 
+            
+        case ActionTypes.TOP_RATED_NEWSPAPERS:
+                return {...state, filteredItems: action.payload.items }
         
         default:
           return state;

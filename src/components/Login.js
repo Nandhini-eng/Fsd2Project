@@ -54,7 +54,7 @@ class Login extends Component{
         return(
             <div style={{paddingLeft:"400px", paddingTop:"50px",paddingBottom:'80px',background: '#f2f2f2'}}>
                 <div className='form-1' style={{backgroundColor: 'white'}}>
-                    <div>
+                    <div className='login'>
                         <h1>Welcome back</h1>
                         <h4>It's great to see you back here</h4>
                         <br/>
@@ -74,8 +74,8 @@ class Login extends Component{
                         <br/>
                         <input type="password" name="password" id="pswd" required onChange={(event)=>this.setState({password:event.target.value})}/><br/>
                     </div>
-                    <div style={{fontFamily:'cursive',paddingLeft:'70px'}}>
-                        <button onClick={()=>{this.login()}}type="button" style={{fontFamily:'cursive',width: "15%"}}>Login</button>
+                    <div className='login' style={{fontFamily:'cursive',paddingLeft:'70px'}}>
+                        <button onClick={()=>{this.login()}} type="button" style={{fontFamily:'cursive',width: "15%"}}>Login</button>
                     </div>
                 </div>
             </div>

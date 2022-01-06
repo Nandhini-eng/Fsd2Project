@@ -16,6 +16,8 @@ export const ADD_USER = 'ADD_USER';
 export const ADD_REVIEW = 'ADD_REVIEW';
 export const REVIEWS_FAILED = 'REVIEWS_FAILED';
 export const ADD_REVIEWS = 'ADD_REVIEWS';
+export const TOP_RATED_NEWSPAPERS = 'TOP_RATED_NEWSPAPERS';
+export const TOP_RATED_MAGAZINES = 'TOP_RATED_MAGAZINES';
 
 export const ADD_TO_CART='ADD_TO_CART';
 export const REMOVE_FROM_CART='REMOVE_FROM_CART';

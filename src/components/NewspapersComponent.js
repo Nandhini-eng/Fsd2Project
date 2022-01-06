@@ -7,6 +7,7 @@ import ReactPaginate from "react-paginate";
 import "./paginate.css";
 
 function RenderItem({item}){
+    
     return(
       <Card>
          <Link to={`/newspapers/${item.id}`}>
@@ -14,7 +15,7 @@ function RenderItem({item}){
             <CardHeader><h3>{item.name}</h3></CardHeader>
          </Link>   
       </Card>
-      
+
     );
 }
 
@@ -24,11 +25,41 @@ const NewspapersMain = (props) => {
         const items = props.newspapers.filteredItems.map((item) => {
             return (
               <div key={item.id}>
-                <RenderItem item={item} />
+                <RenderItem item={item}/>
                 <br />
               </div>
             );
         });
+
+      
+
+        var items_reviews = [];
+          
+        var item_review = {};
+        var len = props.newspapers.newspapers.length;
+
+    
+        for (var i=0;i<len;i++){
+          var sum = 0, avg = 0;
+          item_review.itemId = i;
+          var revs = props.reviews.filter(rev => rev.itemId === i);
+          //console.log(JSON.stringify(revs));
+          if (revs.length){
+            sum = revs.map(rev=>rev.rating).reduce((r1,r2)=>r1+r2,0);
+            avg = sum/revs.length;
+          }
+          item_review.avgRating = avg;
+          items_reviews.push({...item_review});
+        }
+        //console.log(JSON.stringify(items_reviews));
+        
+
+        var filtered_revs = items_reviews.filter(rev => rev.avgRating >= 4 && rev.avgRating <= 5)
+        console.log(JSON.stringify(filtered_revs));
+        console.log(filtered_revs.length);
+
+      
+
         const [papers, setPapers] = useState(items);
         const [pageNumber, setPageNumber] = useState(0);
 
@@ -99,8 +130,7 @@ const NewspapersMain = (props) => {
                 </div>
               
                 <div style={{padding:"10px"}}>
-                <label>
-                Sort by</label>
+                 <label>Sort by</label>
                   <select className="form-control" 
                   value={props.newspapers.sort} 
                   onChange={(e)=> props.sort_newspapers(props.newspapers.filteredItems,e.target.value)}>
@@ -109,8 +139,13 @@ const NewspapersMain = (props) => {
                     <option value="highestprice">High to low price</option>
                     <option value="prname">Name</option>
                   </select>
-                
                 </div>
+                <br />
+                <br />
+                <div style={{padding:"10px"}}>
+                  <Button onClick={() => props.topNewspapers(props.newspapers.newspapers, filtered_revs)}>Top Rated Newspapers</Button> 
+                </div>
+
                 </div>
                 
                 <div className="row" style={{width:"80%",float:"right"}}>    

@@ -133,7 +133,7 @@ class Header extends Component{
              <div className="container">
                  <div className="row row-header">
                      <div className="col-12 col-sm-6" >
-                         <h1 style={{color:"white"}}>Newspapers and Magazines</h1>
+                         <h1>Newspapers and Magazines</h1>
                          <p>We provide various Newspapers and Magazines in this application. Users can subscribe and purchase their favourite newspapers and magazines and enjoy the joy of reading! </p>
                      </div>
                  </div>

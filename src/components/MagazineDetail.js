@@ -31,7 +31,7 @@ class ReviewForm extends Component {
         }
         else{
             console.log('invalid user');
-            this.props.history.push('/login');
+            this.props.history.push('/signup');
         }
     }
 
@@ -213,6 +213,7 @@ const MagazineDetail = (props) => {
             <div className="container">
                 <div className="row">
                     <Breadcrumb>
+                        <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                         <BreadcrumbItem><Link to="/magazines">Magazines</Link></BreadcrumbItem>
                         <BreadcrumbItem active>{props.magSelected.name}</BreadcrumbItem>
                     </Breadcrumb>

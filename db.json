@@ -553,6 +553,10 @@
     {
       "user4": "aswitha:1234",
       "id": 2
+    },
+    {
+      "user4": "Nandhini:Nandy2002",
+      "id": 3
     }
   ],
   "reviews": [
@@ -795,6 +799,22 @@
       "review": "Loved this newspaper for the useful information it contains.",
       "date": "2021-12-28T14:04:08.715Z",
       "id": 30
+    },
+    {
+      "itemId": 45,
+      "rating": 4,
+      "author": "nandhini",
+      "review": "Useful magazine that contains lots of info about current happenings.",
+      "date": "2022-01-04T18:19:00.524Z",
+      "id": 31
+    },
+    {
+      "itemId": 19,
+      "rating": 3,
+      "author": "nandhini",
+      "review": "good newspaper ",
+      "date": "2022-01-04T18:22:39.482Z",
+      "id": 32
     }
   ]
 }
