@@ -175,6 +175,7 @@ function RenderItem({item, addtocart, reviews, postReview,orders }) {
                 <div className="col-12 col-md-5 m-1">
                     <h3>Description</h3><br />
                     <h5>{item.description}</h5><br /><br />
+                    {/* <button onClick={x}><h4>Subscribe</h4></button>  */}
                     <button onClick={IsLogin}><h4>Subscribe</h4></button> 
                    
                     <br />

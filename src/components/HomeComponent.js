@@ -2,10 +2,12 @@ import React from 'react';
 import { Card, CardImg, CardHeader, CardText, CardBody,CardTitle, CardSubtitle} from 'reactstrap';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+
 import { FadeTransform } from 'react-animation-components';
 
 function RenderCard({item}) {
     return(
+        <div className="zoom">
         <FadeTransform in
                 transformProps={{
                     exitTransform: 'scale(0.5) translateY(-50%)'
@@ -14,24 +16,32 @@ function RenderCard({item}) {
                 <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
                 <CardHeader><h3>{item.name}</h3></CardHeader>
             </Card>
-        </FadeTransform>
+        // </FadeTransform>
+        </div>
     );
 }
 
 function Home(props){
     const newspapers = props.newspapers.map((newspaper) => {
         return(
-            <div className="col-12 col-md-3" key={newspaper.id}>
+            
+            <div className="col-12 col-md-3" key={newspaper.id} >
+                
                 <RenderCard item={newspaper} />
+                
             </div>
+
         );
     });
 
     const magazines = props.magazines.map((magazine) => {
         return(
             <div className="col-12 col-md-3" key={magazine.id}>
+    
                 <RenderCard item={magazine} />
+        
             </div>
+        
         );
     });
 
@@ -57,7 +67,8 @@ function Home(props){
     }
     else{
         return(
-            <div className="container">
+            <div style={{backgroundImage:`url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")`}}>
+            <div className="container" >
                 <div className="row row-content">
                     {newspapers}
                 </div>
@@ -65,7 +76,8 @@ function Home(props){
                 <div className="row row-content">
                     {magazines}
                 </div>
-            </div>     
+            </div>  
+            </div>   
         );
     }
 }

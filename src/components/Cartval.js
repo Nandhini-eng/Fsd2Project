@@ -5,12 +5,12 @@ function Cartval({cart}){
 
     useEffect(() => {
     let count = 0;
-    cart.forEach((item) => {
+    cart.map((item) => {
       count += item.qty;
     });
 
     setCartCount(count);
-    }, [cart, cartCount]);
+    }, [cart,cartCount]);
     return (
         <div>
             {cartCount}
@@ -22,8 +22,13 @@ function Cartval({cart}){
 const mapStateToProps = (state) => {
     return {
       cart: state.cartReducer.cart,
+      items:state.cartReducer.items,
     };
   };
+
+
+
+  
 
 
 export default connect(mapStateToProps)(Cartval);

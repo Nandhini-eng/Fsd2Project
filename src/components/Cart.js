@@ -8,6 +8,8 @@ function Cart(props) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
   
+
+ 
   
   useEffect(() => {
     let items = 0;
@@ -20,6 +22,27 @@ function Cart(props) {
     setTotalPrice(price);
   }, [props.cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
 
+  
+  
+  // function c(){
+  //   props.getproducts(props.newspapers,props.magazines)
+
+
+  // };
+  // c()
+  const x=()=>{
+    
+    props.getproducts(props.newspapers,props.magazines)
+
+
+};
+
+  
+
+
+    
+        
+              
     price = totalPrice
     items = totalItems
     console.log(totalItems)
@@ -66,7 +89,9 @@ function Cart(props) {
             </div>
            </div>
           </div>
-      )
+        
+    )
+      
     }
     else{
       return(
@@ -89,8 +114,10 @@ function Cart(props) {
             </div>
            </div>
           </div>
+
       )
     }
+    
 }
 
 

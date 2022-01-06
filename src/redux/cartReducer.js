@@ -8,6 +8,7 @@ export const cartReducer=(state={cart:[],items:null,currentItem:null},action)=>{
         case ActionTypes.ADD_TO_CART:
             const item=state.items.find((item)=>item.id===action.payload.id)
             const inCart=state.cart.find((item)=>item.id===action.payload.id ? true :false)
+
             // localStorage.setItem('cart',JSON.stringify(state.cart))
             return{
                 ...state,

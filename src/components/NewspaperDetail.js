@@ -9,6 +9,17 @@ import { baseUrl } from '../shared/baseUrl';
 import {user_real}  from './Login';
 //import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
+// import Zoom from 'react-reveal/Zoom';
+
+// function RenderItem({props}) {
+//     const item=props.paperSelected;
+//     const addtocart=props.addtocart;
+//     const x=()=>{
+    
+
+//         addtocart(item.id)
+    
+
 class ReviewForm extends Component {
 
     constructor(props){
@@ -140,6 +151,7 @@ function RenderItem({item, addtocart, reviews, postReview,orders}) {
         avg = sum/reviews.length;
     }
 
+    
     const history=useHistory();
     if (item != null){
         const IsLogin=()=>{ 
@@ -154,11 +166,11 @@ function RenderItem({item, addtocart, reviews, postReview,orders}) {
             }
         }
         return( 
-            <React.Fragment>
-            
-                <div className="col-12 col-md-5 m-1">
-                    {/* <FadeTransform
-                        in
+           <React.Fragment>
+           
+               <div className="col-12 col-md-5 m-1">
+                   {/* <FadeTransform
+                       in
                         transformProps={{
                             exitTransform: 'scale(0.5) translateY(-50%)'
                         }}> */}
@@ -175,6 +187,11 @@ function RenderItem({item, addtocart, reviews, postReview,orders}) {
                 <div className="col-12 col-md-5 m-1">
                     <h3>Description</h3><br />
                     <h5>{item.description}</h5><br /><br />
+            
+
+
+                    {/* <button onClick={x} ><h4>Subscribe</h4></button> */}
+        
                     <button onClick={IsLogin}><h4>Subscribe</h4></button>
                     <br />
                     <br />
@@ -194,6 +211,9 @@ function RenderItem({item, addtocart, reviews, postReview,orders}) {
        ); 
     }
 }
+
+
+
 
 
 const NewspaperDetail = (props) => {
@@ -239,5 +259,7 @@ const NewspaperDetail = (props) => {
         );
     }    
 }
+
+
 
 export default NewspaperDetail;

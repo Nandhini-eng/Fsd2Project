@@ -40,7 +40,7 @@ function Footer(props) {
                 </div>
             </div>
             <div className="row justify-content-center">             
-                <div className="col-auto">
+                <div className="col-auto" style={{color:"black"}}>
                     <p>© Copyright 2020 Newspapers And Magazines</p>
                 </div>
             </div>

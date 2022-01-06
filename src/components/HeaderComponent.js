@@ -2,7 +2,13 @@ import React, { Component} from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem,  Button } from 'reactstrap';
 import { NavLink,Link } from 'react-router-dom';
 import {connect} from 'react-redux';
-import Cartval from './Cartval';
+import Cartval from './Cartval.js';
+import {getproducts} from '../redux/ActionCreators';
+
+import LightSpeed from 'react-reveal/LightSpeed';
+import Jump from 'react-reveal/Jump';
+
+import Searchc from './Searchc.js';
 import {user_real} from './Login'
 let isLoggedin
 class Header extends Component{
@@ -14,7 +20,10 @@ class Header extends Component{
         this.state = {
           
             isNavOpen: false,
-            cartCount:0,
+            SearchField:"e "
+            
+      
+      
             
         };
 
@@ -69,23 +78,25 @@ class Header extends Component{
     
         return(
           <React.Fragment>
-            <Navbar dark expand="md">
-              <div className="container">
+            <Navbar dark expand="md" style={{ backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")` }}>
+              <div className="container" style={{color:"white"}} >
                 <NavbarToggler onClick={this.toggleNav} />
-                <Link to='/home'>
-                <NavbarBrand className="mr-auto" >
+                {/* <NavbarBrand className="mr-auto" href="/">
                   <img src='assets/images/logo.png' height="50" width="50" alt='Newspapers and Magazines' />
-                </NavbarBrand>
-                </Link>
+                </NavbarBrand> */}
                 <Collapse isOpen={this.state.isNavOpen} navbar>
                   <Nav navbar>
-                    <NavItem>
+                    {/* <NavItem className="mr-auto" href="/">
+                    <img src='assets/images/logo.png' height="30" width="30" alt='Newspapers and Magazines' />
+
+                      </NavItem> */}
+                      <NavItem>
                       <NavLink className="nav-link"  to='/home'>
-                        <span className="fa fa-home fa-lg"></span> Home
+                        <span className="fa fa-home fa-lg" ></span> Home
                       </NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink className="nav-link"  to='/newspapers'>
+                      <NavLink className="nav-link"  to='/newspapers' >
                         <span className="fa fa-newspaper-o fa-lg"></span> Newspapers
                       </NavLink>
                     </NavItem>
@@ -109,19 +120,32 @@ class Header extends Component{
                         <span className="fa fa-address-card fa-lg"></span> Contact Us
                       </NavLink>
                     </NavItem>
-                    <NavItem>
-                      <NavLink className="nav-link" to='/cart'>
-                    <span className="fa fa-shopping-cart fa-lg"></span> Cart 
-                  
-                    </NavLink>
-                    </NavItem>
-                    <NavItem><Cartval/></NavItem>
+                   
+                    
                     <NavItem>
                       <NavLink className="nav-link" to='/orders'>
                     <span className="fa fa-shopping-bag fa-lg"></span> My Orders 
                   
                     </NavLink>
                     </NavItem>
+
+                    <NavItem>
+                        <NavLink className="nav-link" to='/searchc'>
+                        
+                          Click here to Search
+                      
+                      </NavLink>
+                      </NavItem>
+                      <NavItem>
+                      <NavLink className="nav-link" to='/cart'>
+                    <span className="fa fa-shopping-cart fa-lg"></span> Cart 
+                  
+                    </NavLink>
+                    
+                    </NavItem>
+                    <NavItem><Cartval/></NavItem>
+                      
+
                    </Nav>
                    <Nav className='ms-auto' navbar>
                     
@@ -129,18 +153,27 @@ class Header extends Component{
                         {isLoggedin}
                       </NavItem>
                     
-                   </Nav>
+
+                
+                  
+                         
+                      </Nav>
+                
                 </Collapse>
               </div>
             </Navbar>
-
-            <div className="bg">
-             <div className="container">
+           
+             {/* green:#AFD275 */}
+             {/* style={{backgroundColor:"#a2e8d0"}} greenish blue*/}
+            <div className="bg" style={{backgroundColor:"#e7717d"}} >
+             <div className="container" >
                  <div className="row row-header">
+                   <LightSpeed>
                      <div className="col-12 col-sm-6" >
-                         <h1 style={{color:"white"}}>Newspapers and Magazines</h1>
-                         <p>We provide various Newspapers and Magazines in this application. Users can subscribe and purchase their favourite newspapers and magazines and enjoy the joy of reading! </p>
+                         <h1 style={{color:"black"}}>Newspapers and Magazines</h1>
+                         <p style={{color:"black"}}>We provide various Newspapers and Magazines in this application. Users can subscribe and purchase their favourite newspapers and magazines and enjoy the joy of reading! </p>
                      </div>
+                     </LightSpeed>
                  </div>
              </div>
             </div>
@@ -149,11 +182,18 @@ class Header extends Component{
     }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    newspapers: state.newspapers,
+    magazines: state.magazines,
+    items:state.cartReducer.items,
+  };
+};
 
-const mapStateToProps=state=>{
+const mapDispatchToProps=(dispatch)=>{
   return{
-    cart:state.cartReducer.cart
+    getproducts: (newspapers,magazines)=>{dispatch(getproducts(newspapers,magazines))},
   }
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps,mapDispatchToProps)(Header);

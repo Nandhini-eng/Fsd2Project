@@ -12,6 +12,7 @@ function Account() {
         
     }
     return(
+        <div style={{backgroundImage:`url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")`}}>
         <div className="container">
             <div className="row">
                 <h1> Hello {user_real}</h1>
@@ -19,6 +20,7 @@ function Account() {
                 <br/>
                 
             </div>    
+        </div>
         </div>
     );
 }
