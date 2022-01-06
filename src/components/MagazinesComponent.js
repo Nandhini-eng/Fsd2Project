@@ -5,15 +5,26 @@ import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 import ReactPaginate from "react-paginate";
 import "./paginate.css";
+import Fade from 'react-reveal/Fade';
+import Pulse from 'react-reveal/Pulse';
+import Zoom from 'react-reveal/Zoom';
+import Flash from 'react-reveal/Flash';
+
 
 function RenderItem({item}){
     return(
-      <Card>
-         <Link to={`/magazines/${item.id}`}>
-            <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
-            <CardHeader><h3>{item.name}</h3></CardHeader>
-         </Link>    
-      </Card>
+      <div className='zoom'>
+        <Card>
+          <Link to={`/magazines/${item.id}`}>
+              <Pulse>
+              <CardImg width="100%" height="400px"  src={baseUrl + item.image} alt={item.name} style={{ overflow: "hidden" }}
+        onMouseOver={(e) => (e.currentTarget.style = { transform: "scale(1.25)", overflow: "hidden" })}
+        onMouseOut={(e) => (e.currentTarget.style = { transform: "scale(1)", overflow: "hidden" })} />
+              <CardHeader><h3>{item.name}</h3></CardHeader>
+              </Pulse>
+          </Link>    
+        </Card>
+      </div>
       
     );
 }
@@ -87,7 +98,7 @@ const MagazinesMain = (props) => {
         .slice(pagesVisited, pagesVisited + magazinesPerPage)
         .map((magazine) => {
         return (
-           <div style={{width:260}}>
+           <div style={{width:300}}>
              {magazine}
            </div>
            );
@@ -115,7 +126,7 @@ const MagazinesMain = (props) => {
         }
         else{
           return (
-            <div>
+            <div style={{backgroundImage:`url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")`,backgroundSize:"auto"}}>
               <div style={{paddingLeft:"70px",paddingRight:"15px"}}>
               <div className="row">
                   <Breadcrumb>
@@ -123,7 +134,9 @@ const MagazinesMain = (props) => {
                       <BreadcrumbItem active>Magazines</BreadcrumbItem>
                   </Breadcrumb>
                   <div className="col-12">
-                      <h3>MAGAZINES</h3>
+                    <Flash>
+                      <h3 style={{color:"white"}}>MAGAZINES</h3>
+                      </Flash>
                       <hr />
                   </div>                
               </div>
@@ -132,7 +145,7 @@ const MagazinesMain = (props) => {
                 <div style={{width:"17%",float:"left",paddingRight:"10px"}}>
                 
                 <div style={{padding:"10px"}}>
-                <label>Filter By Language:</label>
+                <label style={{color:"#e39b98"}}>Filter By Language:</label>
                 <select className="form-control" value={props.magazines.language}
                     onChange={(e) => props.filterByLanguage(props.magazines.magazines, e.target.value)}>
                     <option value="">ALL</option>
@@ -141,7 +154,7 @@ const MagazinesMain = (props) => {
                 </select>
               </div>
               <div style={{padding:"10px"}}>
-                <label>Filter By Category:</label>
+                <label style={{color:"#e39b98"}}>Filter By Category:</label>
                 <select className="form-control" value={props.magazines.category}
                     onChange={(e) => props.filterByCategory(props.magazines.filteredItemsbyLang, e.target.value)}>
                     <option value="">ALL</option>
@@ -152,7 +165,7 @@ const MagazinesMain = (props) => {
                 </select>
               </div>
               <div style={{padding:"10px"}}>
-                <label>
+                <label style={{color:"#e39b98"}}>
                 Sort by</label>
                   <select className="form-control" 
                   value={props.magazines.sort} 
@@ -171,6 +184,8 @@ const MagazinesMain = (props) => {
                 </div>
 
                 <div className="row" style={{width:"80%",float:"right"}}>    
+                <div className="row" style={{width:"80%",float:"right"}}>
+                  <Fade right>   
                 {displayMagazines}
                   <ReactPaginate
                   previousLabel={"Previous"}
@@ -183,9 +198,11 @@ const MagazinesMain = (props) => {
                   disabledClassName={"paginationDisabled"}
                   activeClassName={"paginationActive"}
                   />
+                  </Fade> 
                 </div>
               </div>
               </div>
+            </div>
             </div>
           );
         }  

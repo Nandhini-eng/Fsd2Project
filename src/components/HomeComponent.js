@@ -7,33 +7,37 @@ import { FadeTransform } from 'react-animation-components';
 
 function RenderNewspaper({item}) {
     return(
-        <FadeTransform in
-                transformProps={{
-                    exitTransform: 'scale(0.5) translateY(-50%)'
-                }}>
-            <Card>
-              <Link to={`/newspapers/${item.id}`}>
-                <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
-                <CardHeader><h3>{item.name}</h3></CardHeader>
-              </Link>
-            </Card>
-        </FadeTransform>
+        <div className="zoom">
+            <FadeTransform in
+                    transformProps={{
+                        exitTransform: 'scale(0.5) translateY(-50%)'
+                    }}>
+                <Card>
+                <Link to={`/newspapers/${item.id}`}>
+                    <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
+                    <CardHeader><h3>{item.name}</h3></CardHeader>
+                </Link>
+                </Card>
+            </FadeTransform>
+        </div>
     );
 }
 
 function RenderMagazine({item}) {
     return(
-        <FadeTransform in
-                transformProps={{
-                    exitTransform: 'scale(0.5) translateY(-50%)'
-                }}>
-            <Card>
-              <Link to={`/magazines/${item.id}`}>
-                <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
-                <CardHeader><h3>{item.name}</h3></CardHeader>
-              </Link>
-            </Card>
-        </FadeTransform>
+        <div className="zoom">
+            <FadeTransform in
+                    transformProps={{
+                        exitTransform: 'scale(0.5) translateY(-50%)'
+                    }}>
+                <Card>
+                <Link to={`/magazines/${item.id}`}>
+                    <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
+                    <CardHeader><h3>{item.name}</h3></CardHeader>
+                </Link>
+                </Card>
+            </FadeTransform>
+        </div>
     );
 }
 
@@ -41,8 +45,9 @@ function Home(props){
     const newspapers = props.newspapers.map((newspaper) => {
         return(
             <div className="col-12 col-md-3" key={newspaper.id}>
-                <RenderNewspaper item={newspaper} />
+                <RenderNewspaper item={newspaper} /> 
             </div>
+
         );
     });
 
@@ -51,6 +56,7 @@ function Home(props){
             <div className="col-12 col-md-3" key={magazine.id}>
                 <RenderMagazine item={magazine} />
             </div>
+        
         );
     });
 
@@ -76,7 +82,8 @@ function Home(props){
     }
     else{
         return(
-            <div className="container">
+            <div style={{backgroundImage:`url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")`}}>
+            <div className="container" >
                 <div className="row row-content">
                     {newspapers}
                 </div>
@@ -84,7 +91,8 @@ function Home(props){
                 <div className="row row-content">
                     {magazines}
                 </div>
-            </div>     
+            </div>  
+            </div>   
         );
     }
 }

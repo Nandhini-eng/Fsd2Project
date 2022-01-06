@@ -59,7 +59,7 @@ class Signup extends Component {
                       
                    </div>
                    
-                    <div className="col-12 col-md-9" style={{fontFamily:"cursive",fontSize:"20px"}}>
+                    <div className="col-12 col-md-10" style={{fontFamily:"cursive",fontSize:"20px"}}>
                         <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className="form-group">
                                 <Label htmlFor="username" style={{fontFamily:"Sitka Heading",fontWeight:"bold",fontSize:"25px",color:"#031d63"}}>Username</Label>

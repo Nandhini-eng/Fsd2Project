@@ -3,6 +3,7 @@
     display: flex;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 10px;
+    background-color: white;
   }
   
   .cartItem__image {
@@ -56,13 +57,14 @@
   }
   
   .actions__deleteItemBtn {
-    width: 30px;
+    
     height: 30px;
     border: 1px solid var(--secondary-color);
     border-radius: 50%;
     cursor: pointer;
     transition: all ease-in-out 0.7s;
     outline: none;
+    background-color: black;
   }
   
   .actions__deleteItemBtn:hover {

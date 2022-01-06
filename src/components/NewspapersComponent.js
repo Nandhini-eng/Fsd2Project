@@ -5,17 +5,26 @@ import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 import ReactPaginate from "react-paginate";
 import "./paginate.css";
+import Fade from 'react-reveal/Fade';
+
+import Pulse from 'react-reveal/Pulse';
+import Flash from 'react-reveal/Flash';
+
 
 function RenderItem({item}){
     
     return(
-      <Card>
-         <Link to={`/newspapers/${item.id}`}>
-            <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
-            <CardHeader><h3>{item.name}</h3></CardHeader>
-         </Link>   
-      </Card>
-
+      <div className="zoom">
+        <Card>
+          <Link to={`/newspapers/${item.id}`}>
+            <Pulse duration={1000}>
+              <CardImg width="400px" height="400px" src={baseUrl + item.image} alt={item.name} />
+              <CardHeader><h3>{item.name}</h3></CardHeader>
+              </Pulse>
+          </Link>
+          
+        </Card>
+      </div> 
     );
 }
 
@@ -75,7 +84,7 @@ const NewspapersMain = (props) => {
         .slice(pagesVisited, pagesVisited + papersPerPage)
         .map((paper) => {
         return (
-           <div style={{width:260}}>
+           <div style={{width:300}}>
              {paper}
            </div>
            );
@@ -104,7 +113,7 @@ const NewspapersMain = (props) => {
         }
         else{
           return (
-            <div>
+            <div  style={{backgroundImage:`url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")`,backgroundSize:"auto"}}>
               <div style={{paddingLeft:"70px",paddingRight:"15px"}}>
               <div className="row">
                   <Breadcrumb>
@@ -112,15 +121,17 @@ const NewspapersMain = (props) => {
                       <BreadcrumbItem active>Newspapers</BreadcrumbItem>
                   </Breadcrumb>
                   <div className="col-12">
-                      <h3>NEWSPAPERS</h3>
+                    <Flash>
+                      <h3 style={{color:"white"}}>NEWSPAPERS</h3>
+                      </Flash>
                       <hr />
                   </div>                
               </div>
               <br/>
               <div className="row">
-                <div style={{width:"17%",float:"left",paddingRight:"10px"}}>
-                <div style={{padding:"10px"}}>
-                <label>Filter By Language:</label>
+                <div style={{width:"17%",float:"left",paddingRight:"0px"}}>
+                <div style={{padding:"20px"}}>
+                <label style={{color:"#e39b98"}}>Filter By Language:</label>
                 <select className="form-control" value={props.newspapers.language}
                     onChange={(e) => props.filterByLanguage(props.newspapers.newspapers, e.target.value)}>
                     <option value="">ALL</option>
@@ -130,7 +141,8 @@ const NewspapersMain = (props) => {
                 </div>
               
                 <div style={{padding:"10px"}}>
-                 <label>Sort by</label>
+                  <label style={{color:"#e39b98"}}>
+                    Sort by</label>
                   <select className="form-control" 
                   value={props.newspapers.sort} 
                   onChange={(e)=> props.sort_newspapers(props.newspapers.filteredItems,e.target.value)}>
@@ -148,7 +160,8 @@ const NewspapersMain = (props) => {
 
                 </div>
                 
-                <div className="row" style={{width:"80%",float:"right"}}>    
+                <div className="row" style={{width:"80%",float:"right"}} >
+                <Fade right>    
                   {displayPapers}
                   <ReactPaginate
                   previousLabel={"Previous"}
@@ -161,7 +174,12 @@ const NewspapersMain = (props) => {
                   disabledClassName={"paginationDisabled"}
                   activeClassName={"paginationActive"}
                   />
+                  </Fade>
+
+      
+              
                 </div>
+
               </div>
             </div>
           </div>

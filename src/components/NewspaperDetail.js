@@ -9,6 +9,17 @@ import { baseUrl } from '../shared/baseUrl';
 import {user_real}  from './Login';
 //import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
+// import Zoom from 'react-reveal/Zoom';
+
+// function RenderItem({props}) {
+//     const item=props.paperSelected;
+//     const addtocart=props.addtocart;
+//     const x=()=>{
+    
+
+//         addtocart(item.id)
+    
+
 class ReviewForm extends Component {
 
     constructor(props){
@@ -20,15 +31,23 @@ class ReviewForm extends Component {
 
         this.toggleModal = this.toggleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
     toggleModal(){
         if (user_real){
             console.log('validated user');
-            this.setState({
-                isModalOpen: !this.state.isModalOpen
-            });
+            let cartItems = []
+            cartItems = this.props.orders.map((order)=>order.cart.map((item)=>(item.id)))
+            let flag = cartItems.some((value)=>value.some((id)=> (id === this.props.itemId)))
+            if (flag){
+                this.setState({
+                    isModalOpen: !this.state.isModalOpen
+                })
+            }
+            else{
+                alert("You cannot submit review as you have not subscibed this item!!")
+            };
+            
         }
         else{
             console.log('invalid user');
@@ -124,7 +143,7 @@ function RenderReviews({reviews,errMess}) {
 }
 
 
-function RenderItem({item, addtocart, reviews, postReview}) {
+function RenderItem({item, addtocart, reviews, postReview,orders}) {
 
     var sum = 0,avg = 0;
     if (reviews.length){
@@ -132,6 +151,7 @@ function RenderItem({item, addtocart, reviews, postReview}) {
         avg = sum/reviews.length;
     }
 
+    
     const history=useHistory();
     if (item != null){
         const IsLogin=()=>{ 
@@ -146,11 +166,11 @@ function RenderItem({item, addtocart, reviews, postReview}) {
             }
         }
         return( 
-            <React.Fragment>
-            
-                <div className="col-12 col-md-5 m-1">
-                    {/* <FadeTransform
-                        in
+           <React.Fragment>
+           
+               <div className="col-12 col-md-5 m-1">
+                   {/* <FadeTransform
+                       in
                         transformProps={{
                             exitTransform: 'scale(0.5) translateY(-50%)'
                         }}> */}
@@ -167,6 +187,11 @@ function RenderItem({item, addtocart, reviews, postReview}) {
                 <div className="col-12 col-md-5 m-1">
                     <h3>Description</h3><br />
                     <h5>{item.description}</h5><br /><br />
+            
+
+
+                    {/* <button onClick={x} ><h4>Subscribe</h4></button> */}
+        
                     <button onClick={IsLogin}><h4>Subscribe</h4></button>
                     <br />
                     <br />
@@ -174,7 +199,7 @@ function RenderItem({item, addtocart, reviews, postReview}) {
                     <h5>Total No. of reviews posted till now: {reviews.length}</h5>
                     <h5>Average Rating: {avg} / 5</h5>
                     <br />
-                    <ReviewForm itemId={item.id} postReview={postReview} history={history}/>
+                    <ReviewForm itemId={item.id} postReview={postReview} history={history} orders={orders}/>
                 </div>
             
             </React.Fragment>
@@ -186,6 +211,9 @@ function RenderItem({item, addtocart, reviews, postReview}) {
        ); 
     }
 }
+
+
+
 
 
 const NewspaperDetail = (props) => {
@@ -223,7 +251,7 @@ const NewspaperDetail = (props) => {
                     </div>                
                 </div> 
                 <div className="row">
-                    <RenderItem addtocart={props.addtocart} item={props.paperSelected} reviews={props.reviews} postReview={props.postReview}/>
+                    <RenderItem addtocart={props.addtocart} item={props.paperSelected} reviews={props.reviews} postReview={props.postReview} orders={props.checkorders}/>
                 </div>
                 <div className="row">
                     <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess}/>         
@@ -232,5 +260,7 @@ const NewspaperDetail = (props) => {
         );
     }    
 }
+
+
 
 export default NewspaperDetail;

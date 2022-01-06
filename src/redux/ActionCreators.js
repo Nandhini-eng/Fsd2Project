@@ -1,6 +1,17 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
 
+export const fetchItems = () => async (dispatch) => { 
+  const newspapers = await Promise.all([
+    fetch(baseUrl + 'newspapers').then(response => response.json()),
+  
+  ]);
+  const magazines = await Promise.all([
+    fetch(baseUrl + 'magazines').then(response_1 => response_1.json())
+  ])
+  return dispatch(getproducts(newspapers, magazines));
+  
+}
 
 export const fetchNewspapers = () => (dispatch) => {
      
@@ -374,7 +385,7 @@ export const addToCart=(itemId)=>{
     type:ActionTypes.ADD_TO_CART,
     payload:{
         id:itemId
-    }
+    } 
   }
 };
 
@@ -404,33 +415,117 @@ export const loadCurrentItem=(item)=>{
   }
 };
 
-export const getproducts=(news,mags)=>{
-    return{
-      type:ActionTypes.GET_PRODUCTS,
-      payload:news.newspapers.concat(mags.magazines)
-    }
-};
-
-
-export const getTopNewspapers = (newspapers, reviews) => (dispatch) => {
-  var array = [];
-  reviews.map(rev => newspapers.map(np => rev.itemId === np.id ? array.push({...np}) : null) )
-  return dispatch({
-      type: ActionTypes.TOP_RATED_NEWSPAPERS,
-      payload : {
-        items: array
+  export const getproducts=(news,mags)=>{
+      return{
+        type:ActionTypes.GET_PRODUCTS,
+        payload: news[0].concat(mags[0])
       }
-  })
-}
+  };
 
-export const getTopMagazines = (magazines, reviews) => (dispatch) => {
-  var array = [];
-  reviews.map(rev => magazines.map(mag => rev.itemId === mag.id ? array.push({...mag}) : null) )
-  return dispatch({
-      type: ActionTypes.TOP_RATED_MAGAZINES,
-      payload : {
-        items: array,
-        magazines: magazines
-      }
-  })
-}
+
+  export const orderPlaced = (order) => ({
+    type: ActionTypes.ORDER_PLACED,
+    payload: order
+  });
+  
+  export const postOrder = (fullName, address, city, postalCode, country, NameOnCard, CreditCardNum, ExpMon, ExpYear, Cvv, cart, user,price,items) => (dispatch) => {
+  
+    const newOrder = {
+        fullName:fullName,
+        address:address,
+        city:city,
+        postalCode:postalCode, 
+        country:country,
+        NameOnCard:NameOnCard,
+        CreditCardNum:CreditCardNum,
+        ExpMon:ExpMon,
+        ExpYear:ExpYear,
+        Cvv:Cvv,
+        cart:cart,
+        user:user,
+        price:price,
+        items:items
+
+    };
+    newOrder.date = new Date().toISOString();
+    
+    return fetch(baseUrl + 'orders', {
+        method: "POST",
+        body: JSON.stringify(newOrder),
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "same-origin"
+    })
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            throw error;
+      })
+    .then(response => response.json())
+    .then(response => {alert("Your order has been placed succesfully");dispatch(orderPlaced(response))})
+    .then((dispatch({ type: ActionTypes.CART_EMPTY })))
+    .catch(error =>  { console.log('post orders', error.message); alert('Your order could not be placed\nError: '+error.message); });
+  };
+  
+  export const fetchOrders = () => (dispatch) => {    
+    return fetch(baseUrl + 'orders')
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            var errmess = new Error(error.message);
+            throw errmess;
+      })
+    .then(response => response.json())
+    .then(orders => dispatch(ordersPlaced(orders)))
+    .catch(error => dispatch(orderFailed(error.message)));
+  };
+  
+  export const orderFailed = (errmess) => ({
+    type: ActionTypes.ORDER_FAILED,
+    payload: errmess
+  });
+  
+  export const ordersPlaced = (orders) => ({
+    type: ActionTypes.ORDERS_PLACED,
+    payload: orders
+  });
+  
+
+
+  export const getTopNewspapers = (newspapers, reviews) => (dispatch) => {
+    var array = [];
+    reviews.map(rev => newspapers.map(np => rev.itemId === np.id ? array.push({...np}) : null) )
+    return dispatch({
+        type: ActionTypes.TOP_RATED_NEWSPAPERS,
+        payload : {
+          items: array
+        }
+    })
+  }
+  
+  export const getTopMagazines = (magazines, reviews) => (dispatch) => {
+    var array = [];
+    reviews.map(rev => magazines.map(mag => rev.itemId === mag.id ? array.push({...mag}) : null) )
+    return dispatch({
+        type: ActionTypes.TOP_RATED_MAGAZINES,
+        payload : {
+          items: array,
+          magazines: magazines
+        }
+    })
+  }
