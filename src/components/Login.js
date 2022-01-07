@@ -14,6 +14,7 @@ class Login extends Component{
         userrs=props.regusers.regusers
         console.log(userrs)
     }
+
     login(){
         console.warn(this.state)
         fetch("http://localhost:3001/regusers?q=" + this.state.username + ":" + this.state.password).then((data)=>{
@@ -30,6 +31,8 @@ class Login extends Component{
                 }
                 else{
                     error="Invalid Username or Password"
+                    //console.log(error);
+                    //alert(error);
                 }
             })
         })
@@ -52,7 +55,8 @@ class Login extends Component{
     render(){
     
         return(
-            <div style={{paddingLeft:"400px", paddingTop:"50px",paddingBottom:'80px',background: '#f2f2f2'}}>
+            <div className='log'>
+            <div style={{paddingLeft:"400px", paddingTop:"50px",paddingBottom:'80px'}}>
                 <div className='form-1' style={{backgroundColor: 'white'}}>
                     <div className='login'>
                         <h1>Welcome back</h1>
@@ -79,7 +83,7 @@ class Login extends Component{
                     </div>
                 </div>
             </div>
-
+            </div>
             
         )
     }

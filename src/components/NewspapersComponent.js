@@ -19,7 +19,9 @@ function RenderItem({item}){
           <Link to={`/newspapers/${item.id}`}>
             <Pulse duration={1000}>
               <CardImg width="400px" height="400px" src={baseUrl + item.image} alt={item.name} />
-              <CardHeader><h3>{item.name}</h3></CardHeader>
+              <div className='hg'>
+                <CardHeader><h4>{item.name}</h4></CardHeader>
+              </div>
               </Pulse>
           </Link>
           
@@ -41,18 +43,16 @@ const NewspapersMain = (props) => {
         });
 
       
-
+        //calculating average rating for all newspapers and storing them in an array along with newspaper ids
         var items_reviews = [];
           
         var item_review = {};
         var len = props.newspapers.newspapers.length;
-
     
         for (var i=0;i<len;i++){
           var sum = 0, avg = 0;
           item_review.itemId = i;
           var revs = props.reviews.filter(rev => rev.itemId === i);
-          //console.log(JSON.stringify(revs));
           if (revs.length){
             sum = revs.map(rev=>rev.rating).reduce((r1,r2)=>r1+r2,0);
             avg = sum/revs.length;
@@ -60,12 +60,10 @@ const NewspapersMain = (props) => {
           item_review.avgRating = avg;
           items_reviews.push({...item_review});
         }
-        //console.log(JSON.stringify(items_reviews));
-        
 
+        // In an array, storing the average rating values along with ids of only those newspapers for which average rating lies between 4 and 5.
         var filtered_revs = items_reviews.filter(rev => rev.avgRating >= 4 && rev.avgRating <= 5)
-        console.log(JSON.stringify(filtered_revs));
-        console.log(filtered_revs.length);
+        
 
       
 
@@ -84,7 +82,7 @@ const NewspapersMain = (props) => {
         .slice(pagesVisited, pagesVisited + papersPerPage)
         .map((paper) => {
         return (
-           <div style={{width:300}}>
+           <div style={{width:260}}>
              {paper}
            </div>
            );
@@ -113,10 +111,10 @@ const NewspapersMain = (props) => {
         }
         else{
           return (
-            <div  style={{backgroundImage:`url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")`,backgroundSize:"auto"}}>
+            <div  className="np">
               <div style={{paddingLeft:"70px",paddingRight:"15px"}}>
               <div className="row">
-                  <Breadcrumb>
+                  <Breadcrumb style={{fontSize:"20px"}}>
                       <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                       <BreadcrumbItem active>Newspapers</BreadcrumbItem>
                   </Breadcrumb>
@@ -129,9 +127,11 @@ const NewspapersMain = (props) => {
               </div>
               <br/>
               <div className="row">
-                <div style={{width:"17%",float:"left",paddingRight:"0px"}}>
-                <div style={{padding:"20px"}}>
-                <label style={{color:"#e39b98"}}>Filter By Language:</label>
+                <div style={{width:"17%",float:"left",paddingRight:"0px",fontSize:"20px"}}>
+                
+                 {/* providing language filter by giving language select options in the form of a dropdown menu */}
+                <div style={{padding:"10px"}}>
+                <label style={{color:"#e39b98",fontFamily:"cursive"}}>Filter By Language:</label>
                 <select className="form-control" value={props.newspapers.language}
                     onChange={(e) => props.filterByLanguage(props.newspapers.newspapers, e.target.value)}>
                     <option value="">ALL</option>
@@ -141,8 +141,8 @@ const NewspapersMain = (props) => {
                 </div>
               
                 <div style={{padding:"10px"}}>
-                  <label style={{color:"#e39b98"}}>
-                    Sort by</label>
+                  <label style={{color:"#e39b98",fontFamily:"cursive",fontSize:"20px"}}>
+                    Sort by:</label>
                   <select className="form-control" 
                   value={props.newspapers.sort} 
                   onChange={(e)=> props.sort_newspapers(props.newspapers.filteredItems,e.target.value)}>
@@ -154,8 +154,11 @@ const NewspapersMain = (props) => {
                 </div>
                 <br />
                 <br />
-                <div style={{padding:"10px"}}>
-                  <Button onClick={() => props.topNewspapers(props.newspapers.newspapers, filtered_revs)}>Top Rated Newspapers</Button> 
+
+                {/* Created a button for displaying top rated newspapers(newspapers for which average rating lies between 4 and 5)  */}
+                <div style={{padding:"10px"}} className='zoom'>
+                  <Button onClick={() => props.topNewspapers(props.newspapers.newspapers, filtered_revs)}><h3 style={{fontSize:"17px",color:"#3e046e",fontFamily:"cursive",fontWeight:"bolder"}}>
+                            Top Rated Newspapers</h3></Button> 
                 </div>
 
                 </div>

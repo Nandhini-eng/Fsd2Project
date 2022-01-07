@@ -8,9 +8,6 @@ import Flash from 'react-reveal/Flash';
 import { baseUrl } from '../shared/baseUrl';
 
 
- 
-
-
 function Searchc( {items}) {
   const [searchField,setSearchField]=useState("")
 
@@ -72,13 +69,14 @@ return (
 
 
   return (
+    <div className='ser'>
     <section className='garamound'>
     
       <div className="pa2">
         <input 
           className="pa3 bb br3 grow b--none bg-lightest-blue ma3"
           type = "search" 
-          placeholder = "Search People" 
+          placeholder = "Search for desired magazines or newspapers" 
           onChange = {handleChange}
         />
       </div>
@@ -89,6 +87,7 @@ return (
       </div>
       
     </section>
+    </div>
   );
 }
 

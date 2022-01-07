@@ -13,6 +13,7 @@ export const fetchItems = () => async (dispatch) => {
   
 }
 
+//function for fetching newspapers data from the server using fetch api and returning appropriate action creators based on server responses.
 export const fetchNewspapers = () => (dispatch) => {
      
     
@@ -37,20 +38,25 @@ export const fetchNewspapers = () => (dispatch) => {
     .catch(error => dispatch(NewspapersFailed(error.message)));
 }
 
+//An ActionCreator of type NEWSPAPERS_LOADING 
 export const NewspapersLoading = () => ({
     type: ActionTypes.NEWSPAPERS_LOADING
 });
 
+//An ActionCreator of the defined type, contains error message(indicating the error occurred while fetching newspapers) in the payload
 export const NewspapersFailed = (errmess) => ({
     type: ActionTypes.NEWSPAPERS_FAILED,
     payload: errmess
 });
 
+//An ActionCreator of the defined type, contains the newspapers data in the payload
 export const addNewspapers = (newspapers) => ({
     type: ActionTypes.ADD_NEWSPAPERS,
     payload: newspapers
 });
 
+
+//function for fetching magazines data from the server using fetch api and returning appropriate action creators based on server responses.
 export const fetchMagazines = () => (dispatch) => {
 
     dispatch(MagazinesLoading(true));
@@ -74,15 +80,18 @@ export const fetchMagazines = () => (dispatch) => {
     .catch(error => dispatch(MagazinesFailed(error.message)));
 }
 
+//An ActionCreator of type MAGAZINES_LOADING 
 export const MagazinesLoading = () => ({
     type: ActionTypes.MAGAZINES_LOADING
 });
 
+//An ActionCreator of the defined type, contains error message(indicating the error occurred while fetching magazines) in the payload 
 export const MagazinesFailed = (errmess) => ({
     type: ActionTypes.MAGAZINES_FAILED,
     payload: errmess
 });
 
+//An ActionCreator of the defined type, contains the magazines data in the payload
 export const addMagazines = (magazines) => ({
     type: ActionTypes.ADD_MAGAZINES,
     payload: magazines
@@ -90,17 +99,7 @@ export const addMagazines = (magazines) => ({
 
 
 
-export const filterMagazinesByCategory = (magazines, category) => (dispatch) => {
-  return dispatch({
-      type: ActionTypes.FILTER_MAGAGINES_BY_CATEGORY,
-      payload : {
-        category: category,
-        items: category === '' ? magazines : magazines.filter((mag) => mag.category === category),
-        magazines: magazines
-      }
-  })
-}
-
+//Returning an actioncreator of the defined type, contains selected language value, filtered magazines based on language, and total magazines in the payload
 export const filterMagazinesByLanguage = (magazines, lang) => (dispatch) => {
   return dispatch({
       type: ActionTypes.FILTER_MAGAGINES_BY_LANG,
@@ -112,6 +111,20 @@ export const filterMagazinesByLanguage = (magazines, lang) => (dispatch) => {
   })
 }
 
+// Returning an actioncreator of the defined type, contains selected category value, filtered magazines based on category, 
+//     and the magazines(if filter by language is already applied, then these are the filtered magazines based on language) in the payload
+export const filterMagazinesByCategory = (magazines, category) => (dispatch) => {
+  return dispatch({
+      type: ActionTypes.FILTER_MAGAGINES_BY_CATEGORY,
+      payload : {
+        category: category,
+        items: category === '' ? magazines : magazines.filter((mag) => mag.category === category),
+        magazines: magazines
+      }
+  })
+}
+
+//Returning an actioncreator of the defined type, contains selected language value and filtered newspapers based on language in the payload
 export const filterNewspapersByLanguage = (newspapers, lang) => (dispatch) => {
   return dispatch({
       type: ActionTypes.FILTER_NEWSPAPERS_BY_LANG,
@@ -172,7 +185,7 @@ export const sortMagazines = (products,sort)=>(dispatch)=>{
   })
 }
 
-
+//function to post the feedback(given by users) to the server side. url to access the 'feedback' endpoint is given to the fetch function and performing post operation to post the feedback to the server.
 export const postFeedback = (firstname, lastname, telnum, email, agree, contactType, message) => (dispatch) => {
    
     const newFeedback = {
@@ -213,11 +226,13 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
 
 
 
+// An ActionCreator of the defined type, contains newly posted review in the payload
 export const addReview = (review) => ({
   type: ActionTypes.ADD_REVIEW,
   payload: review
 });
 
+//function to post the reviews(given by users) to the server side. url to access the 'reviews' endpoint is given to the fetch function and performing post operation to store the reviews in the server.
 export const postReview = (itemId, rating, author, review) => (dispatch) => {
 
   const newReview = {
@@ -253,6 +268,7 @@ export const postReview = (itemId, rating, author, review) => (dispatch) => {
   .catch(error =>  { console.log('post reviews', error.message); alert('Your review could not be posted\nError: '+error.message); });
 };
 
+//function for fetching the stored reviews from the server using fetch api and returning appropriate action creators based on server responses.
 export const fetchReviews = () => (dispatch) => {    
   return fetch(baseUrl + 'reviews')
   .then(response => {
@@ -273,11 +289,13 @@ export const fetchReviews = () => (dispatch) => {
   .catch(error => dispatch(reviewsFailed(error.message)));
 };
 
+//An ActionCreator of the defined type, contains error message(indicating the error occurred while fetching reviews) in the payload 
 export const reviewsFailed = (errmess) => ({
   type: ActionTypes.REVIEWS_FAILED,
   payload: errmess
 });
 
+//An ActionCreator of the defined type, contains the available reviews in the payload
 export const addReviews = (reviews) => ({
   type: ActionTypes.ADD_REVIEWS,
   payload: reviews
@@ -506,7 +524,7 @@ export const loadCurrentItem=(item)=>{
   });
   
 
-
+  //An actioncreator of the defined type, contains the details of top rated newspapers(the newspapers for which average rating lies between 4 and 5) in the payload
   export const getTopNewspapers = (newspapers, reviews) => (dispatch) => {
     var array = [];
     reviews.map(rev => newspapers.map(np => rev.itemId === np.id ? array.push({...np}) : null) )
@@ -518,6 +536,7 @@ export const loadCurrentItem=(item)=>{
     })
   }
   
+  //An actioncreator of the defined type, contains the details of top rated magazines(the magazines for which average rating lies between 4 and 5) in the payload
   export const getTopMagazines = (magazines, reviews) => (dispatch) => {
     var array = [];
     reviews.map(rev => magazines.map(mag => rev.itemId === mag.id ? array.push({...mag}) : null) )

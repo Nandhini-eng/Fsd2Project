@@ -238,9 +238,10 @@ const NewspaperDetail = (props) => {
     }
     else if (props.paperSelected != null){
         return(
+            <div className='npde'>
             <div className="container">
                 <div className="row">
-                    <Breadcrumb>
+                    <Breadcrumb style={{fontSize:"20px"}}>
                         <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                         <BreadcrumbItem><Link to="/newspapers">Newspapers</Link></BreadcrumbItem>
                         <BreadcrumbItem active>{props.paperSelected.name}</BreadcrumbItem>
@@ -256,6 +257,7 @@ const NewspaperDetail = (props) => {
                 <div className="row">
                     <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess}/>         
                 </div>
+            </div>
             </div>
         );
     }    

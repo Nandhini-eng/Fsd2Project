@@ -26,10 +26,10 @@ class Contact extends Component {
     render() {
 
         return(
-            <div style={{color:"white",backgroundImage:`url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")`}}>
-            <div className="container" style={{color:"white",backgroundImage:`url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")`}}>
+            <div className='cu'>
+            <div className="container" style={{color:"white"}}>
                 <div className="row">
-                    <Breadcrumb>
+                    <Breadcrumb style={{fontSize:"20px"}}>
                         <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                         <BreadcrumbItem active>Contact Us</BreadcrumbItem>
                     </Breadcrumb>
@@ -47,8 +47,8 @@ class Contact extends Component {
                     {/* <div className="col-12 col-sm-4 offset-sm-1"> */}
                             <h5 style={{color:"white"}}>Our Address</h5>
                             <address style={{color:"white"}}>
-                            Srini Avenue<br />
-                            Kompally, Hyderabad<br />
+                            Kukatpally<br />
+                            Hyderabad<br />
                             INDIA<br />
                             <i className="fa fa-phone"></i>: +852 1234 5678<br />
                             <i className="fa fa-fax"></i>: +852 8765 4321<br />

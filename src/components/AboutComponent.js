@@ -9,10 +9,10 @@ import HeadShake from 'react-reveal/HeadShake';
 function About(props) {
 
     return(
-        <div style={{backgroundImage:`url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")`}}>
+        <div className='au'>
         <div className="container">
             <div className="row">
-                <Breadcrumb>
+                <Breadcrumb style={{fontSize:"20px"}}>
                     <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                     <BreadcrumbItem active>About Us</BreadcrumbItem>
                 </Breadcrumb>

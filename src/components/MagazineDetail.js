@@ -7,7 +7,6 @@ import { Loading } from './LoadingComponent';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
 import {user_real}  from './Login'
-//import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 class ReviewForm extends Component {
 
@@ -220,9 +219,10 @@ const MagazineDetail = (props) => {
     }
     else if (props.magSelected != null){
         return(
+            <div className='magde'>
             <div className="container">
                 <div className="row">
-                    <Breadcrumb>
+                    <Breadcrumb style={{fontSize:"20px"}}>
                         <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                         <BreadcrumbItem><Link to="/magazines">Magazines</Link></BreadcrumbItem>
                         <BreadcrumbItem active>{props.magSelected.name}</BreadcrumbItem>
@@ -238,6 +238,7 @@ const MagazineDetail = (props) => {
                 <div className="row">
                     <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess}/>  
                 </div>
+            </div>
             </div>
         );
     }    

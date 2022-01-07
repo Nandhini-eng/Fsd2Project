@@ -34,9 +34,10 @@ class Signup extends Component {
     render() {
 
         return(
+            <div className='sgup'>
             <div className="container">
                 <div className="row">
-                    <Breadcrumb>
+                    <Breadcrumb style={{fontSize:"20px"}}>
                         <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                         <BreadcrumbItem active>Sign Up</BreadcrumbItem>
                         
@@ -130,6 +131,7 @@ class Signup extends Component {
                </div>
                </div>
                <br></br>
+            </div>
             </div>
         );
     }

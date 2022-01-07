@@ -161,6 +161,10 @@ class Main extends Component{
               getproducts={this.props.getproducts} 
               newspapers={this.props.newspapers} 
               magazines={this.props.magazines}
+              reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.itemId,10))} 
+              reviewsErrMess={this.props.reviews.errMess}
+              postReview={this.props.postReview}
+              checkorders={this.props.orders.orders}
               />
         );
         }

@@ -22,9 +22,6 @@ class Header extends Component{
             isNavOpen: false,
             SearchField:"e "
             
-      
-      
-            
         };
 
         this.toggleNav = this.toggleNav.bind(this);
@@ -45,11 +42,6 @@ class Header extends Component{
       e.target.style.color = 'rgba(255,255,255,.55)'
     }
     render() {
-      // let count=0
-      // let x=this.props.cart.map(item=>count+=item.qty)
-      // console.log(x[1])
-       
-      // console.log(Cartval(this.props.cart))
         
         console.log(user_real)
         if(user_real){
@@ -78,100 +70,80 @@ class Header extends Component{
     
         return(
           <React.Fragment>
-            <Navbar dark expand="md" style={{ backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU")` }}>
-              <div className="container" style={{color:"white"}} >
+            <Navbar dark expand="md" style={{ backgroundImage: `url("https://c4.wallpaperflare.com/wallpaper/636/636/890/line-strip-grey-background-wallpaper-preview.jpg")`}}>
+              <div className="container" style={{color:"white",marginLeft:"30px",marginRight:"10px"}} >
                 <NavbarToggler onClick={this.toggleNav} />
-                {/* <NavbarBrand className="mr-auto" href="/">
-                  <img src='assets/images/logo.png' height="50" width="50" alt='Newspapers and Magazines' />
-                </NavbarBrand> */}
                 <Collapse isOpen={this.state.isNavOpen} navbar>
+                  
                   <Nav navbar>
-                    {/* <NavItem className="mr-auto" href="/">
-                    <img src='assets/images/logo.png' height="30" width="30" alt='Newspapers and Magazines' />
-
-                      </NavItem> */}
-                      <NavItem>
+                    <NavItem className="mr-auto" href="/" style={{paddingLeft:"2px"}}>
+                      <img src='assets/images/logo.png' height="45" width="45" alt='Newspapers and Magazines' />
+                    </NavItem>
+                    <NavItem>
                       <NavLink className="nav-link"  to='/home'>
-                        <span className="fa fa-home fa-lg" ></span> Home
+                      <h5><span className="fa fa-home fa-lg" ></span> Home</h5>
                       </NavLink>
                     </NavItem>
                     <NavItem>
                       <NavLink className="nav-link"  to='/newspapers' >
-                        <span className="fa fa-newspaper-o fa-lg"></span> Newspapers
+                      <h5><span className="fa fa-newspaper-o fa-lg"></span> Newspapers </h5>
                       </NavLink>
                     </NavItem>
                     <NavItem>
                       <NavLink className="nav-link"  to='/magazines'>
-                        <span className="fa fa-book fa-lg"></span> Magazines
+                        <h5><span className="fa fa-book fa-lg"></span> Magazines </h5>
                       </NavLink>
                     </NavItem>
                     <NavItem>
                       <NavLink className="nav-link"  to='/myaccount'>
-                        <span className="fa fa-user fa-lg"></span> My Account
+                        <h5><span className="fa fa-user fa-lg"></span> My Account </h5>
                       </NavLink>
                     </NavItem>
                     <NavItem>
                       <NavLink className="nav-link" to='/aboutus'>
-                        <span className="fa fa-info fa-lg"></span> About Us
+                        <h5><span className="fa fa-info fa-lg"></span> About Us </h5>
                       </NavLink>
                     </NavItem>
                     <NavItem>
                       <NavLink className="nav-link" to='/contactus'>
-                        <span className="fa fa-address-card fa-lg"></span> Contact Us
+                        <h5><span className="fa fa-address-card fa-lg"></span> Contact Us </h5>
                       </NavLink>
                     </NavItem>
-                   
-                    
                     <NavItem>
                       <NavLink className="nav-link" to='/orders'>
-                    <span className="fa fa-shopping-bag fa-lg"></span> My Orders 
-                  
-                    </NavLink>
+                        <h5><span className="fa fa-shopping-bag fa-lg"></span> My Orders </h5>
+                      </NavLink>
                     </NavItem>
-
                     <NavItem>
                         <NavLink className="nav-link" to='/searchc'>
-                        
-                          Click here to Search
-                      
-                      </NavLink>
-                      </NavItem>
-                      <NavItem>
-                      <NavLink className="nav-link" to='/cart'>
-                    <span className="fa fa-shopping-cart fa-lg"></span> Cart 
-                  
-                    </NavLink>
-                    
-                    </NavItem>
-                    <NavItem><Cartval/></NavItem>
-                      
-
+                         <h5>Click here to Search </h5>
+                        </NavLink>
+                    </NavItem> 
                    </Nav>
-                   <Nav className='ms-auto' navbar>
-                    
+                   <Nav className='ms-auto' navbar >
                       <NavItem>
                         {isLoggedin}
                       </NavItem>
                     
-
-                
-                  
-                         
-                      </Nav>
+                      <NavItem>
+                      <NavLink className="nav-link" to='/cart'>
+                        <h5 style={{paddingLeft:"5px"}}>Cart <span className="fa fa-shopping-cart fa-lg"></span> </h5>
+                      </NavLink>
+                      </NavItem>
+                      <NavItem><Cartval/></NavItem>  
+                    </Nav>
                 
                 </Collapse>
               </div>
             </Navbar>
            
-             {/* green:#AFD275 */}
-             {/* style={{backgroundColor:"#a2e8d0"}} greenish blue*/}
-            <div className="bg" style={{backgroundColor:"#e7717d"}} >
+            <div className="hdr">
              <div className="container" >
                  <div className="row row-header">
                    <LightSpeed>
-                     <div className="col-12 col-sm-6" >
+                     <div className="col-12 col-sm-7" >
                          <h1>Newspapers and Magazines</h1>
-                         <p>We provide various Newspapers and Magazines in this application. Users can subscribe and purchase their favourite newspapers and magazines and enjoy the joy of reading! </p>
+                         <p>We provide various useful Newspapers and Magazines in this application. Users can subscribe and purchase their favourite newspapers and magazines to learn several new things and enjoy the joy of reading! </p>
                      </div>
                     </LightSpeed>
                  </div>

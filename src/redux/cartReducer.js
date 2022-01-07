@@ -1,6 +1,7 @@
 import * as ActionTypes from './ActionTypes';
 
-export const cartReducer=(state={cart:[],items:null,currentItem:null},action)=>{
+//CartReducer that takes initial state, action to perform as parameters and performs the appropriate action and returns the new state.
+export const cartReducer=(state={cart:[],items:[],currentItem:null},action)=>{
     switch(action.type){
         case ActionTypes.GET_PRODUCTS:
             return{...state,items:action.payload};
