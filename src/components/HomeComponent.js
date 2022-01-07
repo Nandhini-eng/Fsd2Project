@@ -1,61 +1,62 @@
 import React from 'react';
-import { Card, CardImg, CardHeader, CardText, CardBody,CardTitle, CardSubtitle} from 'reactstrap';
+import { Card, CardImg, CardHeader, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
-
 import { FadeTransform } from 'react-animation-components';
 
-function RenderCard({item}) {
-    return(
+
+//RenderCard item is called to 
+function RenderCard({ item }) {
+    return (
         <div className="zoom">
-        <FadeTransform in
+            <FadeTransform in
                 transformProps={{
                     exitTransform: 'scale(0.5) translateY(-50%)'
                 }}>
-            <Card>
-                <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
-                <CardHeader><h3>{item.name}</h3></CardHeader>
-            </Card>
+                <Card>
+                    <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
+                    <CardHeader><h3>{item.name}</h3></CardHeader>
+                </Card>
         // </FadeTransform>
         </div>
     );
 }
 
-function Home(props){
+function Home(props) {
     const newspapers = props.newspapers.map((newspaper) => {
-        return(
-            
+        return (
+
             <div className="col-12 col-md-3" key={newspaper.id} >
-                
+
                 <RenderCard item={newspaper} />
-                
+
             </div>
 
         );
     });
 
     const magazines = props.magazines.map((magazine) => {
-        return(
+        return (
             <div className="col-12 col-md-3" key={magazine.id}>
-    
+
                 <RenderCard item={magazine} />
-        
+
             </div>
-        
+
         );
     });
 
     if (props.newspapersLoading) {
-        return(
+        return (
             <div className="container">
-                  <div className="row">            
-                      <Loading />
-                  </div>
+                <div className="row">
+                    <Loading />
+                </div>
             </div>
         );
     }
     else if (props.newspapersErrMess) {
-        return(
+        return (
             <div className="container">
                 <div className="row">
                     <div className="center">
@@ -65,19 +66,19 @@ function Home(props){
             </div>
         );
     }
-    else{
-        return(
+    else {
+        return (
             <div className="hm">
-            <div className="container" >
-                <div className="row row-content">
-                    {newspapers}
-                </div>
+                <div className="container" >
+                    <div className="row row-content">
+                        {newspapers}
+                    </div>
 
-                <div className="row row-content">
-                    {magazines}
+                    <div className="row row-content">
+                        {magazines}
+                    </div>
                 </div>
-            </div>  
-            </div>   
+            </div>
         );
     }
 }
