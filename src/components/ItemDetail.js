@@ -203,18 +203,18 @@ function RenderItem({item, addtocart, reviews, postReview,orders}) {
 const ItemDetail = (props) => {
 
     if (props.isLoading) {
-        return(
+        return (
             <div className="container">
-                <div className="row">            
+                <div className="row">
                     <Loading />
                 </div>
             </div>
         );
     }
     else if (props.errMess) {
-        return(
+        return (
             <div className="container">
-                <div className="row">            
+                <div className="row">
                     <h4>{props.errMess}</h4>
                 </div>
             </div>
@@ -233,8 +233,8 @@ const ItemDetail = (props) => {
                     <div className="col-12">
                         <h3>{props.itemSelected.name}</h3>
                         <hr />
-                    </div>                
-                </div> 
+                    </div>
+                </div>
                 <div className="row">
                     <RenderItem item={props.itemSelected} addtocart={props.addtocart} reviews={props.reviews} postReview={props.postReview} orders={props.checkorders}/>
                 </div>

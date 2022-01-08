@@ -49,8 +49,7 @@ function OrdersComponent(props){
                   </tr>
                   ))
                 }
-                </table> 
-              
+                </table>  
             </div>
             </div>
           );
@@ -80,17 +79,16 @@ function OrdersComponent(props){
         );
       }
     }
-    else{
-      return(
+    else {
+      return (
         <div className="mo">
           <div className="col-12 col-md-10">
             <h5>{errMess}</h5>
           </div>
-          </div>
-      ); 
-    }
+        </div>
+      );
+    } 
 
 }
-
 
 export default OrdersComponent;

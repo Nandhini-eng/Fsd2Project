@@ -35,11 +35,12 @@ function RenderItem({item}){
 
 const MagazinesMain = (props) => {
 
-        //Rendering the magazines according to the applied filters
+        //Rendering the magazines according to the applied filters 
         var render_items = [];
         props.magazines.filteredItemsbyCtgry.map(x => props.magazines.filteredItemsbyLang.map(y =>
           x.id === y.id ? render_items.push({...x}): null ))
         
+        //Calling the render item function for each and every filtered magazine
         const items = render_items.map((item) => {
           return (
               <div key={item.id} className="col-12">
@@ -141,13 +142,13 @@ const MagazinesMain = (props) => {
                 <div style={{width:"17%",float:"left",paddingRight:"0px",fontSize:"20px"}}>
 
                 {/* providing language filter by giving language select options in the form of a dropdown menu */}
-                <div style={{padding:"10px"}}>
+              <div style={{padding:"10px"}}>
                 <label style={{color:"#e39b98",fontFamily:"cursive",fontSize:"20px"}}>Filter By Language:</label>
                 <select className="form-control" value={props.magazines.language}
-                    onChange={(e) => props.filterByLanguage(props.magazines.magazines, e.target.value)}>
-                    <option value="">ALL</option>
-                    <option value="English">English</option>
-                    <option value="Telugu">Telugu</option>
+                  onChange={(e) => props.filterByLanguage(props.magazines.magazines, e.target.value)}>
+                  <option value="">ALL</option>
+                  <option value="English">English</option>
+                  <option value="Telugu">Telugu</option>
                 </select>
               </div>
 
@@ -163,6 +164,7 @@ const MagazinesMain = (props) => {
                     <option value="entertainment">Entertainment</option>
                 </select>
               </div>
+
               <div style={{padding:"10px"}}>
                 <label style={{color:"#e39b98",fontFamily:"cursive",fontSize:"20px"}}>
                 Sort by</label>
@@ -177,38 +179,37 @@ const MagazinesMain = (props) => {
                 </div>
                 <br />
                 <br />
-
                 {/* Created a button for displaying top rated magazines(magazines for which average rating lies between 4 and 5)  */}
-                <div style={{padding:"10px"}} className='zoom'>
-                  <Button onClick={() => props.topMagazines(props.magazines.magazines, filtered_revs)}><h3 style={{fontSize:"17px",color:"#3e046e",fontFamily:"cursive",fontWeight:"bold"}}>
+                  <div style={{padding:"10px"}} className='zoom'>
+                    <Button onClick={() => props.topMagazines(props.magazines.magazines, filtered_revs)}><h3 style={{fontSize:"17px",color:"#3e046e",fontFamily:"cursive",fontWeight:"bold"}}>
                           Top Rated Magazines</h3></Button> 
-                </div>
-                </div>
-
+                  </div>
+                 </div>
                 
                 <div className="row" style={{width:"80%",float:"right"}}>
                   <Fade right>   
-                {displayMagazines}
-                  <ReactPaginate
-                  previousLabel={"Previous"}
-                  nextLabel={"Next"}
-                  pageCount={pageCount}
-                  onPageChange={changePage}
-                  containerClassName={"paginationBttns"}
-                  previousLinkClassName={"previousBttn"}
-                  nextLinkClassName={"nextBttn"}
-                  disabledClassName={"paginationDisabled"}
-                  activeClassName={"paginationActive"}
-                  />
-                  </Fade> 
+                    {/* we call pagination for total magazines */}
+                    {displayMagazines}
+
+                    {/*React paginate is called with required attributes */}
+                    <ReactPaginate
+                      previousLabel={"Previous"}
+                      nextLabel={"Next"}
+                      pageCount={pageCount}
+                      onPageChange={changePage}
+                      containerClassName={"paginationBttns"}
+                      previousLinkClassName={"previousBttn"}
+                      nextLinkClassName={"nextBttn"}
+                      disabledClassName={"paginationDisabled"}
+                      activeClassName={"paginationActive"}
+                    />
+                  </Fade>
                 </div>
               </div>
-              </div>
-            </div>
-            
-            
-          );
-        }  
+          </div>
+        </div>
+    );
+  }
 }
 
 export default MagazinesMain;

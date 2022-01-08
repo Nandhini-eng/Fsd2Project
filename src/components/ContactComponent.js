@@ -11,7 +11,7 @@ const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val
 
 class Contact extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,13 +19,13 @@ class Contact extends Component {
 
     handleSubmit(values) {
         console.log('Current State is: ' + JSON.stringify(values));
-        this.props.postFeedback(values.firstname,values.lastname,values.telnum,values.email,values.agree,values.contactType,values.message);
+        this.props.postFeedback(values.firstname, values.lastname, values.telnum, values.email, values.agree, values.contactType, values.message);
         this.props.resetFeedbackForm();
     }
 
     render() {
 
-        return(
+        return (
             <div className='cu'>
             <div className="container" style={{color:"white"}}>
                 <div className="row">
@@ -43,7 +43,7 @@ class Contact extends Component {
                     <h3 style={{color:"white"}}>Location Information</h3>
                     </div>
                     <Row>
-                    <Col md={5}>
+                        <Col md={5}>
                     {/* <div className="col-12 col-sm-4 offset-sm-1"> */}
                             <h5 style={{color:"white"}}>Our Address</h5>
                             <address style={{color:"white"}}>
@@ -54,30 +54,19 @@ class Contact extends Component {
                             <i className="fa fa-fax"></i>: +852 8765 4321<br />
                             <i className="fa fa-envelope"></i>: <a href="mailto:newspapersandmagazines@news.net">newspapersandmagazines@news.net</a>
                             </address>
-                    {/* </div>
-                    <div className="col-12 col-sm-11 offset-sm-1"> */}
-                       <br></br>
-                       <br></br>
+                    
+                       {/* </div>
+                       <div className="col-12 col-sm-11 offset-sm-1"> */}
+                       <br />
+                       <br />
                         <div className="btn-group" role="group">
                             
-    
                             <a role="button" className="btn btn-primary" href="tel:+85212345678"><i className="fa fa-phone"></i> Call</a>
                             <a role="button" className="btn btn-info"><i className="fa fa-skype"></i> Skype</a>
                             <a role="button" className="btn btn-success" href="mailto:newspapersandmagazines@news.net"><i className="fa fa-envelope-o"></i> Email</a>
                         </div>
-                    
-                    </Col>
-                    <Col md={6}>
-
-                    
-                    
-                    {/* <div className="col-12 col-sm-6 offset-sm-1" style={{float:'right'}}> */}
-                        {/* <img src="https://cdn.pixabay.com/photo/2017/12/02/14/38/contact-us-2993000__480.jpg" alt="contact us" style={{width:"70%",height:"100%",paddingLeft:"80px"}}></img>
-                     */}
-                    {/* </div> */}
-                    </Col>
+                        </Col>      
                     </Row>
-                    
                 </div>
 
                 <div className="row row-content" style={{backgroundColor:"lightgray",color:"black"}}>
@@ -195,34 +184,34 @@ class Contact extends Component {
                                 <Col md={{size: 3, offset: 1}}>
                                     <Control.select model=".contactType" name="contactType"
                                             className="form-control">
-                                        <option>Tel.</option>
-                                        <option>Email</option>
-                                    </Control.select>
-                                </Col>
-                            </Row>
-                            <br />
-                            <Row className="form-group">
-                                <Label htmlFor="message" md={2} style={{fontWeight:"bold"}}>Your Feedback</Label>
-                                <Col md={10}>
-                                    <Control.textarea model=".message" id="message" name="message"
-                                        rows="12"
-                                         className="form-control" />
-                                </Col>
-                            </Row>
-                            <br />
-                            <Row className="form-group">
-                                <Col md={{size: 10, offset: 2}}>
-                                    <Button type="submit" color="primary">
-                                        Send Feedback
-                                    </Button>
-                                </Col>
-                            </Row>
-                            <br />
-                        </Form>
+                                            <option>Tel.</option>
+                                            <option>Email</option>
+                                        </Control.select>
+                                    </Col>
+                                </Row>
+                                <br />
+                                <Row className="form-group">
+                                    <Label htmlFor="message" md={2} style={{ fontWeight: "bold" }}>Your Feedback</Label>
+                                    <Col md={10}>
+                                        <Control.textarea model=".message" id="message" name="message"
+                                            rows="6"
+                                            className="form-control" />
+                                    </Col>
+                                </Row>
+                                <br />
+                                <Row className="form-group">
+                                    <Col md={{ size: 10, offset: 2 }}>
+                                        <Button type="submit" color="primary">
+                                            Send Feedback
+                                        </Button>
+                                    </Col>
+                                </Row>
+                                <br />
+                            </Form>
+                        </div>
                     </div>
-               </div>
-               <br></br>
-            </div>
+                    <br></br>
+                </div>
             </div>
         );
     }

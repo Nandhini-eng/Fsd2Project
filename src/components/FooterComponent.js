@@ -40,15 +40,15 @@ function Footer(props) {
                         <a className="btn btn-social-icon" href="mailto:"><i className="fa fa-envelope-o"></i></a>
                     </div>
                 </div>
-            </div>
-            <div className="row justify-content-center">             
-                <div className="col-auto" style={{color:"black"}}>
-                    <p>© Copyright 2020 Newspapers And Magazines</p>
+                <div className="row justify-content-center">
+                    <div className="col-auto" style={{ color: "black" }}>
+                        <p>© Copyright 2020 Newspapers And Magazines</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    )
+     </div>
+    );
 }
 
 export default Footer;

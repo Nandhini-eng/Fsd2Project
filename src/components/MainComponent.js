@@ -8,7 +8,7 @@ import Contact from './ContactComponent';
 import NewspapersMain from './NewspapersComponent';
 import Searchc from './Searchc';
 import Cart from './Cart';
-import {Login} from './Login';
+import { Login } from './Login';
 import NewspaperDetail from './NewspaperDetail';
 import MagazinesMain from './MagazinesComponent';
 import ItemDetail from './ItemDetail';
@@ -23,7 +23,7 @@ import { fetchNewspapers, fetchMagazines, filterMagazinesByCategory, filterMagaz
 import { actions } from 'react-redux-form';
 import Checkout from './Checkout';
 import OrdersComponent from './OrdersComponent';
-import {user_real} from "./Login";
+import { user_real } from "./Login";
 
 const mapStateToProps = (state) => (
   {
@@ -64,8 +64,9 @@ const mapDispatchToProps = (dispatch) => ({
     fetchItems:()=>{dispatch(fetchItems())},
 });
 
-class Main extends Component{
-   
+
+class Main extends Component {
+
     componentDidMount() {
       this.props.fetchItems();
       this.props.fetchNewspapers();
@@ -73,13 +74,10 @@ class Main extends Component{
       this.props.fetchUsers();
       this.props.fetchReviews();
       this.props.fetchOrders();
-      
     }
 
-    
 
     render() {
-      
 
         const HomePage = () => {
             return(
@@ -169,31 +167,6 @@ class Main extends Component{
         );
         }
 
-        // var items_reviews = [];
-        
-        // var item_review = {};
-        // var len = this.props.newspapers.newspapers.length + this.props.magazines.magazines.length;
-
-    
-        // for (var i=0;i<len;i++){
-        //   var sum = 0, avg = 0;
-        //   item_review.itemId = i;
-        //   var revs = this.props.reviews.reviews.filter(rev => rev.itemId === i);
-        //   //console.log(JSON.stringify(revs));
-        //   if (revs.length){
-        //     sum = revs.map(rev=>rev.rating).reduce((r1,r2)=>r1+r2,0);
-        //     avg = sum/revs.length;
-        //   }
-        //   item_review.avgRating = avg;
-        //   items_reviews.push({...item_review});
-        // }
-        // console.log(JSON.stringify(items_reviews));
-        
-
-        // var filtered_revs = items_reviews.filter(rev => rev.avgRating >= 4 && rev.avgRating <= 5)
-        // console.log(JSON.stringify(filtered_revs));
-      
-        // console.log(filtered_revs.length);
         
         return(
             <div>
@@ -211,7 +184,7 @@ class Main extends Component{
                 <Route path='/myaccount' component={() => <Account />} />
                 <Route path='/aboutus' component={() => <About />} />
                 <Route path='/cart' component={() => <Cart getproducts={this.props.getproducts} newspapers={this.props.newspapers} magazines={this.props.magazines} cart={this.props.cartitem.cart}  />} />
-                <Route exact path='/searchc' component={() => <Searchc />} />
+                <Route exact path='/searchc' component={() => <Searchc items={this.props.cartitem.items} />} />
                 <Route path='/searchc/:itemId' component={ItemWithId} />             
                 <Route path='/checkout' component={()=><Checkout resetCheckoutForm={this.props.resetCheckoutForm} postOrder={this.props.postOrder} cart={this.props.cartitem.cart}/>}/>
                 <Route path='/orders' component={()=><OrdersComponent orders={this.props.orders.orders.filter((order)=>order.user === user_real)} ordersErrMess={this.props.orders.errMess}/>}/>

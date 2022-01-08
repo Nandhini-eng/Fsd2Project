@@ -24,6 +24,8 @@ address{
 /* .navbar-dark {
   background-image: url("https://www.crushpixel.com/big-static12/preview4/vector-red-abstract-3d-paper-1004364.jpg");
 } */
+
+
 .hg{
   background-color: #292525;
   align-items: center;
@@ -60,7 +62,6 @@ p{
 }
 
 
-
 .zoom {
   padding: 10px;
   transition: transform .2s;
@@ -78,7 +79,7 @@ p{
 
 
 body {
-  background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU");
+  background-color:black;
   background-repeat: no-repeat;  
 }
 
@@ -141,6 +142,7 @@ body {
   background-color: #ebebeb;
   color: white;
 }
+
 .name:hover {
   border-bottom: 5px solid #0e3721;
   height: 30px;
@@ -210,11 +212,8 @@ body {
 
 .hm{
    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU");
-  
-
   /* background-repeat:no-repeat;
   background-size:cover */
-
 }
 
 .hdr{
@@ -225,7 +224,7 @@ body {
 
 .np{
   background-image: url("https://images5.alphacoders.com/912/912044.jpg");
- background-repeat:no-repeat;
+  background-repeat:no-repeat;
   background-size:cover  
 }
 
@@ -236,26 +235,17 @@ body {
 
 }
 
-
 .au{
   background-image: url("https://images7.alphacoders.com/111/thumb-1920-1113092.png");
   background-repeat:no-repeat;
-  background-size:cover
-
-
-
-  
+  background-size:cover  
 }
 
 
 .acc{
-
   background-image: url("https://wallpaperaccess.com/full/2667044.jpg");
   background-repeat:no-repeat;
   background-size:cover
-
-
-
 }
 
 .cu{
@@ -289,25 +279,18 @@ body {
   background-image: url("https://t4.ftcdn.net/jpg/02/97/09/81/360_F_297098131_6Kgm7iFL6ZXi5AJWh5IAoWUiXBOR6vf3.jpg");
   background-repeat:no-repeat;
   background-size:cover
-
-
 }
+
 .magde{
   background-image: url("https://media.istockphoto.com/photos/abstract-3d-black-cube-wall-background-picture-id1138008438?k=20&m=1138008438&s=170667a&w=0&h=LgrkyKo2lU_eNylyRThRs4oace_61zm58BRMZqY_KH8=");
   background-repeat:no-repeat;
   background-size:cover
-
-
 }
-
 
 .sgup{
   background-image: url("https://ak.picdn.net/shutterstock/videos/1032877547/thumb/1.jpg?ip=x480");
   background-repeat:no-repeat;
   background-size:cover
-
-
-
 }
 
 .log{
@@ -318,7 +301,6 @@ body {
 }
 
 .foo{
-
   background-image: url("https://ak.picdn.net/shutterstock/videos/1012109966/thumb/1.jpg");
   background-repeat:no-repeat;
   background-size:cover

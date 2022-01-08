@@ -1,47 +1,43 @@
-import React, { Component} from 'react';
-import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem,  Button } from 'reactstrap';
-import { NavLink,Link } from 'react-router-dom';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Button } from 'reactstrap';
+import { NavLink, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Cartval from './Cartval.js';
-import {getproducts} from '../redux/ActionCreators';
-
+import { getproducts } from '../redux/ActionCreators';
 import LightSpeed from 'react-reveal/LightSpeed';
-import Jump from 'react-reveal/Jump';
-
 import Searchc from './Searchc.js';
-import {user_real} from './Login'
+import { user_real } from './Login';
 let isLoggedin
-class Header extends Component{
+
+class Header extends Component {
+
+  constructor(props) {
+
+    super(props);
+
+    this.state = {
+
+      isNavOpen: false,
+      SearchField: "e "
+    };
+
+    this.toggleNav = this.toggleNav.bind(this);
+
+  }
+
+  toggleNav() {
+    this.setState({
+      isNavOpen: !this.state.isNavOpen
+    });
+  }
+  back(e) {
+    e.target.style.color = 'white'
+  }
+  back1(e) {
+    e.target.style.color = 'rgba(255,255,255,.55)'
+  }
   
-    constructor(props){
-  
-        super(props);
-
-        this.state = {
-          
-            isNavOpen: false,
-            SearchField:"e "
-            
-        };
-
-        this.toggleNav = this.toggleNav.bind(this);
-      
-    }
-
-    toggleNav(){
-        this.setState({
-          isNavOpen: !this.state.isNavOpen
-        });
-    }
-    back(e)
-    {
-      e.target.style.color = 'white'
-    }
-    back1(e)
-    {
-      e.target.style.color = 'rgba(255,255,255,.55)'
-    }
-    render() {
+  render() {
         
         console.log(user_real)
         if(user_real){
@@ -116,7 +112,7 @@ class Header extends Component{
                     </NavItem>
                     <NavItem>
                         <NavLink className="nav-link" to='/searchc'>
-                         <h5>Click here to Search </h5>
+                         <h5>Click here to Search <span className="fa fa-search"></span></h5>
                         </NavLink>
                     </NavItem> 
                    </Nav>
@@ -152,20 +148,7 @@ class Header extends Component{
           </React.Fragment>
         );
     }
-}
 
-const mapStateToProps = (state) => {
-  return {
-    newspapers: state.newspapers,
-    magazines: state.magazines,
-    items:state.cartReducer.items,
-  };
-};
-
-const mapDispatchToProps=(dispatch)=>{
-  return{
-    getproducts: (newspapers,magazines)=>{dispatch(getproducts(newspapers,magazines))},
   }
-}
 
-export default connect(mapStateToProps,mapDispatchToProps)(Header);
+export default Header;

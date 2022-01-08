@@ -1,36 +1,35 @@
  
+/* CSS for pagination */
+
   .paginationBttns {
     width: 80%;
     height: 40px;
     list-style: none;
     display: flex;
     justify-content: center;
+    color:white
   }
   
   .paginationBttns a {
     padding: 10px;
     margin: 8px;
     border-radius: 5px;
-    border: 1px rgb(212, 9, 9);
-    color: rgb(177, 90, 32);
+    border: 1px white;
+    color:aqua;
     cursor: pointer;
   }
   
   .paginationBttns a:hover {
     color: white;
-    background-color:rgb(148, 52, 177);
+    background-color:aqua;
   }
   
   .paginationActive a {
     color: white;
-    background-color: #740f92;
+    background-color: aqua;
   }
   
   .paginationDisabled a {
-    color:white;
-    background-color:rgb(138, 133, 133);
-  }
-
-  .bg{
-      background-color:rgb(154, 100, 253);
+    color:gray;
+    background-color:gray;
   }
