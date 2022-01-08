@@ -7,7 +7,6 @@ import { Button } from 'reactstrap';
 let price, items;
 
 // functional cart component props are sent from main component
-
 function Cart(props) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
@@ -23,7 +22,6 @@ function Cart(props) {
     setTotalItems(items);
     setTotalPrice(price);
   }, [props.cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
-
   price = totalPrice
   items = totalItems
 
@@ -96,7 +94,7 @@ function Cart(props) {
             ))}
           </div>
           <div className={styles.cart__summary}>
-            <h4 className={styles.summary__title}>Cart Summary</h4>  
+            <h4 className={styles.summary__title}>Cart Summary</h4>
             <div className={styles.summary__price}>
               <span>TOTAL: ({totalItems} items)</span>
               <span>Rs {totalPrice}</span>

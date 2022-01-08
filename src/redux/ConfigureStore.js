@@ -10,6 +10,7 @@ import LoginReducer from './LoginReducer'
 import { signfeed } from './register'
 import { Reviews } from './reviews';
 import { Orders } from "./orders";
+import {blog} from './blog';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -21,7 +22,8 @@ export const ConfigureStore = () => {
             login: LoginReducer,
             regusers: signfeed,
             reviews: Reviews,
-            orders: Orders,
+            orders:Orders,
+            blogs: blog,
             ...createForms({
                 feedback: InitialFeedback,
                 order: InitialOrder

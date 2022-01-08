@@ -189,7 +189,9 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                         {/* Add to cart button works if the user is logged in */}
                         <div className="product-price">
                             <span>Rs.{item.price}</span>
-                            <button class="cart-btn" onClick={IsLogin}>Add to Cart</button>
+                            <div className='zoom'>
+                                <button class="cart-btn" onClick={IsLogin}>Add to Cart</button>
+                            </div>
                         </div>
                         {/* Displaying the details related to reviews */}
                         <div className='product-description'>

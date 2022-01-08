@@ -82,8 +82,9 @@ function Searchc({ items }) {
             type="search"
             placeholder="Search for desired newspapers or magazines"
             onChange={handleChange}
+            style={{width:"40%",padding:"5px",margin:"5px"}}
           />
-          <span style={{ backgroundColor: "whitesmoke", fontSize: "30px", paddingLeft: "5px" }} className="fa fa-search"></span>
+          <span style={{ backgroundColor: "whitesmoke", fontSize: "30px",padding:"5px" }} className="fa fa-search"></span>
         </div>
 
         <div className='row' style={{ paddingLeft: "180px" }}>

@@ -106,14 +106,14 @@ function RenderReviews({ reviews, errMess }) {
                     <ul className="product-description">
                         <h3>REVIEWS</h3>
                         {reviews.map((review) => (
-                            
+
                             <li key={review.id}>
                                 <p>{review.review}</p>
                                 <ReactStars count={5} size={24} value={review.rating} color2={'#ffd700'} edit={false} />
                                 <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.date)))}</p>
                                 <br />
                             </li>
-                    
+
                         ))}
                     </ul>
                 </div>
@@ -171,7 +171,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                     <div className="left-column">
                         <img src={baseUrl + item.image} alt={item.name} />
                     </div>
-                     {/* Displaying details in the right side */}
+                    {/* Displaying details in the right side */}
                     <div className="right-column">
 
                         <div className="product-description">
@@ -183,7 +183,9 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                         {/* Add to cart button works if the user is logged in */}
                         <div className="product-price">
                             <span>Rs.{item.price}</span>
-                            <button class="cart-btn" onClick={IsLogin}>Add to Cart</button>
+                            <div className='zoom'>
+                                <button class="cart-btn" onClick={IsLogin}>Add to Cart</button>
+                            </div>
                         </div>
                         {/* Displaying the details related to reviews */}
                         <div className='product-description'>
@@ -237,7 +239,7 @@ const MagazineDetail = (props) => {
                             <BreadcrumbItem active>{props.magSelected.name}</BreadcrumbItem>
                         </Breadcrumb>
                     </div>
-                     {/* Calling RenderItem function by sending required properties */}
+                    {/* Calling RenderItem function by sending required properties */}
                     <div className="row">
                         <RenderItem item={props.magSelected} addtocart={props.addtocart} reviews={props.reviews} postReview={props.postReview} orders={props.checkorders} />
                     </div>

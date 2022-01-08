@@ -3,13 +3,15 @@ import { Button, Label, Col, Row } from 'reactstrap';
 import { Control, Form, Errors } from 'react-redux-form';
 import { user_real } from "./Login";
 import { price, items } from "./Cart";
-
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 //Required validators
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
 const Length = (len) => (val) => val && (val.length === len);
 const isNumber = (val) => !isNaN(Number(val));
+
 class Checkout extends Component {
     constructor(props) {
         super(props);
@@ -30,10 +32,15 @@ class Checkout extends Component {
 
             //Checkout form with shipping address and payment details
             <div className="row row-content" style={{ backgroundImage: `url("https://w0.peakpx.com/wallpaper/909/359/HD-wallpaper-black-lines-material-design-creative-geometric-shapes-lollipop-lines-black-material-design-strips-geometry-black-backgrounds.jpg")`, paddingLeft: "8%", paddingRight: "7%" }} >
+                <Breadcrumb style={{ fontSize: "20px" }} className='bdcrum'>
+                    <BreadcrumbItem><Link to="/cart">Cart</Link></BreadcrumbItem>
+                    <BreadcrumbItem active>Checkout</BreadcrumbItem>
+                </Breadcrumb>
+                <br />
                 <br />
                 <div className='chout'>
                     <div className="col-12 col-md-11" >
-                        <Form model="order" onSubmit={(values) => this.handleSubmit(values)} style={{paddingTop:"10px"}}>
+                        <Form model="order" onSubmit={(values) => this.handleSubmit(values)} style={{ paddingTop: "10px" }}>
                             <div style={{ float: "left", width: "48%" }}>
                                 <h3>Shipping Address</h3>
                                 <br />

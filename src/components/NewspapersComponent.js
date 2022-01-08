@@ -11,7 +11,7 @@ import Flash from 'react-reveal/Flash';
 import ReactStars from 'react-stars';
 
 //Displaying the item with image and name in the form of card
-function RenderItem({ item,rating }) {
+function RenderItem({ item, rating }) {
 
   return (
     <div className="zoom">
@@ -63,13 +63,14 @@ const NewspapersMain = (props) => {
 
   //Sending each newspaper to RenderItem function 
   const items = props.newspapers.filteredItems.map((item) => {
-    var review = items_reviews.filter(rev=>rev.itemId === item.id)
+    var review = items_reviews.filter(rev => rev.itemId === item.id)
     return (
       <div key={item.id}>
         <RenderItem item={item} rating={review[0].avgRating} />
         <br />
       </div>
-    )}
+    )
+  }
   )
 
   const [papers, setPapers] = useState(items);

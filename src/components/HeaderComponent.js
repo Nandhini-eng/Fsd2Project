@@ -4,6 +4,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Cartval from './Cartval.js';
 import { getproducts } from '../redux/ActionCreators';
+
 import LightSpeed from 'react-reveal/LightSpeed';
 import Searchc from './Searchc.js';
 import { user_real } from './Login';
@@ -36,18 +37,20 @@ class Header extends Component {
   render() {
     //If user is logged in, Logout button is displayed and linked appropriately
     if (user_real) {
+      console.log("Logged in")
       isLoggedin =
         <Link to='/myaccount'>
-          <Button style={{ color: 'rgba(255,255,255,.55)' }} onMouseOver={this.back} onMouseOut={this.back1}>
+          <Button style={{ color: 'rgba(255,255,255,.55)', backgroundColor: "#d61919" }} onMouseOver={this.back} onMouseOut={this.back1}>
             <span className="fa fa-sign-in fa-lg"></span> Logout
           </Button>
         </Link>
     }
     //If user is not logged in, Signup button is displayed and linked appropriately
     else {
+      console.log('Not logged in')
       isLoggedin =
         <Link to='/signup'>
-          <Button style={{ color: 'rgba(255,255,255,.55)' }} onMouseOver={this.back} onMouseOut={this.back1}>
+          <Button style={{ color: 'rgba(255,255,255,.55)', backgroundColor: "#5112cd" }} onMouseOver={this.back} onMouseOut={this.back1}>
             <span className="fa fa-sign-in fa-lg"></span> Signup
           </Button>
         </Link>
@@ -56,8 +59,8 @@ class Header extends Component {
     //Nav bar which links various nav items to their respective pages
     return (
       <React.Fragment>
-        <Navbar dark expand="md" style={{ backgroundImage:`url("https://i.pinimg.com/originals/37/7d/a5/377da5849f93a6f8594fd07933e832fa.png")`}}>
-          <div className="container" style={{ color: "white", marginLeft: "30px", marginRight: "10px" ,maxWidth:"1300px"}} >
+        <Navbar dark expand="md" style={{ backgroundImage: `url("https://i.pinimg.com/originals/37/7d/a5/377da5849f93a6f8594fd07933e832fa.png")` }}>
+          <div className="container" style={{ color: "white", marginLeft: "30px", marginRight: "10px", maxWidth: "1300px" }} >
             <NavbarToggler onClick={this.toggleNav} />
             <Collapse isOpen={this.state.isNavOpen} navbar>
 
@@ -108,6 +111,11 @@ class Header extends Component {
                     <h5><span className="fa fa-shopping-bag fa-lg"></span> My Orders </h5>
                   </NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink className="nav-link" to='/blog'>
+                    <h5><span className="fa fa-commenting-o fa-lg"></span> Blog</h5>
+                  </NavLink>
+                </NavItem>
                 {/* Search page */}
                 <NavItem>
                   <NavLink className="nav-link" to='/searchc'>
@@ -148,23 +156,6 @@ class Header extends Component {
       </React.Fragment>
     );
   }
-
 }
 
-//Mapping state to props to use required state value 
-const mapStateToProps = (state) => {
-  return {
-    newspapers: state.newspapers,
-    magazines: state.magazines,
-    items: state.cartReducer.items,
-  };
-};
-
-//Mapping dispatch to props to dispatch required functions
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getproducts: (newspapers, magazines) => { dispatch(getproducts(newspapers, magazines)) },
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

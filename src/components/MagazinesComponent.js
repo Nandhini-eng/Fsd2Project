@@ -12,7 +12,7 @@ import ReactStars from 'react-stars';
 
 
 //Funtional component to render each magazine in a reactstrap Card
-function RenderItem({ item,rating }) {
+function RenderItem({ item, rating }) {
   return (
     <div className='zoom'>
       <Card>
@@ -67,7 +67,7 @@ const MagazinesMain = (props) => {
 
   //Calling the render item function for each and every filtered magazine
   const items = render_items.map((item) => {
-    var review = items_reviews.filter(rev=>rev.itemId === item.id)
+    var review = items_reviews.filter(rev => rev.itemId === item.id)
     return (
       <div key={item.id} className="col-12">
         <RenderItem item={item} rating={review[0].avgRating} />

@@ -58,7 +58,7 @@ class ReviewForm extends Component {
 
     render() {
         return (
-            
+
             <React.Fragment>
                 <div className="col-12 col-md-7 m-1">
                     <Button outline onClick={this.toggleModal}>
@@ -106,12 +106,12 @@ function RenderReviews({ reviews, errMess }) {
                 <div className="col-12 col-md-10 m-1">
                     <ul className="product-description">
                         <h3>REVIEWS</h3>
-                        {reviews.map((review) => ( 
+                        {reviews.map((review) => (
                             <li key={review.id}>
                                 <p>{review.review}</p>
                                 <ReactStars count={5} size={24} value={review.rating} color2={'#ffd700'} edit={false} />
                                 <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.date)))}</p>
-                                
+
                                 <br />
                             </li>
                         ))}
@@ -167,7 +167,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
         }
         return (
             <React.Fragment>
-                
+
                 <main className="container1">
                     {/* Diaplaying image in the left side */}
                     <div className="left-column">
@@ -184,9 +184,9 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                         {/* Add to cart button works if the user is logged in */}
                         <div className="product-price">
                             <span >Rs.{item.price}</span>
-                            
-                            <button class="cart-btn" onClick={IsLogin}>Add to Cart</button>
-                            
+                            <div className='zoom'>
+                                <button class="cart-btn" onClick={IsLogin}>Add to Cart</button>
+                            </div>
                         </div>
                         {/* Displaying the details related to reviews */}
                         <div className='product-description'>
