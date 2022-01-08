@@ -237,6 +237,7 @@ const NewspaperDetail = (props) => {
                     <div className="row">
                         {/* Breadcrum to navigate easily to newspapers */}
                         <Breadcrumb style={{ fontSize: "20px" }} className='bdcrum'>
+                            <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                             <BreadcrumbItem><Link to="/newspapers">Newspapers</Link></BreadcrumbItem>
                             <BreadcrumbItem active>{props.paperSelected.name}</BreadcrumbItem>
                         </Breadcrumb>

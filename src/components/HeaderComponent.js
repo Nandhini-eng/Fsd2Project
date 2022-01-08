@@ -40,8 +40,8 @@ class Header extends Component {
       console.log("Logged in")
       isLoggedin =
         <Link to='/myaccount'>
-          <Button style={{ color: 'rgba(255,255,255,.55)', backgroundColor: "#d61919" }} onMouseOver={this.back} onMouseOut={this.back1}>
-            <span className="fa fa-sign-in fa-lg"></span> Logout
+          <Button style={{ color: 'rgba(255,255,255,.55)', backgroundColor: "#b82a2a" }} onMouseOver={this.back} onMouseOut={this.back1}>
+          <h5><span className="fa fa-sign-in fa-lg"></span>Logout</h5>
           </Button>
         </Link>
     }
@@ -50,8 +50,8 @@ class Header extends Component {
       console.log('Not logged in')
       isLoggedin =
         <Link to='/signup'>
-          <Button style={{ color: 'rgba(255,255,255,.55)', backgroundColor: "#5112cd" }} onMouseOver={this.back} onMouseOut={this.back1}>
-            <span className="fa fa-sign-in fa-lg"></span> Signup
+          <Button style={{ color: 'rgba(255,255,255,.55)'}} color='primary' onMouseOver={this.back} onMouseOut={this.back1}>
+          <h5><span className="fa fa-sign-in fa-lg"></span>Signup</h5> 
           </Button>
         </Link>
     }
@@ -60,13 +60,13 @@ class Header extends Component {
     return (
       <React.Fragment>
         <Navbar dark expand="md" style={{ backgroundImage: `url("https://i.pinimg.com/originals/37/7d/a5/377da5849f93a6f8594fd07933e832fa.png")` }}>
-          <div className="container" style={{ color: "white", marginLeft: "30px", marginRight: "10px", maxWidth: "1300px" }} >
+          <div className="container" style={{ color: "white", marginLeft: "30px", marginRight: "10px", maxWidth: "1500px" }} >
             <NavbarToggler onClick={this.toggleNav} />
             <Collapse isOpen={this.state.isNavOpen} navbar>
 
               <Nav navbar>
                 {/* Logo of our app */}
-                <NavItem className="mr-auto" href="/" style={{ paddingLeft: "2px" }}>
+                <NavItem className="mr-auto" href="/" style={{ paddingLeft: "2px", paddingRight:"2px" }}>
                   <img src='assets/images/logo.png' height="45" width="45" alt='Newspapers and Magazines' />
                 </NavItem>
                 {/* Home */}

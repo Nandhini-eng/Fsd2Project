@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, CardImg, CardHeader, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap';
+import { Card, CardImg, CardHeader, CardBody, CardText, CardTitle, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
@@ -23,8 +23,10 @@ function RenderItem({ item, rating }) {
               onMouseOut={(e) => (e.currentTarget.style = { transform: "scale(1)", overflow: "hidden" })} />
             <div className='hg'>
               <CardHeader><h4>{item.name}</h4></CardHeader>
-              <CardHeader><h4>Rs.{item.price}</h4></CardHeader>
-              <CardHeader><ReactStars count={5} size={24} value={rating} color2={'#ffd700'} edit={false} /></CardHeader>
+              <CardBody>
+               <CardTitle><ReactStars count={5} size={24} value={rating} color2={'#ffd700'} edit={false} /></CardTitle>
+               <CardText><h5 style={{fontSize:"20px"}}>Rs.{item.price}</h5></CardText>
+              </CardBody>
             </div>
           </Pulse>
         </Link>
