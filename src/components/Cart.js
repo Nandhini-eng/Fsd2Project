@@ -1,4 +1,5 @@
 
+
 import React, { useState ,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import styles from "./Cart.module.css";
@@ -8,6 +9,8 @@ function Cart(props) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
   
+
+ 
   
   useEffect(() => {
     let items = 0;
@@ -20,6 +23,27 @@ function Cart(props) {
     setTotalPrice(price);
   }, [props.cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
 
+  
+  
+  // function c(){
+  //   props.getproducts(props.newspapers,props.magazines)
+
+
+  // };
+  // c()
+  const x=()=>{
+    
+    props.getproducts(props.newspapers,props.magazines)
+
+
+};
+
+  
+
+
+    
+        
+              
     price = totalPrice
     items = totalItems
     console.log(totalItems)
@@ -66,11 +90,13 @@ function Cart(props) {
             </div>
            </div>
           </div>
-      )
+        
+    )
+      
     }
     else{
       return(
-        <div style={{backgroundImage: `url("https://wallpaperaccess.com/full/1812887.jpg")`}}>
+        <div style={{backgroundImage: `url("https://wallpaperaccess.com/full/2667044.jpg")`}}>
               <div className={styles.cart}>
                 <div className={styles.cart__items}>
                  {props.cart.map((item) => (
@@ -89,8 +115,10 @@ function Cart(props) {
             </div>
            </div>
           </div>
+
       )
     }
+    
 }
 
 

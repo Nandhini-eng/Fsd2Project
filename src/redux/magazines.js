@@ -25,7 +25,8 @@ export const Magazines = (state = {
             return {...state, filteredItems: action.payload.items, category: action.payload.category}  
             
         case ActionTypes.FILTER_MAGAGINES_BY_LANG:
-            return {...state, filteredItems: action.payload.items, language: action.payload.lang}    
+            return {...state, filteredItems: action.payload.items, language: action.payload.lang}  
+        //Action Type which change the state of sortedMagazines  
         case ActionTypes.SORT_MAGAZINES:
             return {...state, sortedMagazines: action.payload.items, sort: action.payload.sort}
         default:

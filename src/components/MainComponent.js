@@ -6,10 +6,12 @@ import Account from './AccountComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import NewspapersMain from './NewspapersComponent';
+import Searchc from './Searchc';
 import Cart from './Cart';
 import {Login} from './Login';
 import NewspaperDetail from './NewspaperDetail';
 import MagazinesMain from './MagazinesComponent';
+import ItemDetail from './ItemDetail';
 import MagazineDetail from './MagazineDetail';
 import Signup from './Signup';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
@@ -23,7 +25,6 @@ import { actions } from 'react-redux-form';
 import Checkout from './Checkout';
 import OrdersComponent from './OrdersComponent';
 import {user_real} from "./Login";
-import Newsdetails from "./Newsdetails";
 const mapStateToProps = (state) => (
   {
     newspapers: state.newspapers,
@@ -89,13 +90,17 @@ class Main extends Component{
 
         const NewspaperWithId = ({match}) => {
           return(
-            <Newsdetails paperSelected={this.props.newspapers.newspapers.filter((paper) => paper.id === parseInt(match.params.paperId,10))[0]} 
+            <NewspaperDetail paperSelected={this.props.newspapers.newspapers.filter((paper) => paper.id === parseInt(match.params.paperId,10))[0]} 
               isLoading={this.props.newspapers.isLoading}
               errMess={this.props.newspapers.errMess}
               reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.paperId,10))} 
               reviewsErrMess={this.props.reviews.errMess}
               postReview={this.props.postReview}
               addtocart={this.props.addtocart}
+              getproducts={this.props.getproducts} 
+              newspapers={this.props.newspapers} 
+              magazines={this.props.magazines}
+              
               checkorders={this.props.orders.orders}
               />
         );
@@ -110,14 +115,39 @@ class Main extends Component{
               reviewsErrMess={this.props.reviews.errMess}
               postReview={this.props.postReview}
               addtocart={this.props.addtocart}
+              getproducts={this.props.getproducts} 
+              newspapers={this.props.newspapers} 
+              magazines={this.props.magazines}
               checkorders={this.props.orders.orders}
               />
         );
         }
+
+
+
+        const ItemWithId = ({match}) => {
+          return(
+            <ItemDetail itemSelected={this.props.cartitem.items.filter((item) => item.id === parseInt(match.params.itemId,10))[0]} 
+              isLoading={this.props.magazines.isLoading}
+              errMess={this.props.magazines.errMess}
+              addtocart={this.props.addtocart}
+              getproducts={this.props.getproducts} 
+              newspapers={this.props.newspapers} 
+              magazines={this.props.magazines}
+              reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.itemId,10))} 
+              reviewsErrMess={this.props.reviews.errMess}
+              postReview={this.props.postReview}
+              checkorders={this.props.orders.orders}
+              />
+        );
+        }
+
         
         return(
             <div>
               <Header /> 
+              
+              
               <Switch location={this.props.location}>
                 <Route path='/home' component={HomePage} />
                 <Route exact path ="/login" component={()=><Login {...this.props}/>}/> 
@@ -126,10 +156,16 @@ class Main extends Component{
                 <Route path='/newspapers/:paperId' component={NewspaperWithId}   />
                 <Route exact path='/magazines' component={() => <MagazinesMain magazines={this.props.magazines} filterByCategory={this.props.filterMagsByCategory} filterByLanguage={this.props.filterMagsByLanguage} sort_magazines={this.props.sortMagazines} />} />
                 <Route path='/magazines/:magId' component={MagazineWithId} />
+                
                 <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} /> 
                 <Route path='/myaccount' component={() => <Account />} />
                 <Route path='/aboutus' component={() => <About />} />
                 <Route path='/cart' component={() => <Cart getproducts={this.props.getproducts} newspapers={this.props.newspapers} magazines={this.props.magazines} cart={this.props.cartitem.cart}  />} />
+                <Route exact path='/searchc' component={() => <Searchc />} />
+                <Route path='/searchc/:itemId' component={ItemWithId} />  
+               
+                
+                             
                 <Route path='/checkout' component={()=><Checkout resetCheckoutForm={this.props.resetCheckoutForm} postOrder={this.props.postOrder} cart={this.props.cartitem.cart}/>}/>
                 <Route path='/orders' component={()=><OrdersComponent orders={this.props.orders.orders.filter((order)=>order.user === user_real)} ordersErrMess={this.props.orders.errMess}/>}/>
                 <Redirect to="/home" />

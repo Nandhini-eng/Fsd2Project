@@ -1,3 +1,4 @@
+//Initial state of Feedback Form
 export const InitialFeedback = {
     firstname: '',
     lastname: '',
@@ -8,6 +9,7 @@ export const InitialFeedback = {
     message: ''
 };
 
+//Initial state of Checkout form
 export const InitialOrder={
     fullName:'',
     address:'',

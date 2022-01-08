@@ -1,14 +1,16 @@
 .cart {
-    margin-left: 2rem auto; 
-    margin-right: 2rem auto;
-    width: 1100px;
+    padding-left: 50px;
+    width: 90%;
     display: flex;
     justify-content: space-between;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    
   }
   
   .cart__items {
     flex: 0.7;
-    margin: 1rem;
+    margin: 1 rem;
   }
   
   .cart__summary {
@@ -20,7 +22,7 @@
     padding: 1rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 10px;
-    margin:1rem;
+    margin:1 rem;
     background-color: whitesmoke;
   }
   

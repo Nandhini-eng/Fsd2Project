@@ -12,6 +12,7 @@ function Account() {
         
     }
     return(
+        <div className='acc'>
         <div className="container">
             <div className="row">
                 <h1> Hello {user_real}</h1>
@@ -19,6 +20,7 @@ function Account() {
                 <br/>
                 
             </div>    
+        </div>
         </div>
     );
 }
