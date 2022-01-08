@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import Cartval from './Cartval.js';
 import { getproducts } from '../redux/ActionCreators';
 import LightSpeed from 'react-reveal/LightSpeed';
-import { user_real } from './Login'
+import Searchc from './Searchc.js';
+import { user_real } from './Login';
 let isLoggedin
 
 class Header extends Component {
@@ -31,6 +32,7 @@ class Header extends Component {
   back1(e) {
     e.target.style.color = 'rgba(255,255,255,.55)'
   }
+
   render() {
     //If user is logged in, Logout button is displayed and linked appropriately
     if (user_real) {
@@ -51,80 +53,82 @@ class Header extends Component {
         </Link>
     }
 
+    //Nav bar which links various nav items to their respective pages
     return (
-      //Nav bar which links various nav items to their respective pages
       <React.Fragment>
-        <Navbar dark expand="md" style={{ backgroundImage: `url("https://c4.wallpaperflare.com/wallpaper/636/636/890/line-strip-grey-background-wallpaper-preview.jpg")` }}>
-          <div className="container-xl" style={{ color: "white" }} >
+        <Navbar dark expand="md" style={{ backgroundImage:`url("https://i.pinimg.com/originals/37/7d/a5/377da5849f93a6f8594fd07933e832fa.png")`}}>
+          <div className="container" style={{ color: "white", marginLeft: "30px", marginRight: "10px" ,maxWidth:"1300px"}} >
             <NavbarToggler onClick={this.toggleNav} />
             <Collapse isOpen={this.state.isNavOpen} navbar>
+
               <Nav navbar>
-                {/* logo */}
-                <NavItem className="mr-auto" href="/">
-                  <img src='assets/images/logo.png' height="30" width="30" alt='Newspapers and Magazines' />
+                {/* Logo of our app */}
+                <NavItem className="mr-auto" href="/" style={{ paddingLeft: "2px" }}>
+                  <img src='assets/images/logo.png' height="45" width="45" alt='Newspapers and Magazines' />
                 </NavItem>
                 {/* Home */}
                 <NavItem>
                   <NavLink className="nav-link" to='/home'>
-                    <span className="fa fa-home fa-lg" ></span> Home
+                    <h5><span className="fa fa-home fa-lg" ></span> Home</h5>
                   </NavLink>
                 </NavItem>
                 {/* Newspapers */}
                 <NavItem>
                   <NavLink className="nav-link" to='/newspapers' >
-                    <span className="fa fa-newspaper-o fa-lg"></span> Newspapers
+                    <h5><span className="fa fa-newspaper-o fa-lg"></span> Newspapers </h5>
                   </NavLink>
                 </NavItem>
                 {/* Magazines */}
                 <NavItem>
                   <NavLink className="nav-link" to='/magazines'>
-                    <span className="fa fa-book fa-lg"></span> Magazines
+                    <h5><span className="fa fa-book fa-lg"></span> Magazines </h5>
                   </NavLink>
                 </NavItem>
-                {/* Account */}
+                {/* Account page */}
                 <NavItem>
                   <NavLink className="nav-link" to='/myaccount'>
-                    <span className="fa fa-user fa-lg"></span> My Account
+                    <h5><span className="fa fa-user fa-lg"></span> My Account </h5>
                   </NavLink>
                 </NavItem>
                 {/* About us page */}
                 <NavItem>
                   <NavLink className="nav-link" to='/aboutus'>
-                    <span className="fa fa-info fa-lg"></span> About Us
+                    <h5><span className="fa fa-info fa-lg"></span> About Us </h5>
                   </NavLink>
                 </NavItem>
                 {/* Contact us page */}
                 <NavItem>
                   <NavLink className="nav-link" to='/contactus'>
-                    <span className="fa fa-address-card fa-lg"></span> Contact Us
+                    <h5><span className="fa fa-address-card fa-lg"></span> Contact Us </h5>
                   </NavLink>
                 </NavItem>
                 {/* Orders */}
                 <NavItem>
                   <NavLink className="nav-link" to='/orders'>
-                    <span className="fa fa-shopping-bag fa-lg"></span> My Orders
+                    <h5><span className="fa fa-shopping-bag fa-lg"></span> My Orders </h5>
                   </NavLink>
                 </NavItem>
                 {/* Search page */}
                 <NavItem>
                   <NavLink className="nav-link" to='/searchc'>
-                    Click here to Search
+                    <h5>Click here to Search <span className="fa fa-search"></span></h5>
                   </NavLink>
                 </NavItem>
-                {/* Subscribed items */}
+              </Nav>
+              <Nav className='ms-auto' navbar >
+                {/* Signup or Logout */}
+                <NavItem>
+                  {isLoggedin}
+                </NavItem>
+                {/* Cart page */}
                 <NavItem>
                   <NavLink className="nav-link" to='/cart'>
-                    <span className="fa fa-shopping-cart fa-lg"></span> Cart
+                    <h5 style={{ paddingLeft: "5px" }}>Cart <span className="fa fa-shopping-cart fa-lg"></span> </h5>
                   </NavLink>
                 </NavItem>
                 <NavItem><Cartval /></NavItem>
               </Nav>
-              {/* Signup or Logout */}
-              <Nav className='ms-auto' navbar>
-                <NavItem>
-                  {isLoggedin}
-                </NavItem>
-              </Nav>
+
             </Collapse>
           </div>
         </Navbar>
@@ -133,9 +137,9 @@ class Header extends Component {
           <div className="container" >
             <div className="row row-header">
               <LightSpeed>
-                <div className="col-12 col-sm-6" >
-                  <h1 style={{ color: "black" }}>Newspapers and Magazines</h1>
-                  <p style={{ color: "black" }}>We provide various Newspapers and Magazines in this application. Users can subscribe and purchase their favourite newspapers and magazines and enjoy the joy of reading! </p>
+                <div className="col-12 col-sm-7" >
+                  <h1>Newspapers and Magazines</h1>
+                  <p>We provide various useful Newspapers and Magazines in this application. Users can subscribe and purchase their favourite newspapers and magazines to learn several new things and enjoy the joy of reading! </p>
                 </div>
               </LightSpeed>
             </div>
@@ -144,6 +148,7 @@ class Header extends Component {
       </React.Fragment>
     );
   }
+
 }
 
 //Mapping state to props to use required state value 
@@ -154,6 +159,7 @@ const mapStateToProps = (state) => {
     items: state.cartReducer.items,
   };
 };
+
 //Mapping dispatch to props to dispatch required functions
 const mapDispatchToProps = (dispatch) => {
   return {

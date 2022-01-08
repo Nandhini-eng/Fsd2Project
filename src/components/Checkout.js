@@ -29,266 +29,274 @@ class Checkout extends Component {
         return (
 
             //Checkout form with shipping address and payment details
-            <div className="row row-content" style={{ backgroundImage: `url("https://w0.peakpx.com/wallpaper/909/359/HD-wallpaper-black-lines-material-design-creative-geometric-shapes-lollipop-lines-black-material-design-strips-geometry-black-backgrounds.jpg")`, paddingLeft: "8%" }}>
+            <div className="row row-content" style={{ backgroundImage: `url("https://w0.peakpx.com/wallpaper/909/359/HD-wallpaper-black-lines-material-design-creative-geometric-shapes-lollipop-lines-black-material-design-strips-geometry-black-backgrounds.jpg")`, paddingLeft: "8%", paddingRight: "7%" }} >
                 <br />
-                <div className="col-12 col-md-11" style={{ backgroundColor: "lightgray", borderRadius: "14px" }}>
-                    <Form model="order" onSubmit={(values) => this.handleSubmit(values)}>
-                        <div style={{ float: "left", width: "48%" }}>
-                            <h3>Shipping Address</h3>
-                            {/* Label FullName with required validators and error messages*/}
-                            <Row className="form-group">
-                                <Label htmlFor="fullName" md={2} style={{ fontWeight: "bold" }}>Full Name</Label>
-                                <Col md={10} style={{ borderRadius: "4px" }}>
-                                    <Control.text model=".fullName" id="fullName" name="fullName"
-                                        placeholder="Enter full name"
-                                        className="form-control"
-                                        validators={{
-                                            required, minLength: minLength(3)
-                                        }}
-                                    />
-                                    <Errors
-                                        className="text-danger"
-                                        model=".fullName"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            minLength: 'Must be greater than 2 characters',
-                                        }}
-                                    />
-                                </Col>
-                            </Row>
-                            <br />
-                            {/* Label Address with required validators and error messages*/} 
-                            <Row className="form-group">
-                                <Label htmlFor="address" md={2} style={{ fontWeight: "bold" }}>Address</Label>
-                                <Col md={10} style={{ borderRadius: "4px" }}>
-                                    <Control.text model=".address" id="address" name="address"
-                                        placeholder="Enter address"
-                                        className="form-control"
-                                        validators={{
-                                            required, minLength: minLength(3)
-                                        }}
-                                    />
-                                    <Errors
-                                        className="text-danger"
-                                        model=".address"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            minLength: 'Must be greater than 2 characters',
-                                        }}
-                                    />
-                                </Col>
-                            </Row>
-                            <br />
-                            {/* Label City with required validators and error messages*/} 
-                            <Row className="form-group">
-                                <Label htmlFor="city" md={2} style={{ fontWeight: "bold" }}>City</Label>
-                                <Col md={10} style={{ borderRadius: "4px" }}>
-                                    <Control.text model=".city" id="city" name="city"
-                                        placeholder="Enter city"
-                                        className="form-control"
-                                        validators={{
-                                            required, minLength: minLength(3)
-                                        }}
-                                    />
-                                    <Errors
-                                        className="text-danger"
-                                        model=".city"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            minLength: 'Must be greater than 2 characters'
-                                        }}
-                                    />
-                                </Col>
-                            </Row>
-                            <br />
-                            {/* Label PostalCode with required validators and error messages*/}
-                            <Row className="form-group">
-                                <Label htmlFor="postalCode" md={2} style={{ fontWeight: "bold" }}>Postal Code</Label>
-                                <Col md={10} style={{ borderRadius: "4px" }}>
-                                    <Control.text model=".postalCode" id="postalCode" name="postalCode"
-                                        placeholder="Enter postalCode"
-                                        className="form-control"
-                                        validators={{
-                                            required, isNumber, Length: Length(6)
-                                        }}
-                                    />
-                                    <Errors
-                                        className="text-danger"
-                                        model=".postalCode"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            isNumber: 'Must be a number',
-                                            Length: 'Must be a 6 digit code'
-                                        }}
-                                    />
-                                </Col>
-                            </Row>
-                            <br />
-                            {/* Label Country with required validators and error messages*/}
-                            <Row className="form-group">
-                                <Label htmlFor="country" md={2} style={{ fontWeight: "bold" }}>Country</Label>
-                                <Col md={10} style={{ borderRadius: "4px" }}>
-                                    <Control.text model=".country" id="country" name="country"
-                                        placeholder="Enter country"
-                                        className="form-control"
-                                        validators={{
-                                            required, minLength: minLength(3)
-                                        }}
-                                    />
-                                    <Errors
-                                        className="text-danger"
-                                        model=".country"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            minLength: 'Must be greater than 2 characters',
+                <div className='chout'>
+                    <div className="col-12 col-md-11" >
+                        <Form model="order" onSubmit={(values) => this.handleSubmit(values)} style={{paddingTop:"10px"}}>
+                            <div style={{ float: "left", width: "48%" }}>
+                                <h3>Shipping Address</h3>
+                                <br />
+                                {/* Label FullName with required validators and error messages*/}
+                                <Row className="form-group">
+                                    <Label htmlFor="fullName" md={3} style={{ fontWeight: "bold" }}><h4 style={{ fontSize: "20px", color: "#2d034f" }}>Full Name</h4></Label>
+                                    <Col md={9} style={{ borderRadius: "4px" }}>
+                                        <Control.text model=".fullName" id="fullName" name="fullName"
+                                            placeholder="Enter full name"
+                                            className="form-control"
+                                            validators={{
+                                                required, minLength: minLength(3)
+                                            }}
+                                        />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".fullName"
+                                            show="touched"
+                                            messages={{
+                                                required: 'Required',
+                                                minLength: 'Must be greater than 2 characters',
+                                            }}
+                                        />
+                                    </Col>
+                                </Row>
+                                <br />
+                                {/* Label Address with required validators and error messages*/}
+                                <Row className="form-group">
+                                    <Label htmlFor="address" md={3} style={{ fontWeight: "bold" }}><h4 style={{ fontSize: "20px", color: "#2d034f" }}>Address</h4></Label>
+                                    <Col md={9} style={{ borderRadius: "4px" }}>
+                                        <Control.text model=".address" id="address" name="address"
+                                            placeholder="Enter address"
+                                            className="form-control"
+                                            validators={{
+                                                required, minLength: minLength(3)
+                                            }}
+                                        />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".address"
+                                            show="touched"
+                                            messages={{
+                                                required: 'Required',
+                                                minLength: 'Must be greater than 2 characters',
+                                            }}
+                                        />
+                                    </Col>
+                                </Row>
+                                <br />
+                                {/* Label City with required validators and error messages*/}
+                                <Row className="form-group">
+                                    <Label htmlFor="city" md={3} style={{ fontWeight: "bold" }}><h4 style={{ fontSize: "20px", color: "#2d034f" }}>City</h4></Label>
+                                    <Col md={9} style={{ borderRadius: "4px" }}>
+                                        <Control.text model=".city" id="city" name="city"
+                                            placeholder="Enter city"
+                                            className="form-control"
+                                            validators={{
+                                                required, minLength: minLength(3)
+                                            }}
+                                        />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".city"
+                                            show="touched"
+                                            messages={{
+                                                required: 'Required',
+                                                minLength: 'Must be greater than 2 characters'
+                                            }}
+                                        />
+                                    </Col>
+                                </Row>
+                                <br />
+                                {/* Label PostalCode with required validators and error messages*/}
+                                <Row className="form-group">
+                                    <Label htmlFor="postalCode" md={3} style={{ fontWeight: "bold" }}><h4 style={{ fontSize: "20px", color: "#2d034f" }}>Postal Code</h4></Label>
+                                    <Col md={9} style={{ borderRadius: "4px" }}>
+                                        <Control.text model=".postalCode" id="postalCode" name="postalCode"
+                                            placeholder="Enter postalCode"
+                                            className="form-control"
+                                            validators={{
+                                                required, isNumber, Length: Length(6)
+                                            }}
+                                        />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".postalCode"
+                                            show="touched"
+                                            messages={{
+                                                required: 'Required',
+                                                isNumber: 'Must be a number',
+                                                Length: 'Must be a 6 digit code'
+                                            }}
+                                        />
+                                    </Col>
+                                </Row>
+                                <br />
+                                {/* Label Country with required validators and error messages*/}
+                                <Row className="form-group">
+                                    <Label htmlFor="country" md={3} style={{ fontWeight: "bold" }}><h4 style={{ fontSize: "20px", color: "#2d034f" }}>Country</h4></Label>
+                                    <Col md={9} style={{ borderRadius: "4px" }}>
+                                        <Control.text model=".country" id="country" name="country"
+                                            placeholder="Enter country"
+                                            className="form-control"
+                                            validators={{
+                                                required, minLength: minLength(3)
+                                            }}
+                                        />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".country"
+                                            show="touched"
+                                            messages={{
+                                                required: 'Required',
+                                                minLength: 'Must be greater than 2 characters',
 
-                                        }}
-                                    />
-                                </Col>
-                            </Row>
+                                            }}
+                                        />
+                                    </Col>
+                                </Row>
 
-                            <br />
-                        </div >
-                        <div style={{ float: "right", width: "50%", paddingLeft: "20px" }}>
-                            <h3>Payment Details</h3>
-                            {/* Label Name on card with required validators and error messages*/}
-                            <Row className="form-group">
-                                <Label htmlFor="NameOnCard" md={2} style={{ fontWeight: "bold" }}>Name On Card</Label>
-                                <Col md={10} style={{ borderRadius: "4px" }}>
-                                    <Control.text model=".NameOnCard" id="NameOnCard" name="NameOnCard"
-                                        placeholder="Enter Name On Card"
-                                        className="form-control"
-                                        validators={{
-                                            required, minLength: minLength(3)
-                                        }}
-                                    />
-                                    <Errors
-                                        className="text-danger"
-                                        model=".NameOnCard"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            minLength: 'Must be greater than 2 characters',
+                                <br />
+                            </div >
+                            <div style={{ float: "right", width: "50%", paddingLeft: "20px" }}>
+                                <h3>Payment Details</h3>
+                                <br />
+                                {/* Label Name on card with required validators and error messages*/}
+                                <Row className="form-group">
+                                    <Label htmlFor="NameOnCard" md={4} style={{ fontWeight: "bold" }}><h4 style={{ fontSize: "20px", color: "#2d034f" }}>Name On Card</h4></Label>
+                                    <Col md={8} style={{ borderRadius: "4px" }}>
+                                        <Control.text model=".NameOnCard" id="NameOnCard" name="NameOnCard"
+                                            placeholder="Enter Name On Card"
+                                            className="form-control"
+                                            validators={{
+                                                required, minLength: minLength(3)
+                                            }}
+                                        />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".NameOnCard"
+                                            show="touched"
+                                            messages={{
+                                                required: 'Required',
+                                                minLength: 'Must be greater than 2 characters',
 
-                                        }}
-                                    />
+                                            }}
+                                        />
+                                    </Col>
+                                </Row>
+                                <br />
+                                {/* Label Credit card number with required validators and error messages*/}
+                                <Row className="form-group">
+                                    <Label htmlFor="CreditCardNum" md={4} style={{ fontWeight: "bold" }}><h4 style={{ fontSize: "20px", color: "#2d034f" }}>Credit Card Number</h4></Label>
+                                    <Col md={8} style={{ borderRadius: "4px" }}>
+                                        <Control.text model=".CreditCardNum" id="CreditCardNum" name="CreditCardNum"
+                                            placeholder="Enter Credit Card Number"
+                                            className="form-control"
+                                            validators={{
+                                                required, Length: Length(16), isNumber
+                                            }}
+                                        />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".CreditCardNum"
+                                            show="touched"
+                                            messages={{
+                                                required: 'Required',
+                                                Length: 'Must be a 16 digits number',
+                                                isNumber: 'Must be a number'
+                                            }}
+                                        />
+                                    </Col>
+                                </Row>
+                                <br />
+                                {/* Label Expiry month with required validators and error messages*/}
+                                <Row className="form-group">
+                                    <Label htmlFor="ExpMon" md={4} style={{ fontWeight: "bold" }}><h4 style={{ fontSize: "20px", color: "#2d034f" }}>Expiry Month</h4></Label>
+                                    <Col md={8} style={{ borderRadius: "4px" }}>
+                                        <Control.text model=".ExpMon" id="ExpMon" name="ExpMon"
+                                            placeholder="Enter Expiry Month"
+                                            className="form-control"
+                                            validators={{
+                                                required, minLength: minLength(1), maxLength: maxLength(2), isNumber
+                                            }}
+                                        />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".ExpMon"
+                                            show="touched"
+                                            messages={{
+                                                required: 'Required',
+                                                minLength: 'Must be greater than 1 number',
+                                                maxLength: 'Must be 2 numbers or less',
+                                                isNumber: 'Must be a number'
+                                            }}
+                                        />
+                                    </Col>
+                                </Row>
+                                <br />
+                                {/* Label Expiry year with required validators and error messages*/}
+                                <Row className="form-group">
+                                    <Label htmlFor="ExpYear" md={4} style={{ fontWeight: "bold" }}><h4 style={{ fontSize: "20px", color: "#2d034f" }}>Expiry Year</h4></Label>
+                                    <Col md={8} style={{ borderRadius: "4px" }}>
+                                        <Control.text model=".ExpYear" id="ExpYear" name="ExpYear"
+                                            placeholder="Enter Expiry Year"
+                                            className="form-control"
+                                            validators={{
+                                                required, Length: Length(4), isNumber
+                                            }}
+                                        />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".ExpYear"
+                                            show="touched"
+                                            messages={{
+                                                required: 'Required',
+                                                isNumber: 'Must be a number',
+                                                Length: 'Must be a 4 digit number'
+                                            }}
+                                        />
+                                    </Col>
+                                </Row>
+                                <br />
+                                {/* Label CVV with required validators and error messages*/}
+                                <Row className="form-group">
+                                    <Label htmlFor="Cvv" md={4} style={{ fontWeight: "bold" }}><h4 style={{ fontSize: "20px", color: "#2d034f" }}>CVV</h4></Label>
+                                    <Col md={8} style={{ borderRadius: "4px" }}>
+                                        <Control.text model=".Cvv" id="Cvv" name="Cvv"
+                                            placeholder="Enter CVV"
+                                            className="form-control"
+                                            validators={{
+                                                required, Length: Length(3), isNumber
+                                            }}
+                                        />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".Cvv"
+                                            show="touched"
+                                            messages={{
+                                                required: 'Required',
+                                                isNumber: 'Must be a number',
+                                                Length: 'Must be a 3 digit number'
+                                            }}
+                                        />
+                                    </Col>
+                                </Row>
+                                <br />
+                            </div>
+                            {/* Clicking button places order  */}
+                            <Row >
+                                <Col md={{ size: 10, offset: 5 }}>
+                                    <div className="zoom">
+                                        <Button type="submit" style={{ backgroundColor: "#05657d" }}>
+                                            <h4>Place Subscription</h4>
+                                        </Button>
+                                    </div>
                                 </Col>
                             </Row>
                             <br />
-                            {/* Label Credit card number with required validators and error messages*/}
-                            <Row className="form-group">
-                                <Label htmlFor="CreditCardNum" md={2} style={{ fontWeight: "bold" }}>Credit Card Number</Label>
-                                <Col md={10} style={{ borderRadius: "4px" }}>
-                                    <Control.text model=".CreditCardNum" id="CreditCardNum" name="CreditCardNum"
-                                        placeholder="Enter Credit Card Number"
-                                        className="form-control"
-                                        validators={{
-                                            required, Length: Length(16), isNumber
-                                        }}
-                                    />
-                                    <Errors
-                                        className="text-danger"
-                                        model=".CreditCardNum"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            Length: 'Must be a 16 digits number',
-                                            isNumber: 'Must be a number'
-                                        }}
-                                    />
-                                </Col>
-                            </Row>
-                            <br />
-                            {/* Label Expiry month with required validators and error messages*/}
-                            <Row className="form-group">
-                                <Label htmlFor="ExpMon" md={2} style={{ fontWeight: "bold" }}>Expiry Month</Label>
-                                <Col md={10} style={{ borderRadius: "4px" }}>
-                                    <Control.text model=".ExpMon" id="ExpMon" name="ExpMon"
-                                        placeholder="Enter Expiry Month"
-                                        className="form-control"
-                                        validators={{
-                                            required, minLength: minLength(1), maxLength: maxLength(2), isNumber
-                                        }}
-                                    />
-                                    <Errors
-                                        className="text-danger"
-                                        model=".ExpMon"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            minLength: 'Must be greater than 1 number',
-                                            maxLength: 'Must be 2 numbers or less',
-                                            isNumber: 'Must be a number'
-                                        }}
-                                    />
-                                </Col>
-                            </Row>
-                            <br />
-                            {/* Label Expiry year with required validators and error messages*/}
-                            <Row className="form-group">
-                                <Label htmlFor="ExpYear" md={2} style={{ fontWeight: "bold" }}>Expiry Year</Label>
-                                <Col md={10} style={{ borderRadius: "4px" }}>
-                                    <Control.text model=".ExpYear" id="ExpYear" name="ExpYear"
-                                        placeholder="Enter Expiry Year"
-                                        className="form-control"
-                                        validators={{
-                                            required, Length: Length(4), isNumber
-                                        }}
-                                    />
-                                    <Errors
-                                        className="text-danger"
-                                        model=".ExpYear"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            isNumber: 'Must be a number',
-                                            Length: 'Must be a 4 digit number'
-                                        }}
-                                    />
-                                </Col>
-                            </Row>
-                            <br />
-                            {/* Label Cvv with required validators and error messages*/}
-                            <Row className="form-group">
-                                <Label htmlFor="Cvv" md={2} style={{ fontWeight: "bold" }}>CVV</Label>
-                                <Col md={10} style={{ borderRadius: "4px" }}>
-                                    <Control.text model=".Cvv" id="Cvv" name="Cvv"
-                                        placeholder="Enter CVV"
-                                        className="form-control"
-                                        validators={{
-                                            required, Length: Length(3), isNumber
-                                        }}
-                                    />
-                                    <Errors
-                                        className="text-danger"
-                                        model=".Cvv"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            isNumber: 'Must be a number',
-                                            Length: 'Must be a 3 digit number'
-                                        }}
-                                    />
-                                </Col>
-                            </Row>
-                            <br />
-                        </div>
-                        {/* Clicking button places order  */}
-                        <Row >
-                            <Col md={{ size: 10, offset: 5 }}>
-                                <Button type="submit" color="primary">
-                                    Place Subscription
-                                </Button>
-                            </Col>
-                        </Row>
-                        <br />
-                    </Form>
+
+                        </Form>
+                    </div>
                 </div>
+
             </div>
         );
     }

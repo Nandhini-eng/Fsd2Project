@@ -47,7 +47,7 @@ class ReviewForm extends Component {
         //User should login if they are invalid
         else {
             console.log('invalid user');
-            this.props.history.push('/login');
+            this.props.history.push('/signup');
         }
     }
     //Calling postReview function which posts reviews to the server
@@ -62,7 +62,7 @@ class ReviewForm extends Component {
             <React.Fragment>
                 <div className="col-12 col-md-7 m-1">
                     <Button outline onClick={this.toggleModal}>
-                        <h3 style={{fontSize:"23px", color:"white", paddingBottom:"15px"}}><span className="fa fa-pencil fa-lg"></span> Submit Review</h3>
+                        <h4><span className="fa fa-pencil fa-lg"></span> Submit Review</h4>
                     </Button></div>
                 {/* A review form containing rating and review feilds*/}
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
@@ -185,7 +185,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                         <div className="product-price">
                             <span >Rs.{item.price}</span>
                             
-                            <button class="cart-btn" onClick={IsLogin}>Add to cart</button>
+                            <button class="cart-btn" onClick={IsLogin}>Add to Cart</button>
                             
                         </div>
                         {/* Displaying the details related to reviews */}
@@ -236,7 +236,7 @@ const NewspaperDetail = (props) => {
                 <div className="container">
                     <div className="row">
                         {/* Breadcrum to navigate easily to newspapers */}
-                        <Breadcrumb>
+                        <Breadcrumb style={{ fontSize: "20px" }} className='bdcrum'>
                             <BreadcrumbItem><Link to="/newspapers">Newspapers</Link></BreadcrumbItem>
                             <BreadcrumbItem active>{props.paperSelected.name}</BreadcrumbItem>
                         </Breadcrumb>

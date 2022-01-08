@@ -64,7 +64,7 @@ class ReviewForm extends React.Component {
                 <div className="col-12 col-md-7 m-1">
 
                     <Button outline onClick={this.toggleModal}>
-                        <h3><span className="fa fa-pencil fa-lg"></span>Submit Review</h3>
+                        <h4><span className="fa fa-pencil fa-lg"></span>Submit Review</h4>
                     </Button></div>
                 {/* A review form containing rating and review feilds*/}
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
@@ -177,19 +177,19 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                     <div className="left-column">
                         <img src={baseUrl + item.image} alt={item.name} />
                     </div>
-                     {/* Displaying details in the right side */}
+                    {/* Displaying details in the right side */}
                     <div className="right-column">
 
                         <div className="product-description">
                             <h3>{item.name}</h3>
                             <span>{item.language}</span>
-                            <span>{item.category}</span>
+                            <h4>{item.category}</h4>
                             <p>{item.description}</p>
                         </div>
                         {/* Add to cart button works if the user is logged in */}
                         <div className="product-price">
                             <span>Rs.{item.price}</span>
-                            <button class="cart-btn" onClick={IsLogin}>Add to cart</button>
+                            <button class="cart-btn" onClick={IsLogin}>Add to Cart</button>
                         </div>
                         {/* Displaying the details related to reviews */}
                         <div className='product-description'>
@@ -208,8 +208,6 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
         );
     }
 }
-
-
 const ItemDetail = (props) => {
     //Calling the loading component when the selected item is loading
     if (props.isLoading) {

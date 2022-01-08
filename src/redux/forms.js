@@ -1,4 +1,4 @@
-//Initial state of Feedback Form
+//Defining the initial values or default values for the fields present in the feedback form 
 export const InitialFeedback = {
     firstname: '',
     lastname: '',
@@ -9,7 +9,7 @@ export const InitialFeedback = {
     message: ''
 };
 
-//Initial state of Checkout form
+//Defining the initial values or default values for the fields present in the checkout form 
 export const InitialOrder={
     fullName:'',
     address:'',

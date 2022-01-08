@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, CardImg, CardHeader, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Card, CardImg, CardHeader, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
@@ -8,18 +8,24 @@ import "./paginate.css";
 import Fade from 'react-reveal/Fade';
 import Pulse from 'react-reveal/Pulse';
 import Flash from 'react-reveal/Flash';
+import ReactStars from 'react-stars';
 
 
-function RenderItem({ item }) {
+//Funtional component to render each magazine in a reactstrap Card
+function RenderItem({ item,rating }) {
   return (
     <div className='zoom'>
       <Card>
-        <Link to={`/magazines/${item.id}`}>
+        <Link to={`/magazines/${item.id}`}>           {/* linking each magazine to it's details page */}
           <Pulse>
-            <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} style={{ overflow: "hidden" }}
+            <CardImg width="400px" height="400px" src={baseUrl + item.image} alt={item.name} style={{ overflow: "hidden" }}
               onMouseOver={(e) => (e.currentTarget.style = { transform: "scale(1.25)", overflow: "hidden" })}
               onMouseOut={(e) => (e.currentTarget.style = { transform: "scale(1)", overflow: "hidden" })} />
-            <CardHeader><h3>{item.name}</h3></CardHeader>
+            <div className='hg'>
+              <CardHeader><h4>{item.name}</h4></CardHeader>
+              <CardHeader><h4>Rs.{item.price}</h4></CardHeader>
+              <CardHeader><ReactStars count={5} size={24} value={rating} color2={'#ffd700'} edit={false} /></CardHeader>
+            </div>
           </Pulse>
         </Link>
       </Card>
@@ -31,14 +37,47 @@ function RenderItem({ item }) {
 
 const MagazinesMain = (props) => {
 
-  const items = props.magazines.filteredItems.map((item) => {
+  //Rendering the magazines according to the applied filters 
+  var render_items = [];
+  props.magazines.filteredItemsbyCtgry.map(x => props.magazines.filteredItemsbyLang.map(y =>
+    x.id === y.id ? render_items.push({ ...x }) : null))
+
+
+  //calculating average rating for all magazines and storing them in an array along with magazine ids
+
+  var items_reviews = [];
+
+  var item_review = {};
+  var len = props.magazines.magazines.length;
+
+  for (var i = 20; i < len + 20; i++) {
+    var sum = 0, avg = 0;
+    item_review.itemId = i;
+    var revs = props.reviews.filter(rev => rev.itemId === i);
+    if (revs.length) {
+      sum = revs.map(rev => rev.rating).reduce((r1, r2) => r1 + r2, 0);
+      avg = sum / revs.length;
+    }
+    item_review.avgRating = avg;
+    items_reviews.push({ ...item_review });
+  }
+
+  // In an array, storing the average rating values along with ids of only those magazines for which average rating lies between 4 and 5.
+  var filtered_revs = items_reviews.filter(rev => rev.avgRating >= 4 && rev.avgRating <= 5)
+
+  //Calling the render item function for each and every filtered magazine
+  const items = render_items.map((item) => {
+    var review = items_reviews.filter(rev=>rev.itemId === item.id)
     return (
       <div key={item.id} className="col-12">
-        <RenderItem item={item} />
+        <RenderItem item={item} rating={review[0].avgRating} />
         <br />
       </div>
     );
   });
+
+
+
   const [magazines, setMagazines] = useState(items);
   const [pageNumber, setPageNumber] = useState(0);
 
@@ -60,6 +99,7 @@ const MagazinesMain = (props) => {
       );
     });
 
+  //condition for displaying loading icon while fetching the magazines data from the json-server.
   if (props.magazines.isLoading) {
     return (
       <div className="container">
@@ -69,6 +109,7 @@ const MagazinesMain = (props) => {
       </div>
     );
   }
+  //condition for displaying error message when magazines are failed to fetch from the (mock)server.
   else if (props.magazines.errMess) {
     return (
       <div className="container">
@@ -80,13 +121,14 @@ const MagazinesMain = (props) => {
       </div>
     );
   }
+  //else returning the magazines based on the applied filtering or sorting conditions and after applying pagination
   else {
     return (
 
       <div className="mag">
         <div style={{ paddingLeft: "70px", paddingRight: "15px" }}>
           <div className="row">
-            <Breadcrumb>
+            <Breadcrumb style={{ fontSize: "20px" }} className='bdcrum'>
               <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
               <BreadcrumbItem active>Magazines</BreadcrumbItem>
             </Breadcrumb>
@@ -99,10 +141,11 @@ const MagazinesMain = (props) => {
           </div>
           <br />
           <div className="row">
-            <div style={{ width: "17%", float: "left", paddingRight: "10px" }}>
+            <div style={{ width: "17%", float: "left", paddingRight: "0px", fontSize: "20px" }}>
 
+              {/* providing language filter by giving language select options in the form of a dropdown menu */}
               <div style={{ padding: "10px" }}>
-                <label style={{ color: "#e39b98" }}>Filter By Language:</label>
+                <label style={{ color: "#e39b98", fontFamily: "cursive", fontSize: "20px" }}>Filter By Language:</label>
                 <select className="form-control" value={props.magazines.language}
                   onChange={(e) => props.filterByLanguage(props.magazines.magazines, e.target.value)}>
                   <option value="">ALL</option>
@@ -110,10 +153,12 @@ const MagazinesMain = (props) => {
                   <option value="Telugu">Telugu</option>
                 </select>
               </div>
+
+              {/* providing category filter by giving category select options in the form of a dropdown menu */}
               <div style={{ padding: "10px" }}>
-                <label style={{ color: "#e39b98" }}>Filter By Category:</label>
+                <label style={{ color: "#e39b98", fontFamily: "cursive", fontSize: "20px" }}>Filter By Category:</label>
                 <select className="form-control" value={props.magazines.category}
-                  onChange={(e) => props.filterByCategory(props.magazines.magazines, e.target.value)}>
+                  onChange={(e) => props.filterByCategory(props.magazines.filteredItemsbyLang, e.target.value)}>
                   <option value="">ALL</option>
                   <option value="business">Business</option>
                   <option value="sports">Sports</option>
@@ -121,24 +166,34 @@ const MagazinesMain = (props) => {
                   <option value="entertainment">Entertainment</option>
                 </select>
               </div>
-              {/* Sorting the magazines by price and name by calling sort_magazines function*/}
+
               <div style={{ padding: "10px" }}>
-                <label style={{ color: "#e39b98" }}>
+                <label style={{ color: "#e39b98", fontFamily: "cursive", fontSize: "20px" }}>
                   Sort by</label>
                 <select className="form-control"
                   value={props.magazines.sort}
-                  onChange={(e) => props.sort_magazines(props.magazines.filteredItems, e.target.value)}>
+                  onChange={(e) => props.sort_magazines(props.magazines.filteredItemsbyCtgry, e.target.value)}>
                   <option value="">ALL</option>
                   <option value="lowestprice">Low to high price</option>
                   <option value="highestprice">High to low price</option>
                   <option value="prname">Name</option>
                 </select>
-
+              </div>
+              <br />
+              <br />
+              {/* Created a button for displaying top rated magazines(magazines for which average rating lies between 4 and 5)  */}
+              <div style={{ padding: "10px" }} className='zoom'>
+                <Button onClick={() => props.topMagazines(props.magazines.magazines, filtered_revs)}><h3 style={{ fontSize: "17px", color: "#3e046e", fontFamily: "cursive", fontWeight: "bold" }}>
+                  Top Rated Magazines</h3></Button>
               </div>
             </div>
+
             <div className="row" style={{ width: "80%", float: "right" }}>
               <Fade right>
+                {/* we call pagination for total magazines */}
                 {displayMagazines}
+
+                {/*React paginate is called with required attributes */}
                 <ReactPaginate
                   previousLabel={"Previous"}
                   nextLabel={"Next"}
@@ -155,7 +210,6 @@ const MagazinesMain = (props) => {
           </div>
         </div>
       </div>
-
     );
   }
 }

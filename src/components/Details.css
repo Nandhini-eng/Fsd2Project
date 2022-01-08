@@ -30,10 +30,6 @@ html, body {
     transition: all 0.3s ease;
     height: 550px;
   }
-   
-  /* .left-column img.active {
-    opacity: 1;
-  } */
 
   .product-description {
     border-bottom: 1px solid #E1E8EE;
@@ -41,7 +37,7 @@ html, body {
   }
   .product-description span {
     font-size: 18px;
-    color: #358ED7;
+    color: #3da4f8;
     letter-spacing: 1px;
     text-transform: uppercase;
     text-decoration: none;
@@ -51,6 +47,14 @@ html, body {
     font-size: 35px;
     color: #eb8321;
     letter-spacing: -2px;
+    text-transform: uppercase;
+  }
+  .product-description h4 {
+    font-size: 16px;
+    color: #eb21e1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
   }
   .product-description p {
     font-size: 16px;
@@ -76,10 +80,9 @@ html, body {
     display: inline-block;
     background-color: #7DC855;
     border-radius: 6px;
-    font-size: 20px;
+    font-size: 25px;
     color: #FFFFFF;
     text-decoration: none;
-    padding-bottom: 30px;
     transition: all .5s;
   }
   .cart-btn:hover {

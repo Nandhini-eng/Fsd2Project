@@ -8,7 +8,7 @@ import Contact from './ContactComponent';
 import NewspapersMain from './NewspapersComponent';
 import Searchc from './Searchc';
 import Cart from './Cart';
-import {Login} from './Login';
+import { Login } from './Login';
 import NewspaperDetail from './NewspaperDetail';
 import MagazinesMain from './MagazinesComponent';
 import ItemDetail from './ItemDetail';
@@ -16,11 +16,10 @@ import MagazineDetail from './MagazineDetail';
 import Signup from './Signup';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-
-import { fetchNewspapers, fetchMagazines, filterMagazinesByCategory, 
-  filterMagazinesByLanguage, 
-    filterNewspapersByLanguage, sortNewspapers,sortMagazines, postFeedback,postsignup,fetchUsers,fetchReviews, postReview, 
-    getproducts,addToCart,removefromCart,adjustQty,fetchOrders,postOrder,fetchItems} from '../redux/ActionCreators';
+import { fetchNewspapers, fetchMagazines, filterMagazinesByCategory, filterMagazinesByLanguage, filterNewspapersByLanguage, 
+    sortNewspapers,sortMagazines, postFeedback, postsignup, fetchUsers, fetchReviews, postReview, 
+    getproducts,addToCart,removefromCart,adjustQty, fetchOrders,postOrder,fetchItems, getTopNewspapers, getTopMagazines } from '../redux/ActionCreators';
+  
 import { actions } from 'react-redux-form';
 import Checkout from './Checkout';
 import OrdersComponent from './OrdersComponent';
@@ -28,11 +27,11 @@ import {user_real} from "./Login";
 const mapStateToProps = (state) => (
   {
     newspapers: state.newspapers,
-    magazines: state.magazines,  
+    magazines: state.magazines,
+    cartitem: state.cartReducer, 
+    regusers: state.regusers,
     reviews: state.reviews,
-    cartitem: state.cartReducer,  
     orders: state.orders,
-    regusers:state.regusers, 
   }
 );
 
@@ -58,11 +57,15 @@ const mapDispatchToProps = (dispatch) => ({
     postOrder:(fullName,address,city, postalCode, country,NameOnCard,CreditCardNum,ExpMon,ExpYear,Cvv,cart,user,price,items)=>dispatch(postOrder(fullName,address,city, postalCode, country,NameOnCard,CreditCardNum,ExpMon,ExpYear,Cvv,cart,user,price,items)),
     // removefromCart:(id)=>{dispatch(removefromCart(id))},
     // adjustQty:(id)=>{dispatch(adjustQty(id))}
+    topRatedNewspapers: (newspapers,reviews) => dispatch(getTopNewspapers(newspapers,reviews)),
+    topRatedMagazines: (magazines,reviews) => dispatch(getTopMagazines(magazines,reviews)),
+
     fetchItems:()=>{dispatch(fetchItems())},
 });
 
-class Main extends Component{
-   
+
+class Main extends Component {
+
     componentDidMount() {
       this.props.fetchItems();
       this.props.fetchNewspapers();
@@ -70,11 +73,10 @@ class Main extends Component{
       this.props.fetchUsers();
       this.props.fetchReviews();
       this.props.fetchOrders();
-      
     }
 
+
     render() {
-      
 
         const HomePage = () => {
             return(
@@ -86,6 +88,31 @@ class Main extends Component{
                 regusers={this.props.regusers}
               />
             );
+        }
+
+        const NewspapersMainPage = () => {
+          return(
+            <NewspapersMain 
+              newspapers={this.props.newspapers} 
+              filterByLanguage={this.props.filterNewspapersByLanguage} 
+              sort_newspapers={this.props.sortNewspapers} 
+              reviews={this.props.reviews.reviews} 
+              topNewspapers={this.props.topRatedNewspapers} 
+            />
+          );
+        }
+
+        const MagazinesMainPage = () => {
+          return(
+            <MagazinesMain 
+              magazines={this.props.magazines} 
+              filterByCategory={this.props.filterMagsByCategory} 
+              filterByLanguage={this.props.filterMagsByLanguage} 
+              sort_magazines={this.props.sortMagazines} 
+              reviews={this.props.reviews.reviews} 
+              topMagazines={this.props.topRatedMagazines} 
+            />
+          );
         }
 
         const NewspaperWithId = ({match}) => {
@@ -100,7 +127,6 @@ class Main extends Component{
               getproducts={this.props.getproducts} 
               newspapers={this.props.newspapers} 
               magazines={this.props.magazines}
-              
               checkorders={this.props.orders.orders}
               />
         );
@@ -122,8 +148,6 @@ class Main extends Component{
               />
         );
         }
-
-
 
         const ItemWithId = ({match}) => {
           return(
@@ -147,31 +171,25 @@ class Main extends Component{
             <div>
               <Header /> 
               
-              
               <Switch location={this.props.location}>
                 <Route path='/home' component={HomePage} />
-                <Route exact path ="/login" component={()=><Login {...this.props}/>}/> 
-                <Route exact path="/signup" component={()=><Signup {...this.props}/>}/>
-                <Route exact path='/newspapers' component={() => <NewspapersMain newspapers={this.props.newspapers} filterByLanguage={this.props.filterNewspapersByLanguage} sort_newspapers={this.props.sortNewspapers} />} />
+                <Route exact path ='/login' component={()=><Login {...this.props}/>}/> 
+                <Route exact path='/signup' component={()=><Signup {...this.props}/>}/>
+                <Route exact path='/newspapers' component={NewspapersMainPage} />
                 <Route path='/newspapers/:paperId' component={NewspaperWithId}   />
-                <Route exact path='/magazines' component={() => <MagazinesMain magazines={this.props.magazines} filterByCategory={this.props.filterMagsByCategory} filterByLanguage={this.props.filterMagsByLanguage} sort_magazines={this.props.sortMagazines} />} />
+                <Route exact path='/magazines' component={MagazinesMainPage} />
                 <Route path='/magazines/:magId' component={MagazineWithId} />
-                
                 <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} /> 
                 <Route path='/myaccount' component={() => <Account />} />
                 <Route path='/aboutus' component={() => <About />} />
                 <Route path='/cart' component={() => <Cart getproducts={this.props.getproducts} newspapers={this.props.newspapers} magazines={this.props.magazines} cart={this.props.cartitem.cart}  />} />
-                <Route exact path='/searchc' component={() => <Searchc />} />
-                <Route path='/searchc/:itemId' component={ItemWithId} />  
-               
-                
-                             
+                <Route exact path='/searchc' component={() => <Searchc items={this.props.cartitem.items} />} />
+                <Route path='/searchc/:itemId' component={ItemWithId} />             
                 <Route path='/checkout' component={()=><Checkout resetCheckoutForm={this.props.resetCheckoutForm} postOrder={this.props.postOrder} cart={this.props.cartitem.cart}/>}/>
                 <Route path='/orders' component={()=><OrdersComponent orders={this.props.orders.orders.filter((order)=>order.user === user_real)} ordersErrMess={this.props.orders.errMess}/>}/>
                 <Redirect to="/home" />
-
-
               </Switch>
+
               <Footer />
             </div>
         );

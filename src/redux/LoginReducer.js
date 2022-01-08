@@ -1,24 +1,25 @@
 let initialState = {
-    loginSuccess:false,
+    loginSuccess: false,
 }
 
-function LoginReducer(state=initialState, action){
-    switch(action.type){
+//Login reducer that takes initial state, action to perform as parameters and performs the appropriate action and returning the new state.
+function LoginReducer(state = initialState, action) {
+    switch (action.type) {
         case 'loginSuccess':
-            return{
+            return {
                 ...state,
                 loginSuccess: true
             }
         case 'loginFail':
-            return{
+            return {
                 ...state,
-                loginSuccess: false        
+                loginSuccess: false
             }
-        
-        default: return state    
+
+        default: return state
 
     }
-    
+
 }
 
 

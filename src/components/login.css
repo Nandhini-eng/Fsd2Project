@@ -27,18 +27,35 @@
 	font-size: 19px;
 	padding-bottom: 9px;
 }
-h1{
+
+
+
+.login h1{
 	padding-top: 45px;
 	font-size: 30px;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	color: purple;
 }
-h4{
 
-font-style: italic;
-color:purple;
-font-size: 15px;
+.login h3{
+	font-size: 20px;
+	color:purple
 }
+
+.login h4{
+	font-style: italic;
+	color:purple;
+	font-size: 15px;
+}
+
+.login button{
+	height:30px;
+	color:whitesmoke;
+	border-color: black;
+	background-color: rgb(126, 89, 129);	
+}
+
+
 .inner-form{
 	padding-bottom:12px;
 	font-family:cursive;
@@ -47,25 +64,11 @@ font-size: 15px;
 	font-weight: 600;
 	color:purple;
 }
-h3{
-	font-size: 20px;
-	color:purple
-}
+
 input{
 	height:30px;font-size:15px;width:35%;
 	border: 0 !important;	
 	background-color: #f2f2f2;
     border-color: tomato;
-    margin: 0.4em 0;
-
-			
+    margin: 0.4em 0;			
 }
-
-button{
-	height:30px;
-	color:whitesmoke;
-	border-color: black;
-	background-color: rgb(126, 89, 129);
-	
-}
-
