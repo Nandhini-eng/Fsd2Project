@@ -6,19 +6,13 @@ import CartItem from "./Cartitem.js";
 import { Button } from 'reactstrap';
 let price, items;
 
-
-
 // functional cart component props are sent from main component
-
-
 function Cart(props) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
 
   //we take use of change in number of items in cart ,total price,totalitems and then we update state of total price and total items
-
-
-  useEffect(() => {
+ useEffect(() => {
     let items = 0;
     let price = 0;
     props.cart.forEach((item) => {
@@ -28,13 +22,6 @@ function Cart(props) {
     setTotalItems(items);
     setTotalPrice(price);
   }, [props.cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
-
-
-
-
-
-
-
   price = totalPrice
   items = totalItems
 
@@ -56,8 +43,6 @@ function Cart(props) {
               ))}
             </div>
             <div className={styles.cart__summary}>
-
-
               {/* cart  summary,total items will be displayed */}
               <h4 className={styles.summary__title}>Cart Summary</h4>
               <div className={styles.summary__price}>

@@ -9,7 +9,6 @@ import { removefromCart, adjustQty } from '../redux/ActionCreators';
 
 //all the below classnames are imported from cart.module.css 
 
-
 function CartItem({ item, adjustQty, removefromCart }) {
   //we adjust quantity of item depending upon users entered value in cart component
   const [input, setInput] = useState(item.qty);

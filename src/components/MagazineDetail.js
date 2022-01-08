@@ -35,8 +35,8 @@ class ReviewForm extends Component {
                     isModalOpen: !this.state.isModalOpen
                 })
             }
-            else {
-                alert("You cannot submit review as you have not subscibed this item!!")
+            else{
+                alert("You cannot submit review as you have not subscribed this item!!")
             };
 
         }

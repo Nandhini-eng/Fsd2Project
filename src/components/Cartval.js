@@ -1,7 +1,6 @@
 
 //this component is to display number of items in cart in navbar
 
-
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 function Cartval({ cart }) {

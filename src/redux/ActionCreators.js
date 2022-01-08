@@ -13,10 +13,9 @@ export const fetchItems = () => async (dispatch) => {
 
 }
 
+//NEWSPAPERS
 //function for fetching newspapers data from the server using fetch api and returning appropriate action creators based on server responses.
 export const fetchNewspapers = () => (dispatch) => {
-
-
   dispatch(NewspapersLoading(true));
 
   return fetch(baseUrl + 'newspapers')
@@ -55,7 +54,7 @@ export const addNewspapers = (newspapers) => ({
   payload: newspapers
 });
 
-
+//MAGAZINES
 //function for fetching magazines data from the server using fetch api and returning appropriate action creators based on server responses.
 export const fetchMagazines = () => (dispatch) => {
 
@@ -97,17 +96,16 @@ export const addMagazines = (magazines) => ({
   payload: magazines
 });
 
-
-
+//FILTER
 //Returning an actioncreator of the defined type, contains selected language value, filtered magazines based on language, and total magazines in the payload
 export const filterMagazinesByLanguage = (magazines, lang) => (dispatch) => {
   return dispatch({
-      type: ActionTypes.FILTER_MAGAGINES_BY_LANG,
-      payload : {
-        lang: lang,
-        items: lang === '' ? magazines : magazines.filter((mag) => mag.language === lang),
-        magazines: magazines
-      }
+    type: ActionTypes.FILTER_MAGAGINES_BY_LANG,
+    payload: {
+      lang: lang,
+      items: lang === '' ? magazines : magazines.filter((mag) => mag.language === lang),
+      magazines: magazines
+    }
   })
 }
 
@@ -115,12 +113,12 @@ export const filterMagazinesByLanguage = (magazines, lang) => (dispatch) => {
 //     and the magazines(if filter by language is already applied, then these are the filtered magazines based on language) in the payload
 export const filterMagazinesByCategory = (magazines, category) => (dispatch) => {
   return dispatch({
-      type: ActionTypes.FILTER_MAGAGINES_BY_CATEGORY,
-      payload : {
-        category: category,
-        items: category === '' ? magazines : magazines.filter((mag) => mag.category === category),
-        magazines: magazines
-      }
+    type: ActionTypes.FILTER_MAGAGINES_BY_CATEGORY,
+    payload: {
+      category: category,
+      items: category === '' ? magazines : magazines.filter((mag) => mag.category === category),
+      magazines: magazines
+    }
   })
 }
 
@@ -135,6 +133,7 @@ export const filterNewspapersByLanguage = (newspapers, lang) => (dispatch) => {
   })
 }
 
+//SORT
 export const sortNewspapers = (products, sort) => (dispatch) => {
   if (sort === "lowestprice") {
     products.sort((a, b) =>
@@ -187,6 +186,7 @@ export const sortMagazines = (products, sort) => (dispatch) => {
   })
 }
 
+//FEEDBACK
 //function to post the feedback(given by users) to the server side. url to access the 'feedback' endpoint is given to the fetch function and performing post operation to post the feedback to the server.
 export const postFeedback = (firstname, lastname, telnum, email, agree, contactType, message) => (dispatch) => {
 
@@ -227,7 +227,7 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
 };
 
 
-
+//REVIEWS
 // An ActionCreator of the defined type, contains newly posted review in the payload
 export const addReview = (review) => ({
   type: ActionTypes.ADD_REVIEW,
@@ -271,7 +271,7 @@ export const postReview = (itemId, rating, author, review) => (dispatch) => {
 };
 
 //function for fetching the stored reviews from the server using fetch api and returning appropriate action creators based on server responses.
-export const fetchReviews = () => (dispatch) => {    
+export const fetchReviews = () => (dispatch) => {
   return fetch(baseUrl + 'reviews')
     .then(response => {
       if (response.ok) {
@@ -303,18 +303,18 @@ export const addReviews = (reviews) => ({
   payload: reviews
 });
 
-
+//SIGNUP
+//Actioncreator to add a new user to empty array
 export const adduser = (user4) => ({
   type: ActionTypes.ADD_USER,
   payload: user4
 });
 
+//Action to post to server with data obtained from signup form
 export const postsignup = (username, password) => (dispatch) => {
-
   const newuser = {
     user4: username + ":" + password
   };
-  
   return fetch(baseUrl + 'regusers', {
     method: "POST",
     body: JSON.stringify(newuser),
@@ -322,7 +322,7 @@ export const postsignup = (username, password) => (dispatch) => {
       "Content-Type": "application/json"
     },
     credentials: "same-origin"
-   })
+  })
     .then(response => {
       if (response.ok) {
         return response;
@@ -337,10 +337,10 @@ export const postsignup = (username, password) => (dispatch) => {
       })
     .then(response => response.json())
     .then(details => adduser(details))
-    .catch(error =>  { console.log('Post SignUp'); alert('Your details could not be posted\nError: '); });
-  };
-  
+    .catch(error => { console.log('Post SignUp'); alert('Your details could not be posted\nError: '); });
+};
 
+//Fetching users from server
 export const fetchUsers = () => (dispatch) => {
   return fetch(baseUrl + 'regusers')
     .then(response => {
@@ -361,12 +361,13 @@ export const fetchUsers = () => (dispatch) => {
     .catch(error => { console.log('Fetch signup'); alert('Your details could not be fetched\nError: '); });
 };
 
+//Appending new users to already existing array
 export const addUsers = (regusers) => ({
   type: ActionTypes.ADD_USERS,
   payload: regusers
 });
 
-
+//CART
 // addtocart action creator to add items to cart 
 //it takes itemid as input and return ADD_TO_CART as type itemid as payload
 export const addToCart = (itemId) => {
@@ -419,6 +420,7 @@ export const getproducts = (news, mags) => {
 
 };
 
+//ORDERS
 export const orderPlaced = (order) => ({
   type: ActionTypes.ORDER_PLACED,
   payload: order
@@ -489,40 +491,106 @@ export const fetchOrders = () => (dispatch) => {
     .then(response => response.json())
     .then(orders => dispatch(ordersPlaced(orders)))
     .catch(error => dispatch(orderFailed(error.message)));
-  };
-  
-  export const orderFailed = (errmess) => ({
-    type: ActionTypes.ORDER_FAILED,
-    payload: errmess
-  });
-  
-  export const ordersPlaced = (orders) => ({
-    type: ActionTypes.ORDERS_PLACED,
-    payload: orders
-  });
-  
+};
 
-  //An actioncreator of the defined type, contains the details of top rated newspapers(the newspapers for which average rating lies between 4 and 5) in the payload
-  export const getTopNewspapers = (newspapers, reviews) => (dispatch) => {
-    var array = [];
-    reviews.map(rev => newspapers.map(np => rev.itemId === np.id ? array.push({...np}) : null) )
-    return dispatch({
-        type: ActionTypes.TOP_RATED_NEWSPAPERS,
-        payload : {
-          items: array
-        }
-    })
-  }
-  
-  //An actioncreator of the defined type, contains the details of top rated magazines(the magazines for which average rating lies between 4 and 5) in the payload
-  export const getTopMagazines = (magazines, reviews) => (dispatch) => {
-    var array = [];
-    reviews.map(rev => magazines.map(mag => rev.itemId === mag.id ? array.push({...mag}) : null) )
-    return dispatch({
-        type: ActionTypes.TOP_RATED_MAGAZINES,
-        payload : {
-          items: array,
-          magazines: magazines
-        }
-    })
-  }
+export const orderFailed = (errmess) => ({
+  type: ActionTypes.ORDER_FAILED,
+  payload: errmess
+});
+
+export const ordersPlaced = (orders) => ({
+  type: ActionTypes.ORDERS_PLACED,
+  payload: orders
+});
+
+//BLOG
+//adding blog to new empty array
+export const addblog = (blog) => ({
+  type: ActionTypes.ADD_BLOG,
+  payload: blog
+});
+
+//Saving to server with details obtained from blog form
+export const postblog = (username, topic, message) => (dispatch) => {
+
+  const newblog = {
+    user: username,
+    topic: topic,
+    message: message
+  };
+  return fetch(baseUrl + 'blogs', {
+    method: "POST",
+    body: JSON.stringify(newblog),
+    headers: {
+      "Content-Type": "application/json"
+    },
+    credentials: "same-origin"
+  })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+      error => {
+        throw error;
+      })
+    .then(response => response.json())
+    .then(response => dispatch(addblog(response)))
+    .catch(error => { console.log('Post Feedback'); alert('Your Feedback could not be posted\nError: '); });
+};
+
+//Fetching blogs
+export const fetchBlogs = () => (dispatch) => {
+  return fetch(baseUrl + 'blogs')
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+      error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+      })
+    .then(response => response.json())
+    .then(blogs => dispatch(addBlogs(blogs)))
+    .catch(error => { console.log('Post Feedback'); alert('Your Feedback could not be posted\nError: '); });
+};
+//appending blogs to existing array
+export const addBlogs = (blogs) => ({
+  type: ActionTypes.ADD_BLOGS,
+  payload: blogs
+});
+
+//TOPRATED
+//An actioncreator of the defined type, contains the details of top rated newspapers(the newspapers for which average rating lies between 4 and 5) in the payload
+export const getTopNewspapers = (newspapers, reviews) => (dispatch) => {
+  var array = [];
+  reviews.map(rev => newspapers.map(np => rev.itemId === np.id ? array.push({ ...np }) : null))
+  return dispatch({
+    type: ActionTypes.TOP_RATED_NEWSPAPERS,
+    payload: {
+      items: array
+    }
+  })
+}
+
+//An actioncreator of the defined type, contains the details of top rated magazines(the magazines for which average rating lies between 4 and 5) in the payload
+export const getTopMagazines = (magazines, reviews) => (dispatch) => {
+  var array = [];
+  reviews.map(rev => magazines.map(mag => rev.itemId === mag.id ? array.push({ ...mag }) : null))
+  return dispatch({
+    type: ActionTypes.TOP_RATED_MAGAZINES,
+    payload: {
+      items: array,
+      magazines: magazines
+    }
+  })
+}
