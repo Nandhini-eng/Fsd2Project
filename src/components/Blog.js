@@ -11,7 +11,7 @@ class Blog extends Component {
     constructor(props) {
         super(props);
         console.log(user_real)
-        //storing blogs in blogs variable
+        //storing blogs in blogs array
         blogs = props.blogs.blogs
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -31,7 +31,7 @@ class Blog extends Component {
             <div className='cdblog'>
                 <div className="container">
                     <div className="row">
-                        <Breadcrumb>
+                        <Breadcrumb style={{ fontSize: "20px" }}>
                             <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                             <BreadcrumbItem active>Blog</BreadcrumbItem>
                         </Breadcrumb>
@@ -73,7 +73,7 @@ class Blog extends Component {
                                 </Row>
                                 {/* Topic field*/}
                                 <Row className="form-group">
-                                    <Label htmlFor="topic" style={{ fontFamily: "Trebuchet MS", fontSize: "27px",fontWeight:'600',color:'#717300' }}>Topic</Label>
+                                    <Label htmlFor="topic" style={{ fontFamily: "Trebuchet MS", fontSize: "27px", fontWeight: '600', color: '#717300' }}>Topic</Label>
                                     <Col md={12} style={{ borderRadius: "4px" }}>
                                         <Control.text model=".topic" id="topic" name="topic"
                                             placeholder="Topic"
@@ -81,7 +81,7 @@ class Blog extends Component {
                                             validators={{
                                                 required
                                             }}
-                                            style={{fontFamily:'Californian FB',fontWeight:'bold',backgroundColor:'snow',fontSize:'17px'}}
+                                            style={{ fontFamily: 'Californian FB', fontWeight: 'bold', backgroundColor: 'snow', fontSize: '17px' }}
                                         />
                                         <Errors style={{ fontSize: "18px", fontFamily: "gadugi", fontWeight: "900", color: "#f71505", paddingLeft: '10px' }}
                                             model=".topic"
@@ -95,7 +95,7 @@ class Blog extends Component {
                                 <br />
                                 {/* Field for writing blog */}
                                 <Row className="form-group">
-                                    <Label htmlFor="message" style={{ fontFamily: "Trebuchet MS", fontSize: "27px",fontWeight:'600',color:'#717300' }}>Your Feedback</Label>
+                                    <Label htmlFor="message" style={{ fontFamily: "Trebuchet MS", fontSize: "27px", fontWeight: '600', color: '#717300' }}>Your Blog</Label>
                                     <Col md={16} style={{ borderRadius: "4px" }}>
                                         <Control.textarea model=".message" id="message" name="message"
                                             rows="7"
@@ -103,8 +103,8 @@ class Blog extends Component {
                                             placeholder='Write your post here.....'
                                             validators={{
                                                 required
-                                            }} 
-                                            style={{fontFamily:'Californian FB',fontWeight:'bold',backgroundColor:'snow'}}
+                                            }}
+                                            style={{ fontFamily: 'Californian FB', fontWeight: 'bold', backgroundColor: 'snow' }}
                                         />
                                         <Errors style={{ fontSize: "18px", fontFamily: "gadugi", fontWeight: "900", color: "#f71505", paddingLeft: '10px' }}
                                             model=".topic"
@@ -119,8 +119,8 @@ class Blog extends Component {
                                 {/* Submit button */}
                                 <Row className="form-group">
                                     <Col md={{ size: 8 }} >
-                                        <Button type="submit" color="primary" style={{ backgroundColor: "saddlebrown", border: "none", color: "whitesmoke",fontFamily:'Segoe Print',fontWeight:'bold' }}>
-                                            Submit
+                                        <Button type="submit" color="primary" style={{ backgroundColor: "saddlebrown", border: "none", color: "whitesmoke", fontFamily: 'Segoe Print', fontWeight: 'bold' }}>
+                                            Post Blog
                                         </Button>
                                     </Col>
                                 </Row>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { user_real } from './Login';
 import user_icon from './usericon.jpg';
-import { Card, CardBody, CardText,Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import { Link} from 'react-router-dom';
+import { Card, CardBody, CardText, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 let filter_review, items_newspaper, items_magazines, items
 
@@ -25,19 +25,18 @@ function Account(props) {
     return (
         <div className='acc'>
             <div className='container' style={{ display: 'inline-block' }}>
-            <Breadcrumb>
-                        <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>My account</BreadcrumbItem>
-                        
-                    </Breadcrumb>
+                <Breadcrumb style={{ fontSize: "20px" }}>
+                    <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                    <BreadcrumbItem active>My account</BreadcrumbItem>
+                </Breadcrumb>
                 <div style={{ float: 'left' }}>
                     <img src={user_icon} alt='user icon image' />
-                    <h1 style={{color:'goldenrod',fontFamily:'Maiandra GD'}}> Welcome back {user_real}</h1>
+                    <h1 style={{ color: 'goldenrod', fontFamily: 'Maiandra GD' }}> Welcome back {user_real}</h1>
                     {/* If user logged in then display logout button else no */}
                     {user_real ?
                         <div>
                             <h2 style={{ paddingLeft: '20px' }}>
-                                <button style={{ font:'bold', width: "30%", fontSize: '15px',fontWeight:'bold',backgroundColor:'burlywood',color:'black' }} onClick={Logout}>Logout</button>
+                                <button style={{ font: 'bold', width: "30%", fontSize: '15px', fontWeight: 'bold', backgroundColor: 'burlywood', color: 'black' }} onClick={Logout}>Logout</button>
                             </h2>
                         </div>
                         :
@@ -48,29 +47,29 @@ function Account(props) {
                     {/* If user logged in then Display reviews else display login message */}
                     {user_real ?
                         <div>
-                            <h1 style={{ fontSize: '39px',color:'steelblue',fontFamily:'High Tower Text' }}><li>Your reviews</li></h1>
+                            <h1 style={{ fontSize: '39px', color: 'steelblue', fontFamily: 'High Tower Text' }}><li>Your reviews</li></h1>
                             {/* If no.of.reviews !=0 then display reviews else display no reviews */}
                             {filter_review.length !== 0 ?
                                 <div style={{ paddingLeft: '0px' }}>
-                                    <h2 style={{ fontSize: '35px',color:'lightpink',fontFamily:'Gabriola',fontWeight:'500'}}>No.of reviews: {filter_review.length}</h2>
+                                    <h2 style={{ fontSize: '35px', color: 'lightpink', fontFamily: 'Gabriola', fontWeight: '500' }}>No.of reviews: {filter_review.length}</h2>
                                     <div className='row align-items-end '>
                                         {filter_review.map
                                             (rev =>
                                                 <div className='col-4'>
-                                                    <Card style={{ width: '300px',backgroundColor:'#f2f2f2' }}>
+                                                    <Card style={{ width: '300px', backgroundColor: '#f2f2f2' }}>
                                                         <CardBody>
                                                             {/* Displaying item name to which review is given */}
                                                             {items.map
                                                                 (ite =>
                                                                     <div>
                                                                         {rev.itemId === ite.id ?
-                                                                            <CardText style={{ fontSize: '27px',fontFamily:'Tw Cen MT',color:'purple' }}>Name: {ite.name}</CardText>
+                                                                            <CardText style={{ fontSize: '27px', fontFamily: 'Tw Cen MT', color: 'purple' }}>Name: {ite.name}</CardText>
                                                                             : <div></div>
                                                                         }
                                                                     </div>
                                                                 )
                                                             }
-                                                            <CardText style={{ fontSize: '23px', paddingLeft: '0px',fontFamily:'Tw Cen MT',color:'teal' }}>Review: {rev.review}</CardText>
+                                                            <CardText style={{ fontSize: '23px', paddingLeft: '0px', fontFamily: 'Tw Cen MT', color: 'teal' }}>Review: {rev.review}</CardText>
                                                         </CardBody>
                                                     </Card>
                                                     <br />
@@ -80,11 +79,11 @@ function Account(props) {
                                     </div>
                                 </div>
                                 :
-                                <div><h2 style={{ fontSize: '40px',color:'lightyellow',fontFamily:'Gabriola',fontWeight:'500'}}>No reviews given yet</h2></div>
+                                <div><h2 style={{ fontSize: '40px', color: 'lightyellow', fontFamily: 'Gabriola', fontWeight: '500' }}>No reviews given yet</h2></div>
                             }
                         </div> :
                         <div>
-                            <h1 style={{color:'snow',fontFamily:'Maiandra GD'}}>Login to view more</h1>
+                            <h1 style={{ color: 'snow', fontFamily: 'Maiandra GD' }}>Login to view more</h1>
                         </div>
                     }
                 </div>

@@ -7,25 +7,27 @@ function Footer(props) {
         <div className="container">
             <div className="row justify-content-center">             
                 <div className="col-4 offset-1 col-sm-2">
-                    <h5>Links</h5>
+                    <br />
+                    <h5 style={{fontSize:"20px"}}>Links</h5>
                     <ul className="list-unstyled">
-                        <li><Link to='/home'>Home</Link></li>
-                        <li><Link to='/newspapers'>Newspapers</Link></li>
-                        <li><Link to='/magazines'>Magazines</Link></li>
-                        <li><Link to='/aboutus'>About Us</Link></li>
-                        <li><Link to='/contactus'>Contact Us</Link></li>
+                        <li><Link to='/home'><h4 style={{fontSize:"17px",color:"rgb(30, 10, 214)"}}>Home</h4></Link></li>
+                        <li><Link to='/newspapers'><h4 style={{fontSize:"17px",color:"rgb(30, 10, 214)"}}>Newspapers</h4></Link></li>
+                        <li><Link to='/magazines'><h4 style={{fontSize:"17px",color:"rgb(30, 10, 214)"}}>Magazines</h4></Link></li>
+                        <li><Link to='/aboutus'><h4 style={{fontSize:"17px",color:"rgb(30, 10, 214)"}}>About Us</h4></Link></li>
+                        <li><Link to='/contactus'><h4 style={{fontSize:"17px",color:"rgb(30, 10, 214)"}}>Contact Us</h4></Link></li>
                     </ul>
                 </div>
                 <div className="col-7 col-sm-5">
-                    <h5>Our Address</h5>
+                    <br />
+                    <h5 style={{fontSize:"20px",color:"brown"}}>Our Address</h5>
                     <address>
-		              Srini Avenue Kompally<br />
-		              Hyderabad<br />
-		              INDIA<br />
-		              <i className="fa fa-phone fa-lg"></i>: +852 1234 5678<br />
-		              <i className="fa fa-fax fa-lg"></i>: +852 8765 4321<br />
-		              <i className="fa fa-envelope fa-lg"></i>: <a href="mailto:newspapersandmagazines@news.net">
-                      newspapersandmagazines@news.net</a>
+		              <h5 style={{fontSize:"17px",color:"black"}}>Kukatpally</h5>
+		              <h5 style={{fontSize:"17px",color:"black"}}>Hyderabad</h5>
+		              <h5 style={{fontSize:"17px",color:"black"}}>INDIA</h5>
+		              <h5 style={{fontSize:"15px",color:"black"}}><i className="fa fa-phone fa-lg"></i>: +852 1234 5678</h5>
+		              <h5 style={{fontSize:"15px",color:"black"}}><i className="fa fa-fax fa-lg"></i>: +852 8765 4321</h5>
+		              <h5 style={{fontSize:"15px"}}><i className="fa fa-envelope fa-lg"></i>: <a href="mailto:newspapersandmagazines@news.net">
+                      newspapersandmagazines@news.net</a></h5>
                     </address>
                 </div>
                 <div className="col-12 col-sm-4 align-self-center">
@@ -45,8 +47,8 @@ function Footer(props) {
                 </div>
             </div>
         </div>
-    </div>
-    )
+     </div>
+    );
 }
 
 export default Footer;

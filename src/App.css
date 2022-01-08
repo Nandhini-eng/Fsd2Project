@@ -15,19 +15,6 @@
   align-items: center;
 }
 
-.footer{
-  background-color: #D1C4E9;
-  margin:0px auto;
-  padding: 20px 0px 20px 0px;
-}
-
-.jumbotron {
-  padding:70px 30px 70px 30px;
-  margin:0px auto;
-  background: #9575CD ;
-  color:floralwhite;
-}
-
 address{
   font-size:80%;
   margin:0px;
@@ -39,28 +26,40 @@ address{
 } */
 
 
-.page-enter {
-  opacity: 0.01;
-  transform: translateX(-100%);
+.hg{
+  background-color: #292525;
+  align-items: center;
 }
 
-.page-enter-active {
-  opacity: 1;
-  transform: translateX(0%);
-  transition: all 300ms ease-in;
+h1{
+  font-size:xx-large ;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  font-stretch: semi-expanded;
 }
 
-.page-exit {
-  opacity: 1;
-  transform: translateX(0%);
+h3{
+  font-size: 25px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgb(30, 10, 214)
 }
 
-.page-exit-active {
-  opacity: 0.01;
-  transform: translateX(100%);
-  transition: all 300ms ease-out;
+h4{
+  font-size: 23px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white
 }
 
+h5{
+  font-size: 18px; 
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+p{
+  font-size: 17px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight:700;
+}
 
 
 .zoom {
@@ -80,7 +79,7 @@ address{
 
 
 body {
-  background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU");
+  background-color:black;
   background-repeat: no-repeat;  
 }
 
@@ -143,6 +142,7 @@ body {
   background-color: #ebebeb;
   color: white;
 }
+
 .name:hover {
   border-bottom: 5px solid #0e3721;
   height: 30px;
@@ -212,11 +212,8 @@ body {
 
 .hm{
    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU");
-  
-
   /* background-repeat:no-repeat;
   background-size:cover */
-
 }
 
 .hdr{
@@ -227,7 +224,7 @@ body {
 
 .np{
   background-image: url("https://images5.alphacoders.com/912/912044.jpg");
- background-repeat:no-repeat;
+  background-repeat:no-repeat;
   background-size:cover  
 }
 
@@ -238,15 +235,10 @@ body {
 
 }
 
-
 .au{
   background-image: url("https://images7.alphacoders.com/111/thumb-1920-1113092.png");
   background-repeat:no-repeat;
-  background-size:cover
-
-
-
-  
+  background-size:cover  
 }
 
 
@@ -270,9 +262,8 @@ body {
 .mo{
   background-image: url("https://img.freepik.com/free-vector/black-carbon-fiber-texture-pattern-background_1017-33436.jpg?size=626&ext=jpg");
   background-repeat:no-repeat;
-  background-size:cover
-
-
+  background-size:cover;
+  height: "";
 }
 
 .ca{
@@ -286,25 +277,18 @@ body {
   background-image: url("https://t4.ftcdn.net/jpg/02/97/09/81/360_F_297098131_6Kgm7iFL6ZXi5AJWh5IAoWUiXBOR6vf3.jpg");
   background-repeat:no-repeat;
   background-size:cover
-
-
 }
+
 .magde{
   background-image: url("https://media.istockphoto.com/photos/abstract-3d-black-cube-wall-background-picture-id1138008438?k=20&m=1138008438&s=170667a&w=0&h=LgrkyKo2lU_eNylyRThRs4oace_61zm58BRMZqY_KH8=");
   background-repeat:no-repeat;
   background-size:cover
-
-
 }
-
 
 .sgup{
   background-image: url("https://ak.picdn.net/shutterstock/videos/1032877547/thumb/1.jpg?ip=x480");
   background-repeat:no-repeat;
   background-size:cover
-
-
-
 }
 
 .log{
@@ -315,7 +299,6 @@ body {
 }
 
 .foo{
-
   background-image: url("https://ak.picdn.net/shutterstock/videos/1012109966/thumb/1.jpg");
   background-repeat:no-repeat;
   background-size:cover
@@ -326,3 +309,11 @@ body {
   background-repeat: repeat;
   background-size: cover;
 }
+
+
+.chout{
+  background-image:url("https://media.istockphoto.com/photos/abstract-grey-blue-color-blurred-bokeh-light-background-picture-id825777228?k=6&m=825777228&s=170667a&w=0&h=5TE3eDnZwDQD-urOpE7hctz2Xl4UHLGWaIGNsdTeGds=");
+  background-repeat:no-repeat;
+  background-size:cover
+}
+

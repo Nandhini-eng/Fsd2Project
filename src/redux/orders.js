@@ -1,5 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 
+//Orders reducer that takes initial state, action to perform as parameters and performs the appropriate action and returning the new state.
 export const Orders = (state = {
         errMess: null, 
         orders:[]

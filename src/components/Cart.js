@@ -1,18 +1,18 @@
 
-
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from "./Cart.module.css";
 import CartItem from "./Cartitem.js";
-let price,items;
+import { Button } from 'reactstrap';
+let price, items;
+
+// functional cart component props are sent from main component
 function Cart(props) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
-  
 
- 
-  
-  useEffect(() => {
+  //we take use of change in number of items in cart ,total price,totalitems and then we update state of total price and total items
+ useEffect(() => {
     let items = 0;
     let price = 0;
     props.cart.forEach((item) => {
@@ -22,109 +22,98 @@ function Cart(props) {
     setTotalItems(items);
     setTotalPrice(price);
   }, [props.cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
+  price = totalPrice
+  items = totalItems
 
-  
-  
-  // function c(){
-  //   props.getproducts(props.newspapers,props.magazines)
+  //all the below classnames are imported from cart.module.css 
+  //below chain of if loops is to just display items for plural number of items and item for single item
 
+  console.log(totalItems)
+  if (totalItems === 1) {
+    return (
+      <div className='ca'>
+        <div>
+          <div className={styles.cart}>
+            <div className={styles.cart__items}>
 
-  // };
-  // c()
-  const x=()=>{
-    
-    props.getproducts(props.newspapers,props.magazines)
+              {/* we send each items in cart of cart state to cartitem component to render it as card aong with styling */}
 
-
-};
-
-  
-
-
-    
-        
-              
-    price = totalPrice
-    items = totalItems
-    console.log(totalItems)
-      if(totalItems === 1){
-        return(
-          <div className='ca'>
-          <div>
-              <div className={styles.cart}>
-                <div className={styles.cart__items}>
-                 {props.cart.map((item) => (
-                   <CartItem key={item.id} item={item} />
-                    ))}
-               </div>
-              <div className={styles.cart__summary}>
+              {props.cart.map((item) => (
+                <CartItem key={item.id} item={item} />
+              ))}
+            </div>
+            <div className={styles.cart__summary}>
+              {/* cart  summary,total items will be displayed */}
               <h4 className={styles.summary__title}>Cart Summary</h4>
-                <div className={styles.summary__price}>
-               <span>TOTAL: ({totalItems} item)</span>
-               <span>Rs {totalPrice}</span>
-               </div>
-               <button className={styles.summary__checkoutBtn}>
-                 <Link to="/checkout">Proceed To Checkout</Link>
+              <div className={styles.summary__price}>
+                <span>TOTAL: ({totalItems} item)</span>
+                <span>Rs {totalPrice}</span>
+              </div>
+              <button className={styles.summary__checkoutBtn}>
+                <Link to="/checkout">Proceed To Checkout</Link>
               </button>
             </div>
-           </div>
           </div>
-          </div>
-    )}
-    else if(totalItems === 0){
-      return(
-        <div className='ca'>
-        <div >
-              <div className={styles.cart}>
-                <div className={styles.cart__items}>
-                 {props.cart.map((item) => (
-                   <CartItem key={item.id} item={item} />
-                    ))}
-               </div>
-              <div className={styles.cart__summary}>
-              <h4 className={styles.summary__title}>Cart Summary</h4>
-                <div className={styles.summary__price}>
-               <span>TOTAL: ({totalItems} items)</span>
-               <span>Rs {totalPrice}</span>
-               </div>
-               <button className={styles.summary__checkoutBtn}>
-                 Proceed To Checkout
-              </button>
-            </div>
-           </div>
-          </div>
-          </div>
-        
+        </div>
+      </div>
     )
-      
-    }
-    else{
-      return(
-        <div className='ca'>
-              <div className={styles.cart}>
-                <div className={styles.cart__items}>
-                 {props.cart.map((item) => (
-                   <CartItem key={item.id} item={item} />
-                    ))}
-               </div>
-              <div className={styles.cart__summary}>
+  }
+  else if (totalItems === 0) {
+    return (
+      <div className='ca'>
+        <div >
+          <div className={styles.cart}>
+            <div className={styles.cart__items}>
+              {props.cart.map((item) => (
+                <CartItem key={item.id} item={item} />
+              ))}
+            </div>
+            <div className={styles.cart__summary}>
               <h4 className={styles.summary__title}>Cart Summary</h4>
-                <div className={styles.summary__price}>
-               <span>TOTAL: ({totalItems} items)</span>
-               <span>Rs {totalPrice}</span>
-               </div>
-               <button className={styles.summary__checkoutBtn}>
-                 <Link to="/checkout">Proceed To Checkout</Link>
+              <div className={styles.summary__price}>
+                <span>TOTAL: ({totalItems} items)</span>
+                <span>Rs {totalPrice}</span>
+              </div>
+              <button className={styles.summary__checkoutBtn}>
+                Proceed To Checkout
               </button>
             </div>
-           </div>
           </div>
+        </div>
+      </div>
 
-      )
-    }
-    
+    )
+
+  }
+  else {
+    return (
+      <div className='ca'>
+        <div className={styles.cart}>
+          <div className={styles.cart__items}>
+            {props.cart.map((item) => (
+              <CartItem key={item.id} item={item} />
+            ))}
+          </div>
+          <div className={styles.cart__summary}>
+            <h4 className={styles.summary__title}>Cart Summary</h4>
+            <div className={styles.summary__price}>
+              <span>TOTAL: ({totalItems} items)</span>
+              <span>Rs {totalPrice}</span>
+            </div>
+            <button className={styles.summary__checkoutBtn}>
+              <Link to="/checkout">Proceed To Checkout</Link>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    )
+  }
+
 }
 
 
+
+//above cart functional component is exported
 export default Cart;
-export {price,items}
+export { price, items }

@@ -27,18 +27,30 @@
 	font-size: 19px;
 	padding-bottom: 9px;
 }
+
+
+
 .form-1 h1{
 	padding-top: 45px;
 	font-size: 30px;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	color: purple;
 }
-.form-1 h4{
 
-font-style: italic;
-color:purple;
-font-size: 15px;
+.form-1 h3{
+	font-size: 20px;
+	color:purple
 }
+
+.form-1 h4{
+	font-style: italic;
+	color:purple;
+	font-size: 15px;
+}
+
+
+
+
 .inner-form{
 	padding-bottom:12px;
 	font-family:cursive;
@@ -47,10 +59,9 @@ font-size: 15px;
 	font-weight: 600;
 	color:purple;
 }
-.form-1 h3{
-	font-size: 20px;
-	color:purple
-}
+
+
+
 .inner-form input{
 	height:30px;font-size:15px;width:35%;
 	border: 0 !important;	

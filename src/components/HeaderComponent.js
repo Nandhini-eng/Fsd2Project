@@ -6,11 +6,10 @@ import Cartval from './Cartval.js';
 import { getproducts } from '../redux/ActionCreators';
 
 import LightSpeed from 'react-reveal/LightSpeed';
-import Jump from 'react-reveal/Jump';
-
 import Searchc from './Searchc.js';
-import { user_real } from './Login'
+import { user_real } from './Login';
 let isLoggedin
+
 class Header extends Component {
 
   constructor(props) {
@@ -21,10 +20,6 @@ class Header extends Component {
 
       isNavOpen: false,
       SearchField: "e "
-
-
-
-
     };
 
     this.toggleNav = this.toggleNav.bind(this);
@@ -181,18 +176,7 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    newspapers: state.newspapers,
-    magazines: state.magazines,
-    items: state.cartReducer.items,
-  };
-};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getproducts: (newspapers, magazines) => { dispatch(getproducts(newspapers, magazines)) },
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+export default Header;
