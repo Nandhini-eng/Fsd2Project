@@ -34,7 +34,7 @@ class ReviewForm extends Component {
                 })
             }
             else{
-                alert("You cannot submit review as you have not subscibed this item!!")
+                alert("You cannot submit review as you have not subscribed this item!!")
             };
             
         }

@@ -27,3 +27,9 @@ export const CART_EMPTY = 'CART_EMPTY';
 export const ORDER_PLACED='ORDER_PLACED';
 export const ORDER_FAILED='ORDER_FAILED';
 export const ORDERS_PLACED='ORDERS_PLACED';
+
+//BLOG
+//appending new blog to existing array
+export const ADD_BLOGS = 'ADD_BLOGS';
+//adding blog to new empty array
+export const ADD_BLOG = 'ADD_BLOG';

@@ -13,7 +13,6 @@ class Contact extends Component {
 
     constructor(props){
         super(props);
-
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -24,7 +23,6 @@ class Contact extends Component {
     }
 
     render() {
-
         return(
             <div className='cu'>
             <div className="container" style={{color:"white"}}>
@@ -38,7 +36,7 @@ class Contact extends Component {
                         <hr />
                     </div>                
                 </div>
-                <div className="row row-content">
+                <div className="row row-content" style={{ float: 'right', margin: '0px', paddingTop: '150px' }}>
                     <div className="col-12">
                     <h3 style={{color:"white"}}>Location Information</h3>
                     </div>
@@ -80,101 +78,110 @@ class Contact extends Component {
                     
                 </div>
 
-                <div className="row row-content" style={{backgroundColor:"lightgray",color:"black"}}>
+                <div className="row row-content" style={{borderRadius: '6px', margin: '0px', paddingLeft: '0px' }}>
                    <div className="col-12">
                       <h3>Send us your Feedback</h3>
                    </div>
                    <br />
-                    <div className="col-12 col-md-9">
+                    <div className="col-12 col-md-12" style={{ backgroundImage: `url('https://images.hdqwalls.com/download/dark-material-design-bx-2560x1440.jpg')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
                         <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
-                            <Row className="form-group">
+                            <Row className="form-group" style={{paddingTop:'10px'}}>
                                 <Label htmlFor="firstname" md={2} style={{fontWeight:"bold"}}>First Name</Label>
-                                <Col md={10} style={{  border: "1px solid #ccc",borderRadius:"4px"}}>
+                                <Col md={9} style={{borderRadius:"4px"}}>
                                     <Control.text model=".firstname" id="firstname" name="firstname"
                                         placeholder="First Name"
                                         className="form-control"
                                         validators={{
                                             required, minLength: minLength(3), maxLength: maxLength(15)
                                         }}
+                                        style={{fontSize:'15px',backgroundColor:'lightgray'}}
                                     /> 
                                     <Errors
                                         className="text-danger"
                                         model=".firstname"
                                         show="touched"
                                         messages={{
-                                            required: 'Required',
+                                            required: 'Required, ',
                                             minLength: 'Must be greater than 2 characters',
                                             maxLength: 'Must be 15 characters or less'
                                         }}
+                                        style={{fontSize:'18px' ,fontWeight:"500"}}
                                     />   
                                 </Col>
                             </Row>
                             <br />
                             <Row className="form-group">
                                 <Label htmlFor="lastname" md={2} style={{fontWeight:"bold"}}>Last Name</Label>
-                                <Col md={10} style={{  border: "1px solid #ccc",borderRadius:"4px"}}>
+                                <Col md={9} style={{borderRadius:"4px",color:'pink'}}>
                                     <Control.text model=".lastname" id="lastname" name="lastname"
                                         placeholder="Last Name"
                                         className="form-control"
                                         validators={{
                                             required, minLength: minLength(3), maxLength: maxLength(15)
                                         }}
+                                        style={{fontSize:'15px',backgroundColor:'lightgray'}}
                                     />  
                                     <Errors
                                         className="text-danger"
                                         model=".lastname"
                                         show="touched"
                                         messages={{
-                                            required: 'Required',
+                                            required: 'Required, ',
                                             minLength: 'Must be greater than 2 characters',
                                             maxLength: 'Must be 15 characters or less'
                                         }}
+                                        style={{fontSize:'18px' ,fontWeight:"500"}}
                                     /> 
                                 </Col>                        
                             </Row>
                             <br />
                             <Row className="form-group">
                             <Label htmlFor="telnum" md={2} style={{fontWeight:"bold"}}>Contact Tel.</Label>
-                                <Col md={10} style={{  border: "1px solid #ccc",borderRadius:"4px"}}>
+                                <Col md={9} style={{borderRadius:"4px"}}>
                                     <Control.text model=".telnum" id="telnum" name="telnum"
                                         placeholder="Tel. number"
                                         className="form-control" 
                                         validators={{
-                                            required, minLength: minLength(3), maxLength: maxLength(15), isNumber
+                                            required, minLength: minLength(10),  maxLength: maxLength(10),isNumber
                                         }}
+                                        style={{fontSize:'15px',backgroundColor:'lightgray'}}
                                     />
                                     <Errors
                                         className="text-danger"
                                         model=".telnum"
                                         show="touched"
                                         messages={{
-                                            required: 'Required',
-                                            minLength: 'Must be greater than 2 numbers',
-                                            maxLength: 'Must be 15 numbers or less',
+                                            required: 'Required, ',
+                                            minLength: 'Must be equal to 10 digits, ',
+                                            maxLength: 'Must be equal to 10 digits',
                                             isNumber: 'Must be a number'
                                         }}
+                                        style={{fontSize:'18px' ,fontWeight:"500"}}
                                     />  
                                 </Col>
                             </Row>
                             <br />
                             <Row className="form-group">
                                 <Label htmlFor="email" md={2} style={{fontWeight:"bold"}}>Email</Label>
-                                <Col md={10} style={{  border: "1px solid #ccc",borderRadius:"4px"}}>
+                                <Col md={9} style={{borderRadius:"4px"}}>
                                     <Control.text model=".email" id="email" name="email"
                                         placeholder="Email"
                                         className="form-control"
                                         validators={{
                                             required, validEmail
                                         }}
+                                        style={{fontSize:'15px',backgroundColor:'lightgray'}}
                                     /> 
-                                    <Errors
+                                    <Errors 
                                         className="text-danger"
                                         model=".email"
                                         show="touched"
+                                        
                                         messages={{
-                                            required: 'Required',
+                                            required: 'Required, ',
                                             validEmail: 'Invalid Email Address'
                                         }}
+                                        style={{fontSize:'18px' ,fontWeight:"500"}}
                                     />     
                                 </Col>
                             </Row>
@@ -182,30 +189,46 @@ class Contact extends Component {
                             <Row className="form-group">
                                 <Col md={{size: 6, offset: 2}}>
                                     <div className="form-check">
-                                        <Label check>
+                                        <Label check >
                                             <Control.checkbox model=".agree"
                                                 name="agree"
                                                 className="form-check-input" 
+                                                style={{backgroundColor:'lightgray'}}
                                                  /> {' '}
                                             <strong>May we contact you?</strong>
                                         </Label>
                                     </div>
                                 </Col>
-                                <Col md={{size: 3, offset: 1}}>
+                                <Col md={{size: 2, offset: 1}}>
                                     <Control.select model=".contactType" name="contactType"
-                                            className="form-control">
+                                            className="form-control" style={{backgroundColor:'lightgray'}}>
                                         <option>Tel.</option>
                                         <option>Email</option>
+                                        
                                     </Control.select>
                                 </Col>
                             </Row>
                             <br />
                             <Row className="form-group">
                                 <Label htmlFor="message" md={2} style={{fontWeight:"bold"}}>Your Feedback</Label>
-                                <Col md={10}>
+                                <Col md={9}>
                                     <Control.textarea model=".message" id="message" name="message"
-                                        rows="12"
-                                         className="form-control" />
+                                        rows="6"
+                                         className="form-control"
+                                         style={{fontSize:'15px',backgroundColor:'lightgray'}}
+                                         validators={{
+                                            required
+                                        }} />
+                                    <Errors 
+                                        className="text-danger"
+                                        model=".message"
+                                        show="touched"
+                                        
+                                        messages={{
+                                            required: 'Required',
+                                        }}
+                                        style={{fontSize:'18px' ,fontWeight:"500"}}
+                                    /> 
                                 </Col>
                             </Row>
                             <br />

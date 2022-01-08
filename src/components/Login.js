@@ -3,6 +3,7 @@ import './login.css'
 let userrs
 
 let error,user_real
+error='Invalid username or password'
 
 class Login extends Component{
     constructor(props){
@@ -29,25 +30,13 @@ class Login extends Component{
                     console.log(this.props.history.length)
                 }
                 else{
+                    alert('Invalid username or password')
                     error="Invalid Username or Password"
                 }
             })
         })
     
-        // var i
-        // var j=0
-        // console.log(userrs.length)
-        // for(i=0;i<userrs.length;i++){
-        //     const val = userrs[i].user4.includes(this.state.username+':'+ this.state.password);   
-        //     if(val){
-        //         j=1
-        //         user_real=this.state.username
-        //         error=" "
-        //     }
-        //     if(j==1){
-        //         this.props.history.go(-2);
-        //     }
-        // } 
+       
     }
     render(){
     

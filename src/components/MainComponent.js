@@ -8,7 +8,7 @@ import Contact from './ContactComponent';
 import NewspapersMain from './NewspapersComponent';
 import Searchc from './Searchc';
 import Cart from './Cart';
-import {Login} from './Login';
+import {Login,user_real} from './Login';
 import NewspaperDetail from './NewspaperDetail';
 import MagazinesMain from './MagazinesComponent';
 import ItemDetail from './ItemDetail';
@@ -16,15 +16,14 @@ import MagazineDetail from './MagazineDetail';
 import Signup from './Signup';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { fetchNewspapers, fetchMagazines, filterMagazinesByCategory, 
   filterMagazinesByLanguage, 
     filterNewspapersByLanguage, sortNewspapers,sortMagazines, postFeedback,postsignup,fetchUsers,fetchReviews, postReview, 
-    getproducts,addToCart,removefromCart,adjustQty,fetchOrders,postOrder,fetchItems} from '../redux/ActionCreators';
+    getproducts,addToCart,removefromCart,adjustQty,fetchOrders,postOrder,fetchItems,postblog, fetchBlogs} from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 import Checkout from './Checkout';
 import OrdersComponent from './OrdersComponent';
-import {user_real} from "./Login";
+import Blog from './Blog'
 
 const mapStateToProps = (state) => (
   {
@@ -34,6 +33,7 @@ const mapStateToProps = (state) => (
     cartitem: state.cartReducer,  
     orders: state.orders,
     regusers:state.regusers, 
+    blogs: state.blogs
   }
 );
 
@@ -60,6 +60,9 @@ const mapDispatchToProps = (dispatch) => ({
     // removefromCart:(id)=>{dispatch(removefromCart(id))},
     // adjustQty:(id)=>{dispatch(adjustQty(id))}
     fetchItems:()=>{dispatch(fetchItems())},
+    fetchBlogs: () => { dispatch(fetchBlogs()) },
+    postblog: (username, topic, message) => dispatch(postblog(username, topic, message))
+
 });
 
 class Main extends Component{
@@ -71,6 +74,7 @@ class Main extends Component{
       this.props.fetchUsers();
       this.props.fetchReviews();
       this.props.fetchOrders();
+      this.props.fetchBlogs();
       
     }
 
@@ -84,7 +88,7 @@ class Main extends Component{
                 newspapersLoading={this.props.newspapers.isLoading}
                 newspapersErrMess={this.props.newspapers.errMess}
                 magazines={this.props.magazines.magazines.filter((magazine) => magazine.featured)}
-                regusers={this.props.regusers}
+                
               />
             );
         }
@@ -155,7 +159,7 @@ class Main extends Component{
                 <Route path='/magazines/:magId' component={MagazineWithId} />
                 
                 <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} /> 
-                <Route path='/myaccount' component={() => <Account />} />
+                <Route path='/myaccount' component={() => <Account {...this.props}/>} />
                 <Route path='/aboutus' component={() => <About />} />
                 <Route path='/cart' component={() => <Cart getproducts={this.props.getproducts} newspapers={this.props.newspapers} magazines={this.props.magazines} cart={this.props.cartitem.cart}  />} />
                 <Route exact path='/searchc' component={() => <Searchc />} />
@@ -165,6 +169,7 @@ class Main extends Component{
                              
                 <Route path='/checkout' component={()=><Checkout resetCheckoutForm={this.props.resetCheckoutForm} postOrder={this.props.postOrder} cart={this.props.cartitem.cart}/>}/>
                 <Route path='/orders' component={()=><OrdersComponent orders={this.props.orders.orders.filter((order)=>order.user === user_real)} ordersErrMess={this.props.orders.errMess}/>}/>
+                <Route path='/blog' component={() => <Blog {...this.props} />} />
                 <Redirect to="/home" />
 
 

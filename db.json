@@ -551,7 +551,7 @@
       "id": 1
     },
     {
-      "user4": "aswitha:1234",
+      "user4": "Bhanu:1234",
       "id": 2
     },
     {
@@ -926,6 +926,14 @@
       "items": 2,
       "date": "2022-01-06T13:32:50.516Z",
       "id": 3
+    }
+  ],
+  "blogs": [
+    {
+      "user": "bhanu",
+      "topic": "React",
+      "message": "An example here is choosing a 3rd party vendor for your project or a framework that's new and exciting. Once you're locked in and you realize it's wrong, it's hard to change your mind.\n\nTake these decisions slowly. Make contingency plans. Design check-ins into your project. Have a deadline to make the decision.\n\nA deadline helps you decide when you're about 80% sure.\n\nPre-decide when you're going to bail. When situation X, Y, Z arises, we bail. You're going to be too fond of the work when that time comes to think straight.",
+      "id": 1
     }
   ]
 }

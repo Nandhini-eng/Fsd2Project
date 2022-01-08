@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, Label, Col, Row } from 'reactstrap';
-import { Link, Redirect} from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { Control, Form, Errors } from 'react-redux-form';
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -49,7 +49,7 @@ class Signup extends Component {
                 </div>
                
                 <div style={{paddingLeft:"300px", paddingTop:"50px",paddingBottom:'80px',paddingRight:'200px'}}>
-                <div className="row row-content" style={{borderRadius:'14px',backgroundColor:"lightgray", backgroundImage:`url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbsuZyeDpx443ed5YF8MprRLcCOwDY5LXM9A&usqp=CAU')`,backgroundRepeat:"no-repeat",backgroundSize:"cover"}}>
+                <div className="row row-content" style={{borderRadius:'14px',backgroundColor:"lightgray", backgroundImage:`url('https://motionarray.imgix.net/preview-66333Q6ixuo47Yg_0013.jpg')`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
                    <div className="col-12">
                       <h2 style={{color:"#636303"}}>Register here </h2>
                       <ul style={{fontFamily:"Footlight MT Light", color:"#6b0947", fontWeight:"bolder",fontSize:"20px"}}>
@@ -77,8 +77,8 @@ class Signup extends Component {
                                         model=".username"
                                         show="touched"
                                         messages={{
-                                            required: 'Required,',
-                                            minLength: ' Must be greater than 2 characters',
+                                            required: 'Required, ',
+                                            minLength: 'Must be greater than 2 characters',
                                             maxLength: 'Must be 15 characters or less'
                                         }}
                                     />   
@@ -90,6 +90,7 @@ class Signup extends Component {
                                 <Col md={8} style={{  borderRadius:"4px"}}>
                                     <Control.text model=".password" id="password" name="password"
                                         placeholder="Password"
+                                        type='password'
                                         className="form-control"
                                         validators={{
                                             required, minLength: minLength(3), maxLength: maxLength(10)
@@ -100,8 +101,8 @@ class Signup extends Component {
                                         model=".password"
                                         show="touched"
                                         messages={{
-                                            required: 'Required,',
-                                            minLength: '  Must be greater than 2 characters',
+                                            required: 'Required, ',
+                                            minLength: 'Must be greater than 2 characters',
                                             maxLength: 'Must be 10 characters or less'
                                         }}
                                     /> 

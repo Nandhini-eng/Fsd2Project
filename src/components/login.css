@@ -27,13 +27,13 @@
 	font-size: 19px;
 	padding-bottom: 9px;
 }
-h1{
+.form-1 h1{
 	padding-top: 45px;
 	font-size: 30px;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	color: purple;
 }
-h4{
+.form-1 h4{
 
 font-style: italic;
 color:purple;
@@ -47,11 +47,11 @@ font-size: 15px;
 	font-weight: 600;
 	color:purple;
 }
-h3{
+.form-1 h3{
 	font-size: 20px;
 	color:purple
 }
-input{
+.inner-form input{
 	height:30px;font-size:15px;width:35%;
 	border: 0 !important;	
 	background-color: #f2f2f2;
@@ -61,7 +61,7 @@ input{
 			
 }
 
-button{
+.form-1 button{
 	height:30px;
 	color:whitesmoke;
 	border-color: black;
