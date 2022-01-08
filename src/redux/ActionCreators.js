@@ -1,14 +1,18 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
 
+//Function which fetches all the items from the server
 export const fetchItems = () => async (dispatch) => {
+  //fetches newspapers
   const newspapers = await Promise.all([
     fetch(baseUrl + 'newspapers').then(response => response.json()),
 
   ]);
+  //fetches magazines
   const magazines = await Promise.all([
     fetch(baseUrl + 'magazines').then(response_1 => response_1.json())
   ])
+  //Dispatching them to getproducts function 
   return dispatch(getproducts(newspapers, magazines));
 
 }
@@ -133,24 +137,29 @@ export const filterNewspapersByLanguage = (newspapers, lang) => (dispatch) => {
   })
 }
 
-//SORT
+//Function which sorts newspapers based on selected sort type
 export const sortNewspapers = (products, sort) => (dispatch) => {
+  //sorting from lowest to highest price  
   if (sort === "lowestprice") {
     products.sort((a, b) =>
       a.price > b.price ? 1 : -1)
   }
+  //sorting from highest to lowest price       
   else if (sort === "highestprice") {
     products.sort((a, b) =>
       a.price < b.price ? 1 : -1
     );
   }
+  //sorting by alphabetical order
   else if (sort === "prname") {
     products.sort((a, b) =>
       a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1)
   }
+  //If none of sort type is selected, sorting them via ids
   else {
     products.sort((a, b) => (a.id > b.id ? 1 : -1));
   }
+  //Dispatching the appropriate sorted products and sort type 
   return dispatch({
     type: ActionTypes.SORT_NEWSPAPERS,
     payload: {
@@ -160,23 +169,29 @@ export const sortNewspapers = (products, sort) => (dispatch) => {
   })
 }
 
+//Function which sorts magazines based on selected sort type
 export const sortMagazines = (products, sort) => (dispatch) => {
+  //sorting from lowest to highest price  
   if (sort === "lowestprice") {
     products.sort((a, b) =>
       a.price > b.price ? 1 : -1)
   }
+  //sorting from highest to lowest price  
   else if (sort === "highestprice") {
     products.sort((a, b) =>
       a.price < b.price ? 1 : -1
     );
   }
+  //sorting by alphabetical order
   else if (sort === "prname") {
     products.sort((a, b) =>
       a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1)
   }
+  //If none of sort type is selected, sorting them via ids
   else {
     products.sort((a, b) => (a.id > b.id ? 1 : -1));
   }
+  //Dispatching the appropriate sorted products and sort type 
   return dispatch({
     type: ActionTypes.SORT_MAGAZINES,
     payload: {
@@ -410,8 +425,7 @@ export const loadCurrentItem = (item) => {
   }
 };
 
-//getproducts action creator to get both newspapers and magazines
-
+//Function which combine both newspapers and magazines into one array
 export const getproducts = (news, mags) => {
   return {
     type: ActionTypes.GET_PRODUCTS,
@@ -420,14 +434,15 @@ export const getproducts = (news, mags) => {
 
 };
 
-//ORDERS
+//Function which adds an order to the already present orders
 export const orderPlaced = (order) => ({
   type: ActionTypes.ORDER_PLACED,
   payload: order
 });
 
+//Function which posts an order to the server with required details
 export const postOrder = (fullName, address, city, postalCode, country, NameOnCard, CreditCardNum, ExpMon, ExpYear, Cvv, cart, user, price, items) => (dispatch) => {
-
+  //Defining new order
   const newOrder = {
     fullName: fullName,
     address: address,
@@ -446,7 +461,7 @@ export const postOrder = (fullName, address, city, postalCode, country, NameOnCa
 
   };
   newOrder.date = new Date().toISOString();
-
+  //Fetching url and using POST method to add orders into server
   return fetch(baseUrl + 'orders', {
     method: "POST",
     body: JSON.stringify(newOrder),
@@ -455,49 +470,65 @@ export const postOrder = (fullName, address, city, postalCode, country, NameOnCa
     },
     credentials: "same-origin"
   })
+    //Returning response
     .then(response => {
       if (response.ok) {
         return response;
+        //Error message is displayed if any error occurs in the response
       } else {
         var error = new Error('Error ' + response.status + ': ' + response.statusText);
         error.response = response;
         throw error;
       }
     },
+      //Throwing error
       error => {
         throw error;
       })
     .then(response => response.json())
+    //Placing the order
     .then(response => { alert("Your order has been placed succesfully"); dispatch(orderPlaced(response)) })
+    //Emptying the cart
     .then((dispatch({ type: ActionTypes.CART_EMPTY })))
+    //Catching errors and displaying necessary message
     .catch(error => { console.log('post orders', error.message); alert('Your order could not be placed\nError: ' + error.message); });
 };
 
+//Function which fetches orders from server
 export const fetchOrders = () => (dispatch) => {
+  //Making api call
   return fetch(baseUrl + 'orders')
     .then(response => {
+      //Returning response
       if (response.ok) {
         return response;
-      } else {
+      }
+      //Error message if any error in response
+      else {
         var error = new Error('Error ' + response.status + ': ' + response.statusText);
         error.response = response;
         throw error;
       }
     },
+    //Thowing error
       error => {
         var errmess = new Error(error.message);
         throw errmess;
       })
     .then(response => response.json())
+    //Displaying all the orders placed
     .then(orders => dispatch(ordersPlaced(orders)))
+    //Catching error and calling orderFailed function
     .catch(error => dispatch(orderFailed(error.message)));
 };
 
+//Function which displays error message
 export const orderFailed = (errmess) => ({
   type: ActionTypes.ORDER_FAILED,
   payload: errmess
 });
 
+//Function which displays all the orders placed
 export const ordersPlaced = (orders) => ({
   type: ActionTypes.ORDERS_PLACED,
   payload: orders
@@ -585,12 +616,12 @@ export const getTopNewspapers = (newspapers, reviews) => (dispatch) => {
 //An actioncreator of the defined type, contains the details of top rated magazines(the magazines for which average rating lies between 4 and 5) in the payload
 export const getTopMagazines = (magazines, reviews) => (dispatch) => {
   var array = [];
-  reviews.map(rev => magazines.map(mag => rev.itemId === mag.id ? array.push({ ...mag }) : null))
+  reviews.map(rev => magazines.map(mag => rev.itemId === mag.id ? array.push({...mag}) : null) )
   return dispatch({
-    type: ActionTypes.TOP_RATED_MAGAZINES,
-    payload: {
-      items: array,
-      magazines: magazines
-    }
+      type: ActionTypes.TOP_RATED_MAGAZINES,
+      payload : {
+        items: array,
+        magazines: magazines
+      }
   })
 }

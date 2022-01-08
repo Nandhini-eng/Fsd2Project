@@ -6,21 +6,21 @@ import { Link } from 'react-router-dom';
 import { FadeTransform } from 'react-animation-components';
 
 //Functional Component to render each featured newspaper in a reactstrap Card.
-function RenderNewspaper({item}) {
-    return(
+function RenderNewspaper({ item }) {
+    return (
         <div className="zoom">
             {/* Applied FadeTransform animation to the reactstrap Card by giving tansformProps */}
             <FadeTransform in
-                    transformProps={{
-                        exitTransform: 'scale(0.5) translateY(-50%)'
-                    }}>
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
                 <Card>
-                <Link to={`/newspapers/${item.id}`}>            {/* linking each featured newspaper to it's details page */}
-                    <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
-                    <div className='hg'>
-                     <CardHeader><h4>{item.name}</h4></CardHeader>
-                    </div>
-                </Link>
+                    <Link to={`/newspapers/${item.id}`}>            {/* linking each featured newspaper to it's details page */}
+                        <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
+                        <div className='hg'>
+                            <CardHeader><h4>{item.name}</h4></CardHeader>
+                        </div>
+                    </Link>
                 </Card>
             </FadeTransform>
         </div>
@@ -28,35 +28,35 @@ function RenderNewspaper({item}) {
 }
 
 //Funtional component to render each featured magazine in a reactstrap Card
-function RenderMagazine({item}) {
-    return(
+function RenderMagazine({ item }) {
+    return (
         <div className="zoom">
             {/* Applied FadeTransform animation to the reactstrap Card by giving tansformProps */}
             <FadeTransform in
-                    transformProps={{
-                        exitTransform: 'scale(0.5) translateY(-50%)'   
-                    }}>
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
                 <Card>
-                <Link to={`/magazines/${item.id}`}>            {/* linking each featured magazine to it's details page */}
-                    <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
-                    <div className='hg'>
-                     <CardHeader><h4>{item.name}</h4></CardHeader>
-                    </div>
-                </Link>
+                    <Link to={`/magazines/${item.id}`}>            {/* linking each featured magazine to it's details page */}
+                        <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
+                        <div className='hg'>
+                            <CardHeader><h4>{item.name}</h4></CardHeader>
+                        </div>
+                    </Link>
                 </Card>
             </FadeTransform>
         </div>
     );
 }
 
-function Home(props){
+function Home(props) {
 
     //Rendering the featured newspapers
     //Calling the render newspaper function for each featured newspaper
     const newspapers = props.newspapers.map((newspaper) => {
-        return(
+        return (
             <div className="col-12 col-md-3" key={newspaper.id}>
-                <RenderNewspaper item={newspaper} /> 
+                <RenderNewspaper item={newspaper} />
             </div>
 
         );
@@ -73,7 +73,7 @@ function Home(props){
         );
     });
 
-    
+
     //condition for displaying loading icon while fetching the data from the json-server.
     if (props.newspapersLoading) {
         return (
@@ -97,8 +97,8 @@ function Home(props){
         );
     }
     //else returning the newspapers and magazines 
-    else{
-        return(
+    else {
+        return (
             <div className="hm">
                 <div className="container" >
                     {/* To render the featured newspapers in a row */}

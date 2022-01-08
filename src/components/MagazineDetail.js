@@ -8,8 +8,9 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
-import { user_real } from './Login'
-//import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+import { user_real } from './Login';
+import ReactStars from 'react-stars';
+import "./Details.css";
 
 class ReviewForm extends Component {
 
@@ -23,29 +24,32 @@ class ReviewForm extends Component {
         this.toggleModal = this.toggleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
+    //Handling opening of form which takes review for the selected magazine
     toggleModal() {
+        //User should be valid
         if (user_real) {
             console.log('validated user');
             let cartItems = []
             cartItems = this.props.orders.map((order) => order.cart.map((item) => (item.id)))
             let flag = cartItems.some((value) => value.some((id) => (id === this.props.itemId)))
+            //If user has subscribed that item, then the forms opens
             if (flag) {
                 this.setState({
                     isModalOpen: !this.state.isModalOpen
                 })
             }
-            else{
-                alert("You cannot submit review as you have not subscribed this item!!")
+            //Else a alert message arrives
+            else {
+                alert("You cannot submit review as you have not subscibed this item!!")
             };
-
         }
+        //User should login if they are invalid
         else {
             console.log('invalid user');
             this.props.history.push('/signup');
         }
     }
-
+    //Calling postReview function which posts reviews to the server
     handleSubmit(values) {
         this.toggleModal();
         this.props.postReview(this.props.itemId, parseInt(values.rating), user_real, values.review);
@@ -57,9 +61,9 @@ class ReviewForm extends Component {
                 <div className="col-12 col-md-7 m-1">
 
                     <Button outline onClick={this.toggleModal}>
-                        <h3><span className="fa fa-pencil fa-lg"></span>Submit Review</h3>
+                        <h4><span className="fa fa-pencil fa-lg"></span>Submit Review</h4>
                     </Button></div>
-
+                {/* A review form containing rating and review feilds*/}
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Submit Review</ModalHeader>
                     <ModalBody>
@@ -92,40 +96,42 @@ class ReviewForm extends Component {
     }
 
 }
-
+//Function to display the details of reviews given to the selected magazine
 function RenderReviews({ reviews, errMess }) {
+    //Displaying the reviews if reviews are given and there is no error
     if (errMess === null) {
         if (reviews.length) {
             return (
                 <div className="col-12 col-md-10 m-1">
-                    <ul className="list-unstyled">
+                    <ul className="product-description">
                         <h3>REVIEWS</h3>
-                        {/* <Stagger in> */}
                         {reviews.map((review) => (
-                            // <Fade in> 
+
                             <li key={review.id}>
-                                <h6>{review.review}</h6>
-                                <h6>--Rating: {review.rating}</h6>
-                                <h6>--Author: {review.author}</h6>
-                                <h6>--Posted on: {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.date)))}</h6>
+                                <p>{review.review}</p>
+                                <ReactStars count={5} size={24} value={review.rating} color2={'#ffd700'} edit={false} />
+                                <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.date)))}</p>
                                 <br />
                             </li>
-                            //</Fade>
+
                         ))}
-                        {/* </Stagger> */}
                     </ul>
                 </div>
             );
         }
+        //If no reviews are given, displaying a statement 
         else {
             return (
                 <div className="col-12 col-md-10 m-1">
-                    <h3>REVIEWS</h3>
-                    <h5>No Reviews are given for this Magazine.</h5>
+                    <div className='product-description'>
+                        <h3>REVIEWS</h3>
+                        <p>No Reviews are given for this Magazine.</p>
+                    </div>
                 </div>
             );
         }
     }
+    //If any error occurs displaying error message
     else {
         return (
             <div className="col-12 col-md-10 m-1">
@@ -135,9 +141,9 @@ function RenderReviews({ reviews, errMess }) {
     }
 }
 
-
+//Function displaying all the details of selected magazine 
 function RenderItem({ item, addtocart, reviews, postReview, orders }) {
-
+    //Finding average of ratings given to the selected magazine
     var sum = 0, avg = 0;
     if (reviews.length) {
         sum = reviews.map(review => review.rating).reduce((r1, r2) => r1 + r2, 0);
@@ -146,11 +152,13 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
 
     const history = useHistory();
     if (item != null) {
+        //Calling addtocart function if the user is logged in
         const IsLogin = () => {
             if (user_real) {
                 console.log('yes')
                 addtocart(item.id)
             }
+            //Else displaying signup page
             else {
                 console.log('no')
                 history.push("/signup");
@@ -158,37 +166,35 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
         }
         return (
             <React.Fragment>
-                <div className="col-12 col-md-5 m-1">
-                    {/* <FadeTransform
-                        in
-                        transformProps={{
-                            exitTransform: 'scale(0.5) translateY(-50%)'
-                        }}> */}
-                    <Card>
-                        <CardImg width="100%" height="600px" src={baseUrl + item.image} alt={item.name} />
-                        <CardBody>
-                            <CardTitle><h2>{item.name}</h2></CardTitle>
-                            <CardSubtitle><h3>{item.category}</h3></CardSubtitle>
-                            <CardText><h4>Price: Rs.{item.price}</h4></CardText>
-                        </CardBody>
-                    </Card>
-                    {/* </FadeTransform>   */}
-                </div>
-                <div className="col-12 col-md-5 m-1">
-                    <h3>Description</h3><br />
-                    <h5>{item.description}</h5><br /><br />
-                    {/* <button onClick={x}><h4>Subscribe</h4></button>  */}
-                    <button onClick={IsLogin}><h4>Subscribe</h4></button>
+                <main className="container1">
+                    {/* Diaplaying image in the left side */}
+                    <div className="left-column">
+                        <img src={baseUrl + item.image} alt={item.name} />
+                    </div>
+                    {/* Displaying details in the right side */}
+                    <div className="right-column">
 
-                    <br />
-                    <br />
-                    <br />
-                    <h5>Total No. of reviews posted till now: {reviews.length}</h5>
-                    <h5>Average Rating: {avg} / 5</h5>
-                    <br />
-                    <ReviewForm itemId={item.id} postReview={postReview} history={history} orders={orders} />
-
-                </div>
+                        <div className="product-description">
+                            <h3>{item.name}</h3>
+                            <span>{item.language}</span>
+                            <h4>{item.category}</h4>
+                            <p>{item.description}</p>
+                        </div>
+                        {/* Add to cart button works if the user is logged in */}
+                        <div className="product-price">
+                            <span>Rs.{item.price}</span>
+                            <div className='zoom'>
+                                <button class="cart-btn" onClick={IsLogin}>Add to Cart</button>
+                            </div>
+                        </div>
+                        {/* Displaying the details related to reviews */}
+                        <div className='product-description'>
+                            <span>Total No. of reviews posted till now: {reviews.length}</span>
+                            <span><ReactStars count={5} size={24} value={avg} color2={'#ffd700'} edit={false} /></span>
+                        </div>
+                        <ReviewForm itemId={item.id} postReview={postReview} history={history} orders={orders} />
+                    </div>
+                </main>
             </React.Fragment>
         );
     }
@@ -201,7 +207,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
 
 
 const MagazineDetail = (props) => {
-
+    //Calling the loading component when the selected magazine is loading
     if (props.isLoading) {
         return (
             <div className="container">
@@ -211,6 +217,7 @@ const MagazineDetail = (props) => {
             </div>
         );
     }
+    //Displaying the error message if the selected magazine is failed to load
     else if (props.errMess) {
         return (
             <div className="container">
@@ -220,27 +227,26 @@ const MagazineDetail = (props) => {
             </div>
         );
     }
+    //Displaying the details of selected magazine if it is present 
     else if (props.magSelected != null) {
         return (
             <div className='magde'>
-            <div className="container">
-                <div className="row">
-                    <Breadcrumb style={{fontSize:"20px"}}>
-                        <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
-                        <BreadcrumbItem><Link to="/magazines">Magazines</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>{props.magSelected.name}</BreadcrumbItem>
-                    </Breadcrumb>
-                    <div className="col-12">
-                        <h3>{props.magSelected.name}</h3>
-                        <hr />
-                    </div>                
-                </div> 
-                <div className="row">
-                    <RenderItem item={props.magSelected} addtocart={props.addtocart} reviews={props.reviews} postReview={props.postReview} orders={props.checkorders}/>
-                </div>
-                <div className="row">
-                    <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess}/>  
-                </div>
+                <div className="container">
+                    <div className="row">
+                        {/* Breadcrum to navigate easily to magazines */}
+                        <Breadcrumb style={{ fontSize: "20px" }} className='bdcrum'>
+                            <BreadcrumbItem><Link to="/magazines">Magazines</Link></BreadcrumbItem>
+                            <BreadcrumbItem active>{props.magSelected.name}</BreadcrumbItem>
+                        </Breadcrumb>
+                    </div>
+                    {/* Calling RenderItem function by sending required properties */}
+                    <div className="row">
+                        <RenderItem item={props.magSelected} addtocart={props.addtocart} reviews={props.reviews} postReview={props.postReview} orders={props.checkorders} />
+                    </div>
+                    {/* Calling RenderReviews function by sending appropriate properties */}
+                    <div className="row">
+                        <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess} />
+                    </div>
                 </div>
             </div>
         );

@@ -1,9 +1,10 @@
 .cartItem {
-    margin-bottom: 1rem;
+    margin: 1rem;
     display: flex;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 10px;
     background-color:beige;
+    width:100%
   }
   
   .cartItem__image {

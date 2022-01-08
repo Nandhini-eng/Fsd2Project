@@ -26,7 +26,7 @@ class Contact extends Component {
             <div className='cu'>
                 <div className="container" style={{ color: "white" }}>
                     <div className="row">
-                        <Breadcrumb style={{ fontSize: "20px" }}>
+                        <Breadcrumb style={{ fontSize: "20px" }} className='bdcrum'>
                             <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                             <BreadcrumbItem active>Contact Us</BreadcrumbItem>
                         </Breadcrumb>
@@ -35,7 +35,7 @@ class Contact extends Component {
                             <hr />
                         </div>
                     </div>
-                    <div className="row row-content" style={{ float: 'right', margin: '0px', paddingTop: '150px' }}>
+                    <div className="row row-content" style={{ float: 'right', margin: '0px', paddingTop: '150px', width: "450px" }}>
                         <div className="col-12">
                             <h3 style={{ color: "white" }}>Location Information</h3>
                         </div>
@@ -239,6 +239,7 @@ class Contact extends Component {
                     </div>
                 </div>
             </div>
+
         );
     }
 }

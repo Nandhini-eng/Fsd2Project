@@ -21,11 +21,11 @@ function CartItem({ item, adjustQty, removefromCart }) {
   return (
     <div className={styles.cartItem}>
       <Link to={`/searchc/${item.id}`}>
-      <img
-        className={styles.cartItem__image}
-        src={item.image}
-        alt={item.title}
-      />
+        <img
+          className={styles.cartItem__image}
+          src={item.image}
+          alt={item.title}
+        />
       </Link>
       <div className={styles.cartItem__details}>
         <p className={styles.details__title}>{item.name}</p>
@@ -43,9 +43,6 @@ function CartItem({ item, adjustQty, removefromCart }) {
             onChange={onChangeHandler}
           />
         </div>
-
-
-
         <button
           onClick={() => removefromCart(item.id)}
           className={styles.actions__deleteItemBtn}

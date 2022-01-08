@@ -1,7 +1,7 @@
 import React from 'react';
 import { user_real } from './Login';
 import user_icon from './usericon.jpg';
-import { Card, CardBody, CardText, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Card, CardBody, CardText, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 let filter_review, items_newspaper, items_magazines, items
@@ -25,7 +25,7 @@ function Account(props) {
     return (
         <div className='acc'>
             <div className='container' style={{ display: 'inline-block' }}>
-                <Breadcrumb style={{ fontSize: "20px" }}>
+                <Breadcrumb style={{ fontSize: "20px", padding: "5px" }} className='bdcrum'>
                     <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                     <BreadcrumbItem active>My account</BreadcrumbItem>
                 </Breadcrumb>
@@ -34,9 +34,9 @@ function Account(props) {
                     <h1 style={{ color: 'goldenrod', fontFamily: 'Maiandra GD' }}> Welcome back {user_real}</h1>
                     {/* If user logged in then display logout button else no */}
                     {user_real ?
-                        <div>
+                        <div className='zoom'>
                             <h2 style={{ paddingLeft: '20px' }}>
-                                <button style={{ font: 'bold', width: "30%", fontSize: '15px', fontWeight: 'bold', backgroundColor: 'burlywood', color: 'black' }} onClick={Logout}>Logout</button>
+                                <Button style={{ font: 'bold', width: "30%", fontSize: '15px', fontWeight: 'bold', backgroundColor: 'burlywood', color: 'black' }} onClick={Logout}>Logout</Button>
                             </h2>
                         </div>
                         :
@@ -50,7 +50,7 @@ function Account(props) {
                             <h1 style={{ fontSize: '39px', color: 'steelblue', fontFamily: 'High Tower Text' }}><li>Your reviews</li></h1>
                             {/* If no.of.reviews !=0 then display reviews else display no reviews */}
                             {filter_review.length !== 0 ?
-                                <div style={{ paddingLeft: '0px' }}>
+                                <div style={{ paddingLeft: '0px', width: "1300px" }}>
                                     <h2 style={{ fontSize: '35px', color: 'lightpink', fontFamily: 'Gabriola', fontWeight: '500' }}>No.of reviews: {filter_review.length}</h2>
                                     <div className='row align-items-end '>
                                         {filter_review.map

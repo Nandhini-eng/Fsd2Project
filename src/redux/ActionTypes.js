@@ -18,9 +18,9 @@ export const SORT_NEWSPAPERS = 'SORT_NEWSPAPERS';
 export const SORT_MAGAZINES = 'SORT_MAGAZINES';
 
 //SIGNUP
-//appending new users to existing array
+//stores the existing users in an array
 export const ADD_USERS = 'ADD_USERS';
-//adding user to new empty array
+//appending newly added user to the existing users
 export const ADD_USER = 'ADD_USER';
 
 //CART
@@ -37,16 +37,16 @@ export const ORDER_FAILED='ORDER_FAILED';
 export const ORDERS_PLACED='ORDERS_PLACED';
 
 //BLOG
-//appending new blog to existing array
+//stores the existing blogs in an array
 export const ADD_BLOGS = 'ADD_BLOGS';
-//adding blog to new empty array
+//appending newly added blog to the existing blogs
 export const ADD_BLOG = 'ADD_BLOG';
 
 //REVIEWS
-//adding review to new empty array
+//appending newly added review to the existing reviews
 export const ADD_REVIEW = 'ADD_REVIEW';
 export const REVIEWS_FAILED = 'REVIEWS_FAILED';
-//appending new review to existing array
+//stores the existing reviews in an array
 export const ADD_REVIEWS = 'ADD_REVIEWS';
 
 //TOPRATED

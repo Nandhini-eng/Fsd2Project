@@ -12,7 +12,7 @@ function Cart(props) {
   const [totalItems, setTotalItems] = useState(0);
 
   //we take use of change in number of items in cart ,total price,totalitems and then we update state of total price and total items
- useEffect(() => {
+  useEffect(() => {
     let items = 0;
     let price = 0;
     props.cart.forEach((item) => {
@@ -31,27 +31,29 @@ function Cart(props) {
   console.log(totalItems)
   if (totalItems === 1) {
     return (
-      <div className='ca'>
-        <div>
-          <div className={styles.cart}>
-            <div className={styles.cart__items}>
+      <div style={{ backgroundImage: `url("https://wallpaperaccess.com/full/2667044.jpg")` }}>
+        <div className={styles.cart}>
+          <div className={styles.cart__items}>
 
-              {/* we send each items in cart of cart state to cartitem component to render it as card aong with styling */}
+            {/* we send each items in cart of cart state to cartitem component to render it as card aong with styling */}
 
-              {props.cart.map((item) => (
-                <CartItem key={item.id} item={item} />
-              ))}
-            </div>
-            <div className={styles.cart__summary}>
-              {/* cart  summary,total items will be displayed */}
-              <h4 className={styles.summary__title}>Cart Summary</h4>
-              <div className={styles.summary__price}>
-                <span>TOTAL: ({totalItems} item)</span>
-                <span>Rs {totalPrice}</span>
-              </div>
-              <button className={styles.summary__checkoutBtn}>
-                <Link to="/checkout">Proceed To Checkout</Link>
-              </button>
+            {props.cart.map((item) => (
+              <CartItem key={item.id} item={item} />
+            ))}
+          </div>
+          <div className={styles.cart__summary}>
+
+
+            {/* cart  summary,total items will be displayed */}
+            <h4 className={styles.summary__title}>Cart Summary</h4>
+            <div className={styles.summary__price}>
+              <span>TOTAL: ({totalItems} item)</span>
+              <span>Rs {totalPrice}</span>
+            </div >
+            <div className='zoom'>
+              <Button style={{ backgroundColor: "#8c878a" }}>
+                <Link to="/checkout"><h5 style={{ color: "black" }}>Proceed To Checkout</h5></Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -60,34 +62,7 @@ function Cart(props) {
   }
   else if (totalItems === 0) {
     return (
-      <div className='ca'>
-        <div >
-          <div className={styles.cart}>
-            <div className={styles.cart__items}>
-              {props.cart.map((item) => (
-                <CartItem key={item.id} item={item} />
-              ))}
-            </div>
-            <div className={styles.cart__summary}>
-              <h4 className={styles.summary__title}>Cart Summary</h4>
-              <div className={styles.summary__price}>
-                <span>TOTAL: ({totalItems} items)</span>
-                <span>Rs {totalPrice}</span>
-              </div>
-              <button className={styles.summary__checkoutBtn}>
-                Proceed To Checkout
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    )
-
-  }
-  else {
-    return (
-      <div className='ca'>
+      <div style={{ backgroundImage: `url("https://wallpaperaccess.com/full/2667044.jpg")` }}>
         <div className={styles.cart}>
           <div className={styles.cart__items}>
             {props.cart.map((item) => (
@@ -100,20 +75,43 @@ function Cart(props) {
               <span>TOTAL: ({totalItems} items)</span>
               <span>Rs {totalPrice}</span>
             </div>
-            <button className={styles.summary__checkoutBtn}>
-              <Link to="/checkout">Proceed To Checkout</Link>
-            </button>
+            <Button style={{ backgroundColor: "#8c878a" }}>
+              <h5 style={{ color: "black" }}>Proceed To Checkout</h5>
+            </Button>
+          </div>
+        </div >
+      </div >
+
+    )
+  }
+  else {
+    return (
+      <div style={{ backgroundImage: `url("https://wallpaperaccess.com/full/2667044.jpg")` }}>
+        <div className={styles.cart}>
+          <div className={styles.cart__items}>
+            {props.cart.map((item) => (
+              <CartItem key={item.id} item={item} />
+            ))}
+          </div>
+          <div className={styles.cart__summary}>
+            <h4 className={styles.summary__title}>Cart Summary</h4>
+            <div className={styles.summary__price}>
+              <span>TOTAL: ({totalItems} items)</span>
+              <span>Rs {totalPrice}</span>
+            </div>
+            <div className='zoom'>
+              <Button style={{ backgroundColor: "#8c878a" }}>
+                <Link to="/checkout"><h5 style={{ color: "black" }}>Proceed To Checkout</h5></Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>
-
     )
   }
 
 }
 
-
-
 //above cart functional component is exported
 export default Cart;
-export { price, items }
+export { price, items };

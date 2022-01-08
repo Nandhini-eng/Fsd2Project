@@ -31,7 +31,7 @@ class Blog extends Component {
             <div className='cdblog'>
                 <div className="container">
                     <div className="row">
-                        <Breadcrumb style={{ fontSize: "20px" }}>
+                        <Breadcrumb style={{ fontSize: "20px", padding: "3px" }} className='bdcrum'>
                             <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                             <BreadcrumbItem active>Blog</BreadcrumbItem>
                         </Breadcrumb>

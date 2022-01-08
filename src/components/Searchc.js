@@ -12,7 +12,7 @@ function Searchc({ items }) {
   console.log(searchField);
 
 
-//filter items based on searchfield
+  //filter items based on searchfield
 
   const filteredItems = items.filter(
 
@@ -26,7 +26,7 @@ function Searchc({ items }) {
     }
   );
 
- // search field gets changed automatically based on value entered by user in search bar
+  // search field gets changed automatically based on value entered by user in search bar
 
   const handleChange = (e) => {
     setSearchField(e.target.value);
@@ -34,15 +34,20 @@ function Searchc({ items }) {
   };
 
 
-//below function renders filtered items as cards for display
+  //below function renders filtered items as cards for display
 
   function RenderItem({ item }) {
     return (
       <div className="zoom">
         <Card>
           <Link to={`/searchc/${item.id}`}>
-            <CardImg width="400px" height="400px" src={baseUrl + item.image} alt={item.name} />
-            <CardHeader><h3>{item.name}</h3></CardHeader>
+            
+            <CardImg width="400px" height="400px" src={baseUrl + item.image} alt={item.name} style={{ overflow: "hidden" }}
+              onMouseOver={(e) => (e.currentTarget.style = { transform: "scale(1.25)", overflow: "hidden" })}
+              onMouseOut={(e) => (e.currentTarget.style = { transform: "scale(1)", overflow: "hidden" })}/>
+            <div className='hg'>
+            <CardHeader><h4>{item.name}</h4></CardHeader>
+            </div>
           </Link>
         </Card>
       </div>
@@ -57,7 +62,7 @@ function Searchc({ items }) {
     if (searchField != "") {
 
       return (
-        <div style={{ width: 300 }}>
+        <div style={{ width: 250 }}>
           <RenderItem item={item} />
         </div>
       );
@@ -68,24 +73,25 @@ function Searchc({ items }) {
   return (
     <div className='ser'>
       <section className='garamound'>
-        
-          <div className="center"> 
-            
-           {/* we take input from user  */}
-          <input 
+
+        <div className="center">
+
+          {/* we take input from user  */}
+          <input
             className="pa3 bb br3 grow b--none bg-lightest-blue ma3"
             type="search"
-            placeholder="Search for desired newspapers or magazines" 
+            placeholder="Search for desired newspapers or magazines"
             onChange={handleChange}
+            style={{width:"40%",padding:"5px",margin:"5px"}}
           />
-          <span style={{backgroundColor:"whitesmoke", fontSize:"30px",paddingLeft:"5px"}} className="fa fa-search"></span>
-          </div>
+          <span style={{ backgroundColor: "whitesmoke", fontSize: "30px",padding:"5px" }} className="fa fa-search"></span>
+        </div>
 
-          <div className='row' style={{ paddingLeft: "180px" }}>
-            <div className="row" style={{ width: "100%", float: "right" }}>
-              {display}
-            </div>
+        <div className='row' style={{ paddingLeft: "180px" }}>
+          <div className="row" style={{ width: "100%", float: "right" }}>
+            {display}
           </div>
+        </div>
 
       </section>
     </div>

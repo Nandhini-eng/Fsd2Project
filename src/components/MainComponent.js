@@ -20,7 +20,7 @@ import {
   fetchNewspapers, fetchMagazines, filterMagazinesByCategory,
   filterMagazinesByLanguage,
   filterNewspapersByLanguage, sortNewspapers, sortMagazines, postFeedback, postsignup, fetchUsers, fetchReviews, postReview,
-  getproducts, addToCart, removefromCart, adjustQty, fetchOrders, postOrder, fetchItems, postblog, fetchBlogs, 
+  getproducts, addToCart, removefromCart, adjustQty, fetchOrders, postOrder, fetchItems, postblog, fetchBlogs,
   getTopNewspapers, getTopMagazines
 } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';

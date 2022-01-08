@@ -1,10 +1,11 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import './login.css'
+import { Button } from "reactstrap"
 
 let userrs
 let error, user_real
 
-error = 'Invalid username or password'
+error = ''
 
 class Login extends Component {
     constructor(props) {
@@ -25,12 +26,10 @@ class Login extends Component {
                 if (resp.length > 0) {
                     user_real = this.state.username
                     this.props.history.go(-2);
-                    error = " "
                     console.log(this.props.history.length)
                 }
                 else {
                     alert('Invalid username or password')
-                    error = "Invalid Username or Password"
                 }
             })
         })
@@ -67,8 +66,8 @@ class Login extends Component {
                             <input type="password" name="password" id="pswd" required onChange={(event) => this.setState({ password: event.target.value })} /><br />
                         </div>
                         {/* Submit button */}
-                        <div style={{ fontFamily: 'cursive', paddingLeft: '70px' }} className='login'>
-                            <button onClick={() => { this.login() }} type="button" style={{ fontFamily: 'cursive', width: "15%" }}>Login</button>
+                        <div style={{ fontFamily: 'cursive', paddingLeft: '70px' }} className='zoom'>
+                            <Button onClick={() => { this.login() }} type="button" style={{ fontFamily: 'cursive', width: "15%", paddingBottom: "5px" }}>Login</Button>
                         </div>
                     </div>
                 </div>

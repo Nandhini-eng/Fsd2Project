@@ -32,7 +32,7 @@ class Signup extends Component {
             <div className='sgup'>
                 <div className="container">
                     <div className="row">
-                        <Breadcrumb style={{ fontSize: "20px" }}>
+                        <Breadcrumb style={{ fontSize: "20px" }} className='bdcrum'>
                             <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                             <BreadcrumbItem active>Sign Up</BreadcrumbItem>
                         </Breadcrumb>
@@ -105,9 +105,11 @@ class Signup extends Component {
                                     {/* Submit Button */}
                                     <Row className="form-group">
                                         <Col md={{ size: 10 }} >
+                                            <div className='zoom'>
                                             <Button type="submit" color="primary" style={{ backgroundColor: "saddlebrown", border: "none", color: "whitesmoke" }}>
                                                 SignUp
                                             </Button>
+                                            </div>
                                         </Col>
                                     </Row>
                                     <br />
@@ -117,7 +119,7 @@ class Signup extends Component {
                                             <span>If existing user click   </span>
 
                                             <Link to="/login" style={{ color: "#109e10" }}>
-                                                here to Login
+                                                Here to Login
                                             </Link>
                                         </Col>
                                     </Row>
