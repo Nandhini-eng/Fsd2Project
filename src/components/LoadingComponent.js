@@ -5,7 +5,7 @@ export const Loading = () => {
     return (
         <div className="col-12">
             <span className="fa fa-spinner fa-pulse fa-3x fa-fw text-primary"></span>
-            <p>Loading . . .</p>
+            <h4 style={{fontSize:"20px"}}>Loading . . .</h4>
         </div>
     );
 };

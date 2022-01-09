@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Button } from 'reactstrap';
 import { NavLink, Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import Cartval from './Cartval.js';
-import { getproducts } from '../redux/ActionCreators';
-
 import LightSpeed from 'react-reveal/LightSpeed';
-import Searchc from './Searchc.js';
 import { user_real } from './Login';
 let isLoggedin
 
@@ -134,6 +130,7 @@ class Header extends Component {
                   </NavLink>
                 </NavItem>
                 <NavItem style={{paddingRight:'5px'}}><Cartval /></NavItem>
+
                 {/* Signup or Logout */}
                 <NavItem>
                   {isLoggedin}
