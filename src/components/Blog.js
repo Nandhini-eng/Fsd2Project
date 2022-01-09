@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, Label, Col, Row, Card, CardBody, CardText } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, Form, Errors } from 'react-redux-form';
-import { user_real } from './Login'
+import { user_real } from './Login';
+import Pulse from 'react-reveal/Pulse';
+import Jump from 'react-reveal/Jump';
 
 let blogs
 const required = (val) => val && val.length;
@@ -36,7 +38,9 @@ class Blog extends Component {
                             <BreadcrumbItem active>Blog</BreadcrumbItem>
                         </Breadcrumb>
                     </div>
-                    <div className="row align-items-end" style={{ paddingLeft: '5px', paddingTop: '5px' }}>
+                    <Jump>
+                    
+                    <div className="row align-items-start" style={{ paddingLeft: '5px', paddingTop: '5px' }}>
                         {/* Displaying blogs written by previous users */}
                         {blogs.map
                             (blog =>
@@ -54,6 +58,8 @@ class Blog extends Component {
                         }
                         <br />
                     </div>
+                    
+                    </Jump>
                     <br />
                     <div className="row row-content" style={{ borderRadius: '14px', backgroundImage: `url('https://image.made-in-china.com/202f0j00gcylePHGlnqm/High-Quality-Plant-Simple-Design-Non-Woven-Country-Style-Mural-Living-Room-3D-Wallpaper.jpg')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '500px', width: '800px', margin: '0px' }}>
                         <div className="col-8 col-md-9" style={{ fontFamily: "cursive", fontSize: "20px" }}>

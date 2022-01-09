@@ -16,7 +16,7 @@ function OrdersComponent(props) {
               <BreadcrumbItem><Link to="/myaccount">Account</Link></BreadcrumbItem>
               <BreadcrumbItem active>Orders</BreadcrumbItem>
             </Breadcrumb>
-              <h3>ORDERS</h3>
+              <h3 style={{color:'white'}}>ORDERS</h3>
               <table style={{ backgroundColor: "#91eded" }}>
                 {/* Required headings to be displayed */}
                 <tr>

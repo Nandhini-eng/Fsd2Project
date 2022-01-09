@@ -543,16 +543,42 @@
       "contactType": "Email",
       "message": "good",
       "id": 5
+    },
+    {
+      "firstname": "Bhanu",
+      "lastname": "Aswitha",
+      "telnum": "1234567589",
+      "email": "ab@gmail.com",
+      "agree": false,
+      "contactType": "Tel.",
+      "message": "Good css",
+      "id": 6
+    },
+    {
+      "firstname": "Bhanu",
+      "lastname": "aswitha",
+      "telnum": "1345682859",
+      "email": "ab@gmail.com",
+      "agree": false,
+      "contactType": "Tel.",
+      "message": "Good css",
+      "id": 7
+    },
+    {
+      "firstname": "Bhanu",
+      "lastname": "aswitha",
+      "telnum": "1253526355",
+      "email": "ab@gmail.com",
+      "agree": false,
+      "contactType": "Tel.",
+      "message": "Good css",
+      "id": 8
     }
   ],
   "regusers": [
     {
       "user4": "bhanu:123",
       "id": 1
-    },
-    {
-      "user4": "Bhanu:1234",
-      "id": 2
     },
     {
       "user4": "Nandhini:2662",
@@ -565,6 +591,10 @@
     {
       "user4": "samhitha:Samhi_905",
       "id": 5
+    },
+    {
+      "user4": "bhanu:125",
+      "id": 6
     }
   ],
   "reviews": [
@@ -793,14 +823,6 @@
       "id": 28
     },
     {
-      "itemId": 23,
-      "rating": 5,
-      "author": "bhanu",
-      "review": "superb magazine about the success story of mukesh ambani. ",
-      "date": "2021-12-28T13:47:08.493Z",
-      "id": 29
-    },
-    {
       "itemId": 0,
       "rating": 4,
       "author": "nandhini",
@@ -831,6 +853,38 @@
       "review": "Very useful.",
       "date": "2021-12-30T05:07:58.923Z",
       "id": 33
+    },
+    {
+      "itemId": 0,
+      "rating": 3,
+      "author": "samhitha",
+      "review": "good",
+      "date": "2022-01-09T05:13:18.589Z",
+      "id": 34
+    },
+    {
+      "itemId": 1,
+      "rating": 5,
+      "author": "Aswitha",
+      "review": "Good content",
+      "date": "2022-01-09T14:01:08.604Z",
+      "id": 35
+    },
+    {
+      "itemId": 1,
+      "rating": 5,
+      "author": "Aswitha",
+      "review": "Good content",
+      "date": "2022-01-09T14:15:21.258Z",
+      "id": 36
+    },
+    {
+      "itemId": 1,
+      "rating": 5,
+      "author": "bhanu",
+      "review": "Good content",
+      "date": "2022-01-09T14:32:14.657Z",
+      "id": 37
     }
   ],
   "orders": [
@@ -993,14 +1047,152 @@
       "items": 6,
       "date": "2022-01-07T07:42:57.221Z",
       "id": 4
+    },
+    {
+      "fullName": "Aswitha",
+      "address": "302,gardens",
+      "city": "Kurnool",
+      "postalCode": "123456",
+      "country": "India",
+      "NameOnCard": "aswitha",
+      "CreditCardNum": "1234123412341234",
+      "ExpMon": "2",
+      "ExpYear": "2589",
+      "Cvv": "123",
+      "cart": [
+        {
+          "id": 1,
+          "name": "Andhra Jyothi",
+          "image": "assets/images/andhra_jyothi.jpg",
+          "language": "Telugu",
+          "price": "190",
+          "featured": true,
+          "description": "Andhra Jyothi is the third largest circulated Telugu language daily newspaper of India sold mostly in the states of Andhra Pradesh and Telangana.It was founded by K. L. N. Prasad, an Industrialist on 1 July 1960. It is also one of the oldest running Telugu language daily newspapers.It was taken over by Vemuri Radha Krishna, also known as R. K. in 2002 who also works as the Managing Director.",
+          "qty": 2
+        },
+        {
+          "id": 22,
+          "name": "Forbes",
+          "image": "assets/images/im3.jpg",
+          "language": "English",
+          "price": "167",
+          "featured": false,
+          "description": "forbes india is indian edition of forbes. it features articles on finance, industry, investing, and marketing topics. Forbes also reports on related subjects such as technology, communications, science, politics, and law.",
+          "category": "business",
+          "qty": 1
+        }
+      ],
+      "user": "Aswitha",
+      "price": 547,
+      "items": 3,
+      "date": "2022-01-09T14:00:32.557Z",
+      "id": 5
+    },
+    {
+      "fullName": "Bhanu",
+      "address": "Aswitha",
+      "city": "Kurnool",
+      "postalCode": "524859",
+      "country": "India",
+      "NameOnCard": "Bhanu",
+      "CreditCardNum": "1234134212341234",
+      "ExpMon": "2",
+      "ExpYear": "2121",
+      "Cvv": "235",
+      "cart": [
+        {
+          "id": 1,
+          "name": "Andhra Jyothi",
+          "image": "assets/images/andhra_jyothi.jpg",
+          "language": "Telugu",
+          "price": "190",
+          "featured": true,
+          "description": "Andhra Jyothi is the third largest circulated Telugu language daily newspaper of India sold mostly in the states of Andhra Pradesh and Telangana.It was founded by K. L. N. Prasad, an Industrialist on 1 July 1960. It is also one of the oldest running Telugu language daily newspapers.It was taken over by Vemuri Radha Krishna, also known as R. K. in 2002 who also works as the Managing Director.",
+          "qty": 2
+        },
+        {
+          "id": 22,
+          "name": "Forbes",
+          "image": "assets/images/im3.jpg",
+          "language": "English",
+          "price": "167",
+          "featured": false,
+          "description": "forbes india is indian edition of forbes. it features articles on finance, industry, investing, and marketing topics. Forbes also reports on related subjects such as technology, communications, science, politics, and law.",
+          "category": "business",
+          "qty": 1
+        }
+      ],
+      "user": "Aswitha",
+      "price": 547,
+      "items": 3,
+      "date": "2022-01-09T14:14:33.363Z",
+      "id": 6
+    },
+    {
+      "fullName": "Bhanu",
+      "address": "302, gardes",
+      "city": "Kurnool",
+      "postalCode": "541654",
+      "country": "India",
+      "NameOnCard": "Bhanu",
+      "CreditCardNum": "1234123412341234",
+      "ExpMon": "5",
+      "ExpYear": "2025",
+      "Cvv": "456",
+      "cart": [
+        {
+          "id": 1,
+          "name": "Andhra Jyothi",
+          "image": "assets/images/andhra_jyothi.jpg",
+          "language": "Telugu",
+          "price": "190",
+          "featured": true,
+          "description": "Andhra Jyothi is the third largest circulated Telugu language daily newspaper of India sold mostly in the states of Andhra Pradesh and Telangana.It was founded by K. L. N. Prasad, an Industrialist on 1 July 1960. It is also one of the oldest running Telugu language daily newspapers.It was taken over by Vemuri Radha Krishna, also known as R. K. in 2002 who also works as the Managing Director.",
+          "qty": 2
+        },
+        {
+          "id": 20,
+          "name": "Business world",
+          "image": "assets/images/im1.jpg",
+          "language": "English",
+          "price": "367",
+          "featured": true,
+          "description": "BW Businessworld is an Indian business magazine. The magazine was published by ABP Group, whose most prominent publications are The Telegraph, Anandabazar Patrika, Sananda, Anandamela and others. ",
+          "category": "business",
+          "qty": 1
+        }
+      ],
+      "user": "bhanu",
+      "price": 747,
+      "items": 3,
+      "date": "2022-01-09T14:31:42.153Z",
+      "id": 7
     }
   ],
   "blogs": [
     {
-      "user": "bhanu",
+      "user": "BHANU",
       "topic": "React",
       "message": "An example here is choosing a 3rd party vendor for your project or a framework that's new and exciting. Once you're locked in and you realize it's wrong, it's hard to change your mind.\n\nTake these decisions slowly. Make contingency plans. Design check-ins into your project. Have a deadline to make the decision.\n\nA deadline helps you decide when you're about 80% sure.\n\nPre-decide when you're going to bail. When situation X, Y, Z arises, we bail. You're going to be too fond of the work when that time comes to think straight.",
       "id": 1
+    },
+    {
+      "user": "Bhanu",
+      "topic": "Why Blog for Business",
+      "message": "Businesses know that their website is their shop-window 24/7. They also know that to get a good Google ranking, they need to have frequently updated, unique and relevant content. The easiest way to do this is to have a blog. However, most business owners and managers are too busy actually running their business to write the blog posts they need. When they do find the time to write them, they often don't really know what to write, and their blog gets populated by unread and quite often unreadable posts. These posts don't provide the customer with any real content or value, and because they generate no visitor interest, they get ignored by Google.\n\nThis is where you come in.\n\nEven if you've never written a blog post before, you have one very big advantage over the business owner: you are a writer. If you can write nonfiction articles, you can blog for businesses.",
+      "id": 2
+    },
+    {
+      "user": "Aswitha",
+      "topic": "Why writing blogs",
+      "message": "To write a successful blog post, you need to approach it as you would an article. You also have to bear in mind that, just as with article writing, there is nothing new under the sun. You need to make your blog post unique by looking at the slant you will take on the topic. To do this you need to work out who the audience is, what they need to know and, crucially, what your client wants to communicate.\n\nYou then need to research your blog topic to ensure you can write a blog post that meets your client's needs. You need to write an engaging hook and ensure, just as in an article, that each paragraph builds upon the former and that you deliver all you promised to do in your header and hook. The only differences are that you will need to write in your client's voice, research often quite obscure topics, and think about SEO (Search Engine Optimization).",
+      "id": 3
+    },
+    {
+      "user": "bhanu",
+      "topic": "How to write blog",
+      "message": "To write a successful blog post, you need to approach it as you would an article. You also have to bear in mind that, just as with article writing, there is nothing new under the sun. You need to make your blog post unique by looking at the slant you will take on the topic. To do this you need to work out who the audience is, what they need to know and, crucially, what your client wants to communicate.\n\nYou then need to research your blog topic to ensure you can write a blog post that meets your client's needs. You need to write an engaging hook and ensure, just as in an article, that each paragraph builds upon the former and that you deliver all you promised to do in your header and hook. The only differences are that you will need to write in your client's voice, research often quite obscure topics, and think about SEO (Search Engine Optimization).",
+      "id": 4
     }
   ]
 }

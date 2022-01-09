@@ -3,6 +3,7 @@ table {
     border-collapse: collapse;
     text-align: center;
     background-color: cornsilk;
+    border-radius: 5px;
   }
   
   th{

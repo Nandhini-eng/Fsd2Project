@@ -13,11 +13,13 @@ import {blog} from './blog';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+// All reducers are imported and then combined and exported as store
+
 export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
             newspapers: Newspapers,
-            magazines: Magazines,
+            magazines: Magazines,            
             regusers: signfeed,
             reviews: Reviews,
             orders:Orders,

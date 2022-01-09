@@ -3,6 +3,8 @@ import { user_real } from './Login';
 import user_icon from './usericon.jpg';
 import { Card, CardBody, CardText, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import Zoom from 'react-reveal/Zoom';
+import Jump from 'react-reveal/Jump'
 
 let filter_review, items_newspaper, items_magazines, items
 
@@ -31,7 +33,9 @@ function Account(props) {
                 </Breadcrumb>
                 <div style={{ float: 'left' }}>
                     <img src={user_icon} alt='user icon image' />
-                    <h1 style={{ color: 'goldenrod', fontFamily: 'Maiandra GD' }}> Welcome back {user_real}</h1>
+                    <Zoom>
+                        <h1 style={{ color: 'goldenrod', fontFamily: 'Maiandra GD' }}> Welcome back {user_real}</h1>
+                    </Zoom>
                     {/* If user logged in then display logout button else no */}
                     {user_real ?
                         <div className='zoom'>
@@ -83,7 +87,9 @@ function Account(props) {
                             }
                         </div> :
                         <div>
-                            <h1 style={{ color: 'snow', fontFamily: 'Maiandra GD' }}>Login to view more</h1>
+                            <Jump>
+                                <h1 style={{ color: 'snow', fontFamily: 'Maiandra GD' }}>Login to view more</h1>
+                            </Jump>
                         </div>
                     }
                 </div>

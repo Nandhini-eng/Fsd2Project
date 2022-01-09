@@ -40,8 +40,8 @@ class Header extends Component {
       console.log("Logged in")
       isLoggedin =
         <Link to='/myaccount'>
-          <Button style={{ color: 'rgba(255,255,255,.55)',height:'35px',paddingTop:'5px' }} onMouseOver={this.back} onMouseOut={this.back1}>
-            <h5><span className="fa fa-sign-out fa-lg"></span>Logout</h5>
+          <Button style={{ color: 'rgba(255,255,255,.55)',height:"35px",paddingTop:"5px" }} onMouseOver={this.back} onMouseOut={this.back1}>
+          <h5><span className="fa fa-sign-out fa-lg"></span>Logout</h5>
           </Button>
         </Link>
     }
