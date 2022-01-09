@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, Label, Col, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, Form, Errors } from 'react-redux-form';
+import Flash from 'react-reveal/Flash';
+import Fade from 'react-reveal/Fade';
+import Jump from 'react-reveal/Jump';
 //Validators
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -31,10 +34,13 @@ class Contact extends Component {
                             <BreadcrumbItem active>Contact Us</BreadcrumbItem>
                         </Breadcrumb>
                         <div className="col-12">
+                            
                             <h3 style={{ color: "white" }}>Contact Us</h3>
+                            
                             <hr />
                         </div>
                     </div>
+                    <Fade right>
                     <div className="row row-content" style={{ float: 'right', margin: '0px', paddingTop: '150px', width: "450px" }}>
                         <div className="col-12">
                             <h3 style={{ color: "white" }}>Location Information</h3>
@@ -62,7 +68,8 @@ class Contact extends Component {
                             </Col>
                         </Row>
                     </div>
-
+                    </Fade>
+                    <Jump>
                     <div className="row row-content" style={{ borderRadius: '6px', margin: '0px', paddingLeft: '0px' }}>
                         <div className="col-12">
                             <h3>Send us your Feedback</h3>
@@ -237,6 +244,7 @@ class Contact extends Component {
                         </div>
                         <br></br>
                     </div>
+                    </Jump>
                 </div>
             </div>
 

@@ -21,8 +21,7 @@ function App(){
         <BrowserRouter>
                   
         
-        {/*  */}
-            {/* <button onClick={()=>themeToggler()}>change mode</button> */}
+        
             <div >
             
             <Main />

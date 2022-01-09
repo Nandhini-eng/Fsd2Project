@@ -6,20 +6,22 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createForms } from 'react-redux-form';
 import { InitialFeedback, InitialOrder } from './forms';
-import LoginReducer from './LoginReducer'
-import { signfeed } from './register'
+
+import { signfeed } from './register';
 import { Reviews } from './reviews';
 import { Orders } from "./orders";
 import {blog} from './blog';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+// All reducers are imported and then combined and exported as store
+
 export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
             newspapers: Newspapers,
             magazines: Magazines,
-            login: LoginReducer,
+            
             regusers: signfeed,
             reviews: Reviews,
             orders:Orders,
