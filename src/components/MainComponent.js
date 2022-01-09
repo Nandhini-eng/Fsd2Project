@@ -26,7 +26,8 @@ import {
 import { actions } from 'react-redux-form';
 import Checkout from './Checkout';
 import OrdersComponent from './OrdersComponent';
-import Blog from './Blog'
+import Blog from './Blog';
+
 
 //Mapping state to props
 const mapStateToProps = (state) => (
