@@ -40,7 +40,7 @@ class Blog extends Component {
                     </div>
                     <Jump>
                     
-                    <div className="row align-items-end" style={{ paddingLeft: '5px', paddingTop: '5px' }}>
+                    <div className="row align-items-start" style={{ paddingLeft: '5px', paddingTop: '5px' }}>
                         {/* Displaying blogs written by previous users */}
                         {blogs.map
                             (blog =>

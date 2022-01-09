@@ -6,8 +6,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createForms } from 'react-redux-form';
 import { InitialFeedback, InitialOrder } from './forms';
-
-import { signfeed } from './register';
+import { signfeed } from './register'
 import { Reviews } from './reviews';
 import { Orders } from "./orders";
 import {blog} from './blog';
@@ -20,8 +19,7 @@ export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
             newspapers: Newspapers,
-            magazines: Magazines,
-            
+            magazines: Magazines,            
             regusers: signfeed,
             reviews: Reviews,
             orders:Orders,

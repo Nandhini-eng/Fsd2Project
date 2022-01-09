@@ -22,11 +22,11 @@ class Login extends Component {
         fetch("http://localhost:3001/regusers?q=" + this.state.username + ":" + this.state.password).then((data) => {
             data.json().then((resp) => {
                 console.warn("resp", data)
+                console.log(resp.length)
                 //If details found in server then redirect to page that redirected login page else stay in same page 
                 if (resp.length > 0) {
                     user_real = this.state.username
                     this.props.history.go(-2);
-                    console.log(this.props.history.length)
                 }
                 else {
                     alert('Invalid username or password')
