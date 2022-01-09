@@ -63,13 +63,13 @@ function Account(props) {
                                                                 (ite =>
                                                                     <div>
                                                                         {rev.itemId === ite.id ?
-                                                                            <CardText style={{ fontSize: '27px', fontFamily: 'Tw Cen MT', color: 'purple' }}>Name: {ite.name}</CardText>
+                                                                            <CardText style={{ fontSize: '27px', fontFamily: 'Tw Cen MT', color: 'purple',fontWeight:'lighter' }}>Name: {ite.name}</CardText>
                                                                             : <div></div>
                                                                         }
                                                                     </div>
                                                                 )
                                                             }
-                                                            <CardText style={{ fontSize: '23px', paddingLeft: '0px', fontFamily: 'Tw Cen MT', color: 'teal' }}>Review: {rev.review}</CardText>
+                                                            <CardText style={{ fontSize: '23px', paddingLeft: '0px', fontFamily: 'Tw Cen MT', color: 'teal',fontWeight:'lighter' }}>Review: {rev.review}</CardText>
                                                         </CardBody>
                                                     </Card>
                                                     <br />

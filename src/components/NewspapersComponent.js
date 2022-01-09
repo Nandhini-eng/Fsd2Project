@@ -170,7 +170,7 @@ const NewspapersMain = (props) => {
 
               {/* Created a button for displaying top rated newspapers(newspapers for which average rating lies between 4 and 5)  */}
               <div style={{ padding: "10px" }} className='zoom'>
-                <Button onClick={() => props.topNewspapers(props.newspapers.newspapers, filtered_revs)}><h3 style={{ fontSize: "17px", color: "#3e046e", fontFamily: "cursive", fontWeight: "bolder" }}>
+                <Button onClick={() => props.topNewspapers(props.newspapers.newspapers, filtered_revs)}><h3 style={{ fontSize: "17px", color: "white", fontFamily: "cursive", fontWeight: "bolder" }}>
                   Top Rated Newspapers</h3></Button>
               </div>
             </div>

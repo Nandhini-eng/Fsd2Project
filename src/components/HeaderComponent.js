@@ -40,8 +40,8 @@ class Header extends Component {
       console.log("Logged in")
       isLoggedin =
         <Link to='/myaccount'>
-          <Button style={{ color: 'rgba(255,255,255,.55)', backgroundColor: "#b82a2a" }} onMouseOver={this.back} onMouseOut={this.back1}>
-          <h5><span className="fa fa-sign-in fa-lg"></span>Logout</h5>
+          <Button style={{ color: 'rgba(255,255,255,.55)',height:'35px',paddingTop:'5px' }} onMouseOver={this.back} onMouseOut={this.back1}>
+            <h5><span className="fa fa-sign-out fa-lg"></span>Logout</h5>
           </Button>
         </Link>
     }
@@ -50,8 +50,8 @@ class Header extends Component {
       console.log('Not logged in')
       isLoggedin =
         <Link to='/signup'>
-          <Button style={{ color: 'rgba(255,255,255,.55)'}} color='primary' onMouseOver={this.back} onMouseOut={this.back1}>
-          <h5><span className="fa fa-sign-in fa-lg"></span>Signup</h5> 
+          <Button style={{ color: 'rgba(255,255,255,.55)',height:'35px',paddingTop:'5px' }} onMouseOver={this.back} onMouseOut={this.back1}>
+            <h5><span className="fa fa-sign-in fa-lg"></span>Signup</h5>
           </Button>
         </Link>
     }
@@ -66,8 +66,10 @@ class Header extends Component {
 
               <Nav navbar>
                 {/* Logo of our app */}
-                <NavItem className="mr-auto" href="/" style={{ paddingLeft: "2px", paddingRight:"2px" }}>
-                  <img src='assets/images/logo.png' height="45" width="45" alt='Newspapers and Magazines' />
+                <NavItem className="mr-auto" style={{ paddingLeft: "2px", paddingRight: "2px" }}>
+                  <NavLink className="nav-link" to='/home'>
+                    <img src='assets/images/logo.png' height="30" width="30" alt='Newspapers and Magazines' />
+                  </NavLink>
                 </NavItem>
                 {/* Home */}
                 <NavItem>
@@ -124,17 +126,19 @@ class Header extends Component {
                 </NavItem>
               </Nav>
               <Nav className='ms-auto' navbar >
-                {/* Signup or Logout */}
-                <NavItem>
-                  {isLoggedin}
-                </NavItem>
-                {/* Cart page */}
+                
+                  {/* Cart page */}
                 <NavItem>
                   <NavLink className="nav-link" to='/cart'>
                     <h5 style={{ paddingLeft: "5px" }}>Cart <span className="fa fa-shopping-cart fa-lg"></span> </h5>
                   </NavLink>
                 </NavItem>
-                <NavItem><Cartval /></NavItem>
+                <NavItem style={{paddingRight:'5px'}}><Cartval /></NavItem>
+                {/* Signup or Logout */}
+                <NavItem>
+                  {isLoggedin}
+                </NavItem>
+                
               </Nav>
 
             </Collapse>

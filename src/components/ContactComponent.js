@@ -92,7 +92,7 @@ class Contact extends Component {
                                                 minLength: 'Must be greater than 2 characters',
                                                 maxLength: 'Must be 15 characters or less'
                                             }}
-                                            style={{ fontSize: '18px', fontWeight: "500" }}
+                                            style={{ fontSize: '18px', fontWeight: "800" }}
                                         />
                                     </Col>
                                 </Row>
@@ -118,7 +118,7 @@ class Contact extends Component {
                                                 minLength: 'Must be greater than 2 characters',
                                                 maxLength: 'Must be 15 characters or less'
                                             }}
-                                            style={{ fontSize: '18px', fontWeight: "500" }}
+                                            style={{ fontSize: '18px', fontWeight: "800" }}
                                         />
                                     </Col>
                                 </Row>
@@ -145,7 +145,7 @@ class Contact extends Component {
                                                 maxLength: 'Must be equal to 10 digits',
                                                 isNumber: 'Must be a number'
                                             }}
-                                            style={{ fontSize: '18px', fontWeight: "500" }}
+                                            style={{ fontSize: '18px', fontWeight: "800" }}
                                         />
                                     </Col>
                                 </Row>
@@ -171,7 +171,7 @@ class Contact extends Component {
                                                 required: 'Required, ',
                                                 validEmail: 'Invalid Email Address'
                                             }}
-                                            style={{ fontSize: '18px', fontWeight: "500" }}
+                                            style={{ fontSize: '18px', fontWeight: "800" }}
                                         />
                                     </Col>
                                 </Row>
@@ -219,7 +219,7 @@ class Contact extends Component {
                                             messages={{
                                                 required: 'Required',
                                             }}
-                                            style={{ fontSize: '18px', fontWeight: "500" }}
+                                            style={{ fontSize: '18px', fontWeight: "800" }}
                                         />
                                     </Col>
                                 </Row>

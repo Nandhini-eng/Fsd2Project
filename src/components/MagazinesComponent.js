@@ -185,7 +185,7 @@ const MagazinesMain = (props) => {
               <br />
               {/* Created a button for displaying top rated magazines(magazines for which average rating lies between 4 and 5)  */}
               <div style={{ padding: "10px" }} className='zoom'>
-                <Button onClick={() => props.topMagazines(props.magazines.magazines, filtered_revs)}><h3 style={{ fontSize: "17px", color: "#3e046e", fontFamily: "cursive", fontWeight: "bold" }}>
+                <Button onClick={() => props.topMagazines(props.magazines.magazines, filtered_revs)}><h3 style={{ fontSize: "17px", color: "white", fontFamily: "cursive", fontWeight: "bold" }}>
                   Top Rated Magazines</h3></Button>
               </div>
             </div>
