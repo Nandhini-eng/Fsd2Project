@@ -136,7 +136,7 @@ class Main extends Component {
           getproducts={this.props.getproducts}
           newspapers={this.props.newspapers}
           magazines={this.props.magazines}
-          checkorders={this.props.orders.orders}
+          checkorders={this.props.orders.orders.filter((order)=>order.user===user_real)}
         />
       );
     }
@@ -153,7 +153,7 @@ class Main extends Component {
           getproducts={this.props.getproducts}
           newspapers={this.props.newspapers}
           magazines={this.props.magazines}
-          checkorders={this.props.orders.orders}
+          checkorders={this.props.orders.orders.filter((order)=>order.user===user_real)}
         />
       );
     }

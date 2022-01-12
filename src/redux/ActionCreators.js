@@ -351,7 +351,7 @@ export const postsignup = (username, password) => (dispatch) => {
         throw error;
       })
     .then(response => response.json())
-    .then(details => adduser(details))
+    .then(details => {alert("Your order has been placed succesfully");adduser(details)})
     .catch(error => { console.log('Post SignUp'); alert('Your details could not be posted\nError: '); });
 };
 
