@@ -21,9 +21,6 @@ address{
   color:#0f0f0f;
 }
 
-/* .navbar-dark {
-  background-image: url("https://www.crushpixel.com/big-static12/preview4/vector-red-abstract-3d-paper-1004364.jpg");
-} */
 
 .bdcrum{
   width: fit-content;
@@ -72,18 +69,15 @@ p{
 .zoom {
   padding: 10px;
   transition: transform .2s;
-  /* width: 200px;
-  height: 200px;*/
   margin: 0 auto; 
 }
 
 .zoom:hover {
-  -ms-transform: scale(1.15); /* IE 9 */
-  -webkit-transform: scale(1.15); /* Safari 3-8 */
+  -ms-transform: scale(1.15); 
+  -webkit-transform: scale(1.15); 
   transform: scale(1.15); 
 }
  
-
 
 body {
   background-color:black;
@@ -120,7 +114,6 @@ body {
   right: 0;
   position: absolute;
   border-top: 5px solid #0e3721;
-/*   z-index: 1; */
   animation: bounce 1.5s infinite;
 }
 ::-webkit-input-placeholder {
@@ -219,14 +212,10 @@ body {
 
 .hm{
    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlKOgeJqkug8VFubxTZqv6xwqGfyt-CzAsmA&usqp=CAU");
-  /* background-repeat:no-repeat;
-  background-size:cover */
 }
 
 .hdr{
   background-color: #e7717d;
-  /* background-repeat:no-repeat;
-  background-size:cover */
 }
 
 .np{
@@ -239,7 +228,6 @@ body {
   background-image: url("https://images5.alphacoders.com/912/912044.jpg");
   background-repeat: no-repeat ;
   background-size: cover
-
 }
 
 .au{
@@ -247,7 +235,6 @@ body {
   background-repeat:no-repeat;
   background-size:cover  
 }
-
 
 .acc{
   background-image: url('https://media.istockphoto.com/videos/abstract-hexagonal-background-a-large-number-of-black-hexagons-3d-video-id1299356466?s=640x640');
@@ -263,7 +250,6 @@ body {
   background-image: url("https://i.pinimg.com/originals/3d/08/e0/3d08e03cb40252526fee2036a67f07f1.gif");
   background-repeat:no-repeat;
   background-size:cover
-
 }
 
 .mo{
@@ -275,9 +261,6 @@ body {
 
 .ca{
   background-image: url("");
-  /* background-repeat:no-repeat;
-  background-size:cover */
-
 }
 
 .npde{
@@ -323,4 +306,3 @@ body {
   background-repeat:no-repeat;
   background-size:cover
 }
-
