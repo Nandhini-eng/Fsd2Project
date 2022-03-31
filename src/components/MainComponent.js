@@ -36,7 +36,6 @@ const mapStateToProps = (state) => (
     magazines: state.magazines,
     cartitem: state.cartReducer,
     regusers: state.regusers,
-    reviews: state.reviews,
     orders: state.orders,
     blogs: state.blogs
   }
@@ -79,7 +78,6 @@ class Main extends Component {
     this.props.fetchNewspapers();
     this.props.fetchMagazines();
     this.props.fetchUsers();
-    this.props.fetchReviews();
     this.props.fetchOrders();
     this.props.fetchBlogs();
   }
@@ -94,7 +92,6 @@ class Main extends Component {
           newspapersLoading={this.props.newspapers.isLoading}
           newspapersErrMess={this.props.newspapers.errMess}
           magazines={this.props.magazines.magazines.filter((magazine) => magazine.featured)}
-
         />
       );
     }
@@ -105,7 +102,6 @@ class Main extends Component {
           newspapers={this.props.newspapers}
           filterByLanguage={this.props.filterNewspapersByLanguage}
           sort_newspapers={this.props.sortNewspapers}
-          reviews={this.props.reviews.reviews}
           topNewspapers={this.props.topRatedNewspapers}
         />
       );
@@ -118,7 +114,6 @@ class Main extends Component {
           filterByCategory={this.props.filterMagsByCategory}
           filterByLanguage={this.props.filterMagsByLanguage}
           sort_magazines={this.props.sortMagazines}
-          reviews={this.props.reviews.reviews}
           topMagazines={this.props.topRatedMagazines}
         />
       );
@@ -126,11 +121,9 @@ class Main extends Component {
     //Sending appropriate details from json server to Newspaper detail component
     const NewspaperWithId = ({ match }) => {
       return (
-        <NewspaperDetail paperSelected={this.props.newspapers.newspapers.filter((paper) => paper.id === parseInt(match.params.paperId, 10))[0]}
+        <NewspaperDetail paperSelected={this.props.newspapers.newspapers.filter((paper) => paper._id === match.params.paperId)[0]}
           isLoading={this.props.newspapers.isLoading}
           errMess={this.props.newspapers.errMess}
-          reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.paperId, 10))}
-          reviewsErrMess={this.props.reviews.errMess}
           postReview={this.props.postReview}
           addtocart={this.props.addtocart}
           getproducts={this.props.getproducts}
@@ -143,11 +136,9 @@ class Main extends Component {
     //Sending appropriate details from json server to Magazines detail component
     const MagazineWithId = ({ match }) => {
       return (
-        <MagazineDetail magSelected={this.props.magazines.magazines.filter((magazine) => magazine.id === parseInt(match.params.magId, 10))[0]}
+        <MagazineDetail magSelected={this.props.magazines.magazines.filter((magazine) => magazine._id === match.params.magId)[0]}
           isLoading={this.props.magazines.isLoading}
           errMess={this.props.magazines.errMess}
-          reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.magId, 10))}
-          reviewsErrMess={this.props.reviews.errMess}
           postReview={this.props.postReview}
           addtocart={this.props.addtocart}
           getproducts={this.props.getproducts}
@@ -160,15 +151,11 @@ class Main extends Component {
 
     const ItemWithId = ({ match }) => {
       return (
-        <ItemDetail itemSelected={this.props.cartitem.items.filter((item) => item.id === parseInt(match.params.itemId, 10))[0]}
+        <ItemDetail itemSelected={this.props.cartitem.items.filter((item) => item._id === match.params.itemId)[0]}
           isLoading={this.props.magazines.isLoading}
           errMess={this.props.magazines.errMess}
           addtocart={this.props.addtocart}
           getproducts={this.props.getproducts}
-          newspapers={this.props.newspapers}
-          magazines={this.props.magazines}
-          reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.itemId, 10))}
-          reviewsErrMess={this.props.reviews.errMess}
           postReview={this.props.postReview}
           checkorders={this.props.orders.orders}
         />
