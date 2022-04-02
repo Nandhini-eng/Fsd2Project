@@ -99,9 +99,8 @@ class ReviewForm extends Component {
 
 }
 //Function to display the details of reviews given to the selected magazine
-function RenderReviews({ reviews, errMess }) {
-    //Displaying the reviews if reviews are given and there is no error
-    if (errMess === null) {
+function RenderReviews({ reviews }) {
+    //Displaying the reviews if reviews are present for the selected magazine
         if (reviews.length) {
             return (
                 <div className="col-12 col-md-10 m-1">
@@ -109,10 +108,10 @@ function RenderReviews({ reviews, errMess }) {
                         <h3>REVIEWS</h3>
                         {reviews.map((review) => (
 
-                            <li key={review.id}>
+                            <li key={review._id}>
                                 <p>{review.review}</p>
                                 <ReactStars count={5} size={24} value={review.rating} color2={'#ffd700'} edit={false} />
-                                <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.date)))}</p>
+                                <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.updatedAt)))}</p>
                                 <br />
                             </li>
 
@@ -131,16 +130,7 @@ function RenderReviews({ reviews, errMess }) {
                     </div>
                 </div>
             );
-        }
-    }
-    //If any error occurs displaying error message
-    else {
-        return (
-            <div className="col-12 col-md-10 m-1">
-                <h5>{errMess}</h5>
-            </div>
-        );
-    }
+        }   
 }
 
 //Function displaying all the details of selected magazine 
@@ -158,7 +148,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
         const IsLogin = () => {
             if (user_real) {
                 console.log('yes')
-                addtocart(item.id)
+                addtocart(item._id)
             }
             //Else displaying signup page
             else {
@@ -244,11 +234,11 @@ const MagazineDetail = (props) => {
                     </div>
                     {/* Calling RenderItem function by sending required properties */}
                     <div className="row">
-                        <RenderItem item={props.magSelected} addtocart={props.addtocart} reviews={props.reviews} postReview={props.postReview} orders={props.checkorders} />
+                        <RenderItem item={props.magSelected} addtocart={props.addtocart} reviews={props.magSelected.reviews} postReview={props.postReview} orders={props.checkorders} />
                     </div>
                     {/* Calling RenderReviews function by sending appropriate properties */}
                     <div className="row">
-                        <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess} />
+                        <RenderReviews reviews={props.magSelected.reviews} />
                     </div>
                 </div>
             </div>

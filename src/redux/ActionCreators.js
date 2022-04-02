@@ -286,37 +286,37 @@ export const postReview = (itemId, rating, author, review) => (dispatch) => {
 };
 
 //function for fetching the stored reviews from the server using fetch api and returning appropriate action creators based on server responses.
-export const fetchReviews = () => (dispatch) => {
-  return fetch(baseUrl + 'reviews')
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        var error = new Error('Error ' + response.status + ': ' + response.statusText);
-        error.response = response;
-        throw error;
-      }
-    },
-      error => {
-        var errmess = new Error(error.message);
-        throw errmess;
-      })
-    .then(response => response.json())
-    .then(reviews => dispatch(addReviews(reviews)))
-    .catch(error => dispatch(reviewsFailed(error.message)));
-};
+// export const fetchReviews = () => (dispatch) => {
+//   return fetch(baseUrl + 'reviews')
+//     .then(response => {
+//       if (response.ok) {
+//         return response;
+//       } else {
+//         var error = new Error('Error ' + response.status + ': ' + response.statusText);
+//         error.response = response;
+//         throw error;
+//       }
+//     },
+//       error => {
+//         var errmess = new Error(error.message);
+//         throw errmess;
+//       })
+//     .then(response => response.json())
+//     .then(reviews => dispatch(addReviews(reviews)))
+//     .catch(error => dispatch(reviewsFailed(error.message)));
+// };
 
-//An ActionCreator of the defined type, contains error message(indicating the error occurred while fetching reviews) in the payload 
-export const reviewsFailed = (errmess) => ({
-  type: ActionTypes.REVIEWS_FAILED,
-  payload: errmess
-});
+// //An ActionCreator of the defined type, contains error message(indicating the error occurred while fetching reviews) in the payload 
+// export const reviewsFailed = (errmess) => ({
+//   type: ActionTypes.REVIEWS_FAILED,
+//   payload: errmess
+// });
 
-//An ActionCreator of the defined type, contains the available reviews in the payload
-export const addReviews = (reviews) => ({
-  type: ActionTypes.ADD_REVIEWS,
-  payload: reviews
-});
+// //An ActionCreator of the defined type, contains the available reviews in the payload
+// export const addReviews = (reviews) => ({
+//   type: ActionTypes.ADD_REVIEWS,
+//   payload: reviews
+// });
 
 //SIGNUP
 //Actioncreator to add a new user to empty array

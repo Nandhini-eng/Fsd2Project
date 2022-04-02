@@ -11,11 +11,12 @@ let filter_review, items_newspaper, items_magazines, items
 //My account function
 function Account(props) {
     console.log(user_real)
-    console.log(props.reviews.reviews)
-    filter_review = props.reviews.reviews
+    //console.log(props.reviews.reviews)
+    //filter_review = props.reviews.reviews
     //Filtering reviews based on user_name
-    filter_review = filter_review.filter((review) => review.author === user_real)
+    //filter_review = filter_review.filter((review) => review.author === user_real)
     items_newspaper = props.newspapers.newspapers
+    console.log(items_newspaper)
     items_magazines = props.magazines.magazines
     //Storing both newspapers and magazines in a array
     items = items_newspaper.concat(items_magazines)
@@ -47,12 +48,12 @@ function Account(props) {
                         <div></div>
                     }
                 </div>
-                <div>
-                    {/* If user logged in then Display reviews else display login message */}
+                {/* <div>
+                    
                     {user_real ?
                         <div>
                             <h1 style={{ fontSize: '39px', color: 'steelblue', fontFamily: 'High Tower Text' }}><li>Your reviews</li></h1>
-                            {/* If no.of.reviews !=0 then display reviews else display no reviews */}
+                            
                             {filter_review.length !== 0 ?
                                 <div style={{ paddingLeft: '0px', width: "1300px" }}>
                                     <h2 style={{ fontSize: '35px', color: 'lightpink', fontFamily: 'Gabriola', fontWeight: '500' }}>No.of reviews: {filter_review.length}</h2>
@@ -62,7 +63,7 @@ function Account(props) {
                                                 <div className='col-4'>
                                                     <Card style={{ width: '300px', backgroundColor: '#f2f2f2' }}>
                                                         <CardBody>
-                                                            {/* Displaying item name to which review is given */}
+                                                            
                                                             {items.map
                                                                 (ite =>
                                                                     <div>
@@ -92,7 +93,7 @@ function Account(props) {
                             </Jump>
                         </div>
                     }
-                </div>
+                </div> */}
             </div>
         </div>
     );

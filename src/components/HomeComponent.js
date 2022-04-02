@@ -29,6 +29,7 @@ function RenderNewspaper({ item }) {
 
 //Funtional component to render each featured magazine in a reactstrap Card
 function RenderMagazine({ item }) {
+    console.log(item)
     return (
         <div className="zoom">
             {/* Applied FadeTransform animation to the reactstrap Card by giving tansformProps */}
@@ -53,6 +54,7 @@ function Home(props) {
 
     //Rendering the featured newspapers
     //Calling the render newspaper function for each featured newspaper
+
     const newspapers = props.newspapers.map((newspaper) => {
         return (
             <div className="col-12 col-md-3" key={newspaper._id}>

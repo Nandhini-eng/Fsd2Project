@@ -101,8 +101,7 @@ class ReviewForm extends React.Component {
 }
 //Function to display the details of reviews given to the selected item
 function RenderReviews({ reviews, errMess }) {
-    //Displaying the reviews if reviews are given and there is no error
-    if (errMess === null) {
+    //Displaying the reviews if reviews are present for the selected item
         if (reviews.length) {
             return (
                 <div className="col-12 col-md-10 m-1">
@@ -114,7 +113,7 @@ function RenderReviews({ reviews, errMess }) {
                             <li key={review.id}>
                                 <p>{review.review}</p>
                                 <ReactStars count={5} size={24} value={review.rating} color2={'#ffd700'} edit={false} />
-                                <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.date)))}</p>
+                                <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.updatedAt)))}</p>
                                 <br />
                             </li>
                             //</Fade>
@@ -135,15 +134,6 @@ function RenderReviews({ reviews, errMess }) {
                 </div>
             );
         }
-    }
-    //If any error occurs displaying error message
-    else {
-        return (
-            <div className="col-12 col-md-10 m-1">
-                <h5>{errMess}</h5>
-            </div>
-        );
-    }
 }
 
 
@@ -238,11 +228,12 @@ const ItemDetail = (props) => {
                 <div className="container">
                     {/* Calling RenderItem function by sending required properties */}
                     <div className="row">
-                        <RenderItem item={props.itemSelected} addtocart={props.addtocart} reviews={props.reviews} postReview={props.postReview} orders={props.checkorders} />
+                        <RenderItem item={props.itemSelected} addtocart={props.addtocart} reviews={props.itemSelected.reviews} postReview={props.postReview} orders={props.checkorders} />
                     </div>
                     {/* Calling RenderReviews function by sending appropriate properties */}
                     <div className="row">
-                        <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess} />
+                        {/* <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess} /> */}
+                        <RenderReviews reviews={props.itemSelected.reviews} />
                     </div>
                 </div>
             </div>
