@@ -66,7 +66,7 @@ function Account(props) {
                                                             {items.map
                                                                 (ite =>
                                                                     <div>
-                                                                        {rev.itemId === ite.id ?
+                                                                        {rev.itemId === ite._id ?
                                                                             <CardText style={{ fontSize: '27px', fontFamily: 'Tw Cen MT', color: 'purple',fontWeight:'lighter' }}>Name: {ite.name}</CardText>
                                                                             : <div></div>
                                                                         }

@@ -126,7 +126,7 @@ class Main extends Component {
     //Sending appropriate details from json server to Newspaper detail component
     const NewspaperWithId = ({ match }) => {
       return (
-        <NewspaperDetail paperSelected={this.props.newspapers.newspapers.filter((paper) => paper.id === parseInt(match.params.paperId, 10))[0]}
+        <NewspaperDetail paperSelected={this.props.newspapers.newspapers.filter((paper) => paper._id === (match.params.paperId))[0]}
           isLoading={this.props.newspapers.isLoading}
           errMess={this.props.newspapers.errMess}
           reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.paperId, 10))}
@@ -143,7 +143,7 @@ class Main extends Component {
     //Sending appropriate details from json server to Magazines detail component
     const MagazineWithId = ({ match }) => {
       return (
-        <MagazineDetail magSelected={this.props.magazines.magazines.filter((magazine) => magazine.id === parseInt(match.params.magId, 10))[0]}
+        <MagazineDetail magSelected={this.props.magazines.magazines.filter((magazine) => magazine._id === (match.params.magId))[0]}
           isLoading={this.props.magazines.isLoading}
           errMess={this.props.magazines.errMess}
           reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.magId, 10))}
@@ -160,7 +160,7 @@ class Main extends Component {
 
     const ItemWithId = ({ match }) => {
       return (
-        <ItemDetail itemSelected={this.props.cartitem.items.filter((item) => item.id === parseInt(match.params.itemId, 10))[0]}
+        <ItemDetail itemSelected={this.props.cartitem.items.filter((item) => item._id === (match.params.itemId))[0]}
           isLoading={this.props.magazines.isLoading}
           errMess={this.props.magazines.errMess}
           addtocart={this.props.addtocart}

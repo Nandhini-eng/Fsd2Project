@@ -591,6 +591,14 @@
     {
       "user4": "samhitha:Samhi_905",
       "id": 5
+    },
+    {
+      "user4": "Aswitha:123",
+      "id": 6
+    },
+    {
+      "user4": "bindu:bindu",
+      "id": 7
     }
   ],
   "reviews": [
@@ -881,6 +889,14 @@
       "review": "Good content",
       "date": "2022-01-09T14:32:14.657Z",
       "id": 36
+    },
+    {
+      "itemId": 1,
+      "rating": 5,
+      "author": "Aswitha",
+      "review": "Good content",
+      "date": "2022-01-12T07:06:44.123Z",
+      "id": 37
     }
   ],
   "orders": [
@@ -1163,6 +1179,65 @@
       "items": 3,
       "date": "2022-01-09T14:31:42.153Z",
       "id": 7
+    },
+    {
+      "fullName": "Bhanu",
+      "address": "302, abc",
+      "city": "Kurnool",
+      "postalCode": "515644",
+      "country": "India",
+      "NameOnCard": "Bhanu",
+      "CreditCardNum": "1234123412341234",
+      "ExpMon": "2",
+      "ExpYear": "2025",
+      "Cvv": "123",
+      "cart": [
+        {
+          "id": 1,
+          "name": "Andhra Jyothi",
+          "image": "assets/images/andhra_jyothi.jpg",
+          "language": "Telugu",
+          "price": "190",
+          "featured": true,
+          "description": "Andhra Jyothi is the third largest circulated Telugu language daily newspaper of India sold mostly in the states of Andhra Pradesh and Telangana.It was founded by K. L. N. Prasad, an Industrialist on 1 July 1960. It is also one of the oldest running Telugu language daily newspapers.It was taken over by Vemuri Radha Krishna, also known as R. K. in 2002 who also works as the Managing Director.",
+          "qty": 2
+        }
+      ],
+      "user": "Aswitha",
+      "price": 380,
+      "items": 2,
+      "date": "2022-01-12T07:05:58.544Z",
+      "id": 8
+    },
+    {
+      "fullName": "sam",
+      "address": "sbvbnhjmk,.jhbgvcdxsaw",
+      "city": "fghjnhbv",
+      "postalCode": "345456",
+      "country": "india",
+      "NameOnCard": "bindu",
+      "CreditCardNum": "1234567891234567",
+      "ExpMon": "7",
+      "ExpYear": "2022",
+      "Cvv": "432",
+      "cart": [
+        {
+          "id": 25,
+          "name": "Cricket today",
+          "image": "assets/images/im6.jpg",
+          "language": "English",
+          "price": "40",
+          "featured": true,
+          "description": "One of the best sports magazines in India, Cricket today as the name suggests is a cricket-centric magazine published monthly. This English language magazine is an ode to the cricket game since it keeps cricket lovers updated about every single cricket match played whether in India or across the world. Besides, it also covers the latest updates in the cricket industry and about players.",
+          "category": "sports",
+          "qty": 1
+        }
+      ],
+      "user": "bindu",
+      "price": 40,
+      "items": 1,
+      "date": "2022-03-30T14:31:17.710Z",
+      "id": 9
     }
   ],
   "blogs": [
