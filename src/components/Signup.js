@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, Label, Col, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, Form, Errors } from 'react-redux-form';
+import { baseUrl } from '../shared/baseUrl';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -16,14 +17,21 @@ class Signup extends Component {
 
     handleSubmit(values) {
         console.log('Current State is: ' + JSON.stringify(values));
-        //to post to server
-        this.props.postsignup(values.username, values.password);
-        //Push to login after signup
-        this.props.history.push('login')
-        this.props.resetFeedbackForm();
-
-
-
+        //Check if username already exists
+        fetch(baseUrl + "users/" + values.username).then((data) => {
+            console.log(data)
+            //If not exists then post to server else show error message
+            if (!data.ok) {
+                this.props.postsignup(values.username, values.password);
+                //Push to login after signup
+                this.props.history.push('login')
+                this.props.resetFeedbackForm();
+            }
+            else{
+                alert('Username already exists')
+                this.props.resetFeedbackForm();
+            }
+        })
     }
 
     render() {
@@ -106,9 +114,9 @@ class Signup extends Component {
                                     <Row className="form-group">
                                         <Col md={{ size: 10 }} >
                                             <div className='zoom'>
-                                            <Button type="submit" color="primary" style={{ backgroundColor: "saddlebrown", border: "none", color: "whitesmoke" }}>
-                                                SignUp
-                                            </Button>
+                                                <Button type="submit" color="primary" style={{ backgroundColor: "saddlebrown", border: "none", color: "whitesmoke" }}>
+                                                    SignUp
+                                                </Button>
                                             </div>
                                         </Col>
                                     </Row>
@@ -123,12 +131,12 @@ class Signup extends Component {
                                             </Link>
                                         </Col>
                                     </Row>
-                                    <br/>
+                                    <br />
                                 </Form>
                             </div>
                         </div>
                     </div>
-                    <br/>
+                    <br />
                 </div>
             </div>
         );
