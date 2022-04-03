@@ -16,7 +16,7 @@ function RenderItem({ item, rating }) {
   return (
     <div className='zoom'>
       <Card>
-        <Link to={`/magazines/${item.id}`}>           {/* linking each magazine to it's details page */}
+        <Link to={`/magazines/${item._id}`}>           {/* linking each magazine to it's details page */}
           <Pulse>
             <CardImg width="400px" height="400px" src={baseUrl + item.image} alt={item.name} style={{ overflow: "hidden" }}
               onMouseOver={(e) => (e.currentTarget.style = { transform: "scale(1.25)", overflow: "hidden" })}
@@ -42,7 +42,7 @@ const MagazinesMain = (props) => {
   //Rendering the magazines according to the applied filters 
   var render_items = [];
   props.magazines.filteredItemsbyCtgry.map(x => props.magazines.filteredItemsbyLang.map(y =>
-    x.id === y.id ? render_items.push({ ...x }) : null))
+    x._id === y._id ? render_items.push({ ...x }) : null))
 
 
   //calculating average rating for all magazines and storing them in an array along with magazine ids
@@ -51,11 +51,12 @@ const MagazinesMain = (props) => {
 
   var item_review = {};
   var len = props.magazines.magazines.length;
+  var data = props.magazines.magazines; 
 
-  for (var i = 20; i < len + 20; i++) {
+  for (var i = 0; i < len; i++) {
     var sum = 0, avg = 0;
-    item_review.itemId = i;
-    var revs = props.reviews.filter(rev => rev.itemId === i);
+    item_review.itemId = data[i]._id;
+    var revs = props.reviews.filter(rev => rev.itemId === data[i]._id);
     if (revs.length) {
       sum = revs.map(rev => rev.rating).reduce((r1, r2) => r1 + r2, 0);
       avg = sum / revs.length;
@@ -69,9 +70,9 @@ const MagazinesMain = (props) => {
 
   //Calling the render item function for each and every filtered magazine
   const items = render_items.map((item) => {
-    var review = items_reviews.filter(rev => rev.itemId === item.id)
+    var review = items_reviews.filter(rev => rev.itemId === item._id)
     return (
-      <div key={item.id} className="col-12">
+      <div key={item._id} className="col-12">
         <RenderItem item={item} rating={review[0].avgRating} />
         <br />
       </div>

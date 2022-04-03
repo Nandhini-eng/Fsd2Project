@@ -24,36 +24,42 @@ class ReviewForm extends Component {
         this.toggleModal = this.toggleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     //Handling opening of form which takes review for the selected newspaper
     toggleModal() {
         //User should be valid
-        if (user_real) {
-            console.log('validated user');
-            let cartItems = []
-            cartItems = this.props.orders.map((order) => order.cart.map((item) => (item.id)))
-            let flag = cartItems.some((value) => value.some((id) => (id === this.props.itemId)))
-            //If user has subscribed that item, then the forms opens
-            if (flag) {
-                this.setState({
-                    isModalOpen: !this.state.isModalOpen
-                })
-            }
-            //Else a alert message arrives 
-            else {
-                alert("You cannot submit review as you have not subscibed this item!!")
-            };
 
-        }
-        //User should login if they are invalid
-        else {
-            console.log('invalid user');
-            this.props.history.push('/signup');
-        }
+        // if (user_real) {
+        //     console.log('validated user');
+        //     let cartItems = []
+        //     cartItems = this.props.orders.map((order) => order.cart.map((item) => (item.id)))
+        //     let flag = cartItems.some((value) => value.some((id) => (id === this.props.itemId)))
+        //     //If user has subscribed that item, then the forms opens
+        //     if (flag) {
+        //         this.setState({
+        //             isModalOpen: !this.state.isModalOpen
+        //         })
+        //     }
+        //     //Else a alert message arrives 
+        //     else {
+        //         alert("You cannot submit review as you have not subscibed this item!!")
+        //     };
+
+        // }
+        // //User should login if they are invalid
+        // else {
+        //     console.log('invalid user');
+        //     this.props.history.push('/signup');
+        // }
+
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        })
     }
     //Calling postReview function which posts reviews to the server
     handleSubmit(values) {
         this.toggleModal();
-        this.props.postReview(this.props.itemId, parseInt(values.rating), user_real, values.review);
+        this.props.postReview(this.props.itemId, values.rating, "Nandhini", values.review);
     }
 
     render() {
@@ -107,11 +113,10 @@ function RenderReviews({ reviews, errMess }) {
                     <ul className="product-description">
                         <h3>REVIEWS</h3>
                         {reviews.map((review) => (
-                            <li key={review.id}>
+                            <li key={review._id}>
                                 <p>{review.review}</p>
                                 <ReactStars count={5} size={24} value={review.rating} color2={'#ffd700'} edit={false} />
-                                <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.date)))}</p>
-
+                                <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.updatedAt)))}</p>
                                 <br />
                             </li>
                         ))}
@@ -143,6 +148,7 @@ function RenderReviews({ reviews, errMess }) {
 
 //Function displaying all the details of selected newspaper 
 function RenderItem({ item, addtocart, reviews, postReview, orders }) {
+
     //Finding average of ratings given to the selected newspaper
     var sum = 0, avg = 0;
     if (reviews.length) {
@@ -156,7 +162,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
         const IsLogin = () => {
             if (user_real) {
                 console.log('yes')
-                addtocart(item.id)
+                addtocart(item._id)
             }
             //Else displaying signup page
             else {
@@ -193,7 +199,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                             <span>Total No. of reviews posted till now: {reviews.length}</span>
                             <span><ReactStars count={5} size={24} value={avg} color2={'#ffd700'} edit={false} /></span>
                         </div>
-                        <ReviewForm itemId={item.id} postReview={postReview} history={history} orders={orders} />
+                        <ReviewForm itemId={item._id} postReview={postReview} history={history} orders={orders} />
                     </div>
                 </main>
 

@@ -40,7 +40,7 @@ function Searchc({ items }) {
     return (
       <div className="zoom">
         <Card>
-          <Link to={`/searchc/${item.id}`}>
+          <Link to={`/searchc/${item._id}`}>
             
             <CardImg width="400px" height="400px" src={baseUrl + item.image} alt={item.name} style={{ overflow: "hidden" }}
               onMouseOver={(e) => (e.currentTarget.style = { transform: "scale(1.25)", overflow: "hidden" })}

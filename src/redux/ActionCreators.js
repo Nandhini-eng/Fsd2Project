@@ -604,7 +604,7 @@ export const addBlogs = (blogs) => ({
 //An actioncreator of the defined type, contains the details of top rated newspapers(the newspapers for which average rating lies between 4 and 5) in the payload
 export const getTopNewspapers = (newspapers, reviews) => (dispatch) => {
   var array = [];
-  reviews.map(rev => newspapers.map(np => rev.itemId === np.id ? array.push({ ...np }) : null))
+  reviews.map(rev => newspapers.map(np => rev.itemId === np._id ? array.push({ ...np }) : null))
   return dispatch({
     type: ActionTypes.TOP_RATED_NEWSPAPERS,
     payload: {
@@ -616,7 +616,7 @@ export const getTopNewspapers = (newspapers, reviews) => (dispatch) => {
 //An actioncreator of the defined type, contains the details of top rated magazines(the magazines for which average rating lies between 4 and 5) in the payload
 export const getTopMagazines = (magazines, reviews) => (dispatch) => {
   var array = [];
-  reviews.map(rev => magazines.map(mag => rev.itemId === mag.id ? array.push({...mag}) : null) )
+  reviews.map(rev => magazines.map(mag => rev.itemId === mag._id ? array.push({...mag}) : null) )
   return dispatch({
       type: ActionTypes.TOP_RATED_MAGAZINES,
       payload : {

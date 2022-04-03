@@ -15,7 +15,7 @@ function RenderNewspaper({ item }) {
                     exitTransform: 'scale(0.5) translateY(-50%)'
                 }}>
                 <Card>
-                    <Link to={`/newspapers/${item.id}`}>            {/* linking each featured newspaper to it's details page */}
+                    <Link to={`/newspapers/${item._id}`}>            {/* linking each featured newspaper to it's details page */}
                         <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
                         <div className='hg'>
                             <CardHeader><h4>{item.name}</h4></CardHeader>
@@ -37,7 +37,7 @@ function RenderMagazine({ item }) {
                     exitTransform: 'scale(0.5) translateY(-50%)'
                 }}>
                 <Card>
-                    <Link to={`/magazines/${item.id}`}>            {/* linking each featured magazine to it's details page */}
+                    <Link to={`/magazines/${item._id}`}>            {/* linking each featured magazine to it's details page */}
                         <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
                         <div className='hg'>
                             <CardHeader><h4>{item.name}</h4></CardHeader>
