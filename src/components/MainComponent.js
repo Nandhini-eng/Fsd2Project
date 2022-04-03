@@ -55,7 +55,7 @@ const mapDispatchToProps = (dispatch) => ({
   filterNewspapersByLanguage: (newspapers, language) => dispatch(filterNewspapersByLanguage(newspapers, language)),
   sortNewspapers: (newspapers, sort) => dispatch(sortNewspapers(newspapers, sort)),
   sortMagazines: (magazines, sort) => dispatch(sortMagazines(magazines, sort)),
-  fetchReviews: () => { dispatch(fetchReviews()) },
+  //fetchReviews: () => { dispatch(fetchReviews()) },
   postReview: (itemId, rating, author, review) => dispatch(postReview(itemId, rating, author, review)),
   getproducts: (newspapers, magazines) => { dispatch(getproducts(newspapers, magazines)) },
   addtocart: (id) => { dispatch(addToCart(id)) },
@@ -129,7 +129,7 @@ class Main extends Component {
           getproducts={this.props.getproducts}
           newspapers={this.props.newspapers}
           magazines={this.props.magazines}
-          checkorders={this.props.orders.orders}
+          checkorders={this.props.orders.orders.filter((order)=>order.user===user_real)}
         />
       );
     }
@@ -144,7 +144,7 @@ class Main extends Component {
           getproducts={this.props.getproducts}
           newspapers={this.props.newspapers}
           magazines={this.props.magazines}
-          checkorders={this.props.orders.orders}
+          checkorders={this.props.orders.orders.filter((order)=>order.user===user_real)}
         />
       );
     }

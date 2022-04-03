@@ -285,9 +285,7 @@ export const postReview = (itemId, rating, author, review) => (dispatch) => {
     .catch(error => { console.log('post reviews', error.message); alert('Your review could not be posted\nError: ' + error.message); });
 };
 
-
 //function for fetching the stored reviews from the server using fetch api and returning appropriate action creators based on server responses.
-
 // export const fetchReviews = () => (dispatch) => {
 //   return fetch(baseUrl + 'reviews')
 //     .then(response => {
@@ -309,19 +307,16 @@ export const postReview = (itemId, rating, author, review) => (dispatch) => {
 // };
 
 // //An ActionCreator of the defined type, contains error message(indicating the error occurred while fetching reviews) in the payload 
-
 // export const reviewsFailed = (errmess) => ({
 //   type: ActionTypes.REVIEWS_FAILED,
 //   payload: errmess
 // });
 
 // //An ActionCreator of the defined type, contains the available reviews in the payload
-
 // export const addReviews = (reviews) => ({
 //   type: ActionTypes.ADD_REVIEWS,
 //   payload: reviews
 // });
-
 
 //SIGNUP
 //Actioncreator to add a new user to empty array
@@ -333,9 +328,10 @@ export const adduser = (user4) => ({
 //Action to post to server with data obtained from signup form
 export const postsignup = (username, password) => (dispatch) => {
   const newuser = {
-    user4: username + ":" + password
+    username: username,
+    password: password
   };
-  return fetch(baseUrl + 'regusers', {
+  return fetch(baseUrl + 'users', {
     method: "POST",
     body: JSON.stringify(newuser),
     headers: {
@@ -356,13 +352,13 @@ export const postsignup = (username, password) => (dispatch) => {
         throw error;
       })
     .then(response => response.json())
-    .then(details => adduser(details))
-    .catch(error => { console.log('Post SignUp'); alert('Your details could not be posted\nError: '); });
+    .then(details => {alert("You are successfully registered, login to continue more...");adduser(details)})
+    .catch(error => { console.log('Post SignUp'); alert('Your details could not be posted signup\nError: '); });
 };
 
 //Fetching users from server
 export const fetchUsers = () => (dispatch) => {
-  return fetch(baseUrl + 'regusers')
+  return fetch(baseUrl + 'users')
     .then(response => {
       if (response.ok) {
         return response;
@@ -609,7 +605,7 @@ export const addBlogs = (blogs) => ({
 //An actioncreator of the defined type, contains the details of top rated newspapers(the newspapers for which average rating lies between 4 and 5) in the payload
 export const getTopNewspapers = (newspapers, reviews) => (dispatch) => {
   var array = [];
-  reviews.map(rev => newspapers.map(np => rev.itemId === np._id ? array.push({ ...np }) : null))
+  reviews.map(rev => newspapers.map(np => rev.itemId === np.id ? array.push({ ...np }) : null))
   return dispatch({
     type: ActionTypes.TOP_RATED_NEWSPAPERS,
     payload: {
@@ -621,7 +617,7 @@ export const getTopNewspapers = (newspapers, reviews) => (dispatch) => {
 //An actioncreator of the defined type, contains the details of top rated magazines(the magazines for which average rating lies between 4 and 5) in the payload
 export const getTopMagazines = (magazines, reviews) => (dispatch) => {
   var array = [];
-  reviews.map(rev => magazines.map(mag => rev.itemId === mag._id ? array.push({...mag}) : null) )
+  reviews.map(rev => magazines.map(mag => rev.itemId === mag.id ? array.push({...mag}) : null) )
   return dispatch({
       type: ActionTypes.TOP_RATED_MAGAZINES,
       payload : {

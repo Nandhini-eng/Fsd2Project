@@ -31,6 +31,9 @@ export const LOAD_CURRENT_ITEM='LOAD_CURRENT_ITEM';
 export const GET_PRODUCTS='GET_PRODUCTS';
 export const CART_EMPTY = 'CART_EMPTY';
 
+//REVIEWS
+export const ADD_REVIEW='ADD_REVIEW';
+
 //ORDERS
 export const ORDER_PLACED='ORDER_PLACED';
 export const ORDER_FAILED='ORDER_FAILED';

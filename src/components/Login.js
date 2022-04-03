@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './login.css'
 import { Button } from "reactstrap"
+import { baseUrl } from '../shared/baseUrl';
 
 let userrs
 let error, user_real
@@ -15,11 +16,11 @@ class Login extends Component {
             password: null
         }
         //array which stores registered users details
-        userrs = props.regusers.regusers
+        //userrs = props.regusers.regusers
     }
     login() {
         console.warn(this.state)
-        fetch("http://localhost:3001/regusers?q=" + this.state.username + ":" + this.state.password).then((data) => {
+        fetch(baseUrl+"users/user/" + this.state.username + "+" + this.state.password).then((data) => {
             data.json().then((resp) => {
                 console.warn("resp", data)
                 console.log(resp.length)
