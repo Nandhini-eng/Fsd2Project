@@ -3,7 +3,6 @@ import './login.css'
 import { Button } from "reactstrap"
 import { baseUrl } from '../shared/baseUrl';
 
-let userrs
 let error, user_real
 
 error = ''
@@ -15,24 +14,21 @@ class Login extends Component {
             username: '',
             password: null
         }
-        //array which stores registered users details
-        //userrs = props.regusers.regusers
     }
     login() {
         console.warn(this.state)
+        //Check user credentials from db
         fetch(baseUrl+"users/user/" + this.state.username + "+" + this.state.password).then((data) => {
-            data.json().then((resp) => {
-                console.warn("resp", data)
-                console.log(resp.length)
-                //If details found in server then redirect to page that redirected login page else stay in same page 
-                if (resp.length > 0) {
-                    user_real = this.state.username
+            console.log(data.ok)
+            //If credentials true redirect to previous page else show error message
+            if(data.ok){
+                user_real = this.state.username
                     this.props.history.go(-2);
-                }
-                else {
-                    alert('Invalid username or password')
-                }
-            })
+            }
+            else{
+                error = 'Invalid username or password'
+                alert('Invalid username or password')
+            }
         })
 
 
