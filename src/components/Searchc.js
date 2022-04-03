@@ -8,8 +8,7 @@ function Searchc({ items }) {
   // initially we set searchfield to empty
 
   const [searchField, setSearchField] = useState("")
-  console.log(items);
-  console.log(searchField);
+  
 
 
   //filter items based on searchfield

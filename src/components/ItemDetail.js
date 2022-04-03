@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
 import { user_real } from './Login'
 import ReactStars from 'react-stars';
-import Zoom from 'react-reveal/Zoom';
 import "./Details.css";
 
 class ReviewForm extends React.Component {

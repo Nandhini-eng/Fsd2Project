@@ -2,7 +2,7 @@
   "name": "fsd_project",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:4000/",
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -10,8 +10,11 @@
     "axios": "^0.24.0",
     "bootstrap": "^5.1.3",
     "bootstrap-social": "^5.1.1",
+    "concurrently": "^7.0.0",
     "font-awesome": "^4.7.0",
     "json-server": "^0.17.0",
+    "mongoose": "^6.2.3",
+    "nodemon": "^2.0.15",
     "react": "^17.0.2",
     "react-animation-components": "^3.0.0",
     "react-dom": "^17.0.2",
@@ -31,10 +34,13 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "startDev": "nodemon server.js --ignore client",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "client": "npm start --prefix client",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "concurrently \"npm run startDev\" \"npm start\""
   },
   "eslintConfig": {
     "extends": [

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { Card, CardImg, CardHeader, Breadcrumb, BreadcrumbItem, Button, CardBody, CardText, CardTitle, CardSubtitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
@@ -9,14 +9,22 @@ import Fade from 'react-reveal/Fade';
 import Pulse from 'react-reveal/Pulse';
 import Flash from 'react-reveal/Flash';
 import ReactStars from 'react-stars';
+import { get } from 'http';
+import axios from 'axios';
+var cors=require('cors');
+
+let obj = [];
+
+
 
 //Displaying the item with image and name in the form of card
 function RenderItem({ item, rating }) {
 
+
   return (
     <div className="zoom">
       <Card>
-        <Link to={`/newspapers/${item.id}`}>
+        <Link to={`/newspapers/${item._id}`}>
           <Pulse duration={1000}>
             <CardImg width="400px" height="400px" src={baseUrl + item.image} alt={item.name} style={{ overflow: "hidden" }}
               onMouseOver={(e) => (e.currentTarget.style = { transform: "scale(1.25)", overflow: "hidden" })}
@@ -34,7 +42,7 @@ function RenderItem({ item, rating }) {
       </Card>
     </div>
   );
-}
+};
 
 
 const NewspapersMain = (props) => {
@@ -58,17 +66,56 @@ const NewspapersMain = (props) => {
     item_review.avgRating = avg;
     items_reviews.push({ ...item_review });
   }
-  console.log(items_reviews)
+  
   // In an array, storing the average rating values along with ids of only those newspapers for which average rating lies between 4 and 5.
   var filtered_revs = items_reviews.filter(rev => rev.avgRating >= 4 && rev.avgRating <= 5);
 
 
   //Sending each newspaper to RenderItem function 
+
+  
+  
+  // const instance = axios.create({
+  //   baseURL: 'http://localhost:3001',
+    
+  //   headers: {'X-Custom-Header': 'foobar'}
+  // });
+  
+  // const res = await axios.get('http://localhost:3001/newspapers');
+
+  // 
+  // instance.get('/newspapers').then (function (response) {
+    
+  //   setData(response.json);
+    
+  // });
+
+
+  // const [data,setData]=useState([]);
+  // obj=axios({
+  //   method: 'get',
+  //   url: 'http://localhost:3001/newspapers',
+  //   responseType: 'json'
+  // })
+  //   .then(function (response) {
+      
+  //   console.log(response.data.length);
+  //   const obj=response.data;
+  //   for (let i = 0; i < response.length; i++) {
+  //          console.log(obj[i])
+  //      } 
+      
+      
+      
+  //   });
+   
+  
   const items = props.newspapers.filteredItems.map((item) => {
-    var review = items_reviews.filter(rev => rev.itemId === item.id)
+    var review = items_reviews.filter(rev => rev.itemId === item._id)
     return (
-      <div key={item.id}>
-        <RenderItem item={item} rating={review[0].avgRating} />
+      <div key={item._id}>
+        <RenderItem item={item} rating={0} />
+        {/* <RenderItem item={item} rating={review[0].avgRating} /> */}
         <br />
       </div>
     )
@@ -76,6 +123,7 @@ const NewspapersMain = (props) => {
   )
 
   const [papers, setPapers] = useState(items);
+
   const [pageNumber, setPageNumber] = useState(0);
 
   const papersPerPage = 4;
@@ -90,7 +138,7 @@ const NewspapersMain = (props) => {
     .slice(pagesVisited, pagesVisited + papersPerPage)
     .map((paper) => {
       return (
-        <div style={{ width: 260 }}>
+        <div style={{ width: 300 }}>
           {paper}
         </div>
       );

@@ -16,7 +16,7 @@ function RenderItem({ item, rating }) {
   return (
     <div className='zoom'>
       <Card>
-        <Link to={`/magazines/${item.id}`}>           {/* linking each magazine to it's details page */}
+        <Link to={`/magazines/${item._id}`}>           {/* linking each magazine to it's details page */}
           <Pulse>
             <CardImg width="400px" height="400px" src={baseUrl + item.image} alt={item.name} style={{ overflow: "hidden" }}
               onMouseOver={(e) => (e.currentTarget.style = { transform: "scale(1.25)", overflow: "hidden" })}
@@ -42,7 +42,7 @@ const MagazinesMain = (props) => {
   //Rendering the magazines according to the applied filters 
   var render_items = [];
   props.magazines.filteredItemsbyCtgry.map(x => props.magazines.filteredItemsbyLang.map(y =>
-    x.id === y.id ? render_items.push({ ...x }) : null))
+    x._id === y._id ? render_items.push({ ...x }) : null))
 
 
   //calculating average rating for all magazines and storing them in an array along with magazine ids
@@ -69,10 +69,11 @@ const MagazinesMain = (props) => {
 
   //Calling the render item function for each and every filtered magazine
   const items = render_items.map((item) => {
-    var review = items_reviews.filter(rev => rev.itemId === item.id)
+    var review = items_reviews.filter(rev => rev.itemId === item._id)
     return (
-      <div key={item.id} className="col-12">
-        <RenderItem item={item} rating={review[0].avgRating} />
+      <div key={item._id} className="col-12">
+        {/* <RenderItem item={item} rating={review[0].avgRating} /> */}
+        <RenderItem item={item} rating={0} />
         <br />
       </div>
     );
@@ -95,7 +96,7 @@ const MagazinesMain = (props) => {
     .slice(pagesVisited, pagesVisited + magazinesPerPage)
     .map((magazine) => {
       return (
-        <div style={{ width: 260 }}>
+        <div style={{ width: 300 }}>
           {magazine}
         </div>
       );
