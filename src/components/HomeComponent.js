@@ -15,7 +15,7 @@ function RenderNewspaper({ item }) {
                     exitTransform: 'scale(0.5) translateY(-50%)'
                 }}>
                 <Card>
-                    <Link to={`/newspapers/${item.id}`}>            {/* linking each featured newspaper to it's details page */}
+                    <Link to={`/newspapers/${item._id}`}>            {/* linking each featured newspaper to it's details page */}
                         <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
                         <div className='hg'>
                             <CardHeader><h4>{item.name}</h4></CardHeader>
@@ -29,6 +29,7 @@ function RenderNewspaper({ item }) {
 
 //Funtional component to render each featured magazine in a reactstrap Card
 function RenderMagazine({ item }) {
+    console.log(item)
     return (
         <div className="zoom">
             {/* Applied FadeTransform animation to the reactstrap Card by giving tansformProps */}
@@ -37,7 +38,7 @@ function RenderMagazine({ item }) {
                     exitTransform: 'scale(0.5) translateY(-50%)'
                 }}>
                 <Card>
-                    <Link to={`/magazines/${item.id}`}>            {/* linking each featured magazine to it's details page */}
+                    <Link to={`/magazines/${item._id}`}>            {/* linking each featured magazine to it's details page */}
                         <CardImg width="100%" height="400px" src={baseUrl + item.image} alt={item.name} />
                         <div className='hg'>
                             <CardHeader><h4>{item.name}</h4></CardHeader>
@@ -53,9 +54,10 @@ function Home(props) {
 
     //Rendering the featured newspapers
     //Calling the render newspaper function for each featured newspaper
+
     const newspapers = props.newspapers.map((newspaper) => {
         return (
-            <div className="col-12 col-md-3" key={newspaper.id}>
+            <div className="col-12 col-md-3" key={newspaper._id}>
                 <RenderNewspaper item={newspaper} />
             </div>
 
@@ -66,7 +68,7 @@ function Home(props) {
     //Calling the render magazine function for each featured magazine
     const magazines = props.magazines.map((magazine) => {
         return (
-            <div className="col-12 col-md-3" key={magazine.id}>
+            <div className="col-12 col-md-3" key={magazine._id}>
                 <RenderMagazine item={magazine} />
             </div>
 

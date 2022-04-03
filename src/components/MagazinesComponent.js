@@ -48,14 +48,14 @@ const MagazinesMain = (props) => {
   //calculating average rating for all magazines and storing them in an array along with magazine ids
 
   var items_reviews = [];
-
   var item_review = {};
   var len = props.magazines.magazines.length;
+  var data = props.magazines.magazines;
 
-  for (var i = 20; i < len + 20; i++) {
+  for (var i = 0; i < len; i++) {
     var sum = 0, avg = 0;
-    item_review.itemId = i;
-    var revs = props.reviews.filter(rev => rev.itemId === i);
+    item_review.itemId = data[i]._id;
+    var revs = data[i].reviews;
     if (revs.length) {
       sum = revs.map(rev => rev.rating).reduce((r1, r2) => r1 + r2, 0);
       avg = sum / revs.length;
@@ -67,13 +67,13 @@ const MagazinesMain = (props) => {
   // In an array, storing the average rating values along with ids of only those magazines for which average rating lies between 4 and 5.
   var filtered_revs = items_reviews.filter(rev => rev.avgRating >= 4 && rev.avgRating <= 5)
 
+  
   //Calling the render item function for each and every filtered magazine
   const items = render_items.map((item) => {
     var review = items_reviews.filter(rev => rev.itemId === item._id)
     return (
       <div key={item._id} className="col-12">
-        {/* <RenderItem item={item} rating={review[0].avgRating} /> */}
-        <RenderItem item={item} rating={0} />
+        <RenderItem item={item} rating={review[0].avgRating} />
         <br />
       </div>
     );

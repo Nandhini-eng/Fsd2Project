@@ -272,38 +272,43 @@ export const postReview = (itemId, rating, author, review) => (dispatch) => {
     .catch(error => { console.log('post reviews', error.message); alert('Your review could not be posted\nError: ' + error.message); });
 };
 
+
 //function for fetching the stored reviews from the server using fetch api and returning appropriate action creators based on server responses.
-export const fetchReviews = () => (dispatch) => {
-  return fetch(baseUrl + 'reviews')
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        var error = new Error('Error ' + response.status + ': ' + response.statusText);
-        error.response = response;
-        throw error;
-      }
-    },
-      error => {
-        var errmess = new Error(error.message);
-        throw errmess;
-      })
-    .then(response => response.json())
-    .then(reviews => dispatch(addReviews(reviews)))
-    .catch(error => dispatch(reviewsFailed(error.message)));
-};
 
-//An ActionCreator of the defined type, contains error message(indicating the error occurred while fetching reviews) in the payload 
-export const reviewsFailed = (errmess) => ({
-  type: ActionTypes.REVIEWS_FAILED,
-  payload: errmess
-});
+// export const fetchReviews = () => (dispatch) => {
+//   return fetch(baseUrl + 'reviews')
+//     .then(response => {
+//       if (response.ok) {
+//         return response;
+//       } else {
+//         var error = new Error('Error ' + response.status + ': ' + response.statusText);
+//         error.response = response;
+//         throw error;
+//       }
+//     },
+//       error => {
+//         var errmess = new Error(error.message);
+//         throw errmess;
+//       })
+//     .then(response => response.json())
+//     .then(reviews => dispatch(addReviews(reviews)))
+//     .catch(error => dispatch(reviewsFailed(error.message)));
+// };
 
-//An ActionCreator of the defined type, contains the available reviews in the payload
-export const addReviews = (reviews) => ({
-  type: ActionTypes.ADD_REVIEWS,
-  payload: reviews
-});
+// //An ActionCreator of the defined type, contains error message(indicating the error occurred while fetching reviews) in the payload 
+
+// export const reviewsFailed = (errmess) => ({
+//   type: ActionTypes.REVIEWS_FAILED,
+//   payload: errmess
+// });
+
+// //An ActionCreator of the defined type, contains the available reviews in the payload
+
+// export const addReviews = (reviews) => ({
+//   type: ActionTypes.ADD_REVIEWS,
+//   payload: reviews
+// });
+
 
 //SIGNUP
 //Actioncreator to add a new user to empty array
@@ -615,7 +620,7 @@ export const addBlogs = (blogs) => ({
 //An actioncreator of the defined type, contains the details of top rated newspapers(the newspapers for which average rating lies between 4 and 5) in the payload
 export const getTopNewspapers = (newspapers, reviews) => (dispatch) => {
   var array = [];
-  reviews.map(rev => newspapers.map(np => rev.itemId === np.id ? array.push({ ...np }) : null))
+  reviews.map(rev => newspapers.map(np => rev.itemId === np._id ? array.push({ ...np }) : null))
   return dispatch({
     type: ActionTypes.TOP_RATED_NEWSPAPERS,
     payload: {
@@ -627,7 +632,7 @@ export const getTopNewspapers = (newspapers, reviews) => (dispatch) => {
 //An actioncreator of the defined type, contains the details of top rated magazines(the magazines for which average rating lies between 4 and 5) in the payload
 export const getTopMagazines = (magazines, reviews) => (dispatch) => {
   var array = [];
-  reviews.map(rev => magazines.map(mag => rev.itemId === mag.id ? array.push({...mag}) : null) )
+  reviews.map(rev => magazines.map(mag => rev.itemId === mag._id ? array.push({...mag}) : null) )
   return dispatch({
       type: ActionTypes.TOP_RATED_MAGAZINES,
       payload : {

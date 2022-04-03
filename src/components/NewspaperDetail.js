@@ -98,20 +98,18 @@ class ReviewForm extends Component {
 }
 
 //Function to display the details of reviews given to the selected newspaper
-function RenderReviews({ reviews, errMess }) {
-    //Displaying the reviews if reviews are given and there is no error
-    if (errMess === null) {
+function RenderReviews({ reviews }) {
+    //Displaying the reviews if reviews are present for the selected newspaper
         if (reviews.length) {
             return (
                 <div className="col-12 col-md-10 m-1">
                     <ul className="product-description">
                         <h3>REVIEWS</h3>
                         {reviews.map((review) => (
-                            <li key={review.id}>
+                            <li key={review._id}>
                                 <p>{review.review}</p>
                                 <ReactStars count={5} size={24} value={review.rating} color2={'#ffd700'} edit={false} />
-                                <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.date)))}</p>
-
+                                <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.updatedAt)))}</p>
                                 <br />
                             </li>
                         ))}
@@ -130,15 +128,7 @@ function RenderReviews({ reviews, errMess }) {
                 </div>
             );
         }
-    }
-    //If any error occurs displaying error message
-    else {
-        return (
-            <div className="col-12 col-md-10 m-1">
-                <h5>{errMess}</h5>
-            </div>
-        );
-    }
+    
 }
 
 //Function displaying all the details of selected newspaper 
@@ -156,7 +146,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
         const IsLogin = () => {
             if (user_real) {
                 console.log('yes')
-                addtocart(item.id)
+                addtocart(item._id)
             }
             //Else displaying signup page
             else {
@@ -193,7 +183,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                             <span>Total No. of reviews posted till now: {reviews.length}</span>
                             <span><ReactStars count={5} size={24} value={avg} color2={'#ffd700'} edit={false} /></span>
                         </div>
-                        <ReviewForm itemId={item.id} postReview={postReview} history={history} orders={orders} />
+                        <ReviewForm itemId={item._id} postReview={postReview} history={history} orders={orders} />
                     </div>
                 </main>
 
@@ -244,11 +234,11 @@ const NewspaperDetail = (props) => {
                     </div>
                     {/* Calling RenderItem function by sending required properties */}
                     <div className="row">
-                        <RenderItem addtocart={props.addtocart} item={props.paperSelected} reviews={props.reviews} postReview={props.postReview} orders={props.checkorders} />
+                        <RenderItem addtocart={props.addtocart} item={props.paperSelected} reviews={props.paperSelected.reviews} postReview={props.postReview} orders={props.checkorders} />
                     </div>
                     {/* Calling RenderReviews function by sending appropriate properties */}
                     <div className="row">
-                        <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess} />
+                        <RenderReviews reviews={props.paperSelected.reviews}/>
                     </div>
                 </div>
             </div>

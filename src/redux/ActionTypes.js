@@ -42,12 +42,6 @@ export const ADD_BLOGS = 'ADD_BLOGS';
 //appending newly added blog to the existing blogs
 export const ADD_BLOG = 'ADD_BLOG';
 
-//REVIEWS
-//appending newly added review to the existing reviews
-export const ADD_REVIEW = 'ADD_REVIEW';
-export const REVIEWS_FAILED = 'REVIEWS_FAILED';
-//stores the existing reviews in an array
-export const ADD_REVIEWS = 'ADD_REVIEWS';
 
 //TOPRATED
 export const TOP_RATED_NEWSPAPERS = 'TOP_RATED_NEWSPAPERS';
