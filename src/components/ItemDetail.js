@@ -29,14 +29,20 @@ class ReviewForm extends React.Component {
         //User should be valid
         if (user_real) {
             console.log('validated user');
+            let filter_review = this.props.reviews.filter((review) => review.author === user_real)
             let cartItems = []
             cartItems = this.props.orders.map((order) => order.cart.map((item) => (item._id)))
             let flag = cartItems.some((value) => value.some((id) => (id === this.props.itemId)))
             //If user has subscribed that item, then the forms opens
             if (flag) {
-                this.setState({
-                    isModalOpen: !this.state.isModalOpen
-                })
+                if (filter_review.length == 0){
+                    this.setState({
+                        isModalOpen: !this.state.isModalOpen
+                    })
+                }
+                else{
+                    alert("You can give your review only once.")
+                }
             }
             //Else a alert message arrives
             else {
@@ -54,7 +60,7 @@ class ReviewForm extends React.Component {
     //Calling postReview function which posts reviews to the server
     handleSubmit(values) {
         this.toggleModal();
-        this.props.postReview(this.props.itemId, parseInt(values.rating), user_real, values.review);
+        this.props.postReview(this.props.itemId, values.rating, user_real, values.review);
     }
 
     render() {
@@ -109,7 +115,7 @@ function RenderReviews({ reviews, errMess }) {
                         {/* <Stagger in> */}
                         {reviews.map((review) => (
                             // <Fade in> 
-                            <li key={review.id}>
+                            <li key={review._id}>
                                 <p>{review.review}</p>
                                 <ReactStars count={5} size={24} value={review.rating} color2={'#ffd700'} edit={false} />
                                 <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.updatedAt)))}</p>
@@ -138,7 +144,9 @@ function RenderReviews({ reviews, errMess }) {
 
 //Function displaying all the details of selected item
 function RenderItem({ item, addtocart, reviews, postReview, orders }) {
+
     //Finding average of ratings given to the selected item
+
     var sum = 0, avg = 0;
     if (reviews.length) {
         sum = reviews.map(review => review.rating).reduce((r1, r2) => r1 + r2, 0);
@@ -188,6 +196,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                             <span><ReactStars count={5} size={24} value={avg} color2={'#ffd700'} edit={false} /></span>
                         </div>
                         <ReviewForm itemId={item._id} postReview={postReview} history={history} orders={orders} />
+                        <ReviewForm itemId={item._id} reviews={reviews} postReview={postReview} history={history} orders={orders} />
                     </div>
                 </main>
             </React.Fragment>
@@ -227,12 +236,12 @@ const ItemDetail = (props) => {
                 <div className="container">
                     {/* Calling RenderItem function by sending required properties */}
                     <div className="row">
-                        <RenderItem item={props.itemSelected} addtocart={props.addtocart} reviews={props.itemSelected.reviews} postReview={props.postReview} orders={props.checkorders} />
+                        <RenderItem item={props.itemSelected} addtocart={props.addtocart} reviews={props.reviews} postReview={props.postReview} orders={props.checkorders} />
                     </div>
                     {/* Calling RenderReviews function by sending appropriate properties */}
                     <div className="row">
                         {/* <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess} /> */}
-                        <RenderReviews reviews={props.itemSelected.reviews} />
+                        <RenderReviews reviews={props.reviews} />
                     </div>
                 </div>
             </div>

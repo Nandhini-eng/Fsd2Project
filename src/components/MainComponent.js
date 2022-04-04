@@ -35,6 +35,7 @@ const mapStateToProps = (state) => (
   {
     newspapers: state.newspapers,
     magazines: state.magazines,
+    reviews: state.reviews,
     cartitem: state.cartReducer,
     regusers: state.regusers,
     orders: state.orders,
@@ -56,7 +57,7 @@ const mapDispatchToProps = (dispatch) => ({
   filterNewspapersByLanguage: (newspapers, language) => dispatch(filterNewspapersByLanguage(newspapers, language)),
   sortNewspapers: (newspapers, sort) => dispatch(sortNewspapers(newspapers, sort)),
   sortMagazines: (magazines, sort) => dispatch(sortMagazines(magazines, sort)),
-  //fetchReviews: () => { dispatch(fetchReviews()) },
+  fetchReviews: () => { dispatch(fetchReviews()) },
   postReview: (itemId, rating, author, review) => dispatch(postReview(itemId, rating, author, review)),
   getproducts: (newspapers, magazines) => { dispatch(getproducts(newspapers, magazines)) },
   addtocart: (id) => { dispatch(addToCart(id)) },
@@ -78,6 +79,7 @@ class Main extends Component {
     this.props.fetchItems();
     this.props.fetchNewspapers();
     this.props.fetchMagazines();
+    this.props.fetchReviews();
     this.props.fetchUsers();
     this.props.fetchOrders();
     this.props.fetchBlogs();
@@ -102,6 +104,7 @@ class Main extends Component {
         <NewspapersMain
           newspapers={this.props.newspapers}
           filterByLanguage={this.props.filterNewspapersByLanguage}
+          reviews={this.props.reviews.reviews}
           sort_newspapers={this.props.sortNewspapers}
           topNewspapers={this.props.topRatedNewspapers}
         />
@@ -114,6 +117,7 @@ class Main extends Component {
           magazines={this.props.magazines}
           filterByCategory={this.props.filterMagsByCategory}
           filterByLanguage={this.props.filterMagsByLanguage}
+          reviews={this.props.reviews.reviews}
           sort_magazines={this.props.sortMagazines}
           topMagazines={this.props.topRatedMagazines}
         />
@@ -125,6 +129,8 @@ class Main extends Component {
         <NewspaperDetail paperSelected={this.props.newspapers.newspapers.filter((paper) => paper._id === match.params.paperId)[0]}
           isLoading={this.props.newspapers.isLoading}
           errMess={this.props.newspapers.errMess}
+          reviews={this.props.reviews.reviews.filter((review) => review.itemId === match.params.paperId)}
+          reviewsErrMess={this.props.reviews.errMess}
           postReview={this.props.postReview}
           addtocart={this.props.addtocart}
           getproducts={this.props.getproducts}
@@ -140,6 +146,8 @@ class Main extends Component {
         <MagazineDetail magSelected={this.props.magazines.magazines.filter((magazine) => magazine._id === match.params.magId)[0]}
           isLoading={this.props.magazines.isLoading}
           errMess={this.props.magazines.errMess}
+          reviews={this.props.reviews.reviews.filter((review) => review.itemId === match.params.magId)}
+          reviewsErrMess={this.props.reviews.errMess}
           postReview={this.props.postReview}
           addtocart={this.props.addtocart}
           getproducts={this.props.getproducts}
@@ -164,6 +172,8 @@ class Main extends Component {
           errMess={this.props.magazines.errMess}
           addtocart={this.props.addtocart}
           getproducts={this.props.getproducts}
+          reviews={this.props.reviews.reviews.filter((review) => review.itemId === match.params.itemId)}
+          reviewsErrMess={this.props.reviews.errMess}
           postReview={this.props.postReview}
           checkorders={this.props.orders.orders.filter((order) => order.user === user_real)}
         />

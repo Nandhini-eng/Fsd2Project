@@ -8,21 +8,32 @@ function RenderItem({ order }) {
 
   return (
     <div >
-      <Card style={{backgroundColor:"#c9ece4"}}>
-        <Link to={`/orders/${order._id}`}>
+      <Card style={{backgroundColor:"white" ,width:"fit-content"}}>
+        
           
+            <div className="col">
+            <div className="row" style={{float:"right",width:"500px"}} >
+            <Link to={`/orders/${order._id}`}> 
+            <p style={{fontSize:"30px", color:"black",alignContent:"center"}}>View more</p></Link> 
+            <hr></hr>
             
-            <div >
-            <p style={{fontSize:"30px", color:"black",alignContent:"center"}}>Click to view complete order details</p>
             {/* <CardHeader><h4>Order Id:{order._id}</h4></CardHeader> */}
-              <p style={{fontSize:"20px", color:"black"}}>{order.fullName}</p>
-              <p style={{fontSize:"20px",color:"black"}}>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(order.updatedAt)))}</p>
-              <p style={{fontSize:"20px",color:"black"}}>Total Amount:{order.price}</p>
+              <h6 style={{fontSize:"20px", color:"black",fontStyle:"normal"}}>Full Name : {order.fullName}</h6>
+              <h6 style={{fontSize:"20px",color:"black"}}>Order Placed : {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(order.updatedAt)))}</h6>
+              <h6 style={{fontSize:"20px",color:"black"}}>Total amount : {order.price}</h6>
+              <h6 style={{fontSize:"20px",color:"black"}}>Total items : {order.items}</h6>
+
 
           
             </div>
+            <div className="row" style={{float:"left"}}>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlxF19h6rpnDCEHDkWvamGkom43CBJO3lGxQ&usqp=CAU" alt="order" style={{width:"300px"}}></img>
+
+            </div>
+            </div>
+            
     
-        </Link>
+        
 
       </Card>
     </div>
@@ -54,7 +65,7 @@ function OrdersComponent(props) {
 
   const displayOrders =items.map((order) => {
           return (
-            <div style={{ width: 1000}}>
+            <div style={{ width: 1000,paddingLeft: "200px"}}>
               {order}
             </div>
           );
@@ -66,6 +77,7 @@ function OrdersComponent(props) {
         //Displying orders of a particular user if there is no error and atleast one order is placed by them
         return (
           <div className="container">
+
           <div >
             <div style={{ paddingLeft: "6%", paddingBottom: "20px"}}>
             <Breadcrumb style={{ fontSize: "20px",padding:"3px" }} className='bdcrum'>
