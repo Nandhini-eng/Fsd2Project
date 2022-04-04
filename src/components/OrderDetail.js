@@ -18,16 +18,21 @@ function RenderOrders({order}){
             <div className={styles.cart__items}>
   
               {/* we send each items in cart of cart state to cartitem component to render it as card aong with styling */}
-              <div>
-                <h7 style={{color:"white"}}>Order id : {order._id}</h7>
+              <div className="container" style={{backgroundColor:"#dee2e6",width:"600px",borderRadius:"5px",paddingLeft:"100px"}}>
+                <div>
+                <h7 style={{color:"black"}}>Order id : {order._id}</h7>
                 <br></br>
-                <h7 style={{color:"white"}}>Total Price : {order.price}</h7>
+                <h7 style={{color:"black"}}>Total Price : {order.price}</h7>
                 <br></br>
-                <h7 style={{color:"white"}}>Order Placed At : {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(order.updatedAt)))}</h7>
+                <h7 style={{color:"black"}}>Order Placed At : {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(order.updatedAt)))}</h7>
                 <br></br>
-                <h7 style={{color:"white"}}>Address : {order.address}</h7>
+                <h7 style={{color:"black"}}>Address : {order.address} , {order.city} , {order.postalCode}</h7>
+                <br></br>
+              
                 
-              </div>
+                <hr/>
+              
+                </div>
               {order.cart.map((item) => (
                 <Fade left>
                   <Pulse>
@@ -35,6 +40,7 @@ function RenderOrders({order}){
                 </Pulse>
                 </Fade>
               ))}
+            </div>
             </div>
             
           </div>
