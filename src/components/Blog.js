@@ -47,7 +47,7 @@ class Blog extends Component {
                                 <div className="col-4" >
                                     <Card style={{ backgroundColor: '#f2eeed' }}>
                                         <CardBody >
-                                            <CardText><h2 style={{ fontFamily: 'Posterama', color: 'darkolivegreen', fontWeight: '550' }}>{blog.topic}</h2></CardText>
+                                            <CardText><h2 style={{ fontFamily: 'Posterama', color: 'darkolivegreen', fontWeight: '550' }}>{blog.title}</h2></CardText>
                                             <CardText ><h4 style={{ fontFamily: 'Dubai', color: 'purple', fontSize: '20px' }}>{blog.message}</h4></CardText>
                                             <CardText ><h6 style={{ fontFamily: 'Maiandra GD', float: 'right', color: 'chocolate', fontSize: '18px' }}>-{blog.user}</h6></CardText>
                                         </CardBody>

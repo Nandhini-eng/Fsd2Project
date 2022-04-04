@@ -48,7 +48,6 @@ const MagazinesMain = (props) => {
   //calculating average rating for all magazines and storing them in an array along with magazine ids
 
   var items_reviews = [];
-
   var item_review = {};
   var len = props.magazines.magazines.length;
   var data = props.magazines.magazines; 
@@ -68,6 +67,7 @@ const MagazinesMain = (props) => {
   // In an array, storing the average rating values along with ids of only those magazines for which average rating lies between 4 and 5.
   var filtered_revs = items_reviews.filter(rev => rev.avgRating >= 4 && rev.avgRating <= 5)
 
+  
   //Calling the render item function for each and every filtered magazine
   const items = render_items.map((item) => {
     var review = items_reviews.filter(rev => rev.itemId === item._id)

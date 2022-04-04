@@ -59,7 +59,7 @@ function Searchc({ items }) {
   //we call above render item function for each and every filtered item
 
   const display = filteredItems.map((item) => {
-    if (searchField != "") {
+    if (searchField !== "") {
 
       return (
         <div style={{ width: 300 }}>

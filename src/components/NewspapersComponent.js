@@ -41,7 +41,6 @@ const NewspapersMain = (props) => {
 
   //calculating average rating for all newspapers and storing them in an array along with newspaper ids
   var items_reviews = [];
-
   var item_review = {};
   var len = props.newspapers.newspapers.length;
   var data = props.newspapers.newspapers;
@@ -61,6 +60,7 @@ const NewspapersMain = (props) => {
 
   // In an array, storing the average rating values along with ids of only those newspapers for which average rating lies between 4 and 5.
   var filtered_revs = items_reviews.filter(rev => rev.avgRating >= 4 && rev.avgRating <= 5);
+
 
 
   //Sending each newspaper to RenderItem function 
@@ -106,6 +106,7 @@ const NewspapersMain = (props) => {
       </div>
     );
   }
+
   //Displaying error message if newspapers are failed to load 
   else if (props.newspapers.errMess) {
     return (
@@ -118,6 +119,7 @@ const NewspapersMain = (props) => {
       </div>
     );
   }
+
   //Displaying newspapers in the form of card
   else {
     return (

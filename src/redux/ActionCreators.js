@@ -328,9 +328,10 @@ export const adduser = (user4) => ({
 //Action to post to server with data obtained from signup form
 export const postsignup = (username, password) => (dispatch) => {
   const newuser = {
-    user4: username + ":" + password
+    username: username,
+    password: password
   };
-  return fetch(baseUrl + 'regusers', {
+  return fetch(baseUrl + 'users', {
     method: "POST",
     body: JSON.stringify(newuser),
     headers: {
@@ -351,13 +352,13 @@ export const postsignup = (username, password) => (dispatch) => {
         throw error;
       })
     .then(response => response.json())
-    .then(details => adduser(details))
-    .catch(error => { console.log('Post SignUp'); alert('Your details could not be posted\nError: '); });
+    .then(details => {alert("You are successfully registered, login to continue more...");adduser(details)})
+    .catch(error => { console.log('Post SignUp'); alert('Your details could not be posted signup\nError: '); });
 };
 
 //Fetching users from server
 export const fetchUsers = () => (dispatch) => {
-  return fetch(baseUrl + 'regusers')
+  return fetch(baseUrl + 'users')
     .then(response => {
       if (response.ok) {
         return response;
@@ -546,7 +547,7 @@ export const postblog = (username, topic, message) => (dispatch) => {
 
   const newblog = {
     user: username,
-    topic: topic,
+    title: topic,
     message: message
   };
   return fetch(baseUrl + 'blogs', {
@@ -571,7 +572,7 @@ export const postblog = (username, topic, message) => (dispatch) => {
       })
     .then(response => response.json())
     .then(response => dispatch(addblog(response)))
-    .catch(error => { console.log('Post Feedback'); alert('Your Feedback could not be posted\nError: '); });
+    .catch(error => { console.log('Post Blog'); alert('Your Blog could not be posted\nError: '); });
 };
 
 //Fetching blogs
