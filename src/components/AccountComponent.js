@@ -11,10 +11,10 @@ let filter_review, items_newspaper, items_magazines, items
 //My account function
 function Account(props) {
     console.log(user_real)
-    //console.log(props.reviews.reviews)
-    //filter_review = props.reviews.reviews
+    console.log(props.reviews.reviews)
+    filter_review = props.reviews.reviews
     //Filtering reviews based on user_name
-    //filter_review = filter_review.filter((review) => review.author === user_real)
+    filter_review = filter_review.filter((review) => review.author === user_real)
     items_newspaper = props.newspapers.newspapers
     console.log(items_newspaper)
     items_magazines = props.magazines.magazines
@@ -48,7 +48,7 @@ function Account(props) {
                         <div></div>
                     }
                 </div>
-                {/* <div>
+                <div>
                     
                     {user_real ?
                         <div>
@@ -93,7 +93,7 @@ function Account(props) {
                             </Jump>
                         </div>
                     }
-                </div> */}
+                </div>
             </div>
         </div>
     );
