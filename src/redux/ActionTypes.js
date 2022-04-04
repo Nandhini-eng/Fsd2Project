@@ -32,7 +32,9 @@ export const GET_PRODUCTS='GET_PRODUCTS';
 export const CART_EMPTY = 'CART_EMPTY';
 
 //REVIEWS
-export const ADD_REVIEW='ADD_REVIEW';
+export const ADD_REVIEW = 'ADD_REVIEW';
+export const ADD_REVIEWS = 'ADD_REVIEWS';
+export const REVIEWS_FAILED = 'REVIEWS_FAILED';
 
 //ORDERS
 export const ORDER_PLACED='ORDER_PLACED';

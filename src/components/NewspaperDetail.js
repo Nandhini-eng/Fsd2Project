@@ -24,25 +24,31 @@ class ReviewForm extends Component {
         this.toggleModal = this.toggleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     //Handling opening of form which takes review for the selected newspaper
     toggleModal() {
         //User should be valid
         if (user_real) {
             console.log('validated user');
+            let filter_review = this.props.reviews.filter((review) => review.author === user_real)
             let cartItems = []
             cartItems = this.props.orders.map((order) => order.cart.map((item) => (item._id)))
             let flag = cartItems.some((value) => value.some((id) => (id === this.props.itemId)))
             //If user has subscribed that item, then the forms opens
             if (flag) {
-                this.setState({
-                    isModalOpen: !this.state.isModalOpen
-                })
+                if (filter_review.length == 0){
+                    this.setState({
+                        isModalOpen: !this.state.isModalOpen
+                    })
+                }
+                else{
+                    alert("You can give your review only once.")
+                }
             }
             //Else a alert message arrives 
             else {
                 alert("You cannot submit review as you have not subscibed this item!!")
             };
-
         }
         //User should login if they are invalid
         else {
@@ -50,10 +56,11 @@ class ReviewForm extends Component {
             this.props.history.push('/signup');
         }
     }
+
     //Calling postReview function which posts reviews to the server
     handleSubmit(values) {
         this.toggleModal();
-        this.props.postReview(this.props.itemId, parseInt(values.rating), user_real, values.review);
+        this.props.postReview(this.props.itemId, values.rating, user_real, values.review);
     }
 
     render() {
@@ -133,6 +140,7 @@ function RenderReviews({ reviews }) {
 
 //Function displaying all the details of selected newspaper 
 function RenderItem({ item, addtocart, reviews, postReview, orders }) {
+
     //Finding average of ratings given to the selected newspaper
     var sum = 0, avg = 0;
     if (reviews.length) {
@@ -183,7 +191,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                             <span>Total No. of reviews posted till now: {reviews.length}</span>
                             <span><ReactStars count={5} size={24} value={avg} color2={'#ffd700'} edit={false} /></span>
                         </div>
-                        <ReviewForm itemId={item._id} postReview={postReview} history={history} orders={orders} />
+                        <ReviewForm itemId={item._id} reviews={reviews} postReview={postReview} history={history} orders={orders} />
                     </div>
                 </main>
 
@@ -234,11 +242,11 @@ const NewspaperDetail = (props) => {
                     </div>
                     {/* Calling RenderItem function by sending required properties */}
                     <div className="row">
-                        <RenderItem addtocart={props.addtocart} item={props.paperSelected} reviews={props.paperSelected.reviews} postReview={props.postReview} orders={props.checkorders} />
+                        <RenderItem addtocart={props.addtocart} item={props.paperSelected} reviews={props.reviews} postReview={props.postReview} orders={props.checkorders} />
                     </div>
                     {/* Calling RenderReviews function by sending appropriate properties */}
                     <div className="row">
-                        <RenderReviews reviews={props.paperSelected.reviews}/>
+                        <RenderReviews reviews={props.reviews}/>
                     </div>
                 </div>
             </div>
