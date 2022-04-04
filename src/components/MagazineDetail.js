@@ -24,21 +24,26 @@ class ReviewForm extends Component {
         this.toggleModal = this.toggleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     //Handling opening of form which takes review for the selected magazine
     toggleModal() {
         //User should be valid
         if (user_real) {
             console.log('validated user');
+            let filter_review = this.props.reviews.filter((review) => review.author === user_real)
             let cartItems = []
             cartItems = this.props.orders.map((order) => order.cart.map((item) => (item._id)))
-            console.log(cartItems)
             let flag = cartItems.some((value) => value.some((id) => (id === this.props.itemId)))
-            console.log(cartItems)
             //If user has subscribed that item, then the forms opens
             if (flag) {
-                this.setState({
-                    isModalOpen: !this.state.isModalOpen
-                })
+                if (filter_review.length == 0){
+                    this.setState({
+                        isModalOpen: !this.state.isModalOpen
+                    })
+                }
+                else{
+                    alert("You can give your review only once.")
+                }
             }
             //Else a alert message arrives
             else {
@@ -51,10 +56,11 @@ class ReviewForm extends Component {
             this.props.history.push('/signup');
         }
     }
+
     //Calling postReview function which posts reviews to the server
     handleSubmit(values) {
         this.toggleModal();
-        this.props.postReview(this.props.itemId, parseInt(values.rating), user_real, values.review);
+        this.props.postReview(this.props.itemId, values.rating, user_real, values.review);
     }
 
     render() {
@@ -135,6 +141,7 @@ function RenderReviews({ reviews }) {
 
 //Function displaying all the details of selected magazine 
 function RenderItem({ item, addtocart, reviews, postReview, orders }) {
+
     //Finding average of ratings given to the selected magazine
     var sum = 0, avg = 0;
     if (reviews.length) {
@@ -165,7 +172,6 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                     </div>
                     {/* Displaying details in the right side */}
                     <div className="right-column">
-
                         <div className="product-description">
                             <h3>{item.name}</h3>
                             <span>{item.language}</span>
@@ -184,7 +190,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                             <span>Total No. of reviews posted till now: {reviews.length}</span>
                             <span><ReactStars count={5} size={24} value={avg} color2={'#ffd700'} edit={false} /></span>
                         </div>
-                        <ReviewForm itemId={item._id} postReview={postReview} history={history} orders={orders} />
+                        <ReviewForm itemId={item._id} reviews={reviews} postReview={postReview} history={history} orders={orders} />
                     </div>
                 </main>
             </React.Fragment>
@@ -234,11 +240,11 @@ const MagazineDetail = (props) => {
                     </div>
                     {/* Calling RenderItem function by sending required properties */}
                     <div className="row">
-                        <RenderItem item={props.magSelected} addtocart={props.addtocart} reviews={props.magSelected.reviews} postReview={props.postReview} orders={props.checkorders} />
+                        <RenderItem item={props.magSelected} addtocart={props.addtocart} reviews={props.reviews} postReview={props.postReview} orders={props.checkorders} />
                     </div>
                     {/* Calling RenderReviews function by sending appropriate properties */}
                     <div className="row">
-                        <RenderReviews reviews={props.magSelected.reviews} />
+                        <RenderReviews reviews={props.reviews} />
                     </div>
                 </div>
             </div>

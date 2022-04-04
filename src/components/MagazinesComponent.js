@@ -50,12 +50,12 @@ const MagazinesMain = (props) => {
   var items_reviews = [];
   var item_review = {};
   var len = props.magazines.magazines.length;
-  var data = props.magazines.magazines;
+  var data = props.magazines.magazines; 
 
   for (var i = 0; i < len; i++) {
     var sum = 0, avg = 0;
     item_review.itemId = data[i]._id;
-    var revs = data[i].reviews;
+    var revs = props.reviews.filter(rev => rev.itemId === data[i]._id);
     if (revs.length) {
       sum = revs.map(rev => rev.rating).reduce((r1, r2) => r1 + r2, 0);
       avg = sum / revs.length;
