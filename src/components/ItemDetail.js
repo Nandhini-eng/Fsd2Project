@@ -195,8 +195,9 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                             <span>Total No. of reviews posted till now: {reviews.length}</span>
                             <span><ReactStars count={5} size={24} value={avg} color2={'#ffd700'} edit={false} /></span>
                         </div>
-                        <ReviewForm itemId={item._id} postReview={postReview} history={history} orders={orders} />
+                        
                         <ReviewForm itemId={item._id} reviews={reviews} postReview={postReview} history={history} orders={orders} />
+
                     </div>
                 </main>
             </React.Fragment>
