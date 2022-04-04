@@ -11,6 +11,7 @@ import Cart from './Cart';
 import { Login, user_real } from './Login';
 import NewspaperDetail from './NewspaperDetail';
 import MagazinesMain from './MagazinesComponent';
+import OrderDetail from './OrderDetail';
 import ItemDetail from './ItemDetail';
 import MagazineDetail from './MagazineDetail';
 import Signup from './Signup';
@@ -157,6 +158,13 @@ class Main extends Component {
       );
     }
 
+
+    const OrderWithId = ({ match }) => {
+      return (
+        <OrderDetail orderSelected={this.props.orders.orders.filter((order) => order._id === match.params.orderId)[0]} />
+      );
+    }
+
     const ItemWithId = ({ match }) => {
       return (
         <ItemDetail itemSelected={this.props.cartitem.items.filter((item) => item._id === match.params.itemId)[0]}
@@ -167,11 +175,12 @@ class Main extends Component {
           reviews={this.props.reviews.reviews.filter((review) => review.itemId === match.params.itemId)}
           reviewsErrMess={this.props.reviews.errMess}
           postReview={this.props.postReview}
-          checkorders={this.props.orders.orders}
+          checkorders={this.props.orders.orders.filter((order) => order.user === user_real)}
         />
       );
     }
-
+   
+  
 
     return (
       <div>
@@ -179,6 +188,7 @@ class Main extends Component {
         {/* Going to appropriate page */}
         <Switch location={this.props.location}>
           <Route path='/home' component={HomePage} />
+          <Route path='/orders/:orderId' component={OrderWithId} />
           <Route exact path='/login' component={() => <Login {...this.props} />} />
           <Route exact path='/signup' component={() => <Signup {...this.props} />} />
           <Route exact path='/newspapers' component={NewspapersMainPage} />
@@ -193,6 +203,7 @@ class Main extends Component {
           <Route path='/searchc/:itemId' component={ItemWithId} />
           <Route path='/checkout' component={() => <Checkout resetCheckoutForm={this.props.resetCheckoutForm} postOrder={this.props.postOrder} cart={this.props.cartitem.cart} />} />
           <Route path='/orders' component={() => <OrdersComponent orders={this.props.orders.orders.filter((order) => order.user === user_real)} ordersErrMess={this.props.orders.errMess} />} />
+          
           <Route path='/blog' component={() => <Blog {...this.props} />} />
           <Redirect to="/home" />
         </Switch>

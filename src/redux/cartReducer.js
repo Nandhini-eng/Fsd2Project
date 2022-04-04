@@ -13,15 +13,15 @@ export const cartReducer = (state = { cart: [], items: [], currentItem: null }, 
 
         case ActionTypes.ADD_TO_CART:
             //we check which item to be added to cart
-            const item = state.items.find((item) => item.id === action.payload.id)
+            const item = state.items.find((item) => item._id === action.payload.id)
             //if item is in cart it returns true else false
-            const inCart = state.cart.find((item) => item.id === action.payload.id ? true : false)
+            const inCart = state.cart.find((item) => item._id === action.payload.id ? true : false)
 
             //if item is in cart item quantity is increased else quantity is set to 1
             return {
                 ...state,
                 cart: inCart ?
-                    state.cart.map((item) => item.id === action.payload.id ? { ...item, qty: item.qty + 1 } : item) :
+                    state.cart.map((item) => item._id === action.payload.id ? { ...item, qty: item.qty + 1 } : item) :
                     [...state.cart, { ...item, qty: 1 }],
             };
 
@@ -29,14 +29,14 @@ export const cartReducer = (state = { cart: [], items: [], currentItem: null }, 
         case ActionTypes.REMOVE_FROM_CART:
             return {
                 ...state,
-                cart: state.cart.filter((item) => item.id !== action.payload.id),
+                cart: state.cart.filter((item) => item._id !== action.payload.id),
             };
 
         //to adjust quantity we increase quantity of item to value entered by user
         case ActionTypes.ADJUST_QTY:
             return {
                 ...state,
-                cart: state.cart.map((item) => item.id === action.payload.id ? { ...item, qty: +action.payload.qty } : item)
+                cart: state.cart.map((item) => item._id === action.payload.id ? { ...item, qty: +action.payload.qty } : item)
             };
 
         //current item is loaded
