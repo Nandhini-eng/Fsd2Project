@@ -30,7 +30,7 @@ function Cart(props) {
   //all the below classnames are imported from cart.module.css 
   //below chain of if loops is to just display items for plural number of items and item for single item
 
-  console.log(totalItems)
+  
   if (totalItems === 1) {
     return (
       <div style={{ backgroundImage: `url("https://wallpaperaccess.com/full/2667044.jpg")` }}>
@@ -42,7 +42,7 @@ function Cart(props) {
             {props.cart.map((item) => (
               <Fade left>
                 <Pulse>
-              <CartItem key={item.id} item={item} />
+              <CartItem key={item._id} item={item} />
               </Pulse>
               </Fade>
             ))}
@@ -75,7 +75,7 @@ function Cart(props) {
             
               <Fade left>
                 <Pulse>
-              <CartItem key={item.id} item={item} />
+              <CartItem key={item._id} item={item} />
               </Pulse>
               </Fade>
             
@@ -105,7 +105,7 @@ function Cart(props) {
               
               <Fade left>
                 <Pulse>
-              <CartItem key={item.id} item={item} />
+              <CartItem key={item._id} item={item} />
               </Pulse>
               </Fade>
             

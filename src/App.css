@@ -59,6 +59,12 @@ h5{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+
+h6{
+  font-size: 25px; 
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 p{
   font-size: 17px;
   font-family: Georgia, 'Times New Roman', Times, serif;

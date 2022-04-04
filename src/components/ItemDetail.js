@@ -30,7 +30,7 @@ class ReviewForm extends React.Component {
         if (user_real) {
             console.log('validated user');
             let cartItems = []
-            cartItems = this.props.orders.map((order) => order.cart.map((item) => (item.id)))
+            cartItems = this.props.orders.map((order) => order.cart.map((item) => (item._id)))
             let flag = cartItems.some((value) => value.some((id) => (id === this.props.itemId)))
             //If user has subscribed that item, then the forms opens
             if (flag) {
@@ -151,7 +151,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
         const IsLogin = () => {
             if (user_real) {
                 console.log('yes')
-                addtocart(item.id)
+                addtocart(item._id)
             }
             //Else displaying signup page
             else {
@@ -187,7 +187,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                             <span>Total No. of reviews posted till now: {reviews.length}</span>
                             <span><ReactStars count={5} size={24} value={avg} color2={'#ffd700'} edit={false} /></span>
                         </div>
-                        <ReviewForm itemId={item.id} postReview={postReview} history={history} orders={orders} />
+                        <ReviewForm itemId={item._id} postReview={postReview} history={history} orders={orders} />
                     </div>
                 </main>
             </React.Fragment>

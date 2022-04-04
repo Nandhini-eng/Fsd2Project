@@ -30,7 +30,7 @@ class ReviewForm extends Component {
         if (user_real) {
             console.log('validated user');
             let cartItems = []
-            cartItems = this.props.orders.map((order) => order.cart.map((item) => (item.id)))
+            cartItems = this.props.orders.map((order) => order.cart.map((item) => (item._id)))
             let flag = cartItems.some((value) => value.some((id) => (id === this.props.itemId)))
             //If user has subscribed that item, then the forms opens
             if (flag) {

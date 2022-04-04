@@ -11,6 +11,7 @@ import Cart from './Cart';
 import { Login, user_real } from './Login';
 import NewspaperDetail from './NewspaperDetail';
 import MagazinesMain from './MagazinesComponent';
+import OrderDetail from './OrderDetail';
 import ItemDetail from './ItemDetail';
 import MagazineDetail from './MagazineDetail';
 import Signup from './Signup';
@@ -55,7 +56,7 @@ const mapDispatchToProps = (dispatch) => ({
   filterNewspapersByLanguage: (newspapers, language) => dispatch(filterNewspapersByLanguage(newspapers, language)),
   sortNewspapers: (newspapers, sort) => dispatch(sortNewspapers(newspapers, sort)),
   sortMagazines: (magazines, sort) => dispatch(sortMagazines(magazines, sort)),
-  fetchReviews: () => { dispatch(fetchReviews()) },
+  //fetchReviews: () => { dispatch(fetchReviews()) },
   postReview: (itemId, rating, author, review) => dispatch(postReview(itemId, rating, author, review)),
   getproducts: (newspapers, magazines) => { dispatch(getproducts(newspapers, magazines)) },
   addtocart: (id) => { dispatch(addToCart(id)) },
@@ -129,7 +130,7 @@ class Main extends Component {
           getproducts={this.props.getproducts}
           newspapers={this.props.newspapers}
           magazines={this.props.magazines}
-          checkorders={this.props.orders.orders.filter((order) => order.user === user_real)}
+          checkorders={this.props.orders.orders.filter((order)=>order.user===user_real)}
         />
       );
     }
@@ -144,8 +145,15 @@ class Main extends Component {
           getproducts={this.props.getproducts}
           newspapers={this.props.newspapers}
           magazines={this.props.magazines}
-          checkorders={this.props.orders.orders.filter((order) => order.user === user_real)}
+          checkorders={this.props.orders.orders.filter((order)=>order.user===user_real)}
         />
+      );
+    }
+
+
+    const OrderWithId = ({ match }) => {
+      return (
+        <OrderDetail orderSelected={this.props.orders.orders.filter((order) => order._id === match.params.orderId)[0]} />
       );
     }
 
@@ -161,7 +169,8 @@ class Main extends Component {
         />
       );
     }
-
+   
+  
 
     return (
       <div>
@@ -169,6 +178,7 @@ class Main extends Component {
         {/* Going to appropriate page */}
         <Switch location={this.props.location}>
           <Route path='/home' component={HomePage} />
+          <Route path='/orders/:orderId' component={OrderWithId} />
           <Route exact path='/login' component={() => <Login {...this.props} />} />
           <Route exact path='/signup' component={() => <Signup {...this.props} />} />
           <Route exact path='/newspapers' component={NewspapersMainPage} />
@@ -183,6 +193,7 @@ class Main extends Component {
           <Route path='/searchc/:itemId' component={ItemWithId} />
           <Route path='/checkout' component={() => <Checkout resetCheckoutForm={this.props.resetCheckoutForm} postOrder={this.props.postOrder} cart={this.props.cartitem.cart} />} />
           <Route path='/orders' component={() => <OrdersComponent orders={this.props.orders.orders.filter((order) => order.user === user_real)} ordersErrMess={this.props.orders.errMess} />} />
+          
           <Route path='/blog' component={() => <Blog {...this.props} />} />
           <Redirect to="/home" />
         </Switch>
