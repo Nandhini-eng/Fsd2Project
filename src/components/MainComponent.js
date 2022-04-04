@@ -126,7 +126,7 @@ class Main extends Component {
     //Sending appropriate details from json server to Newspaper detail component
     const NewspaperWithId = ({ match }) => {
       return (
-        <NewspaperDetail paperSelected={this.props.newspapers.newspapers.filter((paper) => paper.id === parseInt(match.params.paperId, 10))[0]}
+        <NewspaperDetail paperSelected={this.props.newspapers.newspapers.filter((paper) => paper._id === (match.params.paperId))[0]}
           isLoading={this.props.newspapers.isLoading}
           errMess={this.props.newspapers.errMess}
           reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.paperId, 10))}
@@ -136,14 +136,14 @@ class Main extends Component {
           getproducts={this.props.getproducts}
           newspapers={this.props.newspapers}
           magazines={this.props.magazines}
-          checkorders={this.props.orders.orders}
+          checkorders={this.props.orders.orders.filter((order) => order.user === user_real)}
         />
       );
     }
     //Sending appropriate details from json server to Magazines detail component
     const MagazineWithId = ({ match }) => {
       return (
-        <MagazineDetail magSelected={this.props.magazines.magazines.filter((magazine) => magazine.id === parseInt(match.params.magId, 10))[0]}
+        <MagazineDetail magSelected={this.props.magazines.magazines.filter((magazine) => magazine._id === (match.params.magId))[0]}
           isLoading={this.props.magazines.isLoading}
           errMess={this.props.magazines.errMess}
           reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.magId, 10))}
@@ -153,7 +153,7 @@ class Main extends Component {
           getproducts={this.props.getproducts}
           newspapers={this.props.newspapers}
           magazines={this.props.magazines}
-          checkorders={this.props.orders.orders}
+          checkorders={this.props.orders.orders.filter((order) => order.user === user_real)}
         />
       );
     }
@@ -170,7 +170,7 @@ class Main extends Component {
           reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.itemId, 10))}
           reviewsErrMess={this.props.reviews.errMess}
           postReview={this.props.postReview}
-          checkorders={this.props.orders.orders}
+          checkorders={this.props.orders.orders.filter((order) => order.user === user_real)}
         />
       );
     }

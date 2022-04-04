@@ -30,7 +30,7 @@ class ReviewForm extends Component {
         if (user_real) {
             console.log('validated user');
             let cartItems = []
-            cartItems = this.props.orders.map((order) => order.cart.map((item) => (item.id)))
+            cartItems = this.props.orders.map((order) => order.cart.map((item) => (item._id)))
             let flag = cartItems.some((value) => value.some((id) => (id === this.props.itemId)))
             //If user has subscribed that item, then the forms opens
             if (flag) {
@@ -107,7 +107,7 @@ function RenderReviews({ reviews, errMess }) {
                     <ul className="product-description">
                         <h3>REVIEWS</h3>
                         {reviews.map((review) => (
-                            <li key={review.id}>
+                            <li key={review._id}>
                                 <p>{review.review}</p>
                                 <ReactStars count={5} size={24} value={review.rating} color2={'#ffd700'} edit={false} />
                                 <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.date)))}</p>
@@ -149,14 +149,14 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
         sum = reviews.map(review => review.rating).reduce((r1, r2) => r1 + r2, 0);
         avg = sum / reviews.length;
     }
-
+    
     const history = useHistory();
     if (item != null) {
         //Calling addtocart function if the user is logged in
         const IsLogin = () => {
             if (user_real) {
                 console.log('yes')
-                addtocart(item.id)
+                addtocart(item._id)
             }
             //Else displaying signup page
             else {
@@ -193,7 +193,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                             <span>Total No. of reviews posted till now: {reviews.length}</span>
                             <span><ReactStars count={5} size={24} value={avg} color2={'#ffd700'} edit={false} /></span>
                         </div>
-                        <ReviewForm itemId={item.id} postReview={postReview} history={history} orders={orders} />
+                        <ReviewForm itemId={item._id} postReview={postReview} history={history} orders={orders} />
                     </div>
                 </main>
 
@@ -209,6 +209,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
 
 
 const NewspaperDetail = (props) => {
+    console.log(props.paperSelected)
     //Calling the loading component when the selected newspaper is loading
     if (props.isLoading) {
         return (

@@ -16,7 +16,8 @@ function RenderItem({ item, rating }) {
   return (
     <div className="zoom">
       <Card>
-        <Link to={`/newspapers/${item.id}`}>
+        <Link to={`/newspapers/${item._id}`}>
+          
           <Pulse duration={1000}>
             <CardImg width="400px" height="400px" src={baseUrl + item.image} alt={item.name} style={{ overflow: "hidden" }}
               onMouseOver={(e) => (e.currentTarget.style = { transform: "scale(1.25)", overflow: "hidden" })}
@@ -65,10 +66,11 @@ const NewspapersMain = (props) => {
 
   //Sending each newspaper to RenderItem function 
   const items = props.newspapers.filteredItems.map((item) => {
-    var review = items_reviews.filter(rev => rev.itemId === item.id)
+    var review = items_reviews.filter(rev => rev.itemId === item._id)
     return (
-      <div key={item.id}>
-        <RenderItem item={item} rating={review[0].avgRating} />
+      <div key={item._id}>
+        {/* <RenderItem item={item} rating={review[0].avgRating} /> */}
+        <RenderItem item={item} rating={0} />
         <br />
       </div>
     )
@@ -90,7 +92,7 @@ const NewspapersMain = (props) => {
     .slice(pagesVisited, pagesVisited + papersPerPage)
     .map((paper) => {
       return (
-        <div style={{ width: 260 }}>
+        <div style={{ width: 250 }}>
           {paper}
         </div>
       );
@@ -178,7 +180,7 @@ const NewspapersMain = (props) => {
             <div className="row" style={{ width: "80%", float: "right" }} >
               <Fade right>
 
-                {/* we call pagination for total magazines */}
+                {/* we call pagination for total newspapers */}
                 {displayPapers}
                 <ReactPaginate
                   previousLabel={"Previous"}

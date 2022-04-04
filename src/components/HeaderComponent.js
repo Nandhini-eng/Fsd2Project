@@ -17,7 +17,7 @@ class Header extends Component {
     };
     this.toggleNav = this.toggleNav.bind(this);
   }
-  //Handling nav bar toogle mode 
+  //Handling nav bar toggle mode 
   toggleNav() {
     this.setState({
       isNavOpen: !this.state.isNavOpen
@@ -121,7 +121,7 @@ class Header extends Component {
                   </NavLink>
                 </NavItem>
               </Nav>
-              <Nav className='ms-auto' navbar >
+              <Nav className='ms-auto' navbar style={{width:"17%"}} >
                 
                   {/* Cart page */}
                 <NavItem>
