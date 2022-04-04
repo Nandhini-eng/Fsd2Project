@@ -216,7 +216,7 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
   };
 
 
-  return fetch(baseUrl + 'feedback', {
+  return fetch(baseUrl + 'feedbacks', {
     method: "POST",
     body: JSON.stringify(newFeedback),
     headers: {
