@@ -16,7 +16,7 @@ function OrderItem({ item,id }) {
 
 
   return (
-    <div className={styles.cartItem}>
+    <div className={styles.cartItem} style={{width:"350px",paddingBottom:"3px"}}>
       <Link to={`/searchc/${item._id}`}>
         <img
           className={styles.cartItem__image}
@@ -26,7 +26,8 @@ function OrderItem({ item,id }) {
       </Link> 
       <div className={styles.cartItem__details}>
         <p className={styles.details__title}>{item.name}</p>
-        <p className={styles.details__price}>Rs {item.price}</p>
+        <p className={styles.details__price}>Price : Rs {item.price}</p>
+        <p className={styles.details__price}>Subscription : {item.qty} month(s)</p>
       </div>
       {/* <div className={styles.cartItem__actions}>
         <div className={styles.cartItem__qty}>
