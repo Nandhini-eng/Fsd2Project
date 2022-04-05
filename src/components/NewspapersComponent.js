@@ -17,7 +17,6 @@ function RenderItem({ item, rating }) {
     <div className="zoom">
       <Card>
         <Link to={`/newspapers/${item._id}`}>
-          
           <Pulse duration={1000}>
             <CardImg width="400px" height="400px" src={baseUrl + item.image} alt={item.name} style={{ overflow: "hidden" }}
               onMouseOver={(e) => (e.currentTarget.style = { transform: "scale(1.25)", overflow: "hidden" })}
@@ -40,18 +39,16 @@ function RenderItem({ item, rating }) {
 
 const NewspapersMain = (props) => {
 
-
-
   //calculating average rating for all newspapers and storing them in an array along with newspaper ids
   var items_reviews = [];
-
   var item_review = {};
   var len = props.newspapers.newspapers.length;
+  var data = props.newspapers.newspapers;
 
   for (var i = 0; i < len; i++) {
     var sum = 0, avg = 0;
-    item_review.itemId = i;
-    var revs = props.reviews.filter(rev => rev.itemId === i);
+    item_review.itemId = data[i]._id;
+    var revs = props.reviews.filter(rev => rev.itemId === data[i]._id);
     if (revs.length) {
       sum = revs.map(rev => rev.rating).reduce((r1, r2) => r1 + r2, 0);
       avg = sum / revs.length;
@@ -60,8 +57,10 @@ const NewspapersMain = (props) => {
     items_reviews.push({ ...item_review });
   }
   console.log(items_reviews)
+
   // In an array, storing the average rating values along with ids of only those newspapers for which average rating lies between 4 and 5.
   var filtered_revs = items_reviews.filter(rev => rev.avgRating >= 4 && rev.avgRating <= 5);
+
 
 
   //Sending each newspaper to RenderItem function 
@@ -69,8 +68,7 @@ const NewspapersMain = (props) => {
     var review = items_reviews.filter(rev => rev.itemId === item._id)
     return (
       <div key={item._id}>
-        {/* <RenderItem item={item} rating={review[0].avgRating} /> */}
-        <RenderItem item={item} rating={0} />
+        <RenderItem item={item} rating={review[0].avgRating} />
         <br />
       </div>
     )
@@ -108,6 +106,7 @@ const NewspapersMain = (props) => {
       </div>
     );
   }
+
   //Displaying error message if newspapers are failed to load 
   else if (props.newspapers.errMess) {
     return (
@@ -120,6 +119,7 @@ const NewspapersMain = (props) => {
       </div>
     );
   }
+
   //Displaying newspapers in the form of card
   else {
     return (

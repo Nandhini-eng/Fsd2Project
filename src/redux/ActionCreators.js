@@ -1,27 +1,14 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
+import axios from 'axios';
 
-//Function which fetches all the items from the server
-export const fetchItems = () => async (dispatch) => {
-  //fetches newspapers
-  const newspapers = await Promise.all([
-    fetch(baseUrl + 'newspapers').then(response => response.json()),
-
-  ]);
-  //fetches magazines
-  const magazines = await Promise.all([
-    fetch(baseUrl + 'magazines').then(response_1 => response_1.json())
-  ])
-  //Dispatching them to getproducts function 
-  return dispatch(getproducts(newspapers, magazines));
-
-}
 
 //NEWSPAPERS
+
 //function for fetching newspapers data from the server using fetch api and returning appropriate action creators based on server responses.
 export const fetchNewspapers = () => (dispatch) => {
   dispatch(NewspapersLoading(true));
-
+  
   return fetch(baseUrl + 'newspapers')
     .then(response => {
       if (response.ok) {
@@ -33,7 +20,7 @@ export const fetchNewspapers = () => (dispatch) => {
       }
     },
       error => {
-        var errmess = new Error(error.message);
+        var errmess = new Error(error.response.data);
         throw errmess;
       })
     .then(response => response.json())
@@ -216,7 +203,7 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
   };
 
 
-  return fetch(baseUrl + 'feedback', {
+  return fetch(baseUrl + 'feedbacks', {
     method: "POST",
     body: JSON.stringify(newFeedback),
     headers: {
@@ -328,9 +315,10 @@ export const adduser = (user4) => ({
 //Action to post to server with data obtained from signup form
 export const postsignup = (username, password) => (dispatch) => {
   const newuser = {
-    user4: username + ":" + password
+    username: username,
+    password: password
   };
-  return fetch(baseUrl + 'regusers', {
+  return fetch(baseUrl + 'users', {
     method: "POST",
     body: JSON.stringify(newuser),
     headers: {
@@ -351,13 +339,13 @@ export const postsignup = (username, password) => (dispatch) => {
         throw error;
       })
     .then(response => response.json())
-    .then(details => adduser(details))
-    .catch(error => { console.log('Post SignUp'); alert('Your details could not be posted\nError: '); });
+    .then(details => {alert("You are successfully registered, login to continue more...");adduser(details)})
+    .catch(error => { console.log('Post SignUp'); alert('Your details could not be posted signup\nError: '); });
 };
 
 //Fetching users from server
 export const fetchUsers = () => (dispatch) => {
-  return fetch(baseUrl + 'regusers')
+  return fetch(baseUrl + 'users')
     .then(response => {
       if (response.ok) {
         return response;
@@ -383,6 +371,30 @@ export const addUsers = (regusers) => ({
 });
 
 //CART
+
+
+
+//Function which fetches all the items from the server
+export const fetchItems = () => async (dispatch) => {
+  //fetches newspapers
+  const newspapers = await Promise.all([
+    fetch(baseUrl + 'newspapers').then(response => response.json()),
+
+  ]);
+  //fetches magazines
+  const magazines = await Promise.all([
+    fetch(baseUrl + 'magazines').then(response_1 => response_1.json())
+  ])
+  //Dispatching them to getproducts function 
+  return dispatch(getproducts(newspapers, magazines));
+
+}
+
+
+
+
+
+
 // addtocart action creator to add items to cart 
 //it takes itemid as input and return ADD_TO_CART as type itemid as payload
 export const addToCart = (itemId) => {
@@ -546,7 +558,7 @@ export const postblog = (username, topic, message) => (dispatch) => {
 
   const newblog = {
     user: username,
-    topic: topic,
+    title: topic,
     message: message
   };
   return fetch(baseUrl + 'blogs', {
@@ -571,7 +583,7 @@ export const postblog = (username, topic, message) => (dispatch) => {
       })
     .then(response => response.json())
     .then(response => dispatch(addblog(response)))
-    .catch(error => { console.log('Post Feedback'); alert('Your Feedback could not be posted\nError: '); });
+    .catch(error => { console.log('Post Blog'); alert('Your Blog could not be posted\nError: '); });
 };
 
 //Fetching blogs

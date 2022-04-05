@@ -16,6 +16,7 @@ function Account(props) {
     //Filtering reviews based on user_name
     filter_review = filter_review.filter((review) => review.author === user_real)
     items_newspaper = props.newspapers.newspapers
+    console.log(items_newspaper)
     items_magazines = props.magazines.magazines
     //Storing both newspapers and magazines in a array
     items = items_newspaper.concat(items_magazines)
@@ -48,11 +49,11 @@ function Account(props) {
                     }
                 </div>
                 <div>
-                    {/* If user logged in then Display reviews else display login message */}
+                    
                     {user_real ?
                         <div>
                             <h1 style={{ fontSize: '39px', color: 'steelblue', fontFamily: 'High Tower Text' }}><li>Your reviews</li></h1>
-                            {/* If no.of.reviews !=0 then display reviews else display no reviews */}
+                            
                             {filter_review.length !== 0 ?
                                 <div style={{ paddingLeft: '0px', width: "1300px" }}>
                                     <h2 style={{ fontSize: '35px', color: 'lightpink', fontFamily: 'Gabriola', fontWeight: '500' }}>No.of reviews: {filter_review.length}</h2>
@@ -62,11 +63,11 @@ function Account(props) {
                                                 <div className='col-4'>
                                                     <Card style={{ width: '300px', backgroundColor: '#f2f2f2' }}>
                                                         <CardBody>
-                                                            {/* Displaying item name to which review is given */}
+                                                            
                                                             {items.map
                                                                 (ite =>
                                                                     <div>
-                                                                        {rev.itemId === ite.id ?
+                                                                        {rev.itemId === ite._id ?
                                                                             <CardText style={{ fontSize: '27px', fontFamily: 'Tw Cen MT', color: 'purple',fontWeight:'lighter' }}>Name: {ite.name}</CardText>
                                                                             : <div></div>
                                                                         }

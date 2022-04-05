@@ -14,13 +14,13 @@ function CartItem({ item, adjustQty, removefromCart }) {
   const [input, setInput] = useState(item.qty);
   const onChangeHandler = (e) => {
     setInput(e.target.value);
-    adjustQty(item.id, e.target.value);
+    adjustQty(item._id, e.target.value);
   };
-
+  console.log(item.image);
 
   return (
     <div className={styles.cartItem}>
-      <Link to={`/searchc/${item.id}`}>
+      <Link to={`/searchc/${item._id}`}>
         <img
           className={styles.cartItem__image}
           src={item.image}
@@ -44,7 +44,7 @@ function CartItem({ item, adjustQty, removefromCart }) {
           />
         </div>
         <button
-          onClick={() => removefromCart(item.id)}
+          onClick={() => removefromCart(item._id)}
           className={styles.actions__deleteItemBtn}
         >
           <img src="https://cdn4.iconfinder.com/data/icons/chat-icons-2/100/9-512.png" alt="deleteicon"></img>

@@ -21,9 +21,9 @@ export const ConfigureStore = () => {
             newspapers: Newspapers,
             magazines: Magazines,            
             regusers: signfeed,
-            reviews: Reviews,
             orders:Orders,
             blogs: blog,
+            reviews: Reviews,
             ...createForms({
                 feedback: InitialFeedback,
                 order: InitialOrder

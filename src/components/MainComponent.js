@@ -11,6 +11,7 @@ import Cart from './Cart';
 import { Login, user_real } from './Login';
 import NewspaperDetail from './NewspaperDetail';
 import MagazinesMain from './MagazinesComponent';
+import OrderDetail from './OrderDetail';
 import ItemDetail from './ItemDetail';
 import MagazineDetail from './MagazineDetail';
 import Signup from './Signup';
@@ -34,9 +35,9 @@ const mapStateToProps = (state) => (
   {
     newspapers: state.newspapers,
     magazines: state.magazines,
+    reviews: state.reviews,
     cartitem: state.cartReducer,
     regusers: state.regusers,
-    reviews: state.reviews,
     orders: state.orders,
     blogs: state.blogs
   }
@@ -78,8 +79,8 @@ class Main extends Component {
     this.props.fetchItems();
     this.props.fetchNewspapers();
     this.props.fetchMagazines();
-    this.props.fetchUsers();
     this.props.fetchReviews();
+    this.props.fetchUsers();
     this.props.fetchOrders();
     this.props.fetchBlogs();
   }
@@ -94,7 +95,6 @@ class Main extends Component {
           newspapersLoading={this.props.newspapers.isLoading}
           newspapersErrMess={this.props.newspapers.errMess}
           magazines={this.props.magazines.magazines.filter((magazine) => magazine.featured)}
-
         />
       );
     }
@@ -104,8 +104,8 @@ class Main extends Component {
         <NewspapersMain
           newspapers={this.props.newspapers}
           filterByLanguage={this.props.filterNewspapersByLanguage}
-          sort_newspapers={this.props.sortNewspapers}
           reviews={this.props.reviews.reviews}
+          sort_newspapers={this.props.sortNewspapers}
           topNewspapers={this.props.topRatedNewspapers}
         />
       );
@@ -117,8 +117,8 @@ class Main extends Component {
           magazines={this.props.magazines}
           filterByCategory={this.props.filterMagsByCategory}
           filterByLanguage={this.props.filterMagsByLanguage}
-          sort_magazines={this.props.sortMagazines}
           reviews={this.props.reviews.reviews}
+          sort_magazines={this.props.sortMagazines}
           topMagazines={this.props.topRatedMagazines}
         />
       );
@@ -126,55 +126,61 @@ class Main extends Component {
     //Sending appropriate details from json server to Newspaper detail component
     const NewspaperWithId = ({ match }) => {
       return (
-        <NewspaperDetail paperSelected={this.props.newspapers.newspapers.filter((paper) => paper._id === (match.params.paperId))[0]}
+        <NewspaperDetail paperSelected={this.props.newspapers.newspapers.filter((paper) => paper._id === match.params.paperId)[0]}
           isLoading={this.props.newspapers.isLoading}
           errMess={this.props.newspapers.errMess}
-          reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.paperId, 10))}
+          reviews={this.props.reviews.reviews.filter((review) => review.itemId === match.params.paperId)}
           reviewsErrMess={this.props.reviews.errMess}
           postReview={this.props.postReview}
           addtocart={this.props.addtocart}
           getproducts={this.props.getproducts}
           newspapers={this.props.newspapers}
           magazines={this.props.magazines}
-          checkorders={this.props.orders.orders.filter((order) => order.user === user_real)}
+          checkorders={this.props.orders.orders.filter((order)=>order.user===user_real)}
         />
       );
     }
     //Sending appropriate details from json server to Magazines detail component
     const MagazineWithId = ({ match }) => {
       return (
-        <MagazineDetail magSelected={this.props.magazines.magazines.filter((magazine) => magazine._id === (match.params.magId))[0]}
+        <MagazineDetail magSelected={this.props.magazines.magazines.filter((magazine) => magazine._id === match.params.magId)[0]}
           isLoading={this.props.magazines.isLoading}
           errMess={this.props.magazines.errMess}
-          reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.magId, 10))}
+          reviews={this.props.reviews.reviews.filter((review) => review.itemId === match.params.magId)}
           reviewsErrMess={this.props.reviews.errMess}
           postReview={this.props.postReview}
           addtocart={this.props.addtocart}
           getproducts={this.props.getproducts}
           newspapers={this.props.newspapers}
           magazines={this.props.magazines}
-          checkorders={this.props.orders.orders.filter((order) => order.user === user_real)}
+          checkorders={this.props.orders.orders.filter((order)=>order.user===user_real)}
         />
+      );
+    }
+
+
+    const OrderWithId = ({ match }) => {
+      return (
+        <OrderDetail orderSelected={this.props.orders.orders.filter((order) => order._id === match.params.orderId)[0]} />
       );
     }
 
     const ItemWithId = ({ match }) => {
       return (
-        <ItemDetail itemSelected={this.props.cartitem.items.filter((item) => item.id === parseInt(match.params.itemId, 10))[0]}
+        <ItemDetail itemSelected={this.props.cartitem.items.filter((item) => item._id === match.params.itemId)[0]}
           isLoading={this.props.magazines.isLoading}
           errMess={this.props.magazines.errMess}
           addtocart={this.props.addtocart}
           getproducts={this.props.getproducts}
-          newspapers={this.props.newspapers}
-          magazines={this.props.magazines}
-          reviews={this.props.reviews.reviews.filter((review) => review.itemId === parseInt(match.params.itemId, 10))}
+          reviews={this.props.reviews.reviews.filter((review) => review.itemId === match.params.itemId)}
           reviewsErrMess={this.props.reviews.errMess}
           postReview={this.props.postReview}
           checkorders={this.props.orders.orders.filter((order) => order.user === user_real)}
         />
       );
     }
-
+   
+  
 
     return (
       <div>
@@ -182,6 +188,7 @@ class Main extends Component {
         {/* Going to appropriate page */}
         <Switch location={this.props.location}>
           <Route path='/home' component={HomePage} />
+          <Route path='/orders/:orderId' component={OrderWithId} />
           <Route exact path='/login' component={() => <Login {...this.props} />} />
           <Route exact path='/signup' component={() => <Signup {...this.props} />} />
           <Route exact path='/newspapers' component={NewspapersMainPage} />
@@ -196,6 +203,7 @@ class Main extends Component {
           <Route path='/searchc/:itemId' component={ItemWithId} />
           <Route path='/checkout' component={() => <Checkout resetCheckoutForm={this.props.resetCheckoutForm} postOrder={this.props.postOrder} cart={this.props.cartitem.cart} />} />
           <Route path='/orders' component={() => <OrdersComponent orders={this.props.orders.orders.filter((order) => order.user === user_real)} ordersErrMess={this.props.orders.errMess} />} />
+          
           <Route path='/blog' component={() => <Blog {...this.props} />} />
           <Redirect to="/home" />
         </Switch>

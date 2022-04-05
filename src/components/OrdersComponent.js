@@ -1,63 +1,91 @@
 import "./Orders.css";
 import { user_real } from "./Login";
-import { Breadcrumb,BreadcrumbItem } from "reactstrap";
+import { Breadcrumb,BreadcrumbItem ,Card,CardHeader,CardBody,CardText}   from "reactstrap";
 import { Link } from "react-router-dom";
+
+
+function RenderItem({ order }) {
+
+  return (
+    <div >
+      <Card style={{backgroundColor:"#c9ece4",width:"500px"}}>
+        <Link to={`/orders/${order._id}`}>
+          
+            
+            <div style={{paddingLeft:"20px"}}>
+            <CardText style={{fontSize:"25px", color:"black",alignContent:"center"}}>VIEW ORDER DETAILS</CardText>
+            {/* <CardHeader><h4>Order Id:{order._id}</h4></CardHeader> */}
+              <p style={{fontSize:"20px", color:"black"}}>{order.fullName}</p>
+              <p style={{fontSize:"20px",color:"black"}}>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(order.updatedAt)))}</p>
+              <p style={{fontSize:"20px",color:"black"}}>Total Amount:{order.price}</p>
+
+          
+            </div>
+    
+        </Link>
+
+      </Card>
+    </div>
+  );
+}
+
+
+
+
+
+
+
 function OrdersComponent(props) {
   const errMess = props.ordersErrMess
   const orders = props.orders
+
+
+  const items = orders.map((order)=> {
+             
+    return (
+       <div key={order._id}>
+     <RenderItem order={order}  />
+       <br />
+      </div>
+         )
+         }
+         )
+
+
+  const displayOrders =items.map((order) => {
+          return (
+            <div style={{ width: 1000}}>
+              {order}
+            </div>
+          );
+        });       
+
   if (errMess === null) {
     if (user_real) {
       if (orders.length) {
         //Displying orders of a particular user if there is no error and atleast one order is placed by them
         return (
-          <div className="mo">
-            <div style={{ paddingLeft: "6%", paddingBottom: "20px" }}>
+          <div className="container">
+          <div >
+            <div style={{ paddingLeft: "6%", paddingBottom: "20px"}}>
             <Breadcrumb style={{ fontSize: "20px",padding:"3px" }} className='bdcrum'>
               <BreadcrumbItem><Link to="/myaccount">Account</Link></BreadcrumbItem>
               <BreadcrumbItem active>Orders</BreadcrumbItem>
             </Breadcrumb>
               <h3 style={{color:'white'}}>ORDERS</h3>
-              <table style={{ backgroundColor: "#91eded" }}>
-                {/* Required headings to be displayed */}
-                <tr>
-                  <th>Subscribed on</th>
-                  <th>Shipping Address</th>
-                  <th>Items Subscribed</th>
-                  <th>Subscription plan(months)</th>
-                  <th>Total subscription amount</th>
-                </tr>
-                {/* Displaying each order with required information */}
-                {orders.map((order) => orders.items === '1' ? (
+              
+              {displayOrders}
+              
 
-                  <tr key={order.id}>
-                    <td><p>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(order.date)))}</p></td>
-                    <td><p>{order.address}</p></td>
-                    <td>{order.cart.map((item) => (
-                      <p key={item.id}>{item.name}</p>
-                    ))}</td>
-                    <td>{order.cart.map((item) => (
-                      <p key={item.id}>{item.qty}</p>
-                    ))}</td>
-                    <td><p style={{ fontFamily: "sans-serif" }}>{order.price} ({order.items} item)
-                    </p></td>
-                  </tr>
+            
+            
 
-                ) : (
-                  <tr key={order.id}>
-                    <td><p>{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(order.date)))}</p></td>
-                    <td><p>{order.address}</p></td>
-                    <td>{order.cart.map((item) => (
-                      <p key={item.id}>{item.name}</p>
-                    ))}</td>
-                    <td>{order.cart.map((item) => (
-                      <p key={item.id}>{item.qty}</p>
-                    ))}</td>
-                    <td><p style={{ fontFamily: "sans-serif" }}>{order.price} ({order.items} items)
-                    </p></td>
-                  </tr>
-                ))
-                }
-              </table>
+
+             
+
+
+              </div>
+              
             </div>
           </div>
         );

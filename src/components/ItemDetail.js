@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
 import { user_real } from './Login'
 import ReactStars from 'react-stars';
-import Zoom from 'react-reveal/Zoom';
 import "./Details.css";
 
 class ReviewForm extends React.Component {
@@ -30,14 +29,20 @@ class ReviewForm extends React.Component {
         //User should be valid
         if (user_real) {
             console.log('validated user');
+            let filter_review = this.props.reviews.filter((review) => review.author === user_real)
             let cartItems = []
-            cartItems = this.props.orders.map((order) => order.cart.map((item) => (item.id)))
+            cartItems = this.props.orders.map((order) => order.cart.map((item) => (item._id)))
             let flag = cartItems.some((value) => value.some((id) => (id === this.props.itemId)))
             //If user has subscribed that item, then the forms opens
             if (flag) {
-                this.setState({
-                    isModalOpen: !this.state.isModalOpen
-                })
+                if (filter_review.length == 0){
+                    this.setState({
+                        isModalOpen: !this.state.isModalOpen
+                    })
+                }
+                else{
+                    alert("You can give your review only once.")
+                }
             }
             //Else a alert message arrives
             else {
@@ -55,7 +60,7 @@ class ReviewForm extends React.Component {
     //Calling postReview function which posts reviews to the server
     handleSubmit(values) {
         this.toggleModal();
-        this.props.postReview(this.props.itemId, parseInt(values.rating), user_real, values.review);
+        this.props.postReview(this.props.itemId, values.rating, user_real, values.review);
     }
 
     render() {
@@ -101,8 +106,7 @@ class ReviewForm extends React.Component {
 }
 //Function to display the details of reviews given to the selected item
 function RenderReviews({ reviews, errMess }) {
-    //Displaying the reviews if reviews are given and there is no error
-    if (errMess === null) {
+    //Displaying the reviews if reviews are present for the selected item
         if (reviews.length) {
             return (
                 <div className="col-12 col-md-10 m-1">
@@ -111,10 +115,10 @@ function RenderReviews({ reviews, errMess }) {
                         {/* <Stagger in> */}
                         {reviews.map((review) => (
                             // <Fade in> 
-                            <li key={review.id}>
+                            <li key={review._id}>
                                 <p>{review.review}</p>
                                 <ReactStars count={5} size={24} value={review.rating} color2={'#ffd700'} edit={false} />
-                                <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.date)))}</p>
+                                <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.updatedAt)))}</p>
                                 <br />
                             </li>
                             //</Fade>
@@ -135,21 +139,14 @@ function RenderReviews({ reviews, errMess }) {
                 </div>
             );
         }
-    }
-    //If any error occurs displaying error message
-    else {
-        return (
-            <div className="col-12 col-md-10 m-1">
-                <h5>{errMess}</h5>
-            </div>
-        );
-    }
 }
 
 
 //Function displaying all the details of selected item
 function RenderItem({ item, addtocart, reviews, postReview, orders }) {
+
     //Finding average of ratings given to the selected item
+
     var sum = 0, avg = 0;
     if (reviews.length) {
         sum = reviews.map(review => review.rating).reduce((r1, r2) => r1 + r2, 0);
@@ -162,7 +159,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
         const IsLogin = () => {
             if (user_real) {
                 console.log('yes')
-                addtocart(item.id)
+                addtocart(item._id)
             }
             //Else displaying signup page
             else {
@@ -198,7 +195,9 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                             <span>Total No. of reviews posted till now: {reviews.length}</span>
                             <span><ReactStars count={5} size={24} value={avg} color2={'#ffd700'} edit={false} /></span>
                         </div>
-                        <ReviewForm itemId={item.id} postReview={postReview} history={history} orders={orders} />
+                        
+                        <ReviewForm itemId={item._id} reviews={reviews} postReview={postReview} history={history} orders={orders} />
+
                     </div>
                 </main>
             </React.Fragment>
@@ -242,7 +241,8 @@ const ItemDetail = (props) => {
                     </div>
                     {/* Calling RenderReviews function by sending appropriate properties */}
                     <div className="row">
-                        <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess} />
+                        {/* <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess} /> */}
+                        <RenderReviews reviews={props.reviews} />
                     </div>
                 </div>
             </div>

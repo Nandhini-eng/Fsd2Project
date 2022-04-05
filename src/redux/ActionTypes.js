@@ -31,6 +31,11 @@ export const LOAD_CURRENT_ITEM='LOAD_CURRENT_ITEM';
 export const GET_PRODUCTS='GET_PRODUCTS';
 export const CART_EMPTY = 'CART_EMPTY';
 
+//REVIEWS
+export const ADD_REVIEW = 'ADD_REVIEW';
+export const ADD_REVIEWS = 'ADD_REVIEWS';
+export const REVIEWS_FAILED = 'REVIEWS_FAILED';
+
 //ORDERS
 export const ORDER_PLACED='ORDER_PLACED';
 export const ORDER_FAILED='ORDER_FAILED';
@@ -42,12 +47,6 @@ export const ADD_BLOGS = 'ADD_BLOGS';
 //appending newly added blog to the existing blogs
 export const ADD_BLOG = 'ADD_BLOG';
 
-//REVIEWS
-//appending newly added review to the existing reviews
-export const ADD_REVIEW = 'ADD_REVIEW';
-export const REVIEWS_FAILED = 'REVIEWS_FAILED';
-//stores the existing reviews in an array
-export const ADD_REVIEWS = 'ADD_REVIEWS';
 
 //TOPRATED
 export const TOP_RATED_NEWSPAPERS = 'TOP_RATED_NEWSPAPERS';

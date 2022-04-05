@@ -24,19 +24,26 @@ class ReviewForm extends Component {
         this.toggleModal = this.toggleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     //Handling opening of form which takes review for the selected magazine
     toggleModal() {
         //User should be valid
         if (user_real) {
             console.log('validated user');
+            let filter_review = this.props.reviews.filter((review) => review.author === user_real)
             let cartItems = []
             cartItems = this.props.orders.map((order) => order.cart.map((item) => (item._id)))
             let flag = cartItems.some((value) => value.some((id) => (id === this.props.itemId)))
             //If user has subscribed that item, then the forms opens
             if (flag) {
-                this.setState({
-                    isModalOpen: !this.state.isModalOpen
-                })
+                if (filter_review.length == 0){
+                    this.setState({
+                        isModalOpen: !this.state.isModalOpen
+                    })
+                }
+                else{
+                    alert("You can give your review only once.")
+                }
             }
             //Else a alert message arrives
             else {
@@ -49,10 +56,11 @@ class ReviewForm extends Component {
             this.props.history.push('/signup');
         }
     }
+
     //Calling postReview function which posts reviews to the server
     handleSubmit(values) {
         this.toggleModal();
-        this.props.postReview(this.props.itemId, parseInt(values.rating), user_real, values.review);
+        this.props.postReview(this.props.itemId, values.rating, user_real, values.review);
     }
 
     render() {
@@ -97,9 +105,8 @@ class ReviewForm extends Component {
 
 }
 //Function to display the details of reviews given to the selected magazine
-function RenderReviews({ reviews, errMess }) {
-    //Displaying the reviews if reviews are given and there is no error
-    if (errMess === null) {
+function RenderReviews({ reviews }) {
+    //Displaying the reviews if reviews are present for the selected magazine
         if (reviews.length) {
             return (
                 <div className="col-12 col-md-10 m-1">
@@ -110,7 +117,7 @@ function RenderReviews({ reviews, errMess }) {
                             <li key={review._id}>
                                 <p>{review.review}</p>
                                 <ReactStars count={5} size={24} value={review.rating} color2={'#ffd700'} edit={false} />
-                                <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.date)))}</p>
+                                <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.updatedAt)))}</p>
                                 <br />
                             </li>
 
@@ -129,20 +136,12 @@ function RenderReviews({ reviews, errMess }) {
                     </div>
                 </div>
             );
-        }
-    }
-    //If any error occurs displaying error message
-    else {
-        return (
-            <div className="col-12 col-md-10 m-1">
-                <h5>{errMess}</h5>
-            </div>
-        );
-    }
+        }   
 }
 
 //Function displaying all the details of selected magazine 
 function RenderItem({ item, addtocart, reviews, postReview, orders }) {
+
     //Finding average of ratings given to the selected magazine
     var sum = 0, avg = 0;
     if (reviews.length) {
@@ -173,7 +172,6 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                     </div>
                     {/* Displaying details in the right side */}
                     <div className="right-column">
-
                         <div className="product-description">
                             <h3>{item.name}</h3>
                             <span>{item.language}</span>
@@ -192,7 +190,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                             <span>Total No. of reviews posted till now: {reviews.length}</span>
                             <span><ReactStars count={5} size={24} value={avg} color2={'#ffd700'} edit={false} /></span>
                         </div>
-                        <ReviewForm itemId={item._id} postReview={postReview} history={history} orders={orders} />
+                        <ReviewForm itemId={item._id} reviews={reviews} postReview={postReview} history={history} orders={orders} />
                     </div>
                 </main>
             </React.Fragment>
@@ -246,7 +244,7 @@ const MagazineDetail = (props) => {
                     </div>
                     {/* Calling RenderReviews function by sending appropriate properties */}
                     <div className="row">
-                        <RenderReviews reviews={props.reviews} errMess={props.reviewsErrMess} />
+                        <RenderReviews reviews={props.reviews} />
                     </div>
                 </div>
             </div>
