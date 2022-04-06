@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import styles from "./Cart.module.css";
 import CartItem from "./Cartitem.js";
 import { Button } from 'reactstrap';
+import Fade from 'react-reveal/Fade';
+import Pulse from 'react-reveal/Pulse';
 let price, items;
 
 // functional cart component props are sent from main component
@@ -28,7 +30,7 @@ function Cart(props) {
   //all the below classnames are imported from cart.module.css 
   //below chain of if loops is to just display items for plural number of items and item for single item
 
-  console.log(totalItems)
+  
   if (totalItems === 1) {
     return (
       <div style={{ backgroundImage: `url("https://wallpaperaccess.com/full/2667044.jpg")` }}>
@@ -38,7 +40,11 @@ function Cart(props) {
             {/* we send each items in cart of cart state to cartitem component to render it as card aong with styling */}
 
             {props.cart.map((item) => (
-              <CartItem key={item.id} item={item} />
+              <Fade left>
+                <Pulse>
+              <CartItem key={item._id} item={item} />
+              </Pulse>
+              </Fade>
             ))}
           </div>
           <div className={styles.cart__summary}>
@@ -66,7 +72,13 @@ function Cart(props) {
         <div className={styles.cart}>
           <div className={styles.cart__items}>
             {props.cart.map((item) => (
-              <CartItem key={item.id} item={item} />
+            
+              <Fade left>
+                <Pulse>
+              <CartItem key={item._id} item={item} />
+              </Pulse>
+              </Fade>
+            
             ))}
           </div>
           <div className={styles.cart__summary}>
@@ -90,7 +102,13 @@ function Cart(props) {
         <div className={styles.cart}>
           <div className={styles.cart__items}>
             {props.cart.map((item) => (
-              <CartItem key={item.id} item={item} />
+              
+              <Fade left>
+                <Pulse>
+              <CartItem key={item._id} item={item} />
+              </Pulse>
+              </Fade>
+            
             ))}
           </div>
           <div className={styles.cart__summary}>

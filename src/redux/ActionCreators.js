@@ -1,27 +1,14 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
+import axios from 'axios';
 
-//Function which fetches all the items from the server
-export const fetchItems = () => async (dispatch) => {
-  //fetches newspapers
-  const newspapers = await Promise.all([
-    fetch(baseUrl + 'newspapers').then(response => response.json()),
-
-  ]);
-  //fetches magazines
-  const magazines = await Promise.all([
-    fetch(baseUrl + 'magazines').then(response_1 => response_1.json())
-  ])
-  //Dispatching them to getproducts function 
-  return dispatch(getproducts(newspapers, magazines));
-
-}
 
 //NEWSPAPERS
+
 //function for fetching newspapers data from the server using fetch api and returning appropriate action creators based on server responses.
 export const fetchNewspapers = () => (dispatch) => {
   dispatch(NewspapersLoading(true));
-
+  
   return fetch(baseUrl + 'newspapers')
     .then(response => {
       if (response.ok) {
@@ -33,7 +20,7 @@ export const fetchNewspapers = () => (dispatch) => {
       }
     },
       error => {
-        var errmess = new Error(error.message);
+        var errmess = new Error(error.response.data);
         throw errmess;
       })
     .then(response => response.json())
@@ -157,7 +144,7 @@ export const sortNewspapers = (products, sort) => (dispatch) => {
   }
   //If none of sort type is selected, sorting them via ids
   else {
-    products.sort((a, b) => (a.id > b.id ? 1 : -1));
+    products.sort((a, b) => (a._id > b._id ? 1 : -1));
   }
   //Dispatching the appropriate sorted products and sort type 
   return dispatch({
@@ -189,7 +176,7 @@ export const sortMagazines = (products, sort) => (dispatch) => {
   }
   //If none of sort type is selected, sorting them via ids
   else {
-    products.sort((a, b) => (a.id > b.id ? 1 : -1));
+    products.sort((a, b) => (a._id > b._id ? 1 : -1));
   }
   //Dispatching the appropriate sorted products and sort type 
   return dispatch({
@@ -384,6 +371,30 @@ export const addUsers = (regusers) => ({
 });
 
 //CART
+
+
+
+//Function which fetches all the items from the server
+export const fetchItems = () => async (dispatch) => {
+  //fetches newspapers
+  const newspapers = await Promise.all([
+    fetch(baseUrl + 'newspapers').then(response => response.json()),
+
+  ]);
+  //fetches magazines
+  const magazines = await Promise.all([
+    fetch(baseUrl + 'magazines').then(response_1 => response_1.json())
+  ])
+  //Dispatching them to getproducts function 
+  return dispatch(getproducts(newspapers, magazines));
+
+}
+
+
+
+
+
+
 // addtocart action creator to add items to cart 
 //it takes itemid as input and return ADD_TO_CART as type itemid as payload
 export const addToCart = (itemId) => {

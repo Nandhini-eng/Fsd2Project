@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
 import { user_real } from './Login'
 import ReactStars from 'react-stars';
-import Zoom from 'react-reveal/Zoom';
 import "./Details.css";
 
 class ReviewForm extends React.Component {
@@ -160,7 +159,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
         const IsLogin = () => {
             if (user_real) {
                 console.log('yes')
-                addtocart(item.id)
+                addtocart(item._id)
             }
             //Else displaying signup page
             else {
@@ -196,7 +195,9 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
                             <span>Total No. of reviews posted till now: {reviews.length}</span>
                             <span><ReactStars count={5} size={24} value={avg} color2={'#ffd700'} edit={false} /></span>
                         </div>
+                        
                         <ReviewForm itemId={item._id} reviews={reviews} postReview={postReview} history={history} orders={orders} />
+
                     </div>
                 </main>
             </React.Fragment>

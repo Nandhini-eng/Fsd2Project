@@ -147,7 +147,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
         sum = reviews.map(review => review.rating).reduce((r1, r2) => r1 + r2, 0);
         avg = sum / reviews.length;
     }
-
+    
     const history = useHistory();
     if (item != null) {
         //Calling addtocart function if the user is logged in
@@ -207,6 +207,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
 
 
 const NewspaperDetail = (props) => {
+    console.log(props.paperSelected)
     //Calling the loading component when the selected newspaper is loading
     if (props.isLoading) {
         return (
