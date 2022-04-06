@@ -27,7 +27,7 @@ import { actions } from 'react-redux-form';
 import Checkout from './Checkout';
 import OrdersComponent from './OrdersComponent';
 import Blog from './Blog';
-
+import Upload from './upload';
 
 //Mapping state to props
 const mapStateToProps = (state) => (
@@ -179,6 +179,7 @@ class Main extends Component {
         {/* Going to appropriate page */}
         <Switch location={this.props.location}>
           <Route path='/home' component={HomePage} />
+          <Route path='/imgUpload' component={() => <Upload />} />
           <Route exact path='/login' component={() => <Login {...this.props} />} />
           <Route exact path='/signup' component={() => <Signup {...this.props} />} />
           <Route exact path='/newspapers' component={NewspapersMainPage} />
@@ -194,6 +195,7 @@ class Main extends Component {
           <Route path='/checkout' component={() => <Checkout resetCheckoutForm={this.props.resetCheckoutForm} postOrder={this.props.postOrder} cart={this.props.cartitem.cart} />} />
           <Route path='/orders' component={() => <OrdersComponent orders={this.props.orders.orders.filter((order) => order.user === user_real)} ordersErrMess={this.props.orders.errMess} />} />
           <Route path='/blog' component={() => <Blog {...this.props} />} />
+          
           <Redirect to="/home" />
         </Switch>
 
