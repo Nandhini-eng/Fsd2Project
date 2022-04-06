@@ -16,6 +16,7 @@ function Footer(props) {
                             <li><Link to='/magazines'><h4 style={{ fontSize: "17px", color: "rgb(30, 10, 214)" }}>Magazines</h4></Link></li>
                             <li><Link to='/aboutus'><h4 style={{ fontSize: "17px", color: "rgb(30, 10, 214)" }}>About Us</h4></Link></li>
                             <li><Link to='/contactus'><h4 style={{ fontSize: "17px", color: "rgb(30, 10, 214)" }}>Contact Us</h4></Link></li>
+                            <li><Link to='/imgUpload'><h4 style={{ fontSize: "17px", color: "rgb(30, 10, 214)" }}>Upload Image</h4></Link></li>
                         </ul>
                     </div>
                     {/* Address details */}
