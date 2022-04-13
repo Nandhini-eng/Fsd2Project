@@ -24,7 +24,7 @@ function RenderOrders({order}){
                 <br></br>
                 <h7 style={{color:"black"}}>Total Price : {order.price}</h7>
                 <br></br>
-                <h7 style={{color:"black"}}>Order Placed At : {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(order.updatedAt)))}</h7>
+                <h7 style={{color:"black"}}>Order Placed On : {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(order.updatedAt)))}</h7>
                 <br></br>
                 <h7 style={{color:"black"}}>Address : {order.address} , {order.city} , {order.postalCode}</h7>
                 <br></br>
