@@ -90,7 +90,7 @@ const NewspapersMain = (props) => {
     .slice(pagesVisited, pagesVisited + papersPerPage)
     .map((paper) => {
       return (
-        <div style={{ width: 260 }}>
+        <div style={{ width: 250 }}>
           {paper}
         </div>
       );
@@ -180,7 +180,7 @@ const NewspapersMain = (props) => {
             <div className="row" style={{ width: "80%", float: "right" }} >
               <Fade right>
 
-                {/* we call pagination for total magazines */}
+                {/* we call pagination for total newspapers */}
                 {displayPapers}
                 <ReactPaginate
                   previousLabel={"Previous"}
