@@ -40,6 +40,8 @@ export const REVIEWS_FAILED = 'REVIEWS_FAILED';
 export const ORDER_PLACED='ORDER_PLACED';
 export const ORDER_FAILED='ORDER_FAILED';
 export const ORDERS_PLACED='ORDERS_PLACED';
+export const ORDER_DELETED='ORDER_DELETED';
+
 
 //BLOG
 //stores the existing blogs in an array

@@ -17,6 +17,13 @@ export const Orders = (state = {
         case ActionTypes.ORDER_PLACED:
             var order = action.payload;
             return { ...state, orders: state.orders.concat(order) };
+        case ActionTypes.ORDER_DELETED:
+            return {
+                ...state,
+                orders: state.orders.filter((item) => item._id !== action.payload.id),
+            };
+    
+
         default:
             return state;
     }
