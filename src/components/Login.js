@@ -15,23 +15,33 @@ class Login extends Component {
             password: null
         }
     }
-    login() {
-        console.warn(this.state)
-        //Check user credentials from db
-        fetch(baseUrl+"users/user/" + this.state.username + "+" + this.state.password).then((data) => {
-            console.log(data.ok)
-            //If credentials true redirect to previous page else show error message
-            if(data.ok){
-                user_real = this.state.username
-                    this.props.history.go(-2);
-            }
-            else{
+    login(){
+        console.log(this.state)
+        fetch(baseUrl+"users/login",{
+            method : "POST",
+            body: JSON.stringify(this.state),
+            headers: {
+                "Content-Type": "application/json"
+              },
+              credentials: "same-origin"
+        })
+        .then((resp)=>{
+            //login=true
+            console.log(resp)
+            if(!resp.ok){
                 error = 'Invalid username or password'
                 alert('Invalid username or password')
             }
+            resp.json().then((result)=>{
+                console.warn('result',result)
+                console.log(resp)
+                    user_real = this.state.username
+                    localStorage.setItem('login',JSON.stringify({token:result.accessToken,user:result.username}))
+                        this.props.history.go(-2);
+            })
         })
-
-
+       let st=JSON.parse(localStorage.getItem('login')) 
+       console.log(st.login)
     }
     render() {
 
