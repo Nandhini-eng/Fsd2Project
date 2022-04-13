@@ -546,6 +546,17 @@ export const ordersPlaced = (orders) => ({
   payload: orders
 });
 
+//Function DELETES AN ORDER
+export const deleteorder = (orderId) => {
+  return {
+    type: ActionTypes.ORDER_DELETED,
+    payload: {
+      id: orderId
+    }
+  }
+};
+
+
 //BLOG
 //adding blog to new empty array
 export const addblog = (blog) => ({

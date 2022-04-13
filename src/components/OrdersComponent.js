@@ -2,9 +2,40 @@ import "./Orders.css";
 import { user_real } from "./Login";
 import { Breadcrumb,BreadcrumbItem ,Card,CardHeader,CardBody}   from "reactstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { deleteorder } from '../redux/ActionCreators';
+import React, { useState, useEffect } from 'react';
+
+function RenderItem({ order,deleteorder }) {
+  const [orders, setOrders] = useState({order});
+  useEffect(() => {
+  
+    setOrders(order);
+    
+  }, order);
 
 
-function RenderItem({ order }) {
+  function Deleteorder(id){
+    
+    if(window.confirm('Are You sure? complete order will be cancelled')){
+      
+      fetch('http://localhost:3001/orders/'+id,{
+        method:'DELETE',
+        header:{'Accept':'application/json',
+       'Content-Type':'application/json'   
+      },
+
+
+      })
+
+    }
+
+  };
+
+
+
+
+
 
   return (
     <div >
@@ -23,7 +54,8 @@ function RenderItem({ order }) {
               <h6 style={{fontSize:"20px",color:"black"}}>Total amount : {order.price}</h6>
               <h6 style={{fontSize:"20px",color:"black"}}>Total items : {order.items}</h6>
 
-
+            <button onClick={()=>{Deleteorder(order._id)}} variant="danger" style={{width:"200px",color:"white",backgroundColor:"red"}}>Cancel Order</button>
+            
           
             </div>
             <div className="row" style={{float:"left"}}>
@@ -142,4 +174,13 @@ function OrdersComponent(props) {
 
 }
 
-export default OrdersComponent;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteorder:(id)=>dispatch(deleteorder(id)),
+    
+  };
+};
+
+
+export default connect(null, mapDispatchToProps)(OrdersComponent);
+
