@@ -11,7 +11,19 @@ import { baseUrl } from '../shared/baseUrl';
 
 function OrderItem({ item,id }) {
     console.log(item.image);
-    // var source=" http://localhost:3001/orders/"+`${id}`+"/"+`${item._id.image}`
+    function Deleteitem(did,orderid){
+      if(window.confirm('Are You sure? this item will be cancelled from current order')){
+        fetch('http://localhost:3001/orders/'+id+"/"+did,{
+          method:'DELETE',
+          header:{'Accept':'application/json',
+         'Content-Type':'application/json'   
+        },
+  
+  
+        })
+  
+      }
+    }
   
 
 
@@ -28,6 +40,7 @@ function OrderItem({ item,id }) {
         <p className={styles.details__title}>{item.name}</p>
         <p className={styles.details__price}>Price : Rs {item.price}</p>
         <p className={styles.details__price}>Subscription : {item.qty} month(s)</p>
+        <button style={{color:"white",borderRadius:"5px",width:"200px",backgroundColor:"red"}} onClick={()=>Deleteitem(item._id,id)}>Cancel Item</button>
       </div>
       {/* <div className={styles.cartItem__actions}>
         <div className={styles.cartItem__qty}>
