@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
@@ -21,14 +21,15 @@ import {
   fetchNewspapers, fetchMagazines, filterMagazinesByCategory,
   filterMagazinesByLanguage,
   filterNewspapersByLanguage, sortNewspapers, sortMagazines, postFeedback, postsignup, fetchUsers, fetchReviews, postReview,
-  getproducts, addToCart, removefromCart, adjustQty, fetchOrders, postOrder, fetchItems, postblog, fetchBlogs,
+  getproducts, addToCart, removefromCart, adjustQty,deleteorder, fetchOrders, postOrder, fetchItems, postblog, fetchBlogs,
   getTopNewspapers, getTopMagazines
 } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
+
 import Checkout from './Checkout';
 import OrdersComponent from './OrdersComponent';
 import Blog from './Blog';
-
+import Upload from './upload';
 
 //Mapping state to props
 const mapStateToProps = (state) => (
@@ -68,6 +69,8 @@ const mapDispatchToProps = (dispatch) => ({
   topRatedMagazines: (magazines, reviews) => dispatch(getTopMagazines(magazines, reviews)),
   fetchItems: () => { dispatch(fetchItems()) },
   fetchBlogs: () => { dispatch(fetchBlogs()) },
+  
+  
   postblog: (username, topic, message) => dispatch(postblog(username, topic, message))
 
 });
@@ -180,7 +183,13 @@ class Main extends Component {
       );
     }
    
-  
+    
+      const tokenDetailsString = localStorage.getItem('login');
+      let tokenDetails = '';
+      
+      tokenDetails = JSON.parse(tokenDetailsString)
+      console.log(tokenDetails)
+    
 
     return (
       <div>
@@ -188,6 +197,7 @@ class Main extends Component {
         {/* Going to appropriate page */}
         <Switch location={this.props.location}>
           <Route path='/home' component={HomePage} />
+          <Route path='/imgUpload' component={() => <Upload />} />
           <Route path='/orders/:orderId' component={OrderWithId} />
           <Route exact path='/login' component={() => <Login {...this.props} />} />
           <Route exact path='/signup' component={() => <Signup {...this.props} />} />
@@ -202,9 +212,10 @@ class Main extends Component {
           <Route exact path='/searchc' component={() => <Searchc items={this.props.cartitem.items} />} />
           <Route path='/searchc/:itemId' component={ItemWithId} />
           <Route path='/checkout' component={() => <Checkout resetCheckoutForm={this.props.resetCheckoutForm} postOrder={this.props.postOrder} cart={this.props.cartitem.cart} />} />
-          <Route path='/orders' component={() => <OrdersComponent orders={this.props.orders.orders.filter((order) => order.user === user_real)} ordersErrMess={this.props.orders.errMess} />} />
+          <Route path='/orders' component={() => <OrdersComponent orders={this.props.orders.orders.filter((order) => order.user === user_real)} ordersErrMess={this.props.orders.errMess} deleteorder={this.props.deleteorder} />} />
           
           <Route path='/blog' component={() => <Blog {...this.props} />} />
+          
           <Redirect to="/home" />
         </Switch>
 

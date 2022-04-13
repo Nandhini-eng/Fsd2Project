@@ -61,7 +61,7 @@ function Searchc({ items }) {
     if (searchField !== "") {
 
       return (
-        <div style={{ width: 300 }}>
+        <div style={{ width: 250 }}>
           <RenderItem item={item} />
         </div>
       );

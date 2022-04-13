@@ -45,6 +45,7 @@ const MagazinesMain = (props) => {
     x._id === y._id ? render_items.push({ ...x }) : null))
 
 
+    console.log(render_items)
   //calculating average rating for all magazines and storing them in an array along with magazine ids
 
   var items_reviews = [];

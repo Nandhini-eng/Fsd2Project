@@ -144,7 +144,7 @@ export const sortNewspapers = (products, sort) => (dispatch) => {
   }
   //If none of sort type is selected, sorting them via ids
   else {
-    products.sort((a, b) => (a.id > b.id ? 1 : -1));
+    products.sort((a, b) => (a._id > b._id ? 1 : -1));
   }
   //Dispatching the appropriate sorted products and sort type 
   return dispatch({
@@ -176,7 +176,7 @@ export const sortMagazines = (products, sort) => (dispatch) => {
   }
   //If none of sort type is selected, sorting them via ids
   else {
-    products.sort((a, b) => (a.id > b.id ? 1 : -1));
+    products.sort((a, b) => (a._id > b._id ? 1 : -1));
   }
   //Dispatching the appropriate sorted products and sort type 
   return dispatch({
@@ -545,6 +545,17 @@ export const ordersPlaced = (orders) => ({
   type: ActionTypes.ORDERS_PLACED,
   payload: orders
 });
+
+//Function DELETES AN ORDER
+export const deleteorder = (orderId) => {
+  return {
+    type: ActionTypes.ORDER_DELETED,
+    payload: {
+      id: orderId
+    }
+  }
+};
+
 
 //BLOG
 //adding blog to new empty array
