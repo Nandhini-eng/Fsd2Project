@@ -37,11 +37,15 @@ class Login extends Component {
                 console.log(resp)
                     user_real = this.state.username
                     localStorage.setItem('login',JSON.stringify({token:result.accessToken,user:result.username}))
-                        this.props.history.go(-2);
+                        //this.props.history.go(-2);
+                        //this.props.history.push('/')
+                        //window.location.reload()
+                        this.props.history.go(-2)
+                        let st=JSON.parse(localStorage.getItem('login')) 
+                        console.log(st.login)
             })
         })
-       let st=JSON.parse(localStorage.getItem('login')) 
-       console.log(st.login)
+      
     }
     render() {
 

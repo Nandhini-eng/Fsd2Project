@@ -1,5 +1,5 @@
 import "./Orders.css";
-import { user_real } from "./Login";
+import { user } from "./HeaderComponent";
 import { Breadcrumb,BreadcrumbItem ,Card,CardHeader,CardBody,CardText}   from "reactstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -104,7 +104,7 @@ function OrdersComponent(props) {
         });       
 
   if (errMess === null) {
-    if (user_real) {
+    if (user) {
       if (orders.length) {
         //Displying orders of a particular user if there is no error and atleast one order is placed by them
         return (
