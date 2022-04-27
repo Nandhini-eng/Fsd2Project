@@ -3,13 +3,19 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Button } fr
 import { NavLink, Link } from 'react-router-dom';
 import Cartval from './Cartval.js';
 import LightSpeed from 'react-reveal/LightSpeed';
-import { user_real } from './Login';
 let isLoggedin
 
+let user;
+if(localStorage.getItem('login')){
+  const tokenDetailsString = localStorage.getItem('login');
+  let tokenDetails = '';
+  tokenDetails = JSON.parse(tokenDetailsString)
+  console.log(tokenDetails)
+  user = tokenDetails.user
+}
 class Header extends Component {
 
   constructor(props) {
-
     super(props);
     this.state = {
       isNavOpen: false,
@@ -22,18 +28,42 @@ class Header extends Component {
     this.setState({
       isNavOpen: !this.state.isNavOpen
     });
+    
   }
+
   back(e) {
     e.target.style.color = 'white'
+  //   if(localStorage.getItem('login')){
+  //     const tokenDetailsString = localStorage.getItem('login');
+  //     let tokenDetails = '';
+  //     tokenDetails = JSON.parse(tokenDetailsString)
+  //     console.log(tokenDetails)
+  //     user = tokenDetails.user
+  // }
   }
   back1(e) {
     e.target.style.color = 'rgba(255,255,255,.55)'
+  //   if(localStorage.getItem('login')){
+  //     const tokenDetailsString = localStorage.getItem('login');
+  //     let tokenDetails = '';
+  //     tokenDetails = JSON.parse(tokenDetailsString)
+  //     console.log(tokenDetails)
+  //     user = tokenDetails.user
+  // }
   }
 
   render() {
     //If user is logged in, Logout button is displayed and linked appropriately
-    if (user_real) {
+    if(localStorage.getItem('login')){
+      const tokenDetailsString = localStorage.getItem('login');
+      let tokenDetails = '';
+      tokenDetails = JSON.parse(tokenDetailsString)
+      console.log(tokenDetails)
+      user = tokenDetails.user
+  }
+    if (user) {
       console.log("Logged in")
+      
       isLoggedin =
         <Link to='/myaccount'>
           <Button style={{ color: 'rgba(255,255,255,.55)',height:"35px",paddingTop:"5px" }} onMouseOver={this.back} onMouseOut={this.back1}>
@@ -116,7 +146,7 @@ class Header extends Component {
                 </NavItem>
                 {/* Search page */}
                 <NavItem>
-                  <NavLink className="nav-link" to='/searchc'>
+                  <NavLink className="nav-link" to='/search'>
                     <h5>Click here to Search <span className="fa fa-search"></span></h5>
                   </NavLink>
                 </NavItem>
@@ -158,5 +188,5 @@ class Header extends Component {
     );
   }
 }
-
-export default Header;
+console.log(user)
+export  {Header,user};

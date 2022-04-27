@@ -1,5 +1,5 @@
 import React, { Component, useEffect } from 'react';
-import Header from './HeaderComponent';
+import {Header,user} from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Account from './AccountComponent';
@@ -8,7 +8,7 @@ import Contact from './ContactComponent';
 import NewspapersMain from './NewspapersComponent';
 import Searchc from './Searchc';
 import Cart from './Cart';
-import { Login, user_real } from './Login';
+import { Login } from './Login';
 import NewspaperDetail from './NewspaperDetail';
 import MagazinesMain from './MagazinesComponent';
 import OrderDetail from './OrderDetail';
@@ -30,6 +30,8 @@ import Checkout from './Checkout';
 import OrdersComponent from './OrdersComponent';
 import Blog from './Blog';
 import Upload from './upload';
+import TutorialsList from './abc';
+
 
 //Mapping state to props
 const mapStateToProps = (state) => (
@@ -139,7 +141,7 @@ class Main extends Component {
           getproducts={this.props.getproducts}
           newspapers={this.props.newspapers}
           magazines={this.props.magazines}
-          checkorders={this.props.orders.orders.filter((order)=>order.user===user_real)}
+          checkorders={this.props.orders.orders.filter((order)=>order.user===user)}
         />
       );
     }
@@ -156,7 +158,7 @@ class Main extends Component {
           getproducts={this.props.getproducts}
           newspapers={this.props.newspapers}
           magazines={this.props.magazines}
-          checkorders={this.props.orders.orders.filter((order)=>order.user===user_real)}
+          checkorders={this.props.orders.orders.filter((order)=>order.user===user)}
         />
       );
     }
@@ -178,17 +180,13 @@ class Main extends Component {
           reviews={this.props.reviews.reviews.filter((review) => review.itemId === match.params.itemId)}
           reviewsErrMess={this.props.reviews.errMess}
           postReview={this.props.postReview}
-          checkorders={this.props.orders.orders.filter((order) => order.user === user_real)}
+          checkorders={this.props.orders.orders.filter((order) => order.user === user)}
         />
       );
     }
    
     
-      const tokenDetailsString = localStorage.getItem('login');
-      let tokenDetails = '';
       
-      tokenDetails = JSON.parse(tokenDetailsString)
-      console.log(tokenDetails)
     
 
     return (
@@ -196,6 +194,7 @@ class Main extends Component {
         <Header />
         {/* Going to appropriate page */}
         <Switch location={this.props.location}>
+          
           <Route path='/home' component={HomePage} />
           <Route path='/imgUpload' component={() => <Upload />} />
           <Route path='/orders/:orderId' component={OrderWithId} />
@@ -212,10 +211,10 @@ class Main extends Component {
           <Route exact path='/searchc' component={() => <Searchc items={this.props.cartitem.items} />} />
           <Route path='/searchc/:itemId' component={ItemWithId} />
           <Route path='/checkout' component={() => <Checkout resetCheckoutForm={this.props.resetCheckoutForm} postOrder={this.props.postOrder} cart={this.props.cartitem.cart} />} />
-          <Route path='/orders' component={() => <OrdersComponent orders={this.props.orders.orders.filter((order) => order.user === user_real)} ordersErrMess={this.props.orders.errMess} deleteorder={this.props.deleteorder} />} />
-          
-          <Route path='/blog' component={() => <Blog {...this.props} />} />
-          
+          <Route path='/orders' component={() => <OrdersComponent orders={this.props.orders.orders.filter((order) => order.user === user)} ordersErrMess={this.props.orders.errMess} deleteorder={this.props.deleteorder} />} />
+         
+          <Route path='/blog' component={() => <Blog {...this.props} />} /> 
+          <Route path='/search' component={TutorialsList}/>
           <Redirect to="/home" />
         </Switch>
 

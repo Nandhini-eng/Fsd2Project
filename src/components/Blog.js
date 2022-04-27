@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, Label, Col, Row, Card, CardBody, CardText } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, Form, Errors } from 'react-redux-form';
-import { user_real } from './Login';
+import { user } from './HeaderComponent';
 import Pulse from 'react-reveal/Pulse';
 import Jump from 'react-reveal/Jump';
 
@@ -12,16 +12,16 @@ const required = (val) => val && val.length;
 class Blog extends Component {
     constructor(props) {
         super(props);
-        console.log(user_real)
+        console.log(user)
         //storing blogs in blogs array
         blogs = props.blogs.blogs
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleSubmit(values) {
         //If user logged in then submit blog else redirect to login page
-        if (user_real) {
+        if (user) {
             console.log('Current State is: ' + JSON.stringify(values));
-            this.props.postblog(user_real, values.topic, values.message);
+            this.props.postblog(user, values.topic, values.message);
             this.props.resetFeedbackForm();
         }
         else {
@@ -72,7 +72,7 @@ class Blog extends Component {
                                         <Control.text model=".username" id="username" name="username"
                                             placeholder="User Name"
                                             className="form-control"
-                                            value={user_real}
+                                            value={user}
                                             hidden
                                         />
                                     </Col>
