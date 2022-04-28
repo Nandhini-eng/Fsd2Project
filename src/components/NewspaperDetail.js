@@ -8,7 +8,7 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
-import { user_real } from './Login';
+import { user } from './HeaderComponent';
 import ReactStars from 'react-stars';
 import "./Details.css";
 import { updateReview } from '../redux/ActionCreators';
@@ -29,9 +29,9 @@ class ReviewForm extends Component {
     //Handling opening of form which takes review for the selected newspaper
     toggleModal() {
         //User should be valid
-        if (user_real) {
+        if (user) {
             console.log('validated user');
-            let filter_review = this.props.reviews.filter((review) => review.author === user_real)
+            let filter_review = this.props.reviews.filter((review) => review.author === user)
             let cartItems = []
             cartItems = this.props.orders.map((order) => order.cart.map((item) => (item._id)))
             let flag = cartItems.some((value) => value.some((id) => (id === this.props.itemId)))
@@ -61,7 +61,7 @@ class ReviewForm extends Component {
     //Calling postReview function which posts reviews to the server
     handleSubmit(values) {
         this.toggleModal();
-        this.props.postReview(this.props.itemId, values.rating, user_real, values.review);
+        this.props.postReview(this.props.itemId, values.rating, user, values.review);
     }
 
     render() {
@@ -154,7 +154,7 @@ function RenderItem({ item, addtocart, reviews, postReview, orders }) {
     if (item != null) {
         //Calling addtocart function if the user is logged in
         const IsLogin = () => {
-            if (user_real) {
+            if (user) {
                 console.log('yes')
                 addtocart(item._id)
             }

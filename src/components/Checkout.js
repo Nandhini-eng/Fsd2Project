@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Label, Col, Row } from 'reactstrap';
 import { Control, Form, Errors } from 'react-redux-form';
-import { user_real } from "./Login";
+import { user } from "./HeaderComponent";
 import { price, items } from "./Cart";
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -21,7 +21,7 @@ class Checkout extends Component {
     handleSubmit(values) {
         this.props.postOrder(values.fullName, values.address, values.city, values.postalCode,
             values.country, values.NameOnCard, values.CreditCardNum, values.ExpMon, values.ExpYear, values.Cvv,
-            this.props.cart, user_real, price, items);
+            this.props.cart, user, price, items);
         //Resetting checkout form
         this.props.resetCheckoutForm();
 

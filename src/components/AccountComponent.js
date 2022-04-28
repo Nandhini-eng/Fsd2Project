@@ -1,5 +1,4 @@
 import React from 'react';
-import { user_real } from './Login';
 import user_icon from './usericon.jpg';
 import { Card, CardBody, CardText, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -7,14 +6,28 @@ import Zoom from 'react-reveal/Zoom';
 import Jump from 'react-reveal/Jump'
 
 let filter_review, items_newspaper, items_magazines, items
-
+let user;
+if(localStorage.getItem('login')){
+      const tokenDetailsString = localStorage.getItem('login');
+      let tokenDetails = '';
+      tokenDetails = JSON.parse(tokenDetailsString)
+      console.log(tokenDetails)
+      user = tokenDetails.user
+}
 //My account function
 function Account(props) {
-    console.log(user_real)
+    if(localStorage.getItem('login')){
+        const tokenDetailsString = localStorage.getItem('login');
+        let tokenDetails = '';
+        tokenDetails = JSON.parse(tokenDetailsString)
+        console.log(tokenDetails)
+        user = tokenDetails.user
+  }
+    
     console.log(props.reviews.reviews)
     filter_review = props.reviews.reviews
     //Filtering reviews based on user_name
-    filter_review = filter_review.filter((review) => review.author === user_real)
+    filter_review = filter_review.filter((review) => review.author === user)
     items_newspaper = props.newspapers.newspapers
     console.log(items_newspaper)
     items_magazines = props.magazines.magazines
@@ -23,6 +36,7 @@ function Account(props) {
     //Logout function
     const Logout = () => {
         //Redirecting to page after logout
+        localStorage.removeItem('login')
         window.location.href = '/'
     }
     return (
@@ -35,10 +49,10 @@ function Account(props) {
                 <div style={{ float: 'left' }}>
                     <img src={user_icon} alt='user icon image' />
                     <Zoom>
-                        <h1 style={{ color: 'goldenrod', fontFamily: 'Maiandra GD' }}> Welcome back {user_real}</h1>
+                        <h1 style={{ color: 'goldenrod', fontFamily: 'Maiandra GD' }}> Welcome back {user}</h1>
                     </Zoom>
                     {/* If user logged in then display logout button else no */}
-                    {user_real ?
+                    {user ?
                         <div className='zoom'>
                             <h2 style={{ paddingLeft: '20px' }}>
                                 <Button style={{ font: 'bold', width: "30%", fontSize: '15px', fontWeight: 'bold', backgroundColor: 'burlywood', color: 'black' }} onClick={Logout}>Logout</Button>
@@ -50,7 +64,7 @@ function Account(props) {
                 </div>
                 <div>
                     
-                    {user_real ?
+                    {user ?
                         <div>
                             <h1 style={{ fontSize: '39px', color: 'steelblue', fontFamily: 'High Tower Text' }}><li>Your reviews</li></h1>
                             
