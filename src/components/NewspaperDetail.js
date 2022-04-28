@@ -11,6 +11,7 @@ import { baseUrl } from '../shared/baseUrl';
 import { user_real } from './Login';
 import ReactStars from 'react-stars';
 import "./Details.css";
+import { updateReview } from '../redux/ActionCreators';
 
 class ReviewForm extends Component {
 
@@ -114,7 +115,8 @@ function RenderReviews({ reviews }) {
                         <h3>REVIEWS</h3>
                         {reviews.map((review) => (
                             <li key={review._id}>
-                                <p>{review.review}</p>
+                                <p>{review.review}
+                                </p>
                                 <ReactStars count={5} size={24} value={review.rating} color2={'#ffd700'} edit={false} />
                                 <p>---{review.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(review.updatedAt)))}</p>
                                 <br />
@@ -136,7 +138,7 @@ function RenderReviews({ reviews }) {
             );
         }
     
-}
+} 
 
 //Function displaying all the details of selected newspaper 
 function RenderItem({ item, addtocart, reviews, postReview, orders }) {
@@ -247,7 +249,7 @@ const NewspaperDetail = (props) => {
                     </div>
                     {/* Calling RenderReviews function by sending appropriate properties */}
                     <div className="row">
-                        <RenderReviews reviews={props.reviews}/>
+                        <RenderReviews reviews={props.reviews} updateReview={props.updateReview}/>
                     </div>
                 </div>
             </div>

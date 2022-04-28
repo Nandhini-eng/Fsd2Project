@@ -20,7 +20,7 @@ import { connect } from 'react-redux';
 import {
   fetchNewspapers, fetchMagazines, filterMagazinesByCategory,
   filterMagazinesByLanguage,
-  filterNewspapersByLanguage, sortNewspapers, sortMagazines, postFeedback, postsignup, fetchUsers, fetchReviews, postReview,
+  filterNewspapersByLanguage, sortNewspapers, sortMagazines, postFeedback, postsignup, fetchUsers, fetchReviews, postReview, 
   getproducts, addToCart, removefromCart, adjustQty,deleteorder, fetchOrders, postOrder, fetchItems, postblog, fetchBlogs,
   getTopNewspapers, getTopMagazines
 } from '../redux/ActionCreators';
@@ -69,8 +69,6 @@ const mapDispatchToProps = (dispatch) => ({
   topRatedMagazines: (magazines, reviews) => dispatch(getTopMagazines(magazines, reviews)),
   fetchItems: () => { dispatch(fetchItems()) },
   fetchBlogs: () => { dispatch(fetchBlogs()) },
-  
-  
   postblog: (username, topic, message) => dispatch(postblog(username, topic, message))
 
 });

@@ -19,6 +19,7 @@ export const Reviews = (state = {
         case ActionTypes.ADD_REVIEW:
             var review = action.payload;
             return { ...state, reviews: state.reviews.concat(review) };
+   
 
         //otherwise returning the default or initial state(the state that is passed as parameter to this reducer)
         default:

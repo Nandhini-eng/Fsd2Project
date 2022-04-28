@@ -36,6 +36,8 @@ export const ADD_REVIEW = 'ADD_REVIEW';
 export const ADD_REVIEWS = 'ADD_REVIEWS';
 export const REVIEWS_FAILED = 'REVIEWS_FAILED';
 
+export const UPDATE_REVIEW = 'UPDATE_REVIEW';
+
 //ORDERS
 export const ORDER_PLACED='ORDER_PLACED';
 export const ORDER_FAILED='ORDER_FAILED';
